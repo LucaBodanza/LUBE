@@ -4,7 +4,7 @@
 // - pdf.js legge i PDF a pezzi: qui i pezzi vengono ritagliati
 // - VERSIONE RISERVATA (true): tutto ciò che sta in cat/ e dati/ è cifrato (AES-256-GCM a blocchi da 256 KB).
 //   Qui si decifra al volo con la chiave messa nel dispositivo dall'accesso (IndexedDB). Nelle cache resta tutto cifrato.
-const VERSIONE = '1.1.1-2026.10.2-e492be67f0';
+const VERSIONE = '1.1.1-2026.10.2-6acf536702';
 const CIFRATA = true;
 const GUSCIO = 'elsap-guscio-' + VERSIONE, CAT = 'elsap-cat-v1';
 const FILE = ["index.html", "manifest.webmanifest", "dati/cataloghi.json", "dati/prodotti.json", "web/accesso.css", "web/accesso.js", "web/accesso.json", "web/app.css", "web/app.js", "web/cerca.js", "web/font/Doto-Bold.ttf", "web/font/IBMPlexMono-Medium.woff2", "web/font/IBMPlexMono-Regular.woff2", "web/font/Inter-Regular.ttf", "web/font/Inter-SemiBold.ttf", "web/img/icona_192.png", "web/img/icona_512.png", "web/img/logo.svg", "web/img/pittogramma.svg", "web/index.html", "web/libro.js", "web/scena.js", "web/vendor/RoomEnvironment.js", "web/vendor/SVGLoader.js", "web/vendor/pdf-lib.esm.min.js", "web/vendor/pdf.min.mjs", "web/vendor/pdf.worker.min.mjs", "web/vendor/three.module.min.js"];

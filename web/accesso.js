@@ -108,11 +108,12 @@ async function swPronto() {              // la pagina deve passare dal service w
 
 function profiloInBarra(s, ACC) {
   const dx = $('#barra .dx'); if (!dx) return;
-  const a = ACC[s.profilo] || { n: s.nome, r: s.ruolo, i: (s.nome || '?').split(/\s+/).map(x => x[0]).join('').slice(0, 2) };
+  let k = ACC.findIndex(x => x.n === s.nome); if (k < 0) k = 0;          // per nome: l'ordine dei profili può cambiare
+  const a = ACC.find(x => x.n === s.nome) || { n: s.nome, r: s.ruolo, i: (s.nome || '?').split(/\s+/).map(x => x[0]).join('').slice(0, 2) };
   const b = document.createElement('div');
   b.className = 'ac-menu';
-  b.innerHTML = `<button class="ac-mini" title="${esc(a.n)} · ${esc(a.r)}">${avatar(a, s.profilo || 0)}</button>
-    <div class="ac-tendina"><div class="ac-chi">${avatar(a, s.profilo || 0)}<div><b>${esc(a.n)}</b><span class="lab">${esc(a.r)}</span></div></div>
+  b.innerHTML = `<button class="ac-mini" title="${esc(a.n)} · ${esc(a.r)}">${avatar(a, k)}</button>
+    <div class="ac-tendina"><div class="ac-chi">${avatar(a, k)}<div><b>${esc(a.n)}</b><span class="lab">${esc(a.r)}</span></div></div>
       <button data-a="cambia">Cambia profilo</button><button data-a="esci">Esci</button></div>`;
   dx.appendChild(b);
   metti(b);
