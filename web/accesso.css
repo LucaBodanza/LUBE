@@ -1,0 +1,88 @@
+/* ELSAP DSGN — accesso riservato (versione web): scelta del profilo in stile "chi sta guardando", linguaggio ELSAP DSGN */
+#accesso { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 90px 24px 70px; overflow: auto;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #12202E 0%, var(--bg) 70%); opacity: 0; transition: opacity .6s var(--ease); }
+#accesso.su { opacity: 1; }
+#accesso.via { opacity: 0; pointer-events: none; }
+#accesso::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(rgba(143, 211, 255, .16) 1px, transparent 1.4px); background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 0%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 0%, transparent 75%); }
+.ac-marchio { position: fixed; top: 22px; left: 32px; display: flex; align-items: center; gap: 14px; z-index: 2; }
+.ac-marchio .logo svg { height: 24px; width: auto; display: block; }
+.ac-marchio .sep { width: 1px; height: 16px; background: var(--line2); }
+.ac-marchio .app { font-family: "Doto", monospace; font-weight: 800; font-size: 16px; letter-spacing: .08em; color: var(--accent); }
+
+.ac-scelta, .ac-pw { position: relative; z-index: 1; text-align: center; transition: opacity .45s var(--ease), transform .55s var(--ease); }
+.ac-scelta h1 { margin: 0; font-weight: 500; font-size: clamp(30px, 4.4vw, 56px); letter-spacing: -.01em; }
+.ac-scelta h1 .acc { font-family: "Doto", monospace; font-weight: 800; letter-spacing: .04em; }
+.ac-scelta > .lab { margin: 14px 0 0; color: var(--muted); }
+.ac-profili { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(18px, 3vw, 40px); margin-top: clamp(34px, 6vh, 64px); }
+.ac-p { background: none; border: 0; padding: 0; width: clamp(130px, 13vw, 176px); display: flex; flex-direction: column; align-items: center; gap: 10px;
+  opacity: 0; transform: translateY(16px); animation: acSu .7s var(--ease) calc(.15s + var(--d)) forwards; }
+.ac-p b { font-weight: 500; font-size: 16px; color: var(--ink2); margin-top: 6px; transition: color .2s; }
+.ac-p .lab { font-size: 10px; color: var(--muted); letter-spacing: .08em; line-height: 1.4; }
+.ac-p:hover b, .ac-p:focus-visible b { color: var(--ink); }
+.ac-p .ac-av { width: 100%; transition: transform .35s var(--ease), box-shadow .25s; }
+.ac-p:hover .ac-av, .ac-p:focus-visible .ac-av { transform: scale(1.05); box-shadow: 0 0 0 3px var(--ink), 0 18px 40px rgba(0, 0, 0, .45); }
+.ac-p:focus-visible { outline: none; }
+@keyframes acSu { to { opacity: 1; transform: none; } }
+
+/* avatar: quadrato ELSAP blu, iniziali Doto, pill ELSAP in basso */
+.ac-av { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 12px; overflow: hidden; flex: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .35); }
+.ac-av::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, .22), transparent 55%),
+  repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 9px); }
+.ac-av.t0 { background: linear-gradient(145deg, #0D7BC0, #0A4E80); }
+.ac-av.t1 { background: linear-gradient(145deg, #2A9BE3, #0D7BC0); }
+.ac-av.t2 { background: linear-gradient(145deg, #1A3550, #0D7BC0 120%); }
+.ac-av.t3 { background: linear-gradient(145deg, #6CC0F5, #2A9BE3); }
+.ac-in { position: relative; z-index: 1; font-family: "Doto", monospace; font-weight: 800; font-size: clamp(38px, 4.6vw, 60px); letter-spacing: .04em; color: #fff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .25); }
+.ac-pit { position: absolute; left: 9%; bottom: 8%; width: 34%; z-index: 1; opacity: .95; }
+.ac-pit svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .3)); }
+
+/* password */
+.ac-pw { position: absolute; width: min(420px, calc(100vw - 48px)); text-align: left; opacity: 0; pointer-events: none; transform: translateY(18px); }
+#accesso.pw .ac-scelta { opacity: 0; pointer-events: none; transform: scale(.96); }
+#accesso.pw .ac-pw { opacity: 1; pointer-events: auto; transform: none; }
+.ac-chi { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+.ac-chi .ac-av { width: 74px; border-radius: 10px; }
+.ac-chi .ac-in { font-size: 26px; }
+.ac-chi b { display: block; font-size: 20px; font-weight: 500; }
+.ac-chi .lab { color: var(--muted); font-size: 10px; }
+.ac-pw > .lab { display: block; margin-bottom: 8px; }
+.ac-campo { position: relative; }
+.ac-campo input { width: 100%; background: var(--bg1); border: 1px solid var(--line2); border-radius: 12px; padding: 14px 48px 14px 16px; font-size: 17px;
+  letter-spacing: .04em; outline: none; transition: border-color .2s, box-shadow .2s; }
+.ac-campo input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(42, 155, 227, .18); }
+.ac-occhio { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: 0; color: var(--muted); font-size: 16px; padding: 8px; }
+.ac-occhio:hover { color: var(--ink); }
+.ac-nascosto { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.ac-err { min-height: 22px; margin: 10px 0 4px; color: #FF8A80; font-size: 13px; }
+.ac-az { display: flex; justify-content: space-between; gap: 12px; }
+.ac-az .btn { padding: 12px 18px; }
+.ac-pw.scuoti { animation: acScuoti .4s; }
+@keyframes acScuoti { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+.ac-piede { position: fixed; bottom: 20px; left: 0; right: 0; text-align: center; color: var(--muted); font-size: 10px; z-index: 1; }
+
+/* profilo nella barra */
+.ac-menu { position: relative; display: flex; align-items: center; }
+.ac-mini { background: none; border: 0; padding: 0; display: flex; }
+.ac-mini .ac-av { width: 30px; border-radius: 7px; box-shadow: none; transition: box-shadow .2s; }
+.ac-mini .ac-in { font-size: 12px; text-shadow: none; }
+.ac-mini .ac-pit { display: none; }
+.ac-mini:hover .ac-av, .ac-menu.aperto .ac-mini .ac-av { box-shadow: 0 0 0 2px var(--ink); }
+.ac-tendina { position: absolute; right: 0; top: calc(100% + 10px); min-width: 250px; background: var(--bg1); border: 1px solid var(--line); border-radius: 14px;
+  padding: 14px; box-shadow: 0 20px 50px rgba(0, 0, 0, .5); opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity .2s, transform .25s var(--ease); }
+.ac-menu.aperto .ac-tendina { opacity: 1; transform: none; pointer-events: auto; }
+.ac-tendina .ac-chi { margin-bottom: 10px; gap: 12px; }
+.ac-tendina .ac-chi .ac-av { width: 44px; }
+.ac-tendina .ac-chi .ac-in { font-size: 16px; }
+.ac-tendina .ac-chi b { font-size: 15px; }
+.ac-tendina button[data-a] { display: block; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 10px 4px; color: var(--ink2); }
+.ac-tendina button[data-a]:hover { color: var(--ink); }
+
+@media (max-width: 640px) {
+  .ac-marchio { left: 16px; top: 16px; }
+  .ac-p { width: calc(50vw - 40px); }
+  #accesso { padding: 80px 16px 60px; }
+}

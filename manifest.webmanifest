@@ -1,0 +1,25 @@
+{
+ "name": "ELSAP DSGN — ELSAP",
+ "short_name": "ELSAP DSGN",
+ "description": "Cataloghi tecnici ELSAP",
+ "lang": "it",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#0A1017",
+ "theme_color": "#0A1017",
+ "icons": [
+  {
+   "src": "web/img/icona_192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "web/img/icona_512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any maskable"
+  }
+ ]
+}

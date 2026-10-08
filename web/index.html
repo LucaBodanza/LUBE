@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ELSAP DSGN — ELSAP</title>
+<link rel="icon" href="/web/img/icona_192.png">
+<link rel="stylesheet" href="/web/app.css">
+</head>
+<body>
+<canvas id="scena"></canvas>
+<div id="grana"></div>
+
+<!-- INTRO -->
+<section id="intro" class="vista attiva">
+  <div class="intro-in">
+    <div class="intro-tit" id="introTit" aria-label="ELSAP DSGN"></div>
+    <div class="intro-sub">ELSAP · technical catalogue studio</div>
+  </div>
+  <button class="salta" id="salta">Entra →</button>
+</section>
+
+<!-- BARRA -->
+<header id="barra">
+  <button class="marchio" id="vaiHome" title="Libreria">
+    <span class="logo" data-svg="logo"></span><span class="sep"></span><span class="app">ELSAP DSGN</span>
+  </button>
+  <nav class="briciole" id="briciole"></nav>
+  <div class="dx">
+    <button class="navb" id="nCerca">Cerca codice</button><button class="navb" id="nAI">Interrogatore</button>
+    <button class="chip" id="grafica" title="Qualità grafica: automatica, leggera o piena"></button>
+    <span class="chip" id="statoDb">database</span>
+    <span class="chip mono" id="orologio"></span>
+  </div>
+</header>
+
+<!-- HOME / LIBRERIA -->
+<section id="home" class="vista">
+  <div class="home-testo">
+    <span class="pill cool">Design studio</span>
+    <h1>ELSAP <span class="acc">DSGN</span></h1>
+    <p class="en">Cataloghi tecnici ELSAP<br><span class="muted">ELSAP technical catalogues</span></p>
+    <div class="numeri" id="numeri"></div>
+    <div class="home-az"><button class="btn" id="hCerca">Cerca codice</button><button class="btn ghost" id="hAI">Interrogatore</button></div>
+  </div>
+  <div class="scaffale-wrap">
+    <div class="scaffale-testa"><span class="lab">La libreria · The library</span><span class="lab muted" id="scaffaleInfo"></span>
+      <div class="frecce"><button id="scSx" aria-label="indietro">←</button><button id="scDx" aria-label="avanti">→</button></div></div>
+    <div class="scaffale" id="scaffale"></div>
+  </div>
+</section>
+
+<!-- SCHEDA CATALOGO -->
+<section id="catalogo" class="vista">
+  <div class="cat-sx"><div class="libro3d grande" id="libroGrande"></div></div>
+  <div class="cat-dx" id="catInfo"></div>
+</section>
+
+<!-- SFOGLIA -->
+<section id="sfoglia" class="vista">
+  <div class="sf-barra">
+    <button class="btn ghost" id="sfIndietro">← Indietro</button>
+    <div class="sf-tit" id="sfTit"></div>
+    <div class="sf-ctrl">
+      <select id="sfIndice" title="Vai alla sezione"></select>
+      <input id="sfCerca" placeholder="Codice articolo o pagina…" autocomplete="off">
+      <span class="mono" id="sfPag">—</span>
+      <a class="btn ghost" id="sfPdf" target="_blank">PDF ↗</a>
+    </div>
+  </div>
+  <div class="sf-palco" id="sfPalco">
+    <button class="sf-freccia sx" id="sfPrev" aria-label="pagina precedente">‹</button>
+    <div class="libro" id="libro"></div>
+    <button class="sf-freccia dx" id="sfNext" aria-label="pagina successiva">›</button>
+    <div class="sf-carica" id="sfCarica"><div class="spinner"></div><span>Apro il catalogo…</span></div>
+  </div>
+  <div class="sf-piede"><input type="range" id="sfScorri" min="0" max="1" value="0"><span class="lab" id="sfScorriLab"></span></div>
+</section>
+
+<!-- SOTTO-CATALOGHI -->
+<section id="sotto" class="vista">
+  <div class="so-testa">
+    <div><span class="pill cool">Sotto-cataloghi</span><h2 id="soTit"></h2><p class="muted" id="soSub"></p></div>
+    <div class="so-filtri">
+      <div class="seg" id="soGas"></div>
+      <input id="soCerca" placeholder="Cerca…" autocomplete="off">
+      <select id="soOrd"><option value="ord">Ordine del catalogo</option><option value="nome">Nome</option><option value="pag">Pagine ↓</option></select>
+    </div>
+  </div>
+  <div class="griglia" id="soGriglia"></div>
+</section>
+
+<!-- CERCA CODICE -->
+<section id="cerca" class="vista">
+  <div class="cc-testa">
+    <div><span class="pill cool">Cerca codice</span><h2>Trova il codice giusto</h2></div>
+    <div class="cc-campo"><input id="ccTesto" placeholder="Codice, sigla o parole · es. SAL-12, 934888100, M12 femmina 90°" autocomplete="off" spellcheck="false"><div id="ccConta"></div></div>
+  </div>
+  <div class="cc-corpo"><aside id="ccFiltri"></aside><div id="ccLista"></div></div>
+  <div id="ccScelti"></div>
+</section>
+
+<!-- INTERROGATORE -->
+<section id="ai" class="vista">
+  <div class="ai-in">
+    <span class="pill cool">Interrogatore</span>
+    <h2>Descrivi cosa ti serve</h2>
+    <p class="muted">Scrivi con parole tue, anche senza conoscere codici e sigle: l'app interpreta la richiesta, la incrocia con tutti i cataloghi e ti fa le domande che servono per arrivare al prodotto. Funziona senza rete.</p>
+    <div class="ai-campo"><textarea id="aiTesto" rows="2" placeholder="es. connettore M12 a cablare, 5 poli, femmina a 90°, schermato" spellcheck="false"></textarea><button class="btn" id="aiVai">Cerca →</button></div>
+    <div id="aiEsempi"><span class="lab">Prova con</span>
+      <button>connettore M12 a cablare 5 poli femmina a 90 gradi</button>
+      <button>cavo per sensore M8 3 poli, 5 metri</button>
+      <button>presa da pannello per rete ethernet, impermeabile</button>
+      <button>connettore per elettrovalvola con cavo</button>
+      <button>alimentazione 7/8 maschio diritto</button></div>
+    <div id="aiEsito"></div>
+  </div>
+</section>
+
+<div id="velo"></div>
+<div id="toast"></div>
+<script type="module" src="/web/app.js"></script>
+</body>
+</html>
