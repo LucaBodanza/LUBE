@@ -29,7 +29,10 @@ async function apri(acc, pw) {           // password giusta → chiave dei dati;
   const kek = await crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(acc.s), iterations: acc.it, hash: 'SHA-256' }, base,
     { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
   const grezza = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(acc.v) }, kek, b64(acc.w));
-  return crypto.subtle.importKey('raw', grezza, { name: 'AES-GCM' }, false, ['decrypt']);
+  const chiave = await crypto.subtle.importKey('raw', grezza, { name: 'AES-GCM' }, false, ['decrypt']);
+  // anche la chiave per cifrare (pannello "Carica catalogo"), non esportabile: per scrivere sul sito serve comunque il token GitHub di Luca
+  const scrivi = await crypto.subtle.importKey('raw', grezza, { name: 'AES-GCM' }, false, ['encrypt']);
+  return { chiave, scrivi };
 }
 
 const SVG = {};
@@ -80,8 +83,8 @@ async function schermata(ACC) {
       if (scelto == null || entra.disabled) return;
       entra.disabled = true; entra.textContent = 'Verifico…'; err.textContent = '';
       try {
-        const chiave = await apri(ACC[scelto], pw.value);
-        await sessione({ chiave, profilo: scelto, nome: ACC[scelto].n, ruolo: ACC[scelto].r, quando: Date.now() });
+        const { chiave, scrivi } = await apri(ACC[scelto], pw.value);
+        await sessione({ chiave, scrivi, profilo: scelto, nome: ACC[scelto].n, ruolo: ACC[scelto].r, quando: Date.now() });
         el.classList.add('via'); setTimeout(() => el.remove(), 700);
         fine(scelto);
       } catch (x) {
@@ -110,16 +113,20 @@ function profiloInBarra(s, ACC) {
   const dx = $('#barra .dx'); if (!dx) return;
   let k = ACC.findIndex(x => x.n === s.nome); if (k < 0) k = 0;          // per nome: l'ordine dei profili può cambiare
   const a = ACC.find(x => x.n === s.nome) || { n: s.nome, r: s.ruolo, i: (s.nome || '?').split(/\s+/).map(x => x[0]).join('').slice(0, 2) };
+  // pannello di caricamento: solo sul dispositivo dell'Admin DEV (token GitHub già salvato) o aprendo il sito con ?carica
+  let dev = /[?&#]carica\b/.test(location.search + location.hash);
+  try { dev = dev || !!localStorage.getItem('elsap.gh'); } catch (e) { /* niente */ }
   const b = document.createElement('div');
   b.className = 'ac-menu';
   b.innerHTML = `<button class="ac-mini" title="${esc(a.n)} · ${esc(a.r)}">${avatar(a, k)}</button>
     <div class="ac-tendina"><div class="ac-chi">${avatar(a, k)}<div><b>${esc(a.n)}</b><span class="lab">${esc(a.r)}</span></div></div>
-      <button data-a="cambia">Cambia profilo</button><button data-a="esci">Esci</button></div>`;
+      ${dev ? '<button data-a="carica">Carica catalogo</button>' : ''}<button data-a="cambia">Cambia profilo</button><button data-a="esci">Esci</button></div>`;
   dx.appendChild(b);
   metti(b);
   b.querySelector('.ac-mini').onclick = e => { e.stopPropagation(); b.classList.toggle('aperto'); };
   addEventListener('click', () => b.classList.remove('aperto'));
-  b.querySelectorAll('[data-a]').forEach(x => x.onclick = esci);
+  b.querySelectorAll('[data-a="cambia"], [data-a="esci"]').forEach(x => x.onclick = esci);
+  b.querySelector('[data-a="carica"]')?.addEventListener('click', async () => { const m = await import('./carica.js'); m.apri(await sessione(), ACC); });
 }
 async function esci() {
   try { await sessione(null); } catch (e) { /* niente */ }

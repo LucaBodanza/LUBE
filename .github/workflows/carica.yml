@@ -1,0 +1,45 @@
+# ELSAP DSGN — "Carica catalogo": parte da solo quando il pannello web carica un PDF cifrato in _carica/
+name: Carica catalogo
+on:
+  push:
+    branches: [main]
+    paths: ["_carica/**.json"]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency: { group: carica, cancel-in-progress: false }
+jobs:
+  carica:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      ELSAP_CHIAVE: ${{ secrets.ELSAP_CHIAVE }}
+      LAVORO: ${{ runner.temp }}/carica
+      SITO: ${{ github.workspace }}
+    steps:
+      - name: Scarico il sito
+        uses: actions/checkout@v4
+        with: { lfs: false }
+      - name: Preparo gli strumenti
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y poppler-utils qpdf >/dev/null
+          pip install -q pypdf cryptography
+      - name: Decifro il PDF caricato
+        run: python3 _strumenti/carica.py decifra
+      - name: Leggo pagine, segnalibri e sotto-cataloghi
+        run: python3 _strumenti/prepara.py "$LAVORO/elenco.json" "$LAVORO/out" --forza
+      - name: Estraggo codici e caratteristiche
+        run: python3 _strumenti/prodotti.py "$LAVORO/out"
+      - name: Cifro e aggiorno il sito
+        run: python3 _strumenti/carica.py pubblica
+      - name: Pubblico
+        run: |
+          git config user.name "ELSAP DSGN"
+          git config user.email "elsap-dsgn@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Carica catalogo: $(git log -1 --format=%s)"
+          git push -q
+      - name: Aggiorno il sito online
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null || echo "build di Pages partita da sola"

@@ -1,0 +1,105 @@
+/* ELSAP DSGN — pannello "Carica catalogo" (Admin DEV): vetro liquido sui colori ELSAP DSGN */
+#carica { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: 72px 20px 40px; overflow: auto;
+  background: radial-gradient(ellipse 70% 60% at 50% 35%, rgba(42, 155, 227, .22), transparent 70%), rgba(6, 10, 15, .8);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); place-items: start center;
+  opacity: 0; transition: opacity .5s var(--ease); }
+#carica.su { opacity: 1; }
+.cg-bolle { position: fixed; inset: 0; pointer-events: none; overflow: hidden; }
+.cg-bolle i { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; animation: cgGalleggia 18s ease-in-out infinite alternate; }
+.cg-bolle i:nth-child(1) { width: 46vmax; height: 46vmax; left: -12vmax; top: -10vmax; background: #1E6FB0; }
+.cg-bolle i:nth-child(2) { width: 30vmax; height: 30vmax; right: -8vmax; top: 20vh; background: #2A9BE3; animation-delay: -6s; }
+.cg-bolle i:nth-child(3) { width: 26vmax; height: 26vmax; left: 30vw; bottom: -14vmax; background: #6CC0F5; opacity: .35; animation-delay: -11s; }
+@keyframes cgGalleggia { to { transform: translate(6vmax, 4vmax) scale(1.12); } }
+
+#carica [hidden] { display: none !important; }
+/* vetro: sfocatura + saturazione, riflesso superiore, bordo luminoso, ombra profonda */
+.cg-vetro { position: relative; background: linear-gradient(140deg, rgba(255, 255, 255, .16) 0%, rgba(255, 255, 255, .06) 40%, rgba(255, 255, 255, .03) 100%);
+  -webkit-backdrop-filter: blur(30px) saturate(185%); backdrop-filter: blur(30px) saturate(185%);
+  border: 1px solid rgba(255, 255, 255, .18); border-radius: 38px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .42), inset 0 -1px 0 rgba(255, 255, 255, .06), inset 0 0 40px rgba(143, 211, 255, .06), 0 40px 100px rgba(0, 0, 0, .5); }
+.cg-vetro::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(120% 60% at 20% -10%, rgba(255, 255, 255, .28), transparent 55%), radial-gradient(80% 50% at 110% 120%, rgba(108, 192, 245, .18), transparent 60%); mix-blend-mode: screen; }
+.cg-main { width: min(980px, 100%); padding: 30px 34px 26px; transform: translateY(18px) scale(.98); transition: transform .7s var(--ease), width .6s var(--ease); }
+#carica.su .cg-main { transform: none; }
+.cg-x { position: absolute; right: 22px; top: 20px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .2); background: rgba(255, 255, 255, .08); color: var(--ink); cursor: pointer; }
+.cg-testa { display: flex; align-items: center; gap: 16px; justify-content: center; margin-bottom: 24px; }
+.cg-testa .cg-logo svg { height: 30px; width: auto; display: block; }
+.cg-testa b { display: block; font-size: 20px; font-weight: 600; }
+.cg-corpo { display: grid; grid-template-columns: 1fr; gap: 22px; transition: grid-template-columns .6s var(--ease); }
+#carica.aperto .cg-corpo { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+
+/* riquadro di caricamento */
+.cg-drop { display: grid; place-items: center; gap: 8px; text-align: center; padding: 46px 20px 40px; border-radius: 30px; cursor: pointer;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03)); border: 1.5px dashed rgba(143, 211, 255, .45);
+  transition: transform .35s var(--ease), border-color .25s, background .25s; }
+.cg-drop:hover, .cg-drop.su, .cg-drop:focus-visible { transform: translateY(-3px); border-color: var(--accent2); background: linear-gradient(160deg, rgba(42, 155, 227, .25), rgba(255, 255, 255, .05)); outline: none; }
+.cg-freccia { width: 132px; height: 132px; border-radius: 34px; display: grid; place-items: center; color: var(--accent); margin-bottom: 10px;
+  background: linear-gradient(150deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .18)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 18px 40px rgba(0, 0, 0, .35);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.cg-freccia svg { width: 58px; height: 58px; animation: cgSu 2.4s var(--ease) infinite; }
+@keyframes cgSu { 0%, 100% { transform: translateY(4px); } 50% { transform: translateY(-6px); } }
+.cg-drop b { font-size: 18px; font-weight: 600; }
+
+/* lettura */
+.cg-lettura { display: grid; gap: 12px; animation: cgEntra .6s var(--ease); }
+.cg-file { display: flex; gap: 16px; align-items: center; }
+.cg-cop { width: 96px; border-radius: 10px; box-shadow: 0 14px 30px rgba(0, 0, 0, .45); background: rgba(255, 255, 255, .08); min-height: 130px; object-fit: cover; }
+.cg-file b { display: block; font-size: 15px; font-weight: 600; word-break: break-word; }
+.cg-barra { height: 6px; border-radius: 6px; background: rgba(255, 255, 255, .1); overflow: hidden; }
+.cg-barra i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--accent), var(--accent2)); box-shadow: 0 0 14px var(--accent); transition: width .3s var(--ease); }
+.cg-voci { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 7px; }
+.cg-voci li { display: flex; gap: 10px; align-items: center; font-size: 14px; opacity: 0; transform: translateX(-8px); animation: cgVoce .5s var(--ease) var(--d) forwards; }
+.cg-voci li span { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; flex: none; background: rgba(87, 195, 138, .2); color: var(--ok); }
+.cg-voci li span svg { width: 14px; height: 14px; }
+.cg-voci li.avv span { background: rgba(245, 184, 61, .2); color: #F5B83D; font-weight: 700; }
+@keyframes cgVoce { to { opacity: 1; transform: none; } }
+@keyframes cgEntra { from { opacity: 0; transform: translateY(10px); } }
+
+/* dati del catalogo */
+.cg-dx { padding: 22px 22px 18px; border-radius: 28px; display: grid; gap: 12px; align-content: start; animation: cgDestra .7s var(--ease); }
+@keyframes cgDestra { from { opacity: 0; transform: translateX(30px); } }
+.cg-dx label { display: grid; gap: 5px; font-size: 12px; color: var(--ink2); }
+.cg-dx input:not([type=checkbox]), .cg-dx select { background: rgba(10, 16, 23, .45); border: 1px solid rgba(255, 255, 255, .16); border-radius: 12px; color: var(--ink); font: inherit; font-size: 14px; padding: 10px 12px; }
+.cg-dx input:focus, .cg-dx select:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.cg-r2 { display: grid; grid-template-columns: 110px 1fr; gap: 10px; } .cg-r2.due { grid-template-columns: 1fr 1fr; }
+.cg-ck { display: flex !important; align-items: center; gap: 8px; font-size: 13px !important; color: var(--ink) !important; } .cg-ck input { accent-color: #2A9BE3; }
+.cg-dove { padding: 9px 12px; border-radius: 12px; background: rgba(42, 155, 227, .14); border: 1px solid rgba(108, 192, 245, .3); text-transform: none; letter-spacing: .02em; font-size: 12px; }
+.cg-dove b { color: var(--ink); }
+.cg-sezioni { display: flex; flex-wrap: wrap; gap: 6px; }
+.cg-sezioni span { font-size: 11px; padding: 3px 9px; border-radius: 99px; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .12); }
+.cg-sezioni i { font-style: normal; color: var(--muted); font-family: "Plex Mono", monospace; }
+.cg-azioni { display: flex; justify-content: space-between; gap: 10px; margin-top: 4px; }
+.cg-pub { border-radius: 14px; box-shadow: 0 10px 30px rgba(42, 155, 227, .45); }
+.cg-dx.lavora input, .cg-dx.lavora select { opacity: .55; pointer-events: none; }
+
+/* passi della pubblicazione */
+.cg-passi { display: grid; gap: 8px; margin-top: 6px; }
+.cg-p { display: grid; grid-template-columns: 22px 1fr; column-gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: rgba(255, 255, 255, .05); position: relative; overflow: hidden; }
+.cg-p > i { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--accent2); transition: width .4s var(--ease); }
+.cg-p .pt { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line2); }
+.cg-p.va .pt { border-color: var(--accent2); border-top-color: transparent; animation: cgGira .8s linear infinite; }
+.cg-p.ok .pt { background: var(--ok); border-color: var(--ok); } .cg-p.ko .pt { background: #FF6B6B; border-color: #FF6B6B; }
+.cg-p b { font-size: 13.5px; font-weight: 500; }
+.cg-p .sub { grid-column: 2; font-size: 11.5px; color: var(--ink2); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.cg-p .sub span { opacity: .55; } .cg-p .sub span.ok { opacity: 1; color: var(--ok); } .cg-p .sub span.va { opacity: 1; color: var(--accent2); } .cg-p .sub span.ko { opacity: 1; color: #FF6B6B; }
+@keyframes cgGira { to { transform: rotate(360deg); } }
+
+/* cerchi di stato (come nel disegno Figma: blu, rosso, giallo) */
+.cg-orbs { display: flex; justify-content: center; gap: 14px; margin-top: 24px; }
+.cg-orb { position: relative; width: 46px; height: 46px; border-radius: 50%; border: 0; cursor: pointer; color: #fff; display: grid; place-items: center;
+  box-shadow: inset 0 2px 3px rgba(255, 255, 255, .55), inset 0 -6px 12px rgba(0, 0, 0, .25), 0 10px 22px rgba(0, 0, 0, .35); transition: transform .3s var(--ease); }
+.cg-orb:hover { transform: translateY(-3px) scale(1.06); }
+.cg-orb svg { width: 21px; height: 21px; }
+.cg-orb.blu { background: radial-gradient(circle at 35% 30%, #6CC0F5, #1E5FA8 70%); }
+.cg-orb.rosso { background: radial-gradient(circle at 35% 30%, #FF8A8F, #C8243A 70%); }
+.cg-orb.giallo { background: radial-gradient(circle at 35% 30%, #FFE08A, #D99A12 70%); }
+.cg-orb::after { content: ""; position: absolute; right: -2px; bottom: -2px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #0A1017; background: var(--muted); }
+.cg-orb.ok::after { background: var(--ok); } .cg-orb.no::after { background: #F5B83D; }
+.cg-orb-info { text-align: center; margin-top: 10px; min-height: 1.4em; text-transform: none; letter-spacing: .02em; }
+
+@media (max-width: 780px) {
+  #carica.aperto .cg-corpo { grid-template-columns: 1fr; }
+  .cg-main { padding: 24px 18px 20px; border-radius: 28px; }
+  .cg-r2, .cg-r2.due { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .cg-bolle i, .cg-freccia svg { animation: none; } }
