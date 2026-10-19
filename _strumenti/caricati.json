@@ -1,0 +1,26 @@
+[
+ {
+  "quando": "2026-10-19T22:53:49+00:00",
+  "scheda": {
+   "numero": 16,
+   "slug": "16_Eco-Mate",
+   "nome": "Eco-Mate",
+   "sottotitolo": "",
+   "marchi": [
+    "Amphenol Tuchel"
+   ],
+   "provvisoria": false,
+   "sotto": {
+    "tipo": "segnalibri",
+    "livello": 1,
+    "nome": "sezioni",
+    "foto_dopo": 1
+   },
+   "file_originale": "16 SERIE Eco-Mate.pdf",
+   "caricato": "2026-10-19T22:52:41.983Z"
+  },
+  "pagine": 112,
+  "codici": 129,
+  "prodotti": 199
+ }
+]
