@@ -13,7 +13,7 @@ from pathlib import Path
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 SITO = Path(os.environ.get("SITO", "."))
-LAV = Path(os.environ.get("LAVORO", "/tmp/carica"))
+LAV = Path(os.environ.get("LAVORO") or (os.environ.get("RUNNER_TEMP", "/tmp") + "/carica"))
 KEY = base64.b64decode(os.environ["ELSAP_CHIAVE"].strip())
 A = AESGCM(KEY)
 BLOCCO = 1 << 18

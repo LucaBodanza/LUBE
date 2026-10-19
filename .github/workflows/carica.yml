@@ -15,7 +15,6 @@ jobs:
     timeout-minutes: 30
     env:
       ELSAP_CHIAVE: ${{ secrets.ELSAP_CHIAVE }}
-      LAVORO: ${{ runner.temp }}/carica
       SITO: ${{ github.workspace }}
     steps:
       - name: Scarico il sito
@@ -28,9 +27,9 @@ jobs:
       - name: Decifro il PDF caricato
         run: python3 _strumenti/carica.py decifra
       - name: Leggo pagine, segnalibri e sotto-cataloghi
-        run: python3 _strumenti/prepara.py "$LAVORO/elenco.json" "$LAVORO/out" --forza
+        run: python3 _strumenti/prepara.py "$RUNNER_TEMP/carica/elenco.json" "$RUNNER_TEMP/carica/out" --forza
       - name: Estraggo codici e caratteristiche
-        run: python3 _strumenti/prodotti.py "$LAVORO/out"
+        run: python3 _strumenti/prodotti.py "$RUNNER_TEMP/carica/out"
       - name: Cifro e aggiorno il sito
         run: python3 _strumenti/carica.py pubblica
       - name: Pubblico
