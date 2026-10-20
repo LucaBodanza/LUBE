@@ -20,6 +20,25 @@ const api = async (u, body) => {
 };
 const SVG = {};
 async function svg(nome) { if (!SVG[nome]) SVG[nome] = await (await fetch(`web/img/${nome}.svg`)).text(); return SVG[nome]; }
+// Scarica PDF: si scarica tutto il file (decifrato dal service worker) e si salva con il suo nome.
+// Prima era un link in una scheda nuova: in Firefox il PDF a flusso restava "in caricamento" senza mai aprirsi.
+document.addEventListener('click', async e => {
+  const a = e.target.closest('a[data-pdf]'); if (!a) return;
+  e.preventDefault();
+  if (a.dataset.lavora) return;
+  a.dataset.lavora = 1; const t0 = a.textContent; a.textContent = 'Scarico…';
+  try {
+    const r = await fetch(a.href);
+    if (!r.ok) throw new Error(r.status);
+    const tot = +r.headers.get('Content-Length') || 0, rd = r.body.getReader(), parti = []; let n = 0;
+    for (;;) { const { done, value } = await rd.read(); if (done) break; parti.push(value); n += value.length; if (tot) a.textContent = `Scarico ${Math.round(n / tot * 100)}%`; }
+    const url = URL.createObjectURL(new Blob(parti, { type: 'application/pdf' }));
+    const d = document.createElement('a'); d.href = url; d.download = a.dataset.pdf || 'catalogo.pdf'; document.body.appendChild(d); d.click(); d.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    toast(`${a.dataset.pdf} scaricato ✓`);
+  } catch (x) { toast('Download non riuscito: ' + x.message); }
+  a.textContent = t0; delete a.dataset.lavora;
+});
 function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('su'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('su'), 2600); }
 const ICON = {
   libro: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7c4-2 8-2 12 1v18c-4-3-8-3-12-1z"/><path d="M28 7c-4-2-8-2-12 1v18c4-3 8-3 12-1z"/></svg>',
@@ -146,7 +165,7 @@ function schedaInfo() {
         <button class="tile" id="aSfoglia"><span class="ic">${ICON.libro}</span><span class="go">→</span><h3>Sfoglia il catalogo</h3><p>${m.pagine} pagine · sfoglio a libro, indice, ricerca per codice</p></button>
         ${haSotto ? `<button class="tile" id="aSotto"><span class="ic">${ICON.griglia}</span><span class="go">→</span><h3>Sotto-cataloghi</h3><p>${m.sotto.length} ${esc(m.sotto_nome || 'sezioni')}, ognuna in PDF</p></button>` : ''}
       </div>
-      <div class="secondarie"><a class="btn ghost" href="cat/${encodeURI(m.slug)}/${encodeURI(m.file)}" target="_blank">Apri PDF ↗</a>
+      <div class="secondarie"><a class="btn ghost" href="cat/${encodeURI(m.slug)}/${encodeURI(m.file)}" data-pdf="${esc(m.file)}">Scarica PDF ↓</a>
         ${WEB ? '<button class="btn ghost" id="aOffline">Offline…</button>' : '<button class="btn ghost" id="aCartella">Mostra nella cartella</button>'}</div>
       ${m.provvisoria ? `<div class="avviso">• ${esc(m.provvisoria === true ? 'Catalogo in lavorazione' : m.provvisoria)}</div>` : ''}`;
   $('#catInfo').innerHTML = `<div class="num">${String(c.numero).padStart(2, '0')}</div>
@@ -314,7 +333,7 @@ function disegnaGriglia() {
       <div class="ft pag">${x.foto ? `<img src="${base}/html/${encodeURI(x.foto)}" alt="" loading="lazy">` : ''}</div>
       <div class="cp"><div class="cd">${esc(x.codice)}</div>
         <div class="rg"><span>${x.descrizione ? esc(x.descrizione) + ' · ' : ''}${x.pagine} pag.</span></div></div>
-      <div class="az"><button data-a="sf">Sfoglia</button><a href="${base}/${encodeURI(x.file)}" target="_blank">PDF</a>${x.pagina_catalogo ? `<button data-a="cat">p. ${x.pagina_catalogo}</button>` : ''}</div>
+      <div class="az"><button data-a="sf">Sfoglia</button><a href="${base}/${encodeURI(x.file)}" data-pdf="${esc(x.file.split('/').pop())}">PDF ↓</a>${x.pagina_catalogo ? `<button data-a="cat">p. ${x.pagina_catalogo}</button>` : ''}</div>
     </div>`).join('') : '<div class="vuoto">Nessun sotto-catalogo con questi filtri.</div>';
   $('#soGriglia').querySelectorAll('.carta').forEach(el => {
     const x = m.sotto[+el.dataset.i];

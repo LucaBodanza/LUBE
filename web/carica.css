@@ -30,13 +30,20 @@
 
 /* riquadro di caricamento */
 .cg-drop { display: grid; place-items: center; gap: 8px; text-align: center; padding: 46px 20px 40px; border-radius: 30px; cursor: pointer;
-  background: linear-gradient(160deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .03)); border: 1.5px dashed rgba(143, 211, 255, .45);
-  transition: transform .35s var(--ease), border-color .25s, background .25s; }
-.cg-drop:hover, .cg-drop.su, .cg-drop:focus-visible { transform: translateY(-3px); border-color: var(--accent2); background: linear-gradient(160deg, rgba(42, 155, 227, .25), rgba(255, 255, 255, .05)); outline: none; }
-.cg-freccia { width: 132px; height: 132px; border-radius: 34px; display: grid; place-items: center; color: var(--accent); margin-bottom: 10px;
-  background: linear-gradient(150deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .18)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8), 0 18px 40px rgba(0, 0, 0, .35);
-  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.cg-freccia svg { width: 58px; height: 58px; animation: cgSu 2.4s var(--ease) infinite; }
+  background: linear-gradient(160deg, rgba(23, 34, 46, .72), rgba(10, 16, 23, .55)); border: 1px solid rgba(255, 255, 255, .14);
+  -webkit-backdrop-filter: blur(22px) saturate(160%); backdrop-filter: blur(22px) saturate(160%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), inset 0 0 0 1px rgba(42, 155, 227, .08), 0 20px 50px rgba(0, 0, 0, .35);
+  transition: transform .35s var(--ease), border-color .25s, box-shadow .25s; }
+.cg-drop:hover, .cg-drop.su, .cg-drop:focus-visible { transform: translateY(-3px); border-color: rgba(108, 192, 245, .55); outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .22), inset 0 0 40px rgba(42, 155, 227, .18), 0 24px 60px rgba(0, 0, 0, .4); }
+/* tasto freccia: vetro scuro ELSAP, freccia bianca con alone blu */
+.cg-freccia { position: relative; width: 132px; height: 132px; border-radius: 34px; display: grid; place-items: center; color: #fff; margin-bottom: 10px; overflow: hidden;
+  background: linear-gradient(155deg, rgba(42, 155, 227, .55) 0%, rgba(16, 24, 34, .75) 62%);
+  border: 1px solid rgba(255, 255, 255, .24);
+  -webkit-backdrop-filter: blur(16px) saturate(170%); backdrop-filter: blur(16px) saturate(170%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 -10px 24px rgba(0, 0, 0, .35), 0 18px 40px rgba(0, 0, 0, .45), 0 0 34px rgba(42, 155, 227, .25); }
+.cg-freccia::before { content: ""; position: absolute; inset: 0 0 52% 0; background: linear-gradient(180deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, 0)); border-radius: 34px 34px 50% 50% / 34px 34px 18px 18px; }
+.cg-freccia svg { position: relative; width: 58px; height: 58px; filter: drop-shadow(0 0 10px rgba(108, 192, 245, .85)); animation: cgSu 2.4s var(--ease) infinite; }
 @keyframes cgSu { 0%, 100% { transform: translateY(4px); } 50% { transform: translateY(-6px); } }
 .cg-drop b { font-size: 18px; font-weight: 600; }
 
