@@ -4,6 +4,7 @@
 // 3) Pubblica → il PDF viene CIFRATO qui e caricato su GitHub in _carica/; GitHub Actions (_strumenti/carica.py) fa il resto
 //    con gli stessi programmi del Mac: catalogo, sotto-cataloghi, ricerca codici, database, cifratura, sito online.
 import * as pdfjs from './vendor/pdf.min.mjs';
+import { COMPARTI, compartoDi } from './comparti.js';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdf.worker.min.mjs', import.meta.url).href;
 
 const REPO = 'LucaBodanza/LUBE', RAMO = 'main', MAX_MB = 95;
@@ -202,6 +203,7 @@ function modulo(file) {
     <div class="cg-dove lab"></div>
     <div class="cg-r2"><label>Numero<input name="numero" type="number" min="1" max="99" value="${num}" required></label>
       <label class="lungo">Nome del catalogo<input name="nome" value="${esc(nome)}" required></label></div>
+    <label>Comparto<select name="comparto">${COMPARTI.map(c => `<option value="${c.id}" ${c.id === compartoDi(es) ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></label>
     <label>Sottotitolo <span class="lab">(vuoto = dalle sezioni del PDF)</span><input name="sottotitolo" value="${esc(es?.sottotitolo && es.sottotitolo !== sottot ? es.sottotitolo : '')}" placeholder="${esc(sottot)}"></label>
     <label>Marchio<input name="marchi" value="${esc(marchi)}" list="cgMarchi" placeholder="es. Amphenol Tuchel"><datalist id="cgMarchi">${tutti.map(m => `<option value="${esc(m)}">`).join('')}</datalist></label>
     <div class="cg-r2 due"><label>Sotto-cataloghi dai segnalibri<select name="livello"><option value="1">livello 1 (${capi.length} sezioni)</option><option value="2">livello 2 (${L.seg.filter(s => s.livello === 2).length})</option><option value="0">nessuno</option></select></label>
@@ -213,6 +215,7 @@ function modulo(file) {
   f.hidden = false;
   const dove = () => {
     const n = +f.numero.value, x = CAT.find(c => c.numero === n), prima = CAT.filter(c => c.numero < n).pop();
+    if (x) f.comparto.value = compartoDi(x);
     $('.cg-dove', f).innerHTML = x ? `Sostituisce <b>${String(n).padStart(2, '0')} · ${esc(x.nome)}</b>` : `Nuovo catalogo <b>${String(n).padStart(2, '0')}</b>${prima ? ` · va dopo ${String(prima.numero).padStart(2, '0')} · ${esc(prima.nome)}` : ''}`;
   };
   f.numero.oninput = dove; dove();
@@ -228,7 +231,7 @@ async function pubblica(f) {
   const n = +f.numero.value, x = CAT.find(c => c.numero === n), nome = f.nome.value.trim();
   const slug = x ? x.slug : `${String(n).padStart(2, '0')}_${pulito(nome)}`;
   const liv = +f.livello.value;
-  const scheda = { numero: n, slug, nome, sottotitolo: f.sottotitolo.value.trim(), marchi: f.marchi.value.split(',').map(s => s.trim()).filter(Boolean),
+  const scheda = { numero: n, slug, nome, comparto: f.comparto.value, sottotitolo: f.sottotitolo.value.trim(), marchi: f.marchi.value.split(',').map(s => s.trim()).filter(Boolean),
     provvisoria: f.provvisoria.checked, ...(liv ? { sotto: { tipo: 'segnalibri', livello: liv, nome: 'sezioni', foto_dopo: +f.foto_dopo.value } } : {}),
     file_originale: F.name, caricato: new Date().toISOString() };
   btn.disabled = true; f.classList.add('lavora'); passi.hidden = false;

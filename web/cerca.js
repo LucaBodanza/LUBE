@@ -454,12 +454,24 @@ function chiedi(frase) {
   A.vincoli = i.vincoli; A.resto = i.resto;
   disegnaAI();
 }
-export async function apriAI() {
+export async function apriAI(frase) {
   const { vai, toast } = D.ctx;
   vai('ai');
   try { await carica(); } catch (e) { $('#aiEsito').innerHTML = avvisoDati(e); return; }
+  if (frase) { $('#aiTesto').value = frase; chiedi(frase); return; }
   if (!matchMedia('(pointer: coarse)').matches) $('#aiTesto').focus();
 }
+// Trova (ricerca unica dalla Home): i prodotti più vicini al testo, con dove stanno
+export async function trovaProdotti(testo, max = 6) {
+  await carica();
+  const q = interrogaTesto(testo);
+  if (q.vuoto) return { lista: [], tot: 0 };
+  const L = [];
+  for (const o of D.P) { const r = punteggioTesto(o, q); if (r.p && (q.codice ? r.p >= 400 : r.trovate === q.parole.length)) L.push([r.p, o]); }
+  L.sort((a, b) => b[0] - a[0]);
+  return { tot: L.length, lista: L.slice(0, max).map(([, o]) => ({ o, codice: o.c, descr: descr(o), n: o.n, p: o.p, cat: D.cat[o.n] })) };
+}
+export { apriNelCatalogo };
 function filtriDaVincoli() {                 // per passare a Cerca codice: solo le richieste a una sola caratteristica
   const f = {};
   for (const v of A.attivi) if (v.alt.length === 1) f[v.alt[0].k] = [...v.alt[0].v];

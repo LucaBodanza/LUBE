@@ -50,7 +50,7 @@ def fase_decifra():
     (LAV / "pdf").mkdir(parents=True, exist_ok=True)
     pdf = LAV / "pdf" / f"{c['slug']}.pdf"
     pdf.write_bytes(decifra(enc.read_bytes()))
-    voce = {k: c[k] for k in ("numero", "slug", "nome", "sottotitolo", "marchi", "sotto", "provvisoria", "pagina_copertina") if k in c}
+    voce = {k: c[k] for k in ("numero", "slug", "nome", "comparto", "sottotitolo", "marchi", "sotto", "provvisoria", "pagina_copertina") if k in c}
     voce["pdf"] = f"CARICA:{pdf.name}"
     json.dump({"radici": {"CARICA": str(LAV / "pdf")}, "cataloghi": [voce]}, open(LAV / "elenco.json", "w"), ensure_ascii=False)
     print(f"{c['numero']:02d} {c['nome']}: PDF decifrato ({pdf.stat().st_size / 1048576:.1f} MB)")

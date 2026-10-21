@@ -2,6 +2,8 @@
 import { avviaScena } from './scena.js';
 import { Libro } from './libro.js';
 import { avviaCerca, apriCerca, apriAI } from './cerca.js';
+import { avviaTrova, indicizza } from './trova.js';
+import { COMPARTI, stileComparto, compartoDi, trovaComparto, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -45,14 +47,16 @@ const ICON = {
   griglia: '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="10" height="10" rx="2"/><rect x="18" y="4" width="10" height="10" rx="2"/><rect x="4" y="18" width="10" height="10" rx="2"/><rect x="18" y="18" width="10" height="10" rx="2"/></svg>',
 };
 
-const S = { cataloghi: [], cur: null, vista: 'intro', storia: [], libro: null, sfFonte: null, gruppo: 'tutti', ricerca: {} };
+const S = { cataloghi: [], comparto: null, cur: null, vista: 'intro', storia: [], libro: null, sfFonte: null, gruppo: 'tutti', ricerca: {} };
 let scena = null;
 
 // ================================================================ viste
 function vai(v, { push = true } = {}) {
   if (push && S.vista !== v && S.vista !== 'intro') S.storia.push(S.vista);
+  const da = S.vista;
   document.querySelectorAll('.vista').forEach(el => el.classList.toggle('attiva', el.id === v));
-  S.vista = v; scena?.modo(v);
+  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : v === 'mappa' ? 'cerca' : v);
+  if (da === 'libreria' && v === 'home' && S.comparto) animaChiudi(document.querySelector(`.cp[data-id="${S.comparto}"]`), $('#libreria'));
   document.body.classList.toggle('dentro', v !== 'intro');
   document.body.className = document.body.className.replace(/\bv-\S+/g, '').trim() + ` v-${v}`;
   briciole();
@@ -66,10 +70,13 @@ function indietro() {
 function briciole() {
   const b = $('#briciole'), c = S.cur;
   const p = [];
-  if (S.vista !== 'home' && S.vista !== 'intro') p.push('<span>Libreria</span>');
-  if (c && ['catalogo', 'sfoglia', 'sotto'].includes(S.vista)) p.push(`<b>${esc(String(c.numero).padStart(2, '0'))} · ${esc(c.nome)}</b>`);
+  const dentroCat = c && ['catalogo', 'sfoglia', 'sotto'].includes(S.vista);
+  if (S.vista === 'libreria' && S.comparto) p.push(`<b>${esc(trovaComparto(S.comparto).nome)}</b>`);
+  if (dentroCat) p.push(`<span>${esc(trovaComparto(compartoDi(c)).nome)}</span>`);
+  if (dentroCat) p.push(`<b>${esc(String(c.numero).padStart(2, '0'))} · ${esc(c.nome)}</b>`);
   if (S.vista === 'sfoglia') p.push(`<span>${S.sfFonte?.sotto ? esc(S.sfFonte.sotto) : 'Catalogo completo'}</span>`);
   if (S.vista === 'sotto') p.push('<span>Sotto-cataloghi</span>');
+  if (S.vista === 'mappa') p.push('<b>Mappa dei cataloghi</b>');
   if (S.vista === 'cerca') p.push('<b>Cerca codice</b>');
   if (S.vista === 'ai') p.push('<b>Interrogatore</b>');
   b.innerHTML = p.join('<span class="muted">/</span>');
@@ -102,23 +109,70 @@ function libro3d(c, logo, picto, i = 0, grande = false) {
 }
 async function libreria() {
   S.cataloghi = await api('/api/cataloghi');
+  homeComparti();
+  $('#scSx').onclick = () => $('#scaffale').scrollBy({ left: -560, behavior: 'smooth' });
+  $('#scDx').onclick = () => $('#scaffale').scrollBy({ left: 560, behavior: 'smooth' });
+  $('#scaffale').addEventListener('wheel', e => { const sc = e.currentTarget; if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { sc.scrollLeft += e.deltaY; e.preventDefault(); } }, { passive: false });
+}
+const contaCat = L => ({ pronti: L.filter(c => c.stato === 'pronto').length, arrivo: L.filter(c => c.stato !== 'pronto').length,
+  sotto: L.reduce((a, c) => a + (c.manifest?.sotto?.length || 0), 0), pagine: L.reduce((a, c) => a + (c.manifest?.pagine || 0), 0) });
+// Home: i numeri di tutta la piattaforma e le tre cartelle dei comparti
+function homeComparti() {
+  const t = contaCat(S.cataloghi);
+  $('#numeri').innerHTML = `<div><b>${COMPARTI.length}</b><span>comparti · areas</span></div><div><b>${t.pronti}</b><span>cataloghi pronti</span></div>
+    <div><b>${t.sotto}</b><span>sotto-cataloghi</span></div><div><b>${t.pagine.toLocaleString('it-IT')}</b><span>pagine · pages</span></div>`;
+  $('#compartiInfo').textContent = `${t.pronti} cataloghi pronti · ${t.arrivo} in arrivo`;
+  $('#comparti').innerHTML = COMPARTI.map((cp, i) => {
+    const k = contaCat(S.cataloghi.filter(c => compartoDi(c) === cp.id));
+    const dida = k.pronti ? `${k.pronti} ${k.pronti === 1 ? 'catalogo' : 'cataloghi'} · ${k.pagine.toLocaleString('it-IT')} pag.` : (k.arrivo ? `${k.arrivo} in arrivo` : 'Cataloghi in preparazione');
+    return `<button class="cp ${k.pronti ? '' : 'vuoto'}" data-id="${cp.id}" style="${stileComparto(cp)}; animation-delay:${.12 + i * .1}s">
+      <span class="cp-ic"><span class="cp-alone"></span>${iconaComparto(cp)}<span class="cp-luce"></span></span>
+      <span class="cp-tx"><b>${esc(cp.nome)}</b><span class="en">${esc(cp.en)}</span><span class="cp-n">${esc(dida)}</span></span></button>`;
+  }).join('');
+  $('#comparti').querySelectorAll('.cp').forEach(el => { inclinazione(el); el.onclick = () => apriComparto(el.dataset.id, el); });
+}
+async function apriComparto(id, daEl) {
+  await disegnaComparto(id);
+  vai('libreria');
+  animaApri(daEl, $('#libreria'));
+}
+// Da Trova o dalla Mappa: si va dritti al punto, ma "indietro" ripercorre la strada (Home › Comparto › Catalogo)
+// così chi non conosce ELSAP impara dove sta ogni cosa.
+async function vaiA({ comparto, n, pagina }) {
+  if (n == null) {
+    S.storia = [];
+    if (S.vista !== 'home') vai('home', { push: false });
+    return apriComparto(comparto, document.querySelector(`.cp[data-id="${comparto}"]`));
+  }
+  const c = S.cataloghi.find(x => x.numero === n);
+  if (!c || c.stato !== 'pronto') return toast(`${c ? c.nome : 'Catalogo'}: in arrivo`);
+  await disegnaComparto(compartoDi(c));
+  S.storia = ['home']; S.vista = 'libreria';
+  await apriCatalogo(n, null);
+  if (pagina > 1) { const m = c.manifest; sfoglia({ url: `cat/${encodeURI(m.slug)}/${encodeURI(m.file)}`, titolo: c.nome, pagina }); }
+}
+async function disegnaComparto(id) {
+  const cp = trovaComparto(id); S.comparto = cp.id;
+  const L = S.cataloghi.filter(c => compartoDi(c) === cp.id), k = contaCat(L);
   const [logo, picto] = await Promise.all([svg('logo'), svg('pittogramma')]);
+  $('#libreria').style.setProperty('--cp', cp.colore); $('#libreria').style.setProperty('--cpt', cp.testo);
+  $('#lbTesta').innerHTML = `<button class="btn ghost lb-torna" id="lbTorna">← Comparti</button>
+    <div class="lb-tit"><span class="lb-ic">${iconaComparto(cp)}</span><div><span class="pill cp-pill">Comparto</span><h2>${esc(cp.nome)}</h2><p class="en">${esc(cp.en)}</p></div></div>
+    <div class="numeri"><div><b>${k.pronti}</b><span>cataloghi pronti</span></div><div><b>${k.sotto}</b><span>sotto-cataloghi</span></div><div><b>${k.pagine.toLocaleString('it-IT')}</b><span>pagine · pages</span></div></div>`;
+  $('#lbTorna').onclick = indietro;
   const sc = $('#scaffale');
-  sc.innerHTML = S.cataloghi.map((c, i) => libro3d(c, logo, picto, i)).join('');
+  sc.innerHTML = L.length ? L.map((c, i) => libro3d(c, logo, picto, i)).join('')
+    : `<div class="lb-vuoto"><span class="pill cp-pill">In preparazione</span><h3>I cataloghi di ${esc(cp.nome)} sono in costruzione</h3>
+       <p class="muted">Appena pubblicati compariranno qui, uno accanto all'altro come nel comparto Connessione.</p>
+       <div class="ets">${cp.aree.map(a => `<span class="et">${esc(a)}</span>`).join('')}</div></div>`;
+  sc.scrollLeft = 0;
   sc.querySelectorAll('.libro3d').forEach(el => {
     const apri = () => apriCatalogo(+el.dataset.n, el);
     el.addEventListener('click', apri);
     el.addEventListener('keydown', e => { if (e.key === 'Enter') apri(); });
   });
-  const pronti = S.cataloghi.filter(c => c.stato === 'pronto').length;
-  const conf = S.cataloghi.reduce((a, c) => a + (c.manifest?.sotto?.length || 0), 0);
-  const pag = S.cataloghi.reduce((a, c) => a + (c.manifest?.pagine || 0), 0);
-  $('#numeri').innerHTML = `<div><b>${S.cataloghi.length}</b><span>serie · series</span></div><div><b>${pronti}</b><span>cataloghi pronti</span></div>
-    <div><b>${conf}</b><span>sotto-cataloghi</span></div><div><b>${pag.toLocaleString('it-IT')}</b><span>pagine · pages</span></div>`;
-  $('#scaffaleInfo').textContent = `${pronti} pronti · ${S.cataloghi.filter(c => c.stato !== 'pronto').length} in arrivo`;
-  $('#scSx').onclick = () => sc.scrollBy({ left: -560, behavior: 'smooth' });
-  $('#scDx').onclick = () => sc.scrollBy({ left: 560, behavior: 'smooth' });
-  sc.addEventListener('wheel', e => { if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) { sc.scrollLeft += e.deltaY; e.preventDefault(); } }, { passive: false });
+  $('#scaffaleInfo').textContent = L.length ? `${k.pronti} pronti · ${k.arrivo} in arrivo` : '';
+  document.querySelector('.frecce').style.visibility = L.length > 3 ? '' : 'hidden';
 }
 
 // volo del libro dalla libreria alla scheda (FLIP)
@@ -398,5 +452,7 @@ function vita() {   // la finestra-app tiene acceso il server; alla chiusura lo 
   for (const id of ['#hCerca', '#nCerca']) $(id).onclick = () => apriCerca();
   for (const id of ['#hAI', '#nAI']) $(id).onclick = () => apriAI();
   sfogliaEventi(); stato(); orologio(); setInterval(orologio, 30000); vita();
+  avviaTrova({ S, vai, vaiA, toast, apriCerca, apriAI });
   await libreria();
+  indicizza();
 })();

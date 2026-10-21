@@ -265,6 +265,6 @@ for c in CFG["cataloghi"]:
     if m:
         m = {k: v for k, v in m.items() if k not in ("_impronta", "segnalibri")}
     elenco.append({"numero": c["numero"], "nome": c["nome"], "sottotitolo": (m or {}).get("sottotitolo") or c.get("sottotitolo", ""), "slug": c["slug"], "marchi": c.get("marchi", []),
-                   "manifest": m, "stato": "pronto" if m else "in arrivo"})
+                   "comparto": c.get("comparto", "connessione"), "manifest": m, "stato": "pronto" if m else "in arrivo"})
 json.dump(elenco, open(OUT / "cataloghi.json", "w", encoding="utf-8"), ensure_ascii=False)
 print(f"Elenco: {sum(1 for e in elenco if e['manifest'])} pronti su {len(elenco)} → {OUT / 'cataloghi.json'}")

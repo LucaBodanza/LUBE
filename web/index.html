@@ -27,7 +27,7 @@
   </button>
   <nav class="briciole" id="briciole"></nav>
   <div class="dx">
-    <button class="navb" id="nCerca">Cerca codice</button><button class="navb" id="nAI">Interrogatore</button>
+    <button class="navb tv-nav" data-trova><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>Trova <span class="tv-k"></span></button><button class="navb" data-mappa>Mappa</button><button class="navb" id="nCerca">Cerca codice</button><button class="navb" id="nAI">Interrogatore</button>
     <button class="chip" id="grafica" title="Qualità grafica: automatica, leggera o piena"></button>
     <span class="chip" id="statoDb">database</span>
     <span class="chip mono" id="orologio"></span>
@@ -41,13 +41,33 @@
     <h1>ELSAP <span class="acc">DSGN</span></h1>
     <p class="en">Cataloghi tecnici ELSAP<br><span class="muted">ELSAP technical catalogues</span></p>
     <div class="numeri" id="numeri"></div>
-    <div class="home-az"><button class="btn" id="hCerca">Cerca codice</button><button class="btn ghost" id="hAI">Interrogatore</button></div>
+    <button class="tv-barra" data-trova><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg><span>Cosa stai cercando? Catalogo, sezione, codice…</span><kbd class="tv-k"></kbd></button>
+    <p class="tv-aiuto">Non sai dove si trova? Scrivi qualsiasi cosa: ti indico comparto, catalogo e pagina.</p>
+    <div class="home-az"><button class="btn ghost" data-mappa>Mappa dei cataloghi</button><button class="btn ghost" id="hCerca">Cerca codice</button><button class="btn ghost" id="hAI">Interrogatore</button></div>
   </div>
+  <div class="comparti-wrap">
+    <div class="scaffale-testa"><span class="lab">I comparti · Product areas</span><span class="lab muted" id="compartiInfo"></span></div>
+    <div class="comparti" id="comparti"></div>
+  </div>
+</section>
+
+<!-- LIBRERIA DI UN COMPARTO -->
+<section id="libreria" class="vista">
+  <div class="lb-testa" id="lbTesta"></div>
   <div class="scaffale-wrap">
     <div class="scaffale-testa"><span class="lab">La libreria · The library</span><span class="lab muted" id="scaffaleInfo"></span>
       <div class="frecce"><button id="scSx" aria-label="indietro">←</button><button id="scDx" aria-label="avanti">→</button></div></div>
     <div class="scaffale" id="scaffale"></div>
   </div>
+</section>
+
+<!-- MAPPA -->
+<section id="mappa" class="vista">
+  <div class="mp-testa">
+    <div><span class="pill cool">Mappa</span><h2>Dove si trova cosa</h2><p class="muted">Tutti i comparti, i cataloghi e le loro sezioni. Tocca un catalogo per aprirlo, il numero accanto per vederne le sezioni.</p></div>
+    <input id="mpFiltro" placeholder="Filtra la mappa · es. M12, Ethernet, valvole…" autocomplete="off">
+  </div>
+  <div class="mp-colonne" id="mpColonne"></div>
 </section>
 
 <!-- SCHEDA CATALOGO -->
@@ -117,6 +137,14 @@
   </div>
 </section>
 
+<!-- TROVA (stile Spotlight) -->
+<div id="trova" hidden><div class="tv-velo"></div>
+  <div class="tv-pan" role="dialog" aria-label="Trova">
+    <div class="tv-campo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg><input id="tvTesto" placeholder="Cerca un catalogo, una sezione, un codice… o descrivi cosa ti serve" autocomplete="off" spellcheck="false"><kbd>esc</kbd></div>
+    <div class="tv-ris" id="tvRis" role="listbox"></div>
+    <div class="tv-piede"><span><kbd>↑</kbd><kbd>↓</kbd> scegli</span><span><kbd>↵</kbd> apri</span><span><kbd id="tvTasto"></kbd> da ogni pagina</span></div>
+  </div>
+</div>
 <div id="velo"></div>
 <div id="toast"></div>
 <script type="module" src="/web/app.js"></script>
