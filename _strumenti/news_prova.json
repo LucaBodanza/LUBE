@@ -1,5 +1,5 @@
 {
- "quando": "2026-10-21T12:41:32+00:00",
+ "quando": "2026-10-21T12:50:28+00:00",
  "fonti": [
   {
    "marchio": "CONEC",
@@ -43,52 +43,41 @@
   {
    "marchio": "CONEC",
    "tipo": "famiglia",
-   "url": "https://conec.com/en/applications/transportation-railway-technology/",
-   "cat": 13,
-   "livello0": 0,
-   "esempi": [],
-   "profondo": 0,
-   "pagine_lette": 1,
-   "esempi_profondi": []
-  },
-  {
-   "marchio": "CONEC",
-   "tipo": "famiglia",
    "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
-   "cat": 13,
+   "cat": null,
    "livello0": 31,
    "esempi": [
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12b-fkhw4.html",
-     ".product-image-container-18864 { width: 240px; } .product-image-container-18864 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Back panel mounting, panel thickness 2,2 mm • M12x1 • 4- pos. • B-coded • Solder pin • Shielded • Female connector angled"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12-fsh5-0-5.html",
-     ".product-image-container-17711 { width: 240px; } .product-image-container-17711 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Back panel mounting • M12x1 • 5- pos. • A-coded • Wire • Shielded • Male connector axial • 0,5 m"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12-fs5-0-5.html",
-     ".product-image-container-17710 { width: 240px; } .product-image-container-17710 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Front panel mounting • M12x1 • 5- pos. • A-coded • Wire • Shielded • Male connector axial • 0,5 m"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12d-fsh4-2-0-5.html",
-     ".product-image-container-17709 { width: 240px; } .product-image-container-17709 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Back panel mounting • M12x1 • 4- pos. • D-coded • Wire • Shielded • Male connector axial • 0,5 m"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12d-fs4-2-0-5.html",
-     ".product-image-container-17708 { width: 240px; } .product-image-container-17708 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Front panel mounting • M12x1 • 4- pos. • D-coded • Wire • Shielded • Male connector axial • 0,5 m"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-ht-12-fsh4-p12.html",
-     ".product-image-container-12669 { width: 240px; } .product-image-container-12669 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Back panel mounting • M12x1 • 4- pos. • 12 mm • A-coded • Printanschluss • M16x1,5 • Male connector axial"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-ht-12-fsh5-p5-5.html",
-     ".product-image-container-12666 { width: 240px; } .product-image-container-12666 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Back panel mounting • M12x1 • 5- pos. • 5,5 mm • A-coded • Printanschluss • M16x1,5 • Male connector axial"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fk4-x9.html",
-     ".product-image-container-11390 { width: 240px; } .product-image-container-11390 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Sockets • Front panel mounting • M8x1 • 4- pos. • 9 mm • P-coded • Printanschluss • Shielded  M10x1 • Female connector axial • Socket two-piece • Shielded"
     ]
    ],
    "profondo": 258,
@@ -96,35 +85,35 @@
    "esempi_profondi": [
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-2-k2.html",
-     ".product-image-container-14159 { width: 240px; } .product-image-container-14159 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Male connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 2 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rk4fe-5-k2.html",
-     ".product-image-container-14158 { width: 240px; } .product-image-container-14158 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Female connector axial • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-3-k2.html",
-     ".product-image-container-14160 { width: 240px; } .product-image-container-14160 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Male connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html",
-     ".product-image-container-14162 { width: 240px; } .product-image-container-14162 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Male connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-5-k2.html",
-     ".product-image-container-14161 { width: 240px; } .product-image-container-14161 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Male connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-2-k2.html",
-     ".product-image-container-14163 { width: 240px; } .product-image-container-14163 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Female connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 2 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-5-k2.html",
-     ".product-image-container-14165 { width: 240px; } .product-image-container-14165 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Female connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ],
     [
      "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-3-k2.html",
-     ".product-image-container-14164 { width: 240px; } .product-image-container-14164 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+     "Female connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
     ]
    ]
   },
@@ -245,13 +234,63 @@
   {
    "marchio": "Amphenol LTW",
    "tipo": "famiglia",
-   "url": "https://amphenolltw.com/product-info/MPronto/",
+   "url": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
    "cat": 14,
-   "livello0": 0,
-   "esempi": [],
-   "profondo": 0,
-   "pagine_lette": 1,
-   "esempi_profondi": []
+   "livello0": 4,
+   "esempi": [
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode",
+     "M12 (A)"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12BCode",
+     "M12 (B)"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12DCode",
+     "M12 (D)"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12XCode",
+     "M12 (X)"
+    ]
+   ],
+   "profondo": 52,
+   "pagine_lette": 5,
+   "esempi_profondi": [
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A04MAPAN-AS1.html",
+     "APPM-A04MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 4A, 04 pins, Male Connector, Male Contact, Straight, Fi"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A04MAPAS-AS1.html",
+     "APPM-A04MAPAS-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Shielded, 4A, 04 pins, Male Connector, Male Contact, Straight, Field "
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A05MAPAN-AS1.html",
+     "APPM-A05MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 4A, 05 pins, Male Connector, Male Contact, Straight, Fi"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A06MAPAN-AS1.html",
+     "APPM-A06MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 2A, 06 pins, Male Connector, Male Contact, Straight, Fi"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A08MAPAN-AS1.html",
+     "APPM-A08MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 2A, 08 pins, Male Connector, Male Contact, Straight, Fi"
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A12MAPAN-AS1.html",
+     "APPM-A12MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 1.5A, 12 pins, Male Connector, Male Contact, Straight, "
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/APPM-A17MAPAN-AS1.html",
+     "APPM-A17MAPAN-AS1 Circular Metric Connector MPronto-12 Kit (M12 Push Pull), A-Coded, Metal Non-shielded, 1.5A, 17 pins, Male Connector, Male Contact, Straight, "
+    ],
+    [
+     "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/MPronto-12.M12ACode/M12A-04BMMM-PL8B01.html",
+     "M12A-04BMMM-PL8B01 Circular Metric Connector MPronto-12 (M12 Push Pull), A-Coded, Metal Non-shielded, 4A, 04 pins, Male Connector, Male Contact, Straight, Overm"
+    ]
+   ]
   },
   {
    "marchio": "Amphenol Tuchel",
@@ -396,7 +435,7 @@
    "esempi_profondi": [
     [
      "https://www.belden.com/products/i-o-systems/digital-i-o-modules-for-industrial-ethernet/lion-x-lc",
-     "Product Detail"
+     "lion x lc"
     ],
     [
      "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3031-121-007d-101",
@@ -420,11 +459,11 @@
     ],
     [
      "https://www.belden.com/products/i-o-systems/io-link-master/0980-lsl-3011-121-0006-001",
-     "Product Detail"
+     "0980-LSL-3011-121-0006-001"
     ],
     [
      "https://www.belden.com/products/i-o-systems/io-link-master/0980-lsl-3111-121-0006-002",
-     "Product Detail"
+     "0980-LSL-3111-121-0006-002"
     ]
    ]
   },
@@ -489,11 +528,30 @@
    "tipo": "famiglia",
    "url": "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors",
    "cat": 9,
-   "livello0": 0,
-   "esempi": [],
-   "profondo": 0,
-   "pagine_lette": 1,
-   "esempi_profondi": []
+   "solo_sezioni": true,
+   "livello0": 5,
+   "esempi": [
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors#features-benefits",
+     "Features & Benefits"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors#are-you-ready-for-what-s-next",
+     "Are You Ready for What's Next?"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors#future-proof-your-business-and-break-through-it-ot-divide",
+     "Future Proof Your Business and Break Through IT/OT Divide"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors#spe-product-portfolio-visual-guide",
+     "SPE Product Portfolio Visual Guide"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors#belden-product-updates",
+     "Belden product updates"
+    ]
+   ]
   },
   {
    "marchio": "Hirschmann",
@@ -572,16 +630,27 @@
    "tipo": "famiglia",
    "url": "https://www.belden.com/products/connectors/industrial-connectors/data-connectors",
    "cat": 2,
-   "livello0": 0,
-   "esempi": [],
-   "profondo": 0,
-   "pagine_lette": 1,
-   "esempi_profondi": []
+   "solo_sezioni": true,
+   "livello0": 3,
+   "esempi": [
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/data-connectors#features-benefits",
+     "Features & Benefits"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/data-connectors#industrial-revconnect",
+     "Industrial REVConnect"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/data-connectors#belden-product-updates",
+     "Belden product updates"
+    ]
+   ]
   }
  ],
  "eventi": [
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -594,7 +663,7 @@
    "id": "cfe3676c149c"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -607,7 +676,7 @@
    "id": "77de77589b06"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -620,7 +689,7 @@
    "id": "076c8127b16d"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -633,7 +702,7 @@
    "id": "2df85539b9b6"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -646,7 +715,7 @@
    "id": "bd019e4f0a9f"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "CONEC",
    "cat": null,
@@ -659,7 +728,7 @@
    "id": "3e47696afcaa"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -670,7 +739,7 @@
    "id": "7fac6648b41b"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -681,7 +750,7 @@
    "id": "0d298cfbc243"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -692,7 +761,7 @@
    "id": "ef668f60e64a"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -703,7 +772,7 @@
    "id": "10eb8523c392"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -714,7 +783,7 @@
    "id": "4ed8362ce944"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Amphenol LTW",
    "cat": null,
@@ -725,7 +794,7 @@
    "id": "a68b9bb6e9a0"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
@@ -736,7 +805,7 @@
    "id": "95fec5d87076"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
@@ -747,7 +816,7 @@
    "id": "b3ea9b2ccb89"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
@@ -758,7 +827,7 @@
    "id": "957ccb5dc271"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
@@ -769,7 +838,7 @@
    "id": "3c812efc8a37"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
@@ -780,7 +849,7 @@
    "id": "8541b202b46e"
   },
   {
-   "quando": "2026-10-21T12:41:32+00:00",
+   "quando": "2026-10-21T12:50:28+00:00",
    "tipo": "comunicato",
    "marchio": "Belden",
    "cat": null,
