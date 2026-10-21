@@ -50,7 +50,8 @@ def scarica(url):
         return None, f"{type(e).__name__}: {str(e)[:120]}"
 
 # ---------------------------------------------------------------- estrazione
-pulisci = lambda t: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", t or ""))).strip()
+pulisci = lambda t: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(style|script|svg|noscript)\b.*?</\1>", " ", t or "")))).strip()
+GENERICO = re.compile(r"^(product detail|details?|read more|learn more|more|mehr|weiterlesen|view|view details?|scopri|dettagli|>|›|→)$", re.I)
 def titolo_pagina(s):
     m = re.search(r"(?is)<title[^>]*>(.*?)</title>", s)
     return re.split(r"\s+[|–-]\s+(?=[^|–-]*$)", pulisci(m.group(1)))[0][:140] if m else ""
@@ -58,7 +59,8 @@ def senza_query(u):
     p = urlsplit(u); return urlunsplit((p.scheme, p.netloc, p.path.rstrip("/") or "/", "", ""))
 def nome_da_url(u):
     seg = [x for x in urlsplit(u).path.split("/") if x][-1:] or ["?"]
-    return re.sub(r"[-_.]+", " ", re.sub(r"\.html?$", "", seg[0])).strip()
+    t = re.sub(r"\.html?$", "", seg[0])
+    return t.upper() if re.search(r"\d", t) else re.sub(r"[-_.]+", " ", t).strip()
 def link(s, base):
     """[(url assoluto senza frammento, testo)] della pagina, senza menu ripetuti uguali"""
     out = {}
@@ -68,6 +70,7 @@ def link(s, base):
         t = pulisci(m.group(2))
         if not t:
             a = re.search(r'(?:title|aria-label|alt)\s*=\s*["\']([^"\']+)', m.group(0)); t = html.unescape(a.group(1)).strip() if a else ""
+        if GENERICO.match(t): t = ""
         if len(t) > len(out.get(u, "")): out[u] = t[:160]
         else: out.setdefault(u, t[:160])
     return list(out.items())
@@ -84,6 +87,15 @@ def figli(s, base, schema=None):
         if k == senza_query(base): continue
         el[k] = el.get(k) if len(el.get(k, "")) >= len(t) else t
     return {k: (v or nome_da_url(k)) for k, v in el.items()}
+def sezioni(s, base):
+    """ripiego per le pagine senza sotto-pagine: i titoli h2/h3/h4 del contenuto (tolti menu e piè di pagina)"""
+    s = re.sub(r"(?is)<(header|footer|nav|aside)\b.*?</\1>", " ", s)
+    el = {}
+    for m in re.finditer(r"(?is)<h[2-4][^>]*>(.*?)</h[2-4]>", s):
+        t = pulisci(m.group(1))
+        if 2 < len(t) < 120 and not re.search(r"cookie|newsletter|subscribe|contact|quick links|follow us|privacy", t, re.I):
+            el[f"{senza_query(base)}#{re.sub(r'[^a-z0-9]+', '-', t.lower()).strip('-')}"] = t
+    return el
 def pagine_successive(s, base):
     """paginazione: stessa pagina con ?…page… diverso"""
     b = senza_query(base)
@@ -160,7 +172,9 @@ def giro(f, notte):
             if u not in visti: evento(f, "comunicato", t, u, iniziale=iniziale)
         st["visti"] = sorted(visti | set(el))[-500:]
     else:                                                    # famiglia
-        el = figli(s, r["url"], f.get("schema")); rep["livello0"] = len(el); rep["esempi"] = list(el.items())[:8]
+        el = figli(s, r["url"], f.get("schema"))
+        if not el: el = sezioni(s, r["url"]); rep["solo_sezioni"] = True; notte = False
+        rep["livello0"] = len(el); rep["esempi"] = list(el.items())[:8]
         confronta(f, st, "lv0", el, iniziale)
         if notte:
             tutti, coda, fatte = dict(el), pagine_successive(s, r["url"]) + list(el), {senza_query(r["url"])}

@@ -1,5 +1,5 @@
 {
- "nota": "ELSAP DSGN · News — fonti sorvegliate (v3 · 21/10/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema).",
+ "nota": "ELSAP DSGN · News — fonti sorvegliate (v4 · 21/10/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema).",
  "fonti": [
   {
    "marchio": "CONEC",
@@ -9,13 +9,6 @@
   {
    "marchio": "CONEC",
    "tipo": "famiglia",
-   "cat": 13,
-   "url": "https://conec.com/en/applications/transportation-railway-technology/"
-  },
-  {
-   "marchio": "CONEC",
-   "tipo": "famiglia",
-   "cat": 13,
    "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
    "schema": "^/catalog/en/.+\\.html$"
   },
@@ -35,7 +28,8 @@
    "marchio": "Amphenol LTW",
    "tipo": "famiglia",
    "cat": 14,
-   "url": "https://amphenolltw.com/product-info/MPronto/"
+   "url": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
+   "schema": "^/product-info/MPronto[^/]*/.+"
   },
   {
    "marchio": "Amphenol Tuchel",
