@@ -1,11 +1,6 @@
 {
- "nota": "ELSAP DSGN · News — fonti da sorvegliare (bozza 2 · 21/10/2026, da confermare con Luca). tipo: news = pagina notizie, rss = feed, famiglia = pagina prodotti legata a un catalogo ELSAP (cat = numero).",
+ "nota": "ELSAP DSGN · News — fonti sorvegliate (v3 · 21/10/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema).",
  "fonti": [
-  {
-   "marchio": "CONEC",
-   "tipo": "news",
-   "url": "https://conec.com/en/c/news-en/"
-  },
   {
    "marchio": "CONEC",
    "tipo": "rss",
@@ -21,24 +16,20 @@
    "marchio": "CONEC",
    "tipo": "famiglia",
    "cat": 13,
-   "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html"
+   "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+   "schema": "^/catalog/en/.+\\.html$"
   },
   {
    "marchio": "Amphenol LTW",
    "tipo": "news",
-   "url": "https://amphenolltw.com/news-events/"
+   "url": "https://amphenolltw.com/news-events/",
+   "schema": "^/news-events/[^/]+\\.html$"
   },
   {
    "marchio": "Amphenol LTW",
    "tipo": "famiglia",
    "cat": 15,
    "url": "https://amphenolltw.com/product-info/X-Lok/"
-  },
-  {
-   "marchio": "Amphenol LTW",
-   "tipo": "famiglia",
-   "cat": 15,
-   "url": "https://amphenolltw.com/product-info/X-Lok/X-Lok.UltraHighDensity/"
   },
   {
    "marchio": "Amphenol LTW",
@@ -53,19 +44,10 @@
    "url": "https://www.amphenol-industrial.de/produkte/eco-mate"
   },
   {
-   "marchio": "Amphenol Tuchel",
-   "tipo": "news",
-   "url": "https://www.amphenol-industrial.de/unternehmen"
-  },
-  {
    "marchio": "Belden",
    "tipo": "news",
-   "url": "https://www.belden.com/news"
-  },
-  {
-   "marchio": "Belden",
-   "tipo": "avvisi",
-   "url": "https://www.belden.com/knowledge-hub/resources/product-alerts"
+   "url": "https://www.belden.com/news",
+   "schema": "^/news/[^/]+$"
   },
   {
    "marchio": "Lumberg Automation",
@@ -84,12 +66,6 @@
    "tipo": "famiglia",
    "cat": 8,
    "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 8,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/m12"
   },
   {
    "marchio": "Lumberg Automation",
