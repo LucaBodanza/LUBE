@@ -1,0 +1,794 @@
+{
+ "quando": "2026-10-21T12:41:32+00:00",
+ "fonti": [
+  {
+   "marchio": "CONEC",
+   "tipo": "rss",
+   "url": "https://conec.com/en/c/news-en/feed/",
+   "cat": null,
+   "elementi": 10,
+   "esempi": [
+    {
+     "url": "https://conec.com/en/news-en/series-x-codiert-gb/",
+     "titolo": "As real-time data demands grow, your connection solution should keep pace. It’s time to upgrade.",
+     "data": "2026-06-09T10:27:43+00:00",
+     "testo": "… CONEC Connector series X-coded. As data volumes in industrial environments continue to grow, machine ..."
+    },
+    {
+     "url": "https://conec.com/en/news-en/m8-m12-smt-thr-gb/",
+     "titolo": "M8/M12 insulation bodies and housings featuring SMT/THR termination",
+     "data": "2026-05-20T09:32:10+00:00",
+     "testo": "… technology for maximum flexibility in device design Driven by advances in connectivity, increasingly ..."
+    },
+    {
+     "url": "https://conec.com/en/news-en/conec-d-sub-combination-connectors/",
+     "titolo": "CONEC D-SUB Combination connectors",
+     "data": "2026-04-16T07:38:25+00:00",
+     "testo": "…Proven design – new functionality In modern technical systems, secure and compact connections for signals, ..."
+    },
+    {
+     "url": "https://conec.com/en/news-en/conec-hybrid-connectors-gb/",
+     "titolo": "CONEC Hybrid Connectors",
+     "data": "2026-03-19T09:17:36+00:00",
+     "testo": "… designed for motion. Built for efficiency. The ongoing shift toward decentralized automation driven by ..."
+    },
+    {
+     "url": "https://conec.com/en/news-en/conec-goes-lead-free/",
+     "titolo": "CONEC GOES LEAD FREE",
+     "data": "2026-02-19T12:41:33+00:00",
+     "testo": "… well ahead of the legal deadline CONEC is taking a major step forward: 100% ..."
+    }
+   ]
+  },
+  {
+   "marchio": "CONEC",
+   "tipo": "famiglia",
+   "url": "https://conec.com/en/applications/transportation-railway-technology/",
+   "cat": 13,
+   "livello0": 0,
+   "esempi": [],
+   "profondo": 0,
+   "pagine_lette": 1,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "CONEC",
+   "tipo": "famiglia",
+   "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+   "cat": 13,
+   "livello0": 31,
+   "esempi": [
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12b-fkhw4.html",
+     ".product-image-container-18864 { width: 240px; } .product-image-container-18864 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12-fsh5-0-5.html",
+     ".product-image-container-17711 { width: 240px; } .product-image-container-17711 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12-fs5-0-5.html",
+     ".product-image-container-17710 { width: 240px; } .product-image-container-17710 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12d-fsh4-2-0-5.html",
+     ".product-image-container-17709 { width: 240px; } .product-image-container-17709 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-mb12d-fs4-2-0-5.html",
+     ".product-image-container-17708 { width: 240px; } .product-image-container-17708 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-ht-12-fsh4-p12.html",
+     ".product-image-container-12669 { width: 240px; } .product-image-container-12669 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-ht-12-fsh5-p5-5.html",
+     ".product-image-container-12666 { width: 240px; } .product-image-container-12666 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fk4-x9.html",
+     ".product-image-container-11390 { width: 240px; } .product-image-container-11390 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ]
+   ],
+   "profondo": 258,
+   "pagine_lette": 30,
+   "esempi_profondi": [
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-2-k2.html",
+     ".product-image-container-14159 { width: 240px; } .product-image-container-14159 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rk4fe-5-k2.html",
+     ".product-image-container-14158 { width: 240px; } .product-image-container-14158 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-3-k2.html",
+     ".product-image-container-14160 { width: 240px; } .product-image-container-14160 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html",
+     ".product-image-container-14162 { width: 240px; } .product-image-container-14162 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-5-k2.html",
+     ".product-image-container-14161 { width: 240px; } .product-image-container-14161 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-2-k2.html",
+     ".product-image-container-14163 { width: 240px; } .product-image-container-14163 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-5-k2.html",
+     ".product-image-container-14165 { width: 240px; } .product-image-container-14165 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ],
+    [
+     "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rkw4fe-3-k2.html",
+     ".product-image-container-14164 { width: 240px; } .product-image-container-14164 span.product-image-wrapper { padding-bottom: 125%; } prodImageContainers = docum"
+    ]
+   ]
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "news",
+   "url": "https://amphenolltw.com/news-events/",
+   "cat": null,
+   "elementi": 10,
+   "esempi": [
+    [
+     "https://amphenolltw.com/news-events/waterproof-wire-caps-prevent-electrical-hazards.html",
+     "Role of Waterproof Wire Caps in Preventing Electrical Hazards"
+    ],
+    [
+     "https://amphenolltw.com/news-events/optical-fiber-termination-types.html",
+     "Optical Fiber Termination Types Chart: SC, LC, FC, ST Comparison"
+    ],
+    [
+     "https://amphenolltw.com/news-events/different-types-of-micro-USB-ports.html",
+     "Different Types of Micro USB Ports Explained"
+    ],
+    [
+     "https://amphenolltw.com/news-events/usb-type-c-vs-usb-type-b-comparison.html",
+     "USB Type-C vs USB Type-B for Industrial Equipment | ALTW"
+    ],
+    [
+     "https://amphenolltw.com/news-events/types-of-USB-3-0-connectors.html",
+     "Types of USB 3.0 Connectors: How to Choose the Right One?"
+    ],
+    [
+     "https://amphenolltw.com/news-events/what-are-the-industrial-port-types-for-harsh-environments.html",
+     "What Are The Industrial USB Port Types for Harsh Environments?"
+    ],
+    [
+     "https://amphenolltw.com/news-events/all-about-cable-glands-guide.html",
+     "All About Cable Glands: Sizing, IP Sealing, & More [Guide]"
+    ],
+    [
+     "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
+     "Amphenol LTW’s IPCS (Intelligent Pre-Cabling System) for Large-Scale Projects"
+    ]
+   ]
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "famiglia",
+   "url": "https://amphenolltw.com/product-info/X-Lok/",
+   "cat": 15,
+   "livello0": 7,
+   "esempi": [
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory",
+     "Accessory"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.MicroSize",
+     "Micro Size"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.MiddleSize",
+     "Middle Size"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.MiniSize",
+     "Mini Size"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.LargeSize",
+     "Large Size"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.StandardSize",
+     "Standard Size"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.UltraHighDensity",
+     "Ultra High-Density Mini Size"
+    ]
+   ],
+   "profondo": 86,
+   "pagine_lette": 8,
+   "esempi_profondi": [
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-000303-0FM-LQ001.html",
+     "AB-AD-000303-0FM-LQ001 X-Lok, L Adapter, Plastic, 5A, 03 pins, Female Connnector, Female Contact, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-000404-0FM-LQ001.html",
+     "AB-AD-000404-0FM-LQ001 X-Lok, L Adapter, Plastic, 5A, 04 pins, Female Connnector, Female Contact, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-000505-0FM-LQ001.html",
+     "AB-AD-000505-0FM-LQ001 X-Lok, L Adapter, Plastic, 5A, 05 pins, Female Connnector, Female Contact, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-030303-MFF-TQ001.html",
+     "AB-AD-030303-MFF-TQ001 X-Lok, T Adapter, Plastic, 5A, 03 pins, (End 1) Female Female, (End 2) Female Female, (End 3) Male Male, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-040404-FFM-TQ001.html",
+     "AB-AD-040404-FFM-TQ001 X-Lok, T Adapter, Plastic, 5A, 04 pins, (End 1) Female Female, (End 2) Female Female, (End 3) Male Male, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-040404-MMM-TQ001.html",
+     "AB-AD-040404-MMM-TQ001 X-Lok, T Adapter, Plastic, 5A, 04 pins, (End 1) Male Male, (End 2) Male Male, (End 3) Male Male, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-050505-FFM-TQ001.html",
+     "AB-AD-050505-FFM-TQ001 X-Lok, T Adapter, Plastic, 5A, 05 pins, (End 1) Female Female, (End 2) Female Female, (End 3) Male Male, Push Lock, IP68 Mated"
+    ],
+    [
+     "https://amphenolltw.com/product-info/X-Lok/X-Lok.Accessory/AB-AD-050505-FMF-TQ001.html",
+     "AB-AD-050505-FMF-TQ001 X-Lok, T Adapter, Plastic, 5A, 05 pins, (End 1) Female Female, (End 2) Male Male, (End 3) Female Female, Push Lock, IP68 Mated"
+    ]
+   ]
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "famiglia",
+   "url": "https://amphenolltw.com/product-info/MPronto/",
+   "cat": 14,
+   "livello0": 0,
+   "esempi": [],
+   "profondo": 0,
+   "pagine_lette": 1,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Amphenol Tuchel",
+   "tipo": "famiglia",
+   "url": "https://www.amphenol-industrial.de/produkte/eco-mate",
+   "cat": 16,
+   "livello0": 4,
+   "esempi": [
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m",
+     "eco|mate m"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-familie",
+     "eco|mate C16"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/rt360",
+     "eco|mate Rugged Metal"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/aquarius",
+     "eco|mate Aquarius"
+    ]
+   ],
+   "profondo": 1624,
+   "pagine_lette": 5,
+   "esempi_profondi": [
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/t6482000",
+     "T 6482 000"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/t6483001",
+     "T 6483 001"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/t6482001",
+     "T 6482 001"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/t6483000",
+     "T 6483 000"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/t6482008",
+     "T 6482 008"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/kabeldose-6-polig-c01610d00600010",
+     "C016 10D006 000 10"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/kabeldose-6-polig-c01610d00601010",
+     "C016 10D006 010 10"
+    ],
+    [
+     "https://www.amphenol-industrial.de/produkte/eco-mate/c16-m/kabeldose-6-polig-c01630d00610010",
+     "C016 30D006 100 10"
+    ]
+   ]
+  },
+  {
+   "marchio": "Belden",
+   "tipo": "news",
+   "url": "https://www.belden.com/news",
+   "cat": null,
+   "elementi": 31,
+   "esempi": [
+    [
+     "https://www.belden.com/news/beldens-2025-sustainability-report-marks-major-progress-and-raises-the-bar",
+     "Belden's 2025 Sustainability Report marks major progress and raises the bar Belden delivers strong results across emissions reduction, renewable energy adoption"
+    ],
+    [
+     "https://www.belden.com/news/new-smart-factory-insights-solution-from-belden-and-edge2web-helps-manufacturers",
+     "New Smart Factory Insights Solution from Belden and Edge2Web helps manufacturers eliminate costly downtime New solution powered by AWS IoT SiteWise combines Bel"
+    ],
+    [
+     "https://www.belden.com/news/belden-launches-new-edge-connectivity",
+     "Belden launches new edge connectivity, resilient switching and high-density infrastructure innovations New IO-Link analog hubs, centralized enterprise and indus"
+    ],
+    [
+     "https://www.belden.com/news/belden-completes-acquisition-of-ruckus-networks",
+     "Belden Completes Acquisition of RUCKUS Networks Establishes leading end-to-end IT/OT networking solution for enterprise and industrial customers. Belden 08.12.2"
+    ],
+    [
+     "https://www.belden.com/news/belden-names-a-worlds-top-disability-inclusive-business",
+     "Belden Named a World’s Top Disability Inclusive Business Honor highlights Belden's commitment to accessibility and an inclusive workplace. Belden 08.06.2026"
+    ],
+    [
+     "https://www.belden.com/news/belden-names-g-space-as-winner-of-2026-joseph-c-belden-innovation-award",
+     "Belden Names G-SPACE as Winner of the 2026 Joseph C. Belden Innovation Award G-SPACE recognized for machine learning platform for microgravity product design. B"
+    ],
+    [
+     "https://www.belden.com/news/belden-receives-emerson-supplier-sustainability-award",
+     "Belden Receives Emerson Supplier Sustainability Award Recognition underscores measurable progress in emissions performance, governance and supply chain executio"
+    ],
+    [
+     "https://www.belden.com/news/belden-earns-2026-great-place-to-work-certification",
+     "Belden earns 2026 Great Place To Work certification Employees once again rank Belden among the best workplaces. Belden 07.16.2026"
+    ]
+   ]
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/i-o-systems",
+   "cat": 5,
+   "livello0": 7,
+   "esempi": [
+    [
+     "https://www.belden.com/products/i-o-systems/digital-i-o-modules-for-fieldbus-systems",
+     "Digital I/O Modules for Fieldbus Systems Highly customizable features to convert digital I/O signals into various fieldbus messages"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/digital-i-o-modules-for-industrial-ethernet",
+     "Digital I/O Modules for Industrial Ethernet Fieldbus-independent automation for leading industrial Ethernet protocols"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-analog-hubs",
+     "IO-Link Analog Hubs Bring your existing analog sensors and actuators into your IO-Link network — no replacement required"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules",
+     "Safety I/O Modules Streamline transmission of critical safety information over proven networks for functional safety in highly automated operations."
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-master",
+     "IO-Link Master Bring IO-Link signals to the PLC and cloud levels in industrial environments"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-hubs",
+     "IO-Link Hubs Enable efficient wiring by converting multiple digital I/O signals into an IO-Link message (variants without M12 L-coded Power Connection available"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/passive-distribution-modules",
+     "Passive Distribution Modules Rely on the original market-leading solution that revolutionized on-machine connectivity"
+    ]
+   ],
+   "profondo": 47,
+   "pagine_lette": 8,
+   "esempi_profondi": [
+    [
+     "https://www.belden.com/products/i-o-systems/digital-i-o-modules-for-industrial-ethernet/lion-x-lc",
+     "Product Detail"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3031-121-007d-101",
+     "0980 SSL 3031-121-007D-101"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3030-121-007d-101",
+     "0980 SSL 3030-121-007D-101"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3131-121-007d-202",
+     "0980 SSL 3131-121-007D-202"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3130-121-007d-202",
+     "0980 SSL 3130-121-007D-202"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-master/0980-xsl-3912-121-007d-00f",
+     "0980-XSL-3912-121-007D-00F"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-master/0980-lsl-3011-121-0006-001",
+     "Product Detail"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/io-link-master/0980-lsl-3111-121-0006-002",
+     "Product Detail"
+    ]
+   ]
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/i-o-systems/safety-i-o-modules",
+   "cat": 6,
+   "livello0": 4,
+   "esempi": [
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3031-121-007d-101",
+     "0980 SSL 3031-121-007D-101"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3030-121-007d-101",
+     "0980 SSL 3030-121-007D-101"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3131-121-007d-202",
+     "0980 SSL 3131-121-007D-202"
+    ],
+    [
+     "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3130-121-007d-202",
+     "0980 SSL 3130-121-007D-202"
+    ]
+   ],
+   "profondo": 4,
+   "pagine_lette": 5,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors",
+   "cat": 8,
+   "livello0": 4,
+   "esempi": [
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/m12",
+     "M12 Series"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/m8",
+     "M8 Series"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/m8-and-m12-splitter",
+     "M8 and M12 Splitter"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/accessories",
+     "Accessories"
+    ]
+   ],
+   "profondo": 4,
+   "pagine_lette": 5,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors",
+   "cat": 9,
+   "livello0": 0,
+   "esempi": [],
+   "profondo": 0,
+   "pagine_lette": 1,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Hirschmann",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors",
+   "cat": 7,
+   "livello0": 4,
+   "esempi": [
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors/type-a",
+     "Valve Connectors Type A"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors/type-b",
+     "Valve Connectors Type B"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors/type-c",
+     "Valve Connectors Type C"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors/accessories",
+     "Accessories"
+    ]
+   ],
+   "profondo": 4,
+   "pagine_lette": 5,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/power-connectors",
+   "cat": 3,
+   "livello0": 8,
+   "esempi": [
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/m12-power",
+     "M12 Power Series - Circular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/7-8-1-1-1-8-series",
+     "7/8\", 1\", 1 1/8\" Series - Circular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/m23-series",
+     "M23 Series - Circular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/ca-series",
+     "CA Series - Circular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/mini-power-series",
+     "Mini Power Series - Circular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/st-series",
+     "ST Series - Rectangular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/g-series",
+     "G Series - Rectangular Connectors"
+    ],
+    [
+     "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/nr-series",
+     "NR Series - Circular Connectors"
+    ]
+   ],
+   "profondo": 8,
+   "pagine_lette": 9,
+   "esempi_profondi": []
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/data-connectors",
+   "cat": 2,
+   "livello0": 0,
+   "esempi": [],
+   "profondo": 0,
+   "pagine_lette": 1,
+   "esempi_profondi": []
+  }
+ ],
+ "eventi": [
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "As real-time data demands grow, your connection solution should keep pace. It’s time to upgrade.",
+   "url": "https://conec.com/en/news-en/series-x-codiert-gb/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-06-09T10:27:43+00:00",
+   "testo": "… CONEC Connector series X-coded. As data volumes in industrial environments continue to grow, machine ...",
+   "iniziale": true,
+   "id": "cfe3676c149c"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "M8/M12 insulation bodies and housings featuring SMT/THR termination",
+   "url": "https://conec.com/en/news-en/m8-m12-smt-thr-gb/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-05-20T09:32:10+00:00",
+   "testo": "… technology for maximum flexibility in device design Driven by advances in connectivity, increasingly ...",
+   "iniziale": true,
+   "id": "77de77589b06"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "CONEC D-SUB Combination connectors",
+   "url": "https://conec.com/en/news-en/conec-d-sub-combination-connectors/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-04-16T07:38:25+00:00",
+   "testo": "…Proven design – new functionality In modern technical systems, secure and compact connections for signals, ...",
+   "iniziale": true,
+   "id": "076c8127b16d"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "CONEC Hybrid Connectors",
+   "url": "https://conec.com/en/news-en/conec-hybrid-connectors-gb/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-03-19T09:17:36+00:00",
+   "testo": "… designed for motion. Built for efficiency. The ongoing shift toward decentralized automation driven by ...",
+   "iniziale": true,
+   "id": "2df85539b9b6"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "CONEC GOES LEAD FREE",
+   "url": "https://conec.com/en/news-en/conec-goes-lead-free/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-02-19T12:41:33+00:00",
+   "testo": "… well ahead of the legal deadline CONEC is taking a major step forward: 100% ...",
+   "iniziale": true,
+   "id": "bd019e4f0a9f"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "CONEC",
+   "cat": null,
+   "titolo": "Connectivity accessories for decentralized automation",
+   "url": "https://conec.com/en/news-en/connectivity-accessories-for-decentralized-automation/",
+   "fonte": "https://conec.com/en/c/news-en/feed/",
+   "data": "2026-02-03T14:32:02+00:00",
+   "testo": "… flexible solutions for Industry 4.0 environments The ongoing shift toward decentralized automation driven by ...",
+   "iniziale": true,
+   "id": "3e47696afcaa"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "Role of Waterproof Wire Caps in Preventing Electrical Hazards",
+   "url": "https://amphenolltw.com/news-events/waterproof-wire-caps-prevent-electrical-hazards.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "7fac6648b41b"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "Optical Fiber Termination Types Chart: SC, LC, FC, ST Comparison",
+   "url": "https://amphenolltw.com/news-events/optical-fiber-termination-types.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "0d298cfbc243"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "Different Types of Micro USB Ports Explained",
+   "url": "https://amphenolltw.com/news-events/different-types-of-micro-USB-ports.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "ef668f60e64a"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "USB Type-C vs USB Type-B for Industrial Equipment | ALTW",
+   "url": "https://amphenolltw.com/news-events/usb-type-c-vs-usb-type-b-comparison.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "10eb8523c392"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "Types of USB 3.0 Connectors: How to Choose the Right One?",
+   "url": "https://amphenolltw.com/news-events/types-of-USB-3-0-connectors.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "4ed8362ce944"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Amphenol LTW",
+   "cat": null,
+   "titolo": "What Are The Industrial USB Port Types for Harsh Environments?",
+   "url": "https://amphenolltw.com/news-events/what-are-the-industrial-port-types-for-harsh-environments.html",
+   "fonte": "https://amphenolltw.com/news-events/",
+   "iniziale": true,
+   "id": "a68b9bb6e9a0"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "Belden's 2025 Sustainability Report marks major progress and raises the bar Belden delivers strong results across emissions reduction, renewable energy adoption",
+   "url": "https://www.belden.com/news/beldens-2025-sustainability-report-marks-major-progress-and-raises-the-bar",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "95fec5d87076"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "New Smart Factory Insights Solution from Belden and Edge2Web helps manufacturers eliminate costly downtime New solution powered by AWS IoT SiteWise combines Bel",
+   "url": "https://www.belden.com/news/new-smart-factory-insights-solution-from-belden-and-edge2web-helps-manufacturers",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "b3ea9b2ccb89"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "Belden launches new edge connectivity, resilient switching and high-density infrastructure innovations New IO-Link analog hubs, centralized enterprise and indus",
+   "url": "https://www.belden.com/news/belden-launches-new-edge-connectivity",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "957ccb5dc271"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "Belden Completes Acquisition of RUCKUS Networks Establishes leading end-to-end IT/OT networking solution for enterprise and industrial customers. Belden 08.12.2",
+   "url": "https://www.belden.com/news/belden-completes-acquisition-of-ruckus-networks",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "3c812efc8a37"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "Belden Named a World’s Top Disability Inclusive Business Honor highlights Belden's commitment to accessibility and an inclusive workplace. Belden 08.06.2026",
+   "url": "https://www.belden.com/news/belden-names-a-worlds-top-disability-inclusive-business",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "8541b202b46e"
+  },
+  {
+   "quando": "2026-10-21T12:41:32+00:00",
+   "tipo": "comunicato",
+   "marchio": "Belden",
+   "cat": null,
+   "titolo": "Belden Names G-SPACE as Winner of the 2026 Joseph C. Belden Innovation Award G-SPACE recognized for machine learning platform for microgravity product design. B",
+   "url": "https://www.belden.com/news/belden-names-g-space-as-winner-of-2026-joseph-c-belden-innovation-award",
+   "fonte": "https://www.belden.com/news",
+   "iniziale": true,
+   "id": "2821e6273fff"
+  }
+ ]
+}
