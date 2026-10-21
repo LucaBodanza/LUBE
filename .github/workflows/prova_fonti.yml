@@ -1,0 +1,26 @@
+# ELSAP DSGN · News — prova delle fonti: parte quando cambia l'elenco delle fonti (o a mano). Non tocca sito e dati.
+name: Prova fonti News
+on:
+  push:
+    branches: [main]
+    paths: ["_strumenti/fonti_news.json", "_strumenti/prova_fonti.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: carica, cancel-in-progress: false }
+jobs:
+  prova:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { lfs: false }
+      - name: Interrogo ogni fonte una volta
+        run: python3 _strumenti/prova_fonti.py
+      - name: Salvo l'esito nel repo
+        run: |
+          git config user.name "ELSAP DSGN"
+          git config user.email "elsap-dsgn@users.noreply.github.com"
+          git add _strumenti/prova_fonti_esito.json
+          git commit -q -m "News: esito prova fonti" || exit 0
+          git pull -q --rebase && git push -q
