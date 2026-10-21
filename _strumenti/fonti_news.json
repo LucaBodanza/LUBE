@@ -1,19 +1,119 @@
 {
- "nota": "ELSAP DSGN · News — fonti da sorvegliare (bozza 21/10/2026, da confermare con Luca). tipo: news = pagina notizie, rss = feed, famiglia = pagina prodotti legata a un catalogo ELSAP (cat = numero).",
+ "nota": "ELSAP DSGN · News — fonti da sorvegliare (bozza 2 · 21/10/2026, da confermare con Luca). tipo: news = pagina notizie, rss = feed, famiglia = pagina prodotti legata a un catalogo ELSAP (cat = numero).",
  "fonti": [
-  {"marchio": "CONEC", "tipo": "news", "url": "https://conec.com/en/c/news-en/"},
-  {"marchio": "CONEC", "tipo": "rss", "url": "https://conec.com/en/c/news-en/feed/"},
-  {"marchio": "CONEC", "tipo": "famiglia", "cat": 13, "url": "https://conec.com/en/applications/transportation-railway-technology/"},
-  {"marchio": "CONEC", "tipo": "famiglia", "cat": 13, "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html"},
-  {"marchio": "Amphenol LTW", "tipo": "news", "url": "https://amphenolltw.com/news-events/"},
-  {"marchio": "Amphenol LTW", "tipo": "famiglia", "cat": 15, "url": "https://amphenolltw.com/product-info/X-Lok/"},
-  {"marchio": "Amphenol LTW", "tipo": "famiglia", "cat": 15, "url": "https://amphenolltw.com/product-info/X-Lok/X-Lok.UltraHighDensity/"},
-  {"marchio": "Amphenol LTW", "tipo": "famiglia", "cat": 14, "url": "https://amphenolltw.com/product-info/MPronto/"},
-  {"marchio": "Amphenol Tuchel", "tipo": "famiglia", "cat": 16, "url": "https://www.amphenol-industrial.de/produkte/eco-mate"},
-  {"marchio": "Amphenol Tuchel", "tipo": "news", "url": "https://www.amphenol-industrial.de/unternehmen"},
-  {"marchio": "Belden", "tipo": "news", "url": "https://www.belden.com/news"},
-  {"marchio": "Belden", "tipo": "rss", "url": "https://www.belden.com/rss"},
-  {"marchio": "Lumberg Automation", "tipo": "famiglia", "cat": 5, "url": "https://www.belden.com/products/industrial-automation/io-modules"},
-  {"marchio": "Hirschmann", "tipo": "famiglia", "cat": 8, "url": "https://www.belden.com/products/industrial-connectivity"}
+  {
+   "marchio": "CONEC",
+   "tipo": "news",
+   "url": "https://conec.com/en/c/news-en/"
+  },
+  {
+   "marchio": "CONEC",
+   "tipo": "rss",
+   "url": "https://conec.com/en/c/news-en/feed/"
+  },
+  {
+   "marchio": "CONEC",
+   "tipo": "famiglia",
+   "cat": 13,
+   "url": "https://conec.com/en/applications/transportation-railway-technology/"
+  },
+  {
+   "marchio": "CONEC",
+   "tipo": "famiglia",
+   "cat": 13,
+   "url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html"
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "news",
+   "url": "https://amphenolltw.com/news-events/"
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "famiglia",
+   "cat": 15,
+   "url": "https://amphenolltw.com/product-info/X-Lok/"
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "famiglia",
+   "cat": 15,
+   "url": "https://amphenolltw.com/product-info/X-Lok/X-Lok.UltraHighDensity/"
+  },
+  {
+   "marchio": "Amphenol LTW",
+   "tipo": "famiglia",
+   "cat": 14,
+   "url": "https://amphenolltw.com/product-info/MPronto/"
+  },
+  {
+   "marchio": "Amphenol Tuchel",
+   "tipo": "famiglia",
+   "cat": 16,
+   "url": "https://www.amphenol-industrial.de/produkte/eco-mate"
+  },
+  {
+   "marchio": "Amphenol Tuchel",
+   "tipo": "news",
+   "url": "https://www.amphenol-industrial.de/unternehmen"
+  },
+  {
+   "marchio": "Belden",
+   "tipo": "news",
+   "url": "https://www.belden.com/news"
+  },
+  {
+   "marchio": "Belden",
+   "tipo": "avvisi",
+   "url": "https://www.belden.com/knowledge-hub/resources/product-alerts"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 5,
+   "url": "https://www.belden.com/products/i-o-systems"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 6,
+   "url": "https://www.belden.com/products/i-o-systems/safety-i-o-modules"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 8,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 8,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/m12"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 9,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors"
+  },
+  {
+   "marchio": "Hirschmann",
+   "tipo": "famiglia",
+   "cat": 7,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 3,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/power-connectors"
+  },
+  {
+   "marchio": "Lumberg Automation",
+   "tipo": "famiglia",
+   "cat": 2,
+   "url": "https://www.belden.com/products/connectors/industrial-connectors/data-connectors"
+  }
  ]
 }
