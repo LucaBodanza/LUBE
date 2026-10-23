@@ -45,5 +45,28 @@
   "pagine": 34,
   "codici": 141,
   "prodotti": 114
+ },
+ {
+  "quando": "2026-10-23T08:55:08+00:00",
+  "scheda": {
+   "numero": 2,
+   "slug": "02_Data_Connectors",
+   "nome": "Alimentatori Industriali/ITE",
+   "comparto": "elettronica-industriale",
+   "sottotitolo": "Patch · Pannello · Cablare",
+   "marchi": [],
+   "provvisoria": false,
+   "sotto": {
+    "tipo": "segnalibri",
+    "livello": 2,
+    "nome": "sezioni",
+    "foto_dopo": 1
+   },
+   "file_originale": "02_SERIE_Alimentatori Industriali:ITE.pdf",
+   "caricato": "2026-10-23T08:54:24.139Z"
+  },
+  "pagine": 36,
+  "codici": 154,
+  "prodotti": 125
  }
 ]
