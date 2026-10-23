@@ -22,5 +22,28 @@
   "pagine": 112,
   "codici": 129,
   "prodotti": 199
+ },
+ {
+  "quando": "2026-10-23T08:50:54+00:00",
+  "scheda": {
+   "numero": 1,
+   "slug": "01_Serie_Metrica",
+   "nome": "Alimentatori Industriali",
+   "comparto": "elettronica-industriale",
+   "sottotitolo": "Cablare · Pannello · Moldizzati",
+   "marchi": [],
+   "provvisoria": false,
+   "sotto": {
+    "tipo": "segnalibri",
+    "livello": 2,
+    "nome": "sezioni",
+    "foto_dopo": 1
+   },
+   "file_originale": "01_SERIE_Alimentatori Industriali.pdf",
+   "caricato": "2026-10-23T08:48:04.468Z"
+  },
+  "pagine": 34,
+  "codici": 141,
+  "prodotti": 114
  }
 ]
