@@ -97,5 +97,32 @@
   "pagine": 34,
   "codici": 46,
   "prodotti": 32
+ },
+ {
+  "quando": "2026-10-26T09:34:09+00:00",
+  "scheda": {
+   "numero": 104,
+   "num": 4,
+   "slug": "ei04_Accessori",
+   "nome": "Accessori",
+   "comparto": "elettronica-industriale",
+   "sottotitolo": "",
+   "marchi": [
+    "FRIWO"
+   ],
+   "certificato_elsap": true,
+   "pagina_copertina": 1,
+   "sotto": {
+    "tipo": "segnalibri",
+    "livello": 2,
+    "nome": "sezioni",
+    "foto_dopo": 1
+   },
+   "file_originale": "04_SERIE_Accessori.pdf",
+   "caricato": "2026-10-26T09:33:04.779Z"
+  },
+  "pagine": 36,
+  "codici": 81,
+  "prodotti": 74
  }
 ]
