@@ -3,7 +3,8 @@ import { avviaScena } from './scena.js';
 import { Libro } from './libro.js';
 import { avviaCerca, apriCerca, apriAI } from './cerca.js';
 import { avviaTrova, indicizza } from './trova.js';
-import { COMPARTI, stileComparto, compartoDi, trovaComparto, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
+import { avviaNews } from './news.js';
+import { COMPARTI, stileComparto, compartoDi, trovaComparto, nn2, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -55,7 +56,7 @@ function vai(v, { push = true } = {}) {
   if (push && S.vista !== v && S.vista !== 'intro') S.storia.push(S.vista);
   const da = S.vista;
   document.querySelectorAll('.vista').forEach(el => el.classList.toggle('attiva', el.id === v));
-  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : v === 'mappa' ? 'cerca' : v);
+  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news') ? 'cerca' : v);
   if (da === 'libreria' && v === 'home' && S.comparto) animaChiudi(document.querySelector(`.cp[data-id="${S.comparto}"]`), $('#libreria'));
   document.body.classList.toggle('dentro', v !== 'intro');
   document.body.className = document.body.className.replace(/\bv-\S+/g, '').trim() + ` v-${v}`;
@@ -73,10 +74,11 @@ function briciole() {
   const dentroCat = c && ['catalogo', 'sfoglia', 'sotto'].includes(S.vista);
   if (S.vista === 'libreria' && S.comparto) p.push(`<b>${esc(trovaComparto(S.comparto).nome)}</b>`);
   if (dentroCat) p.push(`<span>${esc(trovaComparto(compartoDi(c)).nome)}</span>`);
-  if (dentroCat) p.push(`<b>${esc(String(c.numero).padStart(2, '0'))} · ${esc(c.nome)}</b>`);
+  if (dentroCat) p.push(`<b>${esc(nn2(c))} · ${esc(c.nome)}</b>`);
   if (S.vista === 'sfoglia') p.push(`<span>${S.sfFonte?.sotto ? esc(S.sfFonte.sotto) : 'Catalogo completo'}</span>`);
   if (S.vista === 'sotto') p.push('<span>Sotto-cataloghi</span>');
   if (S.vista === 'mappa') p.push('<b>Mappa dei cataloghi</b>');
+  if (S.vista === 'news') p.push('<b>News dai produttori</b>');
   if (S.vista === 'cerca') p.push('<b>Cerca codice</b>');
   if (S.vista === 'ai') p.push('<b>Interrogatore</b>');
   b.innerHTML = p.join('<span class="muted">/</span>');
@@ -96,7 +98,7 @@ function intro() {
 // ================================================================ libreria
 function copertinaDisegnata(c, logo, picto) {
   return `<div class="cov"><div class="p">${picto}</div>
-    <div class="n">${String(c.numero).padStart(2, '0')}</div><div class="t">${esc(c.nome)}</div><div class="s">${esc(c.sottotitolo || '')}</div></div>`;
+    <div class="n">${nn2(c)}</div><div class="t">${esc(c.nome)}</div><div class="s">${esc(c.sottotitolo || '')}</div></div>`;
 }
 function libro3d(c, logo, picto, i = 0, grande = false) {
   const m = c.manifest;
@@ -104,7 +106,7 @@ function libro3d(c, logo, picto, i = 0, grande = false) {
   const badge = c.stato === 'pronto' ? '' : `<span class="pill ${c.stato === 'da generare' ? 'acc' : ''} badge">${esc(c.stato)}</span>`;
   const meta = grande ? '' : `<div class="meta"><b>${esc(c.nome)}</b>${c.stato === 'pronto' ? `${m.pagine} pagine${m.sotto.length ? ` · ${m.sotto.length} sotto-cataloghi` : ''}` : esc(c.stato)}</div>`;
   return `<div class="libro3d ${grande ? 'grande' : ''} ${c.stato === 'in arrivo' ? 'spento' : ''}" tabindex="0" data-n="${c.numero}" style="animation-delay:${0.08 * i}s">
-    <div class="fr">${img}</div><div class="dorso">${String(c.numero).padStart(2, '0')} · ${esc(c.nome)}</div><div class="tg"></div><div class="rt"></div>
+    <div class="fr">${img}</div><div class="dorso">${nn2(c)} · ${esc(c.nome)}</div><div class="tg"></div><div class="rt"></div>
     ${badge}<div class="ombra"></div>${meta}</div>`;
 }
 async function libreria() {
@@ -222,7 +224,7 @@ function schedaInfo() {
       <div class="secondarie"><a class="btn ghost" href="cat/${encodeURI(m.slug)}/${encodeURI(m.file)}" data-pdf="${esc(m.file)}">Scarica PDF ↓</a>
         ${WEB ? '<button class="btn ghost" id="aOffline">Offline…</button>' : '<button class="btn ghost" id="aCartella">Mostra nella cartella</button>'}</div>
       ${m.provvisoria ? `<div class="avviso">• ${esc(m.provvisoria === true ? 'Catalogo in lavorazione' : m.provvisoria)}</div>` : ''}`;
-  $('#catInfo').innerHTML = `<div class="num">${String(c.numero).padStart(2, '0')}</div>
+  $('#catInfo').innerHTML = `<div class="num">${nn2(c)}</div>
     <h2>${esc(c.nome)}</h2>
     <p class="sub">${esc(m.sottotitolo || c.sottotitolo || '')}</p>
     <div class="chips">${marchi}</div>${corpo}`;
@@ -455,4 +457,5 @@ function vita() {   // la finestra-app tiene acceso il server; alla chiusura lo 
   avviaTrova({ S, vai, vaiA, toast, apriCerca, apriAI });
   await libreria();
   indicizza();
+  avviaNews({ S, WEB, vai, vaiA, toast });
 })();

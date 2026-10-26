@@ -4,7 +4,7 @@
 // 3) Pubblica → il PDF viene CIFRATO qui e caricato su GitHub in _carica/; GitHub Actions (_strumenti/carica.py) fa il resto
 //    con gli stessi programmi del Mac: catalogo, sotto-cataloghi, ricerca codici, database, cifratura, sito online.
 import * as pdfjs from './vendor/pdf.min.mjs';
-import { COMPARTI, compartoDi } from './comparti.js';
+import { COMPARTI, compartoDi, numCat, numeroInterno, SIGLE } from './comparti.js';
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdf.worker.min.mjs', import.meta.url).href;
 
 const REPO = 'LucaBodanza/LUBE', RAMO = 'main', MAX_MB = 95;
@@ -14,7 +14,7 @@ const b64 = u => { let s = ''; const a = new Uint8Array(u); for (let i = 0; i < 
 const ub64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const TE = new TextEncoder(), TD = new TextDecoder();
 const pulito = t => String(t).replace(/[^\p{L}\p{N}.-]+/gu, '_').replace(/^_+|_+$/g, '').slice(0, 70) || 'catalogo';
-const MARCHI = ['Amphenol Tuchel', 'Amphenol', 'Lumberg Automation', 'Belden', 'Hirschmann', 'CONEC', 'HELUKABEL', 'Murrelektronik', 'binder', 'Phoenix Contact', 'HARTING', 'Weidmüller', 'LAPP', 'TE Connectivity', 'Molex', 'ESCHA', 'Turck'];
+const MARCHI = ['FRIWO', 'BJB', 'Amphenol Tuchel', 'Amphenol', 'Lumberg Automation', 'Belden', 'Hirschmann', 'CONEC', 'HELUKABEL', 'Murrelektronik', 'binder', 'Phoenix Contact', 'HARTING', 'Weidmüller', 'LAPP', 'TE Connectivity', 'Molex', 'ESCHA', 'Turck'];
 const ICO = {
   su: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 38V11M12 22l12-12 12 12"/></svg>',
   gh: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.2 11 15.8 7M8.2 13l7.6 4"/></svg>',
@@ -117,7 +117,7 @@ export async function apri(sess, acc) {
       <div class="cg-sx">
         <label class="cg-drop" tabindex="0"><input type="file" accept="application/pdf" hidden>
           <span class="cg-freccia">${ICO.su}</span>
-          <b>Trascina qui il PDF del catalogo</b><span class="lab">oppure clicca · PDF finito, max ${MAX_MB} MB</span>
+          <b>Trascina qui il catalogo in PDF</b><span class="lab">oppure clicca e carica da File Explorer PC · max ${MAX_MB} MB</span>
         </label>
         <div class="cg-lettura" hidden>
           <div class="cg-file"><img class="cg-cop" alt=""><div><b class="cg-nome"></b><span class="lab cg-peso"></span></div></div>
@@ -135,7 +135,8 @@ export async function apri(sess, acc) {
     <div class="cg-orb-info lab"></div>
   </div>`;
   document.body.appendChild(el);
-  $('.cg-logo', el).innerHTML = await fetch('web/img/logo.svg').then(r => r.text()).catch(() => '');
+  LOGO_ELSAP = await fetch('web/img/logo.svg').then(r => r.text()).catch(() => '');
+  $('.cg-logo', el).innerHTML = LOGO_ELSAP;
   requestAnimationFrame(() => el.classList.add('su'));
   $('.cg-x', el).onclick = () => { el.classList.remove('su'); setTimeout(() => el.remove(), 500); };
   try { CAT = await fetch('dati/cataloghi.json').then(r => r.json()); } catch (e) { CAT = []; }
@@ -190,35 +191,103 @@ async function scelto(file) {
   modulo(file);
 }
 
+// scelta automatica dei sotto-cataloghi: il livello dei segnalibri con almeno 2 capitoli (di solito il 1°). Niente più menu da decifrare.
+function capitoli(seg) {
+  const salta = /^(indice|index|sommario|contents?|copertina|cover)$/i;
+  for (const liv of [1, 2, 3]) {
+    const v = seg.filter(s => s.livello === liv && !salta.test(s.titolo));
+    if (v.length >= 2) return { liv, voci: v };
+  }
+  return { liv: 0, voci: [] };
+}
+// comparto suggerito dal marchio letto nel PDF (si può sempre cambiare)
+const DEL_MARCHIO = { 'FRIWO': 'elettronica-industriale', 'BJB': 'sistemi-elettromeccanici' };
+const comparti_base = m => DEL_MARCHIO[m] || (m ? 'connessione' : '');
+const nn = n => String(n).padStart(2, '0');
+const attendi = ms => new Promise(r => setTimeout(r, ms));
+let LOGO_ELSAP = '';
+
 function modulo(file) {
   const el = $('#carica'), f = $('.cg-dx', el), dn = dalNome(file.name), L = LETTO;
-  const es = dn.num != null ? CAT.find(c => c.numero === dn.num) : null;
-  const num = dn.num ?? (Math.max(0, ...CAT.map(c => c.numero)) + 1);
-  const nome = es && (!dn.nome || dn.nome.toLowerCase().replace(/[^a-z0-9]/g, '') === es.nome.toLowerCase().replace(/[^a-z0-9]/g, '')) ? es.nome : (dn.nome || es?.nome || '');
-  const capi = L.seg.filter(s => s.livello === 1 && !/^(indice|index|sommario|contents?)$/i.test(s.titolo));
-  const sottot = [...new Set(capi.map(s => s.titolo === s.titolo.toUpperCase() ? s.titolo.toLowerCase().replace(/(^|[\s-])\p{L}/gu, x => x.toUpperCase()) : s.titolo))].join(' · ').slice(0, 140);
-  const marchi = (es?.marchi?.length ? es.marchi : (L.marchio ? [L.marchio] : [])).join(', ');
-  const tutti = [...new Set([...MARCHI, ...CAT.flatMap(c => c.marchi || [])])];
+  const cap = capitoli(L.seg);
+  const tutti = L.seg.filter(s => s.livello === cap.liv);
+  const sottot = [...new Set(cap.voci.map(s => s.titolo === s.titolo.toUpperCase() ? s.titolo.toLowerCase().replace(/(^|[\s-])\p{L}/gu, x => x.toUpperCase()) : s.titolo))].join(' · ').slice(0, 140);
+  const guess = comparti_base(L.marchio);
+  const ST = { cert: false, comparto: guess, liv: cap.liv, pronto: { sotto: false, foto: false } };
   f.innerHTML = `
     <div class="cg-dove lab"></div>
-    <div class="cg-r2"><label>Numero<input name="numero" type="number" min="1" max="99" value="${num}" required></label>
-      <label class="lungo">Nome del catalogo<input name="nome" value="${esc(nome)}" required></label></div>
-    <label>Comparto<select name="comparto">${COMPARTI.map(c => `<option value="${c.id}" ${c.id === compartoDi(es) ? 'selected' : ''}>${esc(c.nome)}</option>`).join('')}</select></label>
-    <label>Sottotitolo <span class="lab">(vuoto = dalle sezioni del PDF)</span><input name="sottotitolo" value="${esc(es?.sottotitolo && es.sottotitolo !== sottot ? es.sottotitolo : '')}" placeholder="${esc(sottot)}"></label>
-    <label>Marchio<input name="marchi" value="${esc(marchi)}" list="cgMarchi" placeholder="es. Amphenol Tuchel"><datalist id="cgMarchi">${tutti.map(m => `<option value="${esc(m)}">`).join('')}</datalist></label>
-    <div class="cg-r2 due"><label>Sotto-cataloghi dai segnalibri<select name="livello"><option value="1">livello 1 (${capi.length} sezioni)</option><option value="2">livello 2 (${L.seg.filter(s => s.livello === 2).length})</option><option value="0">nessuno</option></select></label>
-      <label>Foto della sezione<select name="foto_dopo"><option value="1">pagina dopo il divisorio</option><option value="0">prima pagina della sezione</option></select></label></div>
-    <label class="cg-ck"><input type="checkbox" name="provvisoria"> Versione provvisoria (bollino sul catalogo)</label>
-    <div class="cg-sezioni">${capi.map(s => `<span>${esc(s.titolo)} <i>p.${s.pagina}</i></span>`).join('')}</div>
-    <div class="cg-azioni"><button type="button" class="btn ghost cg-altro">Altro file</button><button class="btn cg-pub">Pubblica sul sito →</button></div>
+    <div class="cg-r2"><label>Numero C.<input name="numero" type="number" min="1" max="99" value="${dn.num ?? ''}" required></label>
+      <label class="lungo">Nome catalogo<input name="nome" value="${esc(dn.nome)}" required></label></div>
+    <fieldset class="cg-sez"><legend>Sezione di appartenenza del catalogo</legend>
+      <div class="cg-chips">${COMPARTI.map(c => `<label class="cg-chip" style="--cp:${c.colore}"><input type="radio" name="comparto" value="${c.id}" ${c.id === guess ? 'checked' : ''}><span class="pt"></span>${esc(c.nome)}</label>`).join('')}</div>
+      <span class="lab cg-guess" ${guess ? '' : 'hidden'}>Scelta in automatico dal marchio${L.marchio ? ` «${esc(L.marchio)}»` : ''} · cambiala se non è giusta</span></fieldset>
+    <label><span>Sotto-titolo <span class="lab">- vuoto = inserimento automatico</span></span><input name="sottotitolo" placeholder="${esc(sottot || 'automatico')}"></label>
+    <button type="button" class="cg-cert" aria-pressed="false">
+      <span class="cg-cert-ic"><svg viewBox="0 0 48 48" fill="none"><circle class="ring" cx="24" cy="24" r="20"/><path class="tick" d="m14 25 7 7 14-16"/></svg></span>
+      <span class="cg-cert-tx"><b>Certificate ELSAP Official</b><span class="lab">Tocca per confermare: catalogo già approvato e consegnato a ELSAP</span></span>
+      <span class="cg-cert-logo">${LOGO_ELSAP}</span></button>
+    <button type="button" class="cg-step cg-sotto" data-k="sotto"><span class="cg-sp"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+      <span class="cg-st-tx"><b>Sotto-cataloghi dai segnalibri</b><span class="lab cg-st-sub">Tocca per far leggere l'indice del PDF</span></span></button>
+    <div class="cg-sezioni"></div>
+    <button type="button" class="cg-step cg-foto" data-k="foto"><span class="cg-sp"><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+      <span class="cg-st-tx"><b>Foto della sezione</b><span class="lab cg-st-sub">Tocca per prendere la copertina (pagina 1)</span></span><img class="cg-mini" alt=""></button>
+    <div class="cg-azioni"><button type="button" class="btn ghost cg-altro">Altro file</button><button class="btn cg-pub" disabled>Pubblica sul sito →</button></div>
+    <div class="cg-nota lab" hidden></div>
     <div class="cg-passi" hidden></div>`;
   f.hidden = false;
+  f._ST = ST;
   const dove = () => {
-    const n = +f.numero.value, x = CAT.find(c => c.numero === n), prima = CAT.filter(c => c.numero < n).pop();
-    if (x) f.comparto.value = compartoDi(x);
-    $('.cg-dove', f).innerHTML = x ? `Sostituisce <b>${String(n).padStart(2, '0')} · ${esc(x.nome)}</b>` : `Nuovo catalogo <b>${String(n).padStart(2, '0')}</b>${prima ? ` · va dopo ${String(prima.numero).padStart(2, '0')} · ${esc(prima.nome)}` : ''}`;
+    const n = +f.numero.value, c = f.comparto.value, cp = COMPARTI.find(x => x.id === c), x = n && c ? CAT.find(k => compartoDi(k) === c && numCat(k) === n) : null;
+    const stessi = CAT.filter(k => compartoDi(k) === c), prima = stessi.filter(k => numCat(k) < n).pop();
+    const box = $('.cg-dove', f); box.classList.toggle('avv', !!x);
+    box.innerHTML = !c ? 'Scegli la <b>sezione di appartenenza</b>: il numero vale solo dentro la sua sezione.' : !n ? 'Scrivi il <b>numero</b> del catalogo.' :
+      x ? `Attenzione · sostituisce <b>${nn(n)} · ${esc(x.nome)}</b> in ${esc(cp.nome)}` :
+      `Nuovo catalogo <b>${nn(n)}</b> in <b>${esc(cp.nome)}</b>${prima ? ` · va dopo ${nn(numCat(prima))} · ${esc(prima.nome)}` : ' · è il primo della sezione'}`;
+    abilita();
   };
-  f.numero.oninput = dove; dove();
+  const abilita = () => { $('.cg-pub', f).disabled = !(ST.cert && f.comparto.value && +f.numero.value && f.nome.value.trim()); };
+  f.numero.oninput = dove; f.nome.oninput = abilita;
+  f.querySelectorAll('[name=comparto]').forEach(r => r.onchange = () => {   // numero suggerito = prossimo libero nella sezione scelta
+    const dentro = CAT.filter(k => compartoDi(k) === r.value), prossimo = Math.max(0, ...dentro.map(numCat)) + 1;
+    if (!f.numero.value || f.numero.dataset.auto) { f.numero.value = prossimo; f.numero.dataset.auto = '1'; }
+    $('.cg-guess', f).hidden = true; dove();
+  });
+  f.numero.addEventListener('input', () => { delete f.numero.dataset.auto; });
+  if (!f.numero.value && guess) { f.numero.value = Math.max(0, ...CAT.filter(k => compartoDi(k) === guess).map(numCat)) + 1; f.numero.dataset.auto = '1'; }
+  dove();
+
+  // ---- Certificate ELSAP Official
+  const cert = $('.cg-cert', f);
+  cert.onclick = () => { ST.cert = !ST.cert; cert.setAttribute('aria-pressed', ST.cert); cert.classList.toggle('ok', ST.cert); abilita(); };
+
+  // ---- sotto-cataloghi dai segnalibri: il motore apre l'indice, lo legge e sceglie da solo il livello giusto
+  const sez = $('.cg-sezioni', f);
+  const leggiIndice = async b => {
+    b.className = 'cg-step cg-sotto run'; sez.innerHTML = ''; ST.pronto.sotto = false;
+    $('.cg-st-sub', b).textContent = 'Apro il PDF e leggo l\'indice…'; await attendi(550);
+    const c = capitoli(L.seg);
+    if (!c.voci.length) {
+      b.className = 'cg-step cg-sotto no'; ST.liv = 0; ST.pronto.sotto = true;
+      $('.cg-st-sub', b).textContent = L.seg.length ? 'Nessuna divisione in capitoli: il catalogo si apre intero, senza sotto-cataloghi' : 'Questo PDF non ha segnalibri: il catalogo si apre intero, senza sotto-cataloghi'; return;
+    }
+    ST.liv = c.liv;
+    for (const v of c.voci) { sez.insertAdjacentHTML('beforeend', `<span class="cg-in">${esc(v.titolo)} <i>p.${v.pagina}</i></span>`); await attendi(Math.min(90, 900 / c.voci.length)); }
+    await attendi(250);
+    b.className = 'cg-step cg-sotto ok'; ST.pronto.sotto = true;
+    $('.cg-st-sub', b).textContent = `Indice letto · ${c.voci.length} sezioni${c.liv > 1 ? ` (dal livello ${c.liv} dei segnalibri)` : ''} · l'indicizzazione dello sfoglio è pronta`;
+  };
+  const prendiFoto = async b => {
+    b.className = 'cg-step cg-foto run'; ST.pronto.foto = false;
+    $('.cg-st-sub', b).textContent = 'Prendo la pagina 1…'; await attendi(700);
+    $('.cg-mini', b).src = $('.cg-cop', el).src;
+    b.className = 'cg-step cg-foto ok'; ST.pronto.foto = true;
+    $('.cg-st-sub', b).textContent = 'Pagina 1 · copertina del catalogo';
+  };
+  $('.cg-sotto', f).onclick = e => leggiIndice(e.currentTarget);
+  $('.cg-foto', f).onclick = e => prendiFoto(e.currentTarget);
+  // partono da sole, una dopo l'altra, appena il PDF è letto; si possono rifare toccando il pulsante
+  setTimeout(async () => { await leggiIndice($('.cg-sotto', f)); await prendiFoto($('.cg-foto', f)); }, 700);
+
   $('.cg-altro', f).onclick = () => apri(S, ACC);
   f.onsubmit = e => { e.preventDefault(); pubblica(f); };
 }
@@ -228,11 +297,18 @@ async function pubblica(f) {
   const passi = $('.cg-passi', f), btn = $('.cg-pub', f);
   if (!(await token())) return alert('Prima salva il token GitHub (cerchio blu).');
   if (F.size > MAX_MB * 1048576) return alert('Il PDF supera il limite di GitHub (100 MB).');
-  const n = +f.numero.value, x = CAT.find(c => c.numero === n), nome = f.nome.value.trim();
-  const slug = x ? x.slug : `${String(n).padStart(2, '0')}_${pulito(nome)}`;
-  const liv = +f.livello.value;
-  const scheda = { numero: n, slug, nome, comparto: f.comparto.value, sottotitolo: f.sottotitolo.value.trim(), marchi: f.marchi.value.split(',').map(s => s.trim()).filter(Boolean),
-    provvisoria: f.provvisoria.checked, ...(liv ? { sotto: { tipo: 'segnalibri', livello: liv, nome: 'sezioni', foto_dopo: +f.foto_dopo.value } } : {}),
+  const ST = f._ST, n = +f.numero.value, comp = f.comparto.value, nome = f.nome.value.trim();
+  if (!comp || !(n >= 1 && n <= 99)) return alert('Scegli la sezione di appartenenza e un numero da 1 a 99.');
+  if (!ST.cert) return alert('Prima tocca «Certificate ELSAP Official».');
+  // stesso catalogo = stesso comparto + stesso numero DENTRO il comparto (mai solo il numero)
+  const x = CAT.find(c => compartoDi(c) === comp && numCat(c) === n);
+  if (x && !confirm(`Nella sezione ${COMPARTI.find(c => c.id === comp).nome} esiste già «${String(n).padStart(2, '0')} · ${x.nome}».\nVerrà SOSTITUITO da «${nome}». Continuo?`)) return;
+  const numero = numeroInterno(comp, n), sigla = SIGLE[comp] || '';
+  const slug = x ? x.slug : `${sigla}${String(n).padStart(2, '0')}_${pulito(nome)}`;
+  const liv = ST.liv;
+  const scheda = { numero, num: n, slug, nome, comparto: comp, sottotitolo: f.sottotitolo.value.trim(),
+    marchi: (x?.marchi?.length ? x.marchi : (LETTO.marchio ? [LETTO.marchio] : [])),
+    certificato_elsap: true, pagina_copertina: 1, ...(liv ? { sotto: { tipo: 'segnalibri', livello: liv, nome: 'sezioni', foto_dopo: 1 } } : {}),
     file_originale: F.name, caricato: new Date().toISOString() };
   btn.disabled = true; f.classList.add('lavora'); passi.hidden = false;
   const P = [['cifra', 'Cifro il PDF su questo dispositivo'], ['invia', 'Invio a GitHub'], ['srv', 'Elaborazione sul server'], ['web', 'Il sito si aggiorna']];
@@ -249,7 +325,7 @@ async function pubblica(f) {
     const bj = await gh('git/blobs', { method: 'POST', body: JSON.stringify({ content: b64(TE.encode(JSON.stringify(scheda, null, 1))), encoding: 'base64' }) });
     const tree = await gh('git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base.tree.sha, tree: [
       { path: `_carica/${slug}.pdf.enc`, mode: '100644', type: 'blob', sha: blob.sha }, { path: `_carica/${slug}.json`, mode: '100644', type: 'blob', sha: bj.sha }] }) });
-    const c = await gh('git/commits', { method: 'POST', body: JSON.stringify({ message: `Carica ${String(n).padStart(2, '0')} ${nome}`, tree: tree.sha, parents: [ref.object.sha] }) });
+    const c = await gh('git/commits', { method: 'POST', body: JSON.stringify({ message: `Carica ${COMPARTI.find(c => c.id === comp).nome} ${String(n).padStart(2, '0')} ${nome}`, tree: tree.sha, parents: [ref.object.sha] }) });
     await gh(`git/refs/heads/${RAMO}`, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) });
     st('invia', 'ok', `commit ${c.sha.slice(0, 7)}`, 100);
     // elaborazione: si seguono i passi del workflow

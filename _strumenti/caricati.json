@@ -26,8 +26,8 @@
  {
   "quando": "2026-10-23T08:50:54+00:00",
   "scheda": {
-   "numero": 1,
-   "slug": "01_Serie_Metrica",
+   "numero": 101,
+   "slug": "ei01_Alimentatori_Industriali",
    "nome": "Alimentatori Industriali",
    "comparto": "elettronica-industriale",
    "sottotitolo": "Cablare · Pannello · Moldizzati",
@@ -40,7 +40,8 @@
     "foto_dopo": 1
    },
    "file_originale": "01_SERIE_Alimentatori Industriali.pdf",
-   "caricato": "2026-10-23T08:48:04.468Z"
+   "caricato": "2026-10-23T08:48:04.468Z",
+   "num": 1
   },
   "pagine": 34,
   "codici": 141,
@@ -49,8 +50,8 @@
  {
   "quando": "2026-10-23T08:55:08+00:00",
   "scheda": {
-   "numero": 2,
-   "slug": "02_Data_Connectors",
+   "numero": 102,
+   "slug": "ei02_Alimentatori_Industriali_ITE",
    "nome": "Alimentatori Industriali/ITE",
    "comparto": "elettronica-industriale",
    "sottotitolo": "Patch · Pannello · Cablare",
@@ -63,7 +64,8 @@
     "foto_dopo": 1
    },
    "file_originale": "02_SERIE_Alimentatori Industriali:ITE.pdf",
-   "caricato": "2026-10-23T08:54:24.139Z"
+   "caricato": "2026-10-23T08:54:24.139Z",
+   "num": 2
   },
   "pagine": 36,
   "codici": 154,

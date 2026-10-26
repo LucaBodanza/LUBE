@@ -2,7 +2,7 @@
 // TROVA: una sola casella (stile Spotlight, ⌘K / Ctrl K o inizia a scrivere dalla Home) che cerca insieme
 //        comparti, cataloghi, sezioni e codici, e per ogni risultato mostra DOVE si trova (Comparto › Catalogo › Sezione).
 // MAPPA: tutti i comparti, i cataloghi e le sezioni su una pagina sola, da sfogliare a colpo d'occhio.
-import { COMPARTI, stileComparto, compartoDi, trovaComparto, iconaComparto } from './comparti.js';
+import { COMPARTI, stileComparto, compartoDi, trovaComparto, iconaComparto, nn2, numCat } from './comparti.js';
 import { trovaProdotti } from './cerca.js';
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -41,20 +41,20 @@ export function indicizza() {
   }
   for (const c of X.S.cataloghi) {
     const cp = trovaComparto(compartoDi(c)), m = c.manifest;
-    IDX.push({ tipo: 'catalogo', n: c.numero, cp, titolo: `${nn(c.numero)} · ${c.nome}`, dove: `${cp.nome}${m ? ` · ${m.pagine} pagine` : ' · in arrivo'}`, pronto: c.stato === 'pronto',
-      t: piano(c.nome), x: piano([nn(c.numero), c.numero, c.sottotitolo, (c.marchi || []).join(' '), m?.marchi?.join(' ')].join(' ')) });
+    IDX.push({ tipo: 'catalogo', n: c.numero, cp, titolo: `${nn2(c)} · ${c.nome}`, dove: `${cp.nome}${m ? ` · ${m.pagine} pagine` : ' · in arrivo'}`, pronto: c.stato === 'pronto',
+      t: piano(c.nome), x: piano([nn2(c), numCat(c), c.sottotitolo, (c.marchi || []).join(' '), m?.marchi?.join(' ')].join(' ')) });
     if (!m) continue;
     const viste = new Set();
     for (const s of m.sotto || []) {
       const k = piano(s.codice); viste.add(k);
-      IDX.push({ tipo: 'sezione', n: c.numero, cp, titolo: s.codice, pagina: s.pagina_catalogo || 1, dove: `${cp.nome} › ${nn(c.numero)} ${c.nome}${s.pagina_catalogo ? ` · p. ${s.pagina_catalogo}` : ''}`,
+      IDX.push({ tipo: 'sezione', n: c.numero, cp, titolo: s.codice, pagina: s.pagina_catalogo || 1, dove: `${cp.nome} › ${nn2(c)} ${c.nome}${s.pagina_catalogo ? ` · p. ${s.pagina_catalogo}` : ''}`,
         t: k, x: piano([s.descrizione, s.gruppo].join(' ')) });
     }
     for (const s of m.indice || []) {
       const k = piano(s.titolo);
       if (!s.pagina || (s.livello || 1) > 2 || viste.has(k) || /^(indice|index|sommario|contents?)$/.test(k)) continue;
       viste.add(k);
-      IDX.push({ tipo: 'sezione', n: c.numero, cp, titolo: s.titolo, pagina: s.pagina, dove: `${cp.nome} › ${nn(c.numero)} ${c.nome} · p. ${s.pagina}`, t: k, x: '' });
+      IDX.push({ tipo: 'sezione', n: c.numero, cp, titolo: s.titolo, pagina: s.pagina, dove: `${cp.nome} › ${nn2(c)} ${c.nome} · p. ${s.pagina}`, t: k, x: '' });
     }
   }
 }
@@ -214,12 +214,12 @@ function disegnaMappa() {
     const L = X.S.cataloghi.filter(c => compartoDi(c) === cp.id);
     const righe = L.map(c => {
       const sz = sezioniDi(c), szOk = sz.filter(s => ok(`${s.t} ${s.d}`));
-      const catOk = ok(`${c.nome} ${c.sottotitolo || ''} ${nn(c.numero)} ${cp.nome}`);
+      const catOk = ok(`${c.nome} ${c.sottotitolo || ''} ${nn2(c)} ${cp.nome}`);
       if (f && !catOk && !szOk.length) return '';
       const aperto = M.aperti.has(c.numero) || (f && szOk.length && !catOk);
       const mostra = f && !catOk ? szOk : sz;
       return `<div class="mp-cat ${c.stato !== 'pronto' ? 'spento' : ''} ${aperto ? 'aperto' : ''}" data-n="${c.numero}">
-        <div class="mp-cr"><button class="mp-apri" data-a="cat"><span class="mp-n">${nn(c.numero)}</span><span class="mp-nm">${esc(c.nome)}</span>
+        <div class="mp-cr"><button class="mp-apri" data-a="cat"><span class="mp-n">${nn2(c)}</span><span class="mp-nm">${esc(c.nome)}</span>
           <span class="mp-pg">${c.stato === 'pronto' ? `${c.manifest.pagine} p.` : 'in arrivo'}</span></button>
           ${sz.length ? `<button class="mp-giu" data-a="giu" aria-label="Mostra sezioni" title="${sz.length} sezioni">${sz.length}<i></i></button>` : ''}</div>
         ${sz.length ? `<div class="mp-sz">${mostra.map(s => `<button data-p="${s.p}"><span>${esc(s.t)}</span>${s.d ? `<em>${esc(s.d)}</em>` : ''}<i>p. ${s.p}</i></button>`).join('')}</div>` : ''}

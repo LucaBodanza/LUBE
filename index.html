@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="web/accesso.css">
 </head>
 <body>
-<script>window.ELSAP_WEB = { versione: "1.1.1", dati: "2026.10.8", riservata: true };</script>
+<script>window.ELSAP_WEB = { versione: "1.1.1", dati: "2026.10.9", riservata: true };</script>
 <canvas id="scena"></canvas>
 <div id="grana"></div>
 
@@ -37,7 +37,7 @@
   </button>
   <nav class="briciole" id="briciole"></nav>
   <div class="dx">
-    <button class="navb tv-nav" data-trova><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>Trova <span class="tv-k"></span></button><button class="navb" data-mappa>Mappa</button><button class="navb" id="nCerca">Cerca codice</button><button class="navb" id="nAI">Interrogatore</button>
+    <button class="navb tv-nav" data-trova><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>Trova <span class="tv-k"></span></button><button class="navb" data-mappa>Mappa</button><button class="navb nw-nav" data-news>News<b class="nw-n" hidden></b></button><button class="navb" id="nCerca">Cerca codice</button><button class="navb" id="nAI">Interrogatore</button>
     <button class="chip" id="grafica" title="Qualità grafica: automatica, leggera o piena"></button>
     <span class="chip" id="statoDb">database</span>
     <span class="chip mono" id="orologio"></span>
@@ -53,7 +53,7 @@
     <div class="numeri" id="numeri"></div>
     <button class="tv-barra" data-trova><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg><span>Cosa stai cercando? Catalogo, sezione, codice…</span><kbd class="tv-k"></kbd></button>
     <p class="tv-aiuto">Non sai dove si trova? Scrivi qualsiasi cosa: ti indico comparto, catalogo e pagina.</p>
-    <div class="home-az"><button class="btn ghost" data-mappa>Mappa dei cataloghi</button><button class="btn ghost" id="hCerca">Cerca codice</button><button class="btn ghost" id="hAI">Interrogatore</button></div>
+    <div class="home-az"><button class="btn ghost" data-mappa>Mappa dei cataloghi</button><button class="btn ghost nw-home" data-news>News<b class="nw-n" hidden></b></button><button class="btn ghost" id="hCerca">Cerca codice</button><button class="btn ghost" id="hAI">Interrogatore</button></div>
   </div>
   <div class="comparti-wrap">
     <div class="scaffale-testa"><span class="lab">I comparti · Product areas</span><span class="lab muted" id="compartiInfo"></span></div>
@@ -78,6 +78,15 @@
     <input id="mpFiltro" placeholder="Filtra la mappa · es. M12, Ethernet, valvole…" autocomplete="off">
   </div>
   <div class="mp-colonne" id="mpColonne"></div>
+</section>
+
+<!-- NEWS DAI PRODUTTORI -->
+<section id="news" class="vista">
+  <div class="nw-testa">
+    <div><span class="pill cool">News</span><h2>Novità dai produttori</h2><p class="muted" id="nwInfo"></p></div>
+    <div class="nw-filtri" id="nwFiltri"></div>
+  </div>
+  <div class="nw-corpo" id="nwCorpo"></div>
 </section>
 
 <!-- SCHEDA CATALOGO -->

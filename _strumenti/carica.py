@@ -50,7 +50,7 @@ def fase_decifra():
     (LAV / "pdf").mkdir(parents=True, exist_ok=True)
     pdf = LAV / "pdf" / f"{c['slug']}.pdf"
     pdf.write_bytes(decifra(enc.read_bytes()))
-    voce = {k: c[k] for k in ("numero", "slug", "nome", "comparto", "sottotitolo", "marchi", "sotto", "provvisoria", "pagina_copertina") if k in c}
+    voce = {k: c[k] for k in ("numero", "num", "slug", "nome", "comparto", "sottotitolo", "marchi", "sotto", "provvisoria", "pagina_copertina") if k in c}
     voce["pdf"] = f"CARICA:{pdf.name}"
     json.dump({"radici": {"CARICA": str(LAV / "pdf")}, "cataloghi": [voce]}, open(LAV / "elenco.json", "w"), ensure_ascii=False)
     print(f"{c['numero']:02d} {c['nome']}: PDF decifrato ({pdf.stat().st_size / 1048576:.1f} MB)")
@@ -73,9 +73,19 @@ def fase_pubblica():
     nuovo = json.load(open(out / "cataloghi.json", encoding="utf-8"))[0]
     slug = nuovo["slug"]
     cs = leggi("dati/cataloghi.json") or []
-    vecchi = {x["slug"] for x in cs if x["slug"] == slug or x["numero"] == nuovo["numero"]}
-    cs = [x for x in cs if x["slug"] not in vecchi] + [nuovo]
+    # Un catalogo si sostituisce SOLO se è lo stesso catalogo: stesso slug, oppure stesso comparto E stesso numero DENTRO il comparto.
+    # (Prima contava il numero da solo: il n.1 di Elettronica Industriale cancellava il n.1 di Connessione.)
+    com = lambda x: x.get("comparto") or "connessione"
+    num = lambda x: x.get("num", x["numero"] % 100 if x["numero"] >= 100 else x["numero"])
+    vecchi = {x["slug"] for x in cs if x["slug"] == slug or (com(x) == com(nuovo) and num(x) == num(nuovo))}
+    # chiave interna unica: se un ALTRO catalogo (altro comparto o altro slug) usa già questo numero, ci si ferma senza toccare niente
+    clash = [x for x in cs if x["numero"] == nuovo["numero"] and x["slug"] not in vecchi]
+    if clash:
+        sys.exit(f"STOP: il numero interno {nuovo['numero']} è già usato da «{clash[0]['nome']}» ({com(clash[0])}). Non cancello niente.")
+    persi = [x for x in cs if x["slug"] not in vecchi]
+    cs = persi + [nuovo]
     cs.sort(key=lambda x: x["numero"])
+    print(f"Sostituisce: {', '.join(sorted(vecchi)) or 'nessuno (catalogo nuovo)'} · restano {len(persi)} cataloghi")
     # file del catalogo: via quelli vecchi (stessa cartella o stesso numero), dentro i nuovi cifrati
     for s in vecchi | {slug}:
         shutil.rmtree(SITO / "cat" / s, ignore_errors=True)

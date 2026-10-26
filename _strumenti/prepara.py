@@ -232,7 +232,7 @@ def prepara(c):
     miniatura(princ, c.get("pagina_copertina", 1), tmp / "copertina.jpg", 1100)
     json.dump(ricerca, open(tmp / "ricerca.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     sottot = c.get("sottotitolo") or " · ".join(dict.fromkeys(s["titolo"].title() if s["titolo"].isupper() else s["titolo"] for s in seg if s["livello"] == 1 and not re.search(r"^(indice|index|sommario)$", s["titolo"], re.I)))[:140]
-    m = {"numero": c["numero"], "slug": slug, "nome": c["nome"], "sottotitolo": sottot, "marchi": c.get("marchi", []),
+    m = {"numero": c["numero"], "num": c.get("num", c["numero"]), "slug": slug, "nome": c["nome"], "sottotitolo": sottot, "marchi": c.get("marchi", []),
          "pagine": n_tot, "codici": len(ricerca[nome_file]), "sotto_nome": sp.get("nome", "sezioni"), "provvisoria": c.get("provvisoria", False),
          "generato": datetime.datetime.now().isoformat(timespec="seconds"), "file": nome_file, "copertina": "copertina.jpg",
          "indice": ind2, "segnalibri": [[x["livello"], x["pagina"], x["titolo"]] for x in seg], "sotto": sotto, "pdf_mb": round(princ.stat().st_size / 1048576, 1), "pronto": True, "_impronta": impronta}
@@ -264,7 +264,7 @@ for c in CFG["cataloghi"]:
         m = prepara(c)
     if m:
         m = {k: v for k, v in m.items() if k not in ("_impronta", "segnalibri")}
-    elenco.append({"numero": c["numero"], "nome": c["nome"], "sottotitolo": (m or {}).get("sottotitolo") or c.get("sottotitolo", ""), "slug": c["slug"], "marchi": c.get("marchi", []),
+    elenco.append({"numero": c["numero"], "num": c.get("num", c["numero"]), "nome": c["nome"], "sottotitolo": (m or {}).get("sottotitolo") or c.get("sottotitolo", ""), "slug": c["slug"], "marchi": c.get("marchi", []),
                    "comparto": c.get("comparto", "connessione"), "manifest": m, "stato": "pronto" if m else "in arrivo"})
 json.dump(elenco, open(OUT / "cataloghi.json", "w", encoding="utf-8"), ensure_ascii=False)
 print(f"Elenco: {sum(1 for e in elenco if e['manifest'])} pronti su {len(elenco)} → {OUT / 'cataloghi.json'}")
