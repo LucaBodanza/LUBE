@@ -174,5 +174,30 @@
   "pagine": 36,
   "codici": 12,
   "prodotti": 114
+ },
+ {
+  "quando": "2026-10-29T11:03:10+00:00",
+  "scheda": {
+   "numero": 19,
+   "num": 19,
+   "slug": "19_SERIE_03_-_M16_AISG",
+   "nome": "SERIE 03 - M16 AISG",
+   "comparto": "connessione",
+   "sottotitolo": "",
+   "marchi": [],
+   "certificato_elsap": true,
+   "pagina_copertina": 1,
+   "sotto": {
+    "tipo": "segnalibri",
+    "livello": 2,
+    "nome": "sezioni",
+    "foto_dopo": 1
+   },
+   "file_originale": "19_SERIE_03_M16_AISG.pdf",
+   "caricato": "2026-10-29T11:02:33.018Z"
+  },
+  "pagine": 82,
+  "codici": 12,
+  "prodotti": 76
  }
 ]
