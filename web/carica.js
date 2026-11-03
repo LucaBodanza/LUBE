@@ -345,13 +345,17 @@ async function pubblica(f) {
     }
     st('srv', 'ok', null, 100);
     st('web', 'va', 'GitHub Pages pubblica la nuova versione…', 30);
-    const t0 = Date.now();
-    for (let i = 0; i < 120; i++) {
-      await new Promise(r => setTimeout(r, 5000));
-      const rr = await gh('actions/runs?per_page=5');
-      const pg = (rr.workflow_runs || []).find(r => /pages/i.test(r.name) && Date.parse(r.created_at) >= t0 - 120000);
-      if (pg) { st('web', 'va', `GitHub Pages: ${pg.status === 'completed' ? 'fatto' : 'in corso'}`, pg.status === 'completed' ? 100 : 60); if (pg.status === 'completed') break; }
+    const t0 = Date.now(); let online = false;
+    for (let i = 0; i < 150 && !online; i++) {
+      await new Promise(r => setTimeout(r, 6000));
+      const rr = await gh('actions/runs?per_page=10');
+      const pg = (rr.workflow_runs || []).filter(r => /pages/i.test(r.name) && Date.parse(r.created_at) >= t0 - 300000).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
+      if (!pg) continue;
+      if (pg.status === 'completed' && pg.conclusion === 'success') { online = true; break; }
+      if (pg.status === 'completed' && pg.conclusion === 'failure') st('web', 'va', 'GitHub ha dato un errore sul suo server: il sito riprova da solo, aspetta…', 45);
+      else st('web', 'va', `GitHub Pages: ${pg.status === 'completed' ? 'in attesa' : 'in corso'}`, 60);
     }
+    if (!online) throw new Error('GitHub Pages non ha pubblicato. I dati sono salvati: su GitHub → Actions apri l\'ultima riga rossa e premi «Re-run failed jobs».');
     st('web', 'ok', 'Online ✓ · ricarica il sito (2 volte) per vederlo', 100);
     btn.textContent = 'Pubblicato ✓';
   } catch (e) {
