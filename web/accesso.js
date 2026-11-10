@@ -115,6 +115,7 @@ function profiloInBarra(s, ACC) {
   const a = ACC.find(x => x.n === s.nome) || { n: s.nome, r: s.ruolo, i: (s.nome || '?').split(/\s+/).map(x => x[0]).join('').slice(0, 2) };
   // pannello di caricamento: solo sul dispositivo dell'Admin DEV (token GitHub già salvato) o aprendo il sito con ?carica
   let dev = /[?&#]carica\b/.test(location.search + location.hash);
+  dev = dev || /developer/i.test(s.ruolo || '');   // l'Admin DEV lo vede su ogni browser (il token si incolla nel pannello)
   try { dev = dev || !!localStorage.getItem('elsap.gh'); } catch (e) { /* niente */ }
   const b = document.createElement('div');
   b.className = 'ac-menu';

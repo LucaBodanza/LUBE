@@ -167,3 +167,14 @@
 @keyframes cgIn { from { opacity: 0; transform: translateY(5px) scale(.92); } to { opacity: 1; transform: none; } }
 @media (max-width: 720px) { .cg-chips { grid-template-columns: 1fr; } .cg-cert-logo { display: none; } }
 @media (prefers-reduced-motion: reduce) { .cg-cert.ok *, .cg-step * { animation-duration: .01s !important; animation-delay: 0s !important; } }
+
+/* token incollabile nel pannello · schede Carica/Sposta · vista Sposta */
+.cg-tok { display: flex; gap: 8px; margin: 10px 18px 0; }
+.cg-tok[hidden] { display: none; }
+.cg-tok input { flex: 1; min-width: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: inherit; font: inherit; font-size: 13px; }
+.cg-tab { margin-left: auto; margin-right: 46px; display: flex; gap: 4px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,.07); }
+.cg-tab button { border: 0; background: none; color: inherit; font: inherit; font-size: 13px; padding: 6px 14px; border-radius: 999px; cursor: pointer; opacity: .7; }
+.cg-tab button.on { background: rgba(255,255,255,.16); opacity: 1; }
+.cg-sposta { display: flex; flex-direction: column; gap: 14px; padding: 18px; width: 100%; max-width: 640px; margin: 0 auto; }
+.cg-sposta select, .cg-sposta input[type=number] { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); color: inherit; font: inherit; }
+.cg-sposta select option { color: #111; }

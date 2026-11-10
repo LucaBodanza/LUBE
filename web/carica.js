@@ -112,7 +112,8 @@ export async function apri(sess, acc) {
   <div class="cg-bolle"><i></i><i></i><i></i></div>
   <div class="cg-vetro cg-main">
     <button class="cg-x" title="Chiudi">✕</button>
-    <div class="cg-testa"><span class="cg-logo"></span><div><b>Carica catalogo</b><span class="lab">Admin DEV · ELSAP DSGN</span></div></div>
+    <div class="cg-testa"><span class="cg-logo"></span><div><b>Carica catalogo</b><span class="lab">Admin DEV · ELSAP DSGN</span></div>
+      <div class="cg-tab"><button type="button" class="on" data-t="carica">Carica</button><button type="button" data-t="sposta">Sposta</button></div></div>
     <div class="cg-corpo">
       <div class="cg-sx">
         <label class="cg-drop" tabindex="0"><input type="file" accept="application/pdf" hidden>
@@ -147,13 +148,15 @@ export async function apri(sess, acc) {
   ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('su'); }));
   drop.addEventListener('drop', e => { const f = [...e.dataTransfer.files].find(x => /\.pdf$/i.test(x.name)); if (f) scelto(f); });
   el.querySelectorAll('.cg-orb').forEach(b => b.onclick = () => orb(b.dataset.o));
+  el.querySelectorAll('.cg-tab button').forEach(b => b.onclick = () => b.dataset.t === 'sposta' ? vistaSposta() : apri(S, ACC));
 }
 
 async function stati() {
   const el = $('#carica'), t = await token();
   const set = (o, ok, msg) => { const b = $(`.cg-orb[data-o="${o}"]`, el); b.classList.toggle('ok', ok); b.classList.toggle('no', !ok); b.dataset.msg = msg; };
   set('key', !!S.scrivi, S.scrivi ? 'Cifratura pronta su questo dispositivo' : 'Esci e rientra con la password per attivare la cifratura');
-  set('gh', !!t, t ? 'Token GitHub salvato (cifrato) su questo dispositivo' : 'Manca il token GitHub: clicca il cerchio blu');
+  set('gh', !!t, t ? 'Token GitHub salvato (cifrato) su questo browser' : 'Manca il token GitHub su questo browser: incollalo una volta qui sotto');
+  if (!t && S.scrivi && !$('.cg-tok', el)) tokenForm();
   let srv = false;
   try { const w = await gh('actions/workflows'); srv = (w.workflows || []).some(x => /carica/i.test(x.path)); } catch (e) { /* senza token o senza rete */ }
   set('srv', srv, srv ? 'Elaborazione su GitHub pronta' : 'Elaborazione non raggiungibile (manca il token o il file .github/workflows/carica.yml)');
@@ -162,10 +165,19 @@ async function stati() {
 async function orb(o) {
   const el = $('#carica'), b = $(`.cg-orb[data-o="${o}"]`, el), info = $('.cg-orb-info', el);
   info.textContent = b.dataset.msg || '';
-  if (o === 'gh' && S.scrivi) {
-    const t = prompt('Token GitHub (fine-grained, solo repository LUBE · Contents: Read and write · Actions: Read). Resta solo su questo dispositivo, cifrato.');
-    if (t && t.trim()) { await salvaToken(t.trim()); await stati(); }
-  }
+  if (o === 'gh' && S.scrivi) tokenForm();
+}
+// il token si incolla qui dentro (niente finestre di sistema: Safari e Chrome le bloccano). Resta su questo browser, cifrato.
+function tokenForm() {
+  const el = $('#carica'); let f = $('.cg-tok', el);
+  if (f) { f.hidden = !f.hidden; return; }
+  $('.cg-orbs', el).insertAdjacentHTML('afterend', `<form class="cg-tok"><input type="password" autocomplete="off" placeholder="Incolla qui il token GitHub (fine-grained · solo LUBE · Contents: Read and write · Actions: Read)"><button class="btn">Salva</button></form>`);
+  f = $('.cg-tok', el);
+  f.onsubmit = async e => {
+    e.preventDefault(); const t = f.firstElementChild.value.trim(); if (!t) return;
+    try { await salvaToken(t); try { navigator.storage?.persist?.(); } catch (x) { /* facoltativo */ } f.hidden = true; f.firstElementChild.value = ''; await stati(); }
+    catch (x) { $('.cg-orb-info', el).textContent = 'Token non salvato: ' + x.message; }
+  };
 }
 
 function uiLettura(file) {
@@ -292,7 +304,96 @@ function modulo(file) {
   f.onsubmit = e => { e.preventDefault(); pubblica(f); };
 }
 
+
+// ---------------------------------------------------------------- sposta un catalogo da una sezione all'altra (senza ricaricare il PDF)
+function vistaSposta() {
+  const el = $('#carica'), corpo = $('.cg-corpo', el);
+  el.querySelectorAll('.cg-tab button').forEach(b => b.classList.toggle('on', b.dataset.t === 'sposta'));
+  const ord = [...CAT].sort((a, b) => COMPARTI.findIndex(c => c.id === compartoDi(a)) - COMPARTI.findIndex(c => c.id === compartoDi(b)) || numCat(a) - numCat(b));
+  corpo.innerHTML = `<form class="cg-sposta cg-dx cg-vetro">
+    <label class="cg-sez"><b>Quale catalogo?</b><select name="cat">${ord.map(c => `<option value="${esc(c.slug)}">${esc(COMPARTI.find(x => x.id === compartoDi(c)).nome)} · ${String(numCat(c)).padStart(2, '0')} · ${esc(c.nome)}</option>`).join('')}</select></label>
+    <div class="cg-sez"><b>Nuova sezione</b><div class="cg-chips">${COMPARTI.map(c => `<label class="cg-chip" style="--cp:${c.colore}"><input type="radio" name="comparto" value="${c.id}"><span class="pt"></span>${esc(c.nome)}</label>`).join('')}</div></div>
+    <label class="cg-sez"><b>Nuovo numero</b><input name="numero" type="number" min="1" max="99" inputmode="numeric"></label>
+    <div class="cg-dove lab"></div>
+    <div class="cg-azioni"><button class="btn cg-pub" disabled>Sposta →</button></div>
+    <div class="cg-passi" hidden></div></form>`;
+  const f = $('.cg-sposta', corpo), nn = n => String(n).padStart(2, '0');
+  const cur = () => CAT.find(c => c.slug === f.cat.value);
+  const dove = () => {
+    const c = cur(), comp = f.comparto.value, n = +f.numero.value, cp = COMPARTI.find(x => x.id === comp);
+    const occ = comp && n ? CAT.find(k => compartoDi(k) === comp && numCat(k) === n && k.slug !== c.slug) : null;
+    const uguale = c && comp === compartoDi(c) && n === numCat(c);
+    const box = $('.cg-dove', f); box.classList.toggle('avv', !!occ || uguale);
+    box.innerHTML = !comp ? 'Scegli la <b>sezione di destinazione</b>.' : !n ? 'Scrivi il <b>numero</b>.' : uguale ? 'È già lì: scegli un\'altra sezione o un altro numero.' :
+      occ ? `Il numero ${nn(n)} in ${esc(cp.nome)} è occupato da <b>${esc(occ.nome)}</b>: scegli un numero libero.` :
+      `«${esc(c.nome)}» va in <b>${esc(cp.nome)}</b> come <b>${nn(n)}</b>. Il PDF non si ricarica: cambia solo la posizione.`;
+    $('.cg-pub', f).disabled = !(comp && n >= 1 && n <= 99 && !occ && !uguale);
+  };
+  f.cat.onchange = () => { f.querySelectorAll('[name=comparto]').forEach(r => r.checked = false); f.numero.value = ''; dove(); };
+  f.querySelectorAll('[name=comparto]').forEach(r => r.onchange = () => { f.numero.value = Math.max(0, ...CAT.filter(k => compartoDi(k) === r.value && k.slug !== f.cat.value).map(numCat)) + 1; dove(); });
+  f.numero.oninput = dove; dove();
+  f.onsubmit = async e => {
+    e.preventDefault();
+    const c = cur(), comp = f.comparto.value, n = +f.numero.value, btn = $('.cg-pub', f), passi = $('.cg-passi', f);
+    if (!(await token())) { tokenForm(); return alert('Prima incolla il token GitHub (cerchio blu).'); }
+    if (!confirm(`Sposto «${c.nome}» in ${COMPARTI.find(x => x.id === comp).nome} come numero ${nn(n)}?`)) return;
+    btn.disabled = true; passi.hidden = false;
+    const P = [['invia', 'Invio la richiesta a GitHub'], ['srv', 'Elaborazione sul server'], ['web', 'Il sito si aggiorna']];
+    passi.innerHTML = P.map(([k, t]) => `<div class="cg-p" data-k="${k}"><span class="pt"></span><b>${t}</b><i></i><div class="sub"></div></div>`).join('');
+    const st = (k, s, sub, pc) => { const p = $(`.cg-p[data-k="${k}"]`, passi); p.className = `cg-p ${s}`; if (sub != null) $('.sub', p).innerHTML = sub; if (pc != null) $('i', p).style.width = `${pc}%`; };
+    try {
+      st('invia', 'va', '', 30);
+      const scheda = { azione: 'sposta', slug: c.slug, comparto: comp, num: n, quando: new Date().toISOString() };
+      const ref = await gh(`git/ref/heads/${RAMO}`), base = await gh(`git/commits/${ref.object.sha}`);
+      const bj = await gh('git/blobs', { method: 'POST', body: JSON.stringify({ content: b64(TE.encode(JSON.stringify(scheda, null, 1))), encoding: 'base64' }) });
+      const tree = await gh('git/trees', { method: 'POST', body: JSON.stringify({ base_tree: base.tree.sha, tree: [{ path: `_carica/sposta_${c.slug}.json`, mode: '100644', type: 'blob', sha: bj.sha }] }) });
+      const cm = await gh('git/commits', { method: 'POST', body: JSON.stringify({ message: `Sposta ${c.nome} in ${COMPARTI.find(x => x.id === comp).nome} ${nn(n)}`, tree: tree.sha, parents: [ref.object.sha] }) });
+      await gh(`git/refs/heads/${RAMO}`, { method: 'PATCH', body: JSON.stringify({ sha: cm.sha }) });
+      st('invia', 'ok', `commit ${cm.sha.slice(0, 7)}`, 100);
+      st('srv', 'va', 'in coda…', 3);
+      await segui(cm.sha, st);
+      btn.textContent = 'Spostato ✓';
+    } catch (er) {
+      const k = [...passi.querySelectorAll('.cg-p')].find(p => p.classList.contains('va'))?.dataset.k || 'invia';
+      st(k, 'ko', esc(er.message)); btn.disabled = false; btn.textContent = 'Riprova';
+    }
+  };
+}
+
 // ---------------------------------------------------------------- pubblicazione
+// elaborazione sul server + pubblicazione di GitHub Pages (usata da Carica e da Sposta)
+async function segui(sha, st) {
+    // elaborazione: si seguono i passi del workflow
+    st('srv', 'va', 'in coda…', 3);
+    let run = null;
+    for (let i = 0; i < 400; i++) {
+      await new Promise(r => setTimeout(r, run ? 3000 : 4000));
+      if (!run) { const rr = await gh(`actions/runs?head_sha=${sha}`); run = (rr.workflow_runs || []).find(r => /carica/i.test(r.name) || /carica/i.test(r.path || '')); if (!run) continue; }
+      const jj = await gh(`actions/runs/${run.id}/jobs`), job = (jj.jobs || [])[0];
+      const steps = (job?.steps || []).filter(s => !/^(Set up job|Post |Complete job)/.test(s.name) && s.conclusion !== 'skipped');
+      const fatti = steps.filter(s => s.status === 'completed').length, ora = steps.find(s => s.status === 'in_progress');
+      st('srv', 'va', steps.map(s => `<span class="${s.conclusion === 'success' ? 'ok' : s.status === 'in_progress' ? 'va' : s.conclusion ? 'ko' : ''}">${esc(s.name)}</span>`).join(''), steps.length ? Math.max(5, fatti / steps.length * 100) : 5);
+      if (job?.status === 'completed') {
+        if (job.conclusion !== 'success') throw new Error(`il server si è fermato a "${(steps.find(s => s.conclusion === 'failure') || {}).name || 'un passo'}" · dettagli su GitHub → Actions`);
+        break;
+      }
+    }
+    st('srv', 'ok', null, 100);
+    st('web', 'va', 'GitHub Pages pubblica la nuova versione…', 30);
+    const t0 = Date.now(); let online = false;
+    for (let i = 0; i < 150 && !online; i++) {
+      await new Promise(r => setTimeout(r, 6000));
+      const rr = await gh('actions/runs?per_page=10');
+      const pg = (rr.workflow_runs || []).filter(r => /pages/i.test(r.name) && Date.parse(r.created_at) >= t0 - 300000).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
+      if (!pg) continue;
+      if (pg.status === 'completed' && pg.conclusion === 'success') { online = true; break; }
+      if (pg.status === 'completed' && pg.conclusion === 'failure') st('web', 'va', 'GitHub ha dato un errore sul suo server: il sito riprova da solo, aspetta…', 45);
+      else st('web', 'va', `GitHub Pages: ${pg.status === 'completed' ? 'in attesa' : 'in corso'}`, 60);
+    }
+    if (!online) throw new Error('GitHub Pages non ha pubblicato. I dati sono salvati: su GitHub → Actions apri l\'ultima riga rossa e premi «Re-run failed jobs».');
+    st('web', 'ok', 'Online ✓ · ricarica il sito (2 volte) per vederlo', 100);
+}
+
 async function pubblica(f) {
   const passi = $('.cg-passi', f), btn = $('.cg-pub', f);
   if (!(await token())) return alert('Prima salva il token GitHub (cerchio blu).');
@@ -328,35 +429,7 @@ async function pubblica(f) {
     const c = await gh('git/commits', { method: 'POST', body: JSON.stringify({ message: `Carica ${COMPARTI.find(c => c.id === comp).nome} ${String(n).padStart(2, '0')} ${nome}`, tree: tree.sha, parents: [ref.object.sha] }) });
     await gh(`git/refs/heads/${RAMO}`, { method: 'PATCH', body: JSON.stringify({ sha: c.sha }) });
     st('invia', 'ok', `commit ${c.sha.slice(0, 7)}`, 100);
-    // elaborazione: si seguono i passi del workflow
-    st('srv', 'va', 'in coda…', 3);
-    let run = null;
-    for (let i = 0; i < 400; i++) {
-      await new Promise(r => setTimeout(r, run ? 3000 : 4000));
-      if (!run) { const rr = await gh(`actions/runs?head_sha=${c.sha}`); run = (rr.workflow_runs || []).find(r => /carica/i.test(r.name) || /carica/i.test(r.path || '')); if (!run) continue; }
-      const jj = await gh(`actions/runs/${run.id}/jobs`), job = (jj.jobs || [])[0];
-      const steps = (job?.steps || []).filter(s => !/^(Set up job|Post |Complete job)/.test(s.name));
-      const fatti = steps.filter(s => s.status === 'completed').length, ora = steps.find(s => s.status === 'in_progress');
-      st('srv', 'va', steps.map(s => `<span class="${s.conclusion === 'success' ? 'ok' : s.status === 'in_progress' ? 'va' : s.conclusion ? 'ko' : ''}">${esc(s.name)}</span>`).join(''), steps.length ? Math.max(5, fatti / steps.length * 100) : 5);
-      if (job?.status === 'completed') {
-        if (job.conclusion !== 'success') throw new Error(`il server si è fermato a "${(steps.find(s => s.conclusion === 'failure') || {}).name || 'un passo'}" · dettagli su GitHub → Actions`);
-        break;
-      }
-    }
-    st('srv', 'ok', null, 100);
-    st('web', 'va', 'GitHub Pages pubblica la nuova versione…', 30);
-    const t0 = Date.now(); let online = false;
-    for (let i = 0; i < 150 && !online; i++) {
-      await new Promise(r => setTimeout(r, 6000));
-      const rr = await gh('actions/runs?per_page=10');
-      const pg = (rr.workflow_runs || []).filter(r => /pages/i.test(r.name) && Date.parse(r.created_at) >= t0 - 300000).sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
-      if (!pg) continue;
-      if (pg.status === 'completed' && pg.conclusion === 'success') { online = true; break; }
-      if (pg.status === 'completed' && pg.conclusion === 'failure') st('web', 'va', 'GitHub ha dato un errore sul suo server: il sito riprova da solo, aspetta…', 45);
-      else st('web', 'va', `GitHub Pages: ${pg.status === 'completed' ? 'in attesa' : 'in corso'}`, 60);
-    }
-    if (!online) throw new Error('GitHub Pages non ha pubblicato. I dati sono salvati: su GitHub → Actions apri l\'ultima riga rossa e premi «Re-run failed jobs».');
-    st('web', 'ok', 'Online ✓ · ricarica il sito (2 volte) per vederlo', 100);
+    await segui(c.sha, st);
     btn.textContent = 'Pubblicato ✓';
   } catch (e) {
     const k = [...passi.querySelectorAll('.cg-p')].find(p => p.classList.contains('va'))?.dataset.k || 'invia';

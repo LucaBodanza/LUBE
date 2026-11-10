@@ -67,6 +67,90 @@ def scrivi(rel, dati):
     p.write_bytes(cifra(rel, dati))
 
 
+def aggiorna_sw():
+    # service worker: versione nuova → i dispositivi riprendono elenco e database aggiornati
+    sw = (SITO / "sw.js").read_text(encoding="utf-8")
+    imp = hashlib.sha1((SITO / "dati/cataloghi.json").read_bytes() + (SITO / "dati/prodotti.json").read_bytes()).hexdigest()[:8]
+    sw = re.sub(r"const VERSIONE = '([^']*?)(-c[0-9a-f]{8})?';", lambda m: f"const VERSIONE = '{m.group(1)}-c{imp}';", sw, count=1)
+    (SITO / "sw.js").write_text(sw, encoding="utf-8")
+
+
+def fase_tipo():
+    """Dice al workflow se la richiesta è un caricamento o uno spostamento (scrive 'azione' in GITHUB_OUTPUT)."""
+    _, c = scheda()
+    az = c.get("azione", "carica")
+    with open(os.environ.get("GITHUB_OUTPUT", os.devnull), "a") as o:
+        o.write(f"azione={az}\n")
+    print("azione:", az)
+
+
+SIGLE = {"connessione": "", "elettronica-industriale": "ei", "sistemi-elettromeccanici": "se"}
+ORDINE = list(SIGLE)          # stesso ordine di COMPARTI nel sito: numero interno = posizione*100 + num
+
+
+def fase_sposta():
+    """Sposta un catalogo in un'altra sezione (o un altro numero) senza ricaricare il PDF: cambiano posizione, slug e riferimenti."""
+    f, c = scheda()
+    com = lambda x: x.get("comparto") or "connessione"
+    num = lambda x: x.get("num", x["numero"] % 100 if x["numero"] >= 100 else x["numero"])
+    if c.get("comparto") not in SIGLE:
+        sys.exit(f"STOP: sezione sconosciuta «{c.get('comparto')}»")
+    cs = leggi("dati/cataloghi.json") or []
+    x = next((k for k in cs if k["slug"] == c["slug"]), None)
+    if not x:
+        sys.exit(f"STOP: catalogo «{c['slug']}» non trovato. Non cambio niente.")
+    n, dest = int(c["num"]), c["comparto"]
+    if not 1 <= n <= 99:
+        sys.exit("STOP: il numero deve essere tra 1 e 99")
+    occ = [k for k in cs if k["slug"] != x["slug"] and com(k) == dest and num(k) == n]
+    if occ:
+        sys.exit(f"STOP: in {dest} il numero {n} è già di «{occ[0]['nome']}». Non cambio niente.")
+    if com(x) == dest and num(x) == n:
+        sys.exit("Niente da fare: il catalogo è già lì.")
+    vecchio = x["slug"]
+    resto = re.sub(r"^(ei|se)?\d+_", "", vecchio)
+    nuovo = f"{SIGLE[dest]}{n:02d}_{resto}"
+    numero = ORDINE.index(dest) * 100 + n
+    if any(k["slug"] == nuovo or k["numero"] == numero for k in cs if k is not x):
+        sys.exit(f"STOP: «{nuovo}» o il numero interno {numero} esistono già. Non cambio niente.")
+    print(f"Sposto «{x['nome']}»: {com(x)} {num(x)} → {dest} {n} · {vecchio} → {nuovo}")
+    # 1) cartella e file cifrati: il contenuto non cambia (nessun dato legato al percorso), cambiano solo i nomi
+    src, dst = SITO / "cat" / vecchio, SITO / "cat" / nuovo
+    if not src.is_dir():
+        sys.exit(f"STOP: manca la cartella cat/{vecchio}")
+    shutil.rmtree(dst, ignore_errors=True)
+    for p in sorted(src.rglob("*")):
+        if p.is_file():
+            q = dst / p.relative_to(src).as_posix().replace(vecchio, nuovo)
+            q.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(p, q)
+    shutil.rmtree(src)
+    # 2) elenco cataloghi: ogni riferimento al vecchio nome diventa il nuovo
+    y = json.loads(json.dumps(x, ensure_ascii=False).replace(vecchio, nuovo))
+    y["comparto"], y["num"], y["numero"] = dest, n, numero
+    if isinstance(y.get("manifest"), dict):
+        y["manifest"].update(numero=numero, num=n, slug=nuovo)
+    cs = [k for k in cs if k is not x] + [y]
+    cs.sort(key=lambda k: k["numero"])
+    scrivi("dati/cataloghi.json", json.dumps(cs, ensure_ascii=False).encode())
+    # 3) database prodotti: gruppo (slug) e numero
+    P = leggi("dati/prodotti.json") or {"versione": 1, "prodotti": []}
+    n_pr = 0
+    for o in P["prodotti"]:
+        if o.get("g") == vecchio:
+            o["g"], o["n"] = nuovo, numero; n_pr += 1
+    scrivi("dati/prodotti.json", json.dumps(P, ensure_ascii=False, separators=(",", ":")).encode())
+    aggiorna_sw()
+    reg = SITO / "_strumenti" / "caricati.json"
+    R = json.load(open(reg, encoding="utf-8")) if reg.exists() else []
+    R.append({"quando": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"), "scheda": c, "spostato": {"da": vecchio, "a": nuovo}, "prodotti": n_pr})
+    json.dump(R, open(reg, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    f.unlink(missing_ok=True)
+    print(f"Fatto: {nuovo} · {n_pr} prodotti aggiornati · {len(cs)} cataloghi")
+    with open(os.environ.get("GITHUB_STEP_SUMMARY", os.devnull), "a") as s:
+        s.write(f"### Spostato · {x['nome']}\n{vecchio} → {nuovo} · {dest} n.{n} · {n_pr} prodotti\n")
+
+
 def fase_pubblica():
     f, c = scheda()
     out = LAV / "out"
@@ -99,11 +183,7 @@ def fase_pubblica():
     nuovi = json.load(open(out / "prodotti.json", encoding="utf-8"))["prodotti"]
     P["prodotti"] = [o for o in P["prodotti"] if o.get("g") not in vecchi | {slug}] + nuovi
     scrivi("dati/prodotti.json", json.dumps(P, ensure_ascii=False, separators=(",", ":")).encode())
-    # service worker: versione nuova → i dispositivi riprendono elenco e database aggiornati
-    sw = (SITO / "sw.js").read_text(encoding="utf-8")
-    imp = hashlib.sha1((SITO / "dati/cataloghi.json").read_bytes() + (SITO / "dati/prodotti.json").read_bytes()).hexdigest()[:8]
-    sw = re.sub(r"const VERSIONE = '([^']*?)(-c[0-9a-f]{8})?';", lambda m: f"const VERSIONE = '{m.group(1)}-c{imp}';", sw, count=1)
-    (SITO / "sw.js").write_text(sw, encoding="utf-8")
+    aggiorna_sw()
     # registro (per Claude: i cataloghi caricati dal pannello vanno ripresi nei dati del Mac)
     reg = SITO / "_strumenti" / "caricati.json"
     R = json.load(open(reg, encoding="utf-8")) if reg.exists() else []
@@ -120,4 +200,4 @@ def fase_pubblica():
 
 
 if __name__ == "__main__":
-    {"decifra": fase_decifra, "pubblica": fase_pubblica}[sys.argv[1]]()
+    {"decifra": fase_decifra, "pubblica": fase_pubblica, "tipo": fase_tipo, "sposta": fase_sposta}[sys.argv[1]]()
