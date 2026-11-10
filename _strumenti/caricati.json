@@ -389,5 +389,20 @@
    "a": "22_DIN"
   },
   "prodotti": 33
+ },
+ {
+  "quando": "2026-11-10T16:03:05+00:00",
+  "scheda": {
+   "azione": "sposta",
+   "slug": "ei06_MINIATURA",
+   "comparto": "connessione",
+   "num": 23,
+   "quando": "2026-11-10T16:02:27.051Z"
+  },
+  "spostato": {
+   "da": "ei06_MINIATURA",
+   "a": "23_MINIATURA"
+  },
+  "prodotti": 10
  }
 ]
