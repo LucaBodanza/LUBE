@@ -8,11 +8,12 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write
 concurrency: { group: carica, cancel-in-progress: false }
 jobs:
   carica:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       ELSAP_CHIAVE: ${{ secrets.ELSAP_CHIAVE }}
       SITO: ${{ github.workspace }}
@@ -24,13 +25,23 @@ jobs:
         run: |
           sudo apt-get -qq update && sudo apt-get -qq install -y poppler-utils qpdf >/dev/null
           pip install -q pypdf cryptography
+      - name: Che richiesta è (carico o sposto)
+        id: tipo
+        run: python3 _strumenti/carica.py tipo
+      - name: Sposto il catalogo di sezione
+        if: steps.tipo.outputs.azione == 'sposta'
+        run: python3 _strumenti/carica.py sposta
       - name: Decifro il PDF caricato
+        if: steps.tipo.outputs.azione != 'sposta'
         run: python3 _strumenti/carica.py decifra
       - name: Leggo pagine, segnalibri e sotto-cataloghi
+        if: steps.tipo.outputs.azione != 'sposta'
         run: python3 _strumenti/prepara.py "$RUNNER_TEMP/carica/elenco.json" "$RUNNER_TEMP/carica/out" --forza
       - name: Estraggo codici e caratteristiche
+        if: steps.tipo.outputs.azione != 'sposta'
         run: python3 _strumenti/prodotti.py "$RUNNER_TEMP/carica/out"
       - name: Cifro e aggiorno il sito
+        if: steps.tipo.outputs.azione != 'sposta'
         run: python3 _strumenti/carica.py pubblica
       - name: Pubblico
         run: |
@@ -42,3 +53,28 @@ jobs:
       - name: Aggiorno il sito online
         env: { GH_TOKEN: "${{ github.token }}" }
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null || echo "build di Pages partita da sola"
+      - name: Controllo che il sito sia online (se GitHub sbaglia, riprovo da solo)
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          R="${{ github.repository }}"; SHA=$(git rev-parse HEAD); sleep 20
+          for tent in 1 2 3 4; do
+            ID=""
+            for i in $(seq 1 20); do
+              ID=$(gh api "repos/$R/actions/runs?head_sha=$SHA&per_page=30" --jq '[.workflow_runs[] | select(.name | test("pages build"))] | sort_by(.created_at) | last | .id // empty')
+              [ -n "$ID" ] && break; sleep 6
+            done
+            if [ -z "$ID" ]; then echo "nessuna pubblicazione partita: la avvio"; gh api -X POST "repos/$R/pages/builds" >/dev/null || true; sleep 20; continue; fi
+            S=""
+            for i in $(seq 1 90); do
+              S=$(gh api "repos/$R/actions/runs/$ID" --jq '.status + " " + (.conclusion // "")')
+              case "$S" in completed*) break ;; esac; sleep 10
+            done
+            echo "tentativo $tent · pubblicazione $ID: $S"
+            case "$S" in
+              "completed success") echo "Sito online."; exit 0 ;;
+              "completed cancelled") echo "superata da una più recente: aspetto"; sleep 25 ;;
+              *) echo "GitHub Pages ha dato errore: riprovo"; gh run rerun "$ID" --failed >/dev/null 2>&1 || gh api -X POST "repos/$R/pages/builds" >/dev/null || true; sleep 25 ;;
+            esac
+          done
+          echo "::error::GitHub Pages non è riuscito a pubblicare dopo 4 tentativi. I dati sono salvati: da GitHub > Actions premere Re-run failed jobs."
+          exit 1
