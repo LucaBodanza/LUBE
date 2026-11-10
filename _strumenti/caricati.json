@@ -374,5 +374,20 @@
   "pagine": 152,
   "codici": 27,
   "prodotti": 497
+ },
+ {
+  "quando": "2026-11-10T15:28:07+00:00",
+  "scheda": {
+   "azione": "sposta",
+   "slug": "ei05_DIN",
+   "comparto": "connessione",
+   "num": 22,
+   "quando": "2026-11-10T15:27:29.249Z"
+  },
+  "spostato": {
+   "da": "ei05_DIN",
+   "a": "22_DIN"
+  },
+  "prodotti": 33
  }
 ]
