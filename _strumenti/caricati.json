@@ -404,5 +404,20 @@
    "a": "23_MINIATURA"
   },
   "prodotti": 10
+ },
+ {
+  "quando": "2026-11-10T16:08:15+00:00",
+  "scheda": {
+   "azione": "sposta",
+   "slug": "ei07_ALIMENTAZIONE",
+   "comparto": "connessione",
+   "num": 24,
+   "quando": "2026-11-10T16:07:16.536Z"
+  },
+  "spostato": {
+   "da": "ei07_ALIMENTAZIONE",
+   "a": "24_ALIMENTAZIONE"
+  },
+  "prodotti": 67
  }
 ]
