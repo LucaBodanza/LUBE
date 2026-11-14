@@ -1,0 +1,18 @@
+{
+  "versione": 1,
+  "nota": "SOLO SCHEMA. I prezzi reali non vanno mai in questo file né su GitHub: stanno in IndexedDB (collezione 'listini') con backup cifrato.",
+  "valuta": "EUR",
+  "_schema": {
+    "codice": "string, chiave = campo 'c' di dati/prodotti.json",
+    "catalogo": "number, campo 'n' del prodotto (numero interno catalogo), facoltativo se il codice è unico",
+    "marchio": "string, fornitore (es. Belden, CONEC)",
+    "acquisto": "number, prezzo di acquisto unitario: visibile solo con permesso vedeAcquisto",
+    "vendita": "number, prezzo di vendita listino",
+    "moq": "number, lotto minimo d'acquisto",
+    "tempi_giorni": "number, tempo di approvvigionamento standard",
+    "giacenza": "number, pezzi a magazzino",
+    "aggiornato": "string ISO 8601"
+  },
+  "_esempio": { "codice": "28044", "catalogo": 1, "marchio": "ESEMPIO", "acquisto": 0, "vendita": 0, "moq": 1, "tempi_giorni": 0, "giacenza": 0, "aggiornato": "2026-01-01T00:00:00" },
+  "righe": []
+}

@@ -1,0 +1,26 @@
+{
+  "versione": 1,
+  "nota": "SOLO SCHEMA. Anagrafiche reali solo in IndexedDB (collezioni 'clienti' e 'lead'), mai su GitHub.",
+  "stati_lead": ["Nuovo", "Contattato", "Qualificato", "Perso", "Convertito"],
+  "pagamenti": ["Ri.Ba. 30 gg", "Ri.Ba. 60 gg", "Bonifico anticipato", "Bonifico 30 gg", "Altro"],
+  "rese": ["Franco fabbrica", "Franco destino", "Spese di spedizione a carico cliente"],
+  "_schema": {
+    "lead": {
+      "id": "string", "ragione_sociale": "string", "referente": "string", "settore": "string",
+      "fonte": "string (fiera, web, passaparola…)", "stato": "uno di stati_lead", "note": "string",
+      "creato": "string ISO 8601"
+    },
+    "cliente": {
+      "id": "string", "ragione_sociale": "string", "piva": "string", "codice_fiscale": "string",
+      "sede_legale": "string", "sede_spedizione": "string",
+      "contatti": { "amministrativo": "string", "tecnico": "string" },
+      "condizioni": {
+        "sconti": { "connessione": "number %", "elettronica-industriale": "number %", "sistemi-elettromeccanici": "number %" },
+        "pagamento": "uno di pagamenti", "resa": "uno di rese"
+      },
+      "da_lead": "string|null, id del lead da cui deriva"
+    }
+  },
+  "lead": [],
+  "clienti": []
+}

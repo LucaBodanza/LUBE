@@ -1,0 +1,10 @@
+{
+  "versione": 1,
+  "nota": "Ruoli come in web/accesso.json (campo 'r'). Le regole sui permessi stanno in web/core/permessi.js. Sono controlli di interfaccia, non una barriera di sicurezza: la protezione vera dei dati è la cifratura.",
+  "ruoli": [
+    "CEO - Commerciale",
+    "Manager - Commerciale",
+    "CO-CEO - Commerciale",
+    "Brand Designer - Developer"
+  ]
+}

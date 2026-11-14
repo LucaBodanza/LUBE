@@ -1,0 +1,22 @@
+{
+  "versione": 1,
+  "nota": "SOLO SCHEMA. Offerte e ordini reali solo in IndexedDB (collezioni 'offerte' e 'ordini'), mai su GitHub.",
+  "stati_offerta": ["Bozza", "Inviata", "In revisione", "Accettata", "Rifiutata", "Scaduta"],
+  "stati_ordine": ["Confermato", "In acquisto", "In spedizione", "Evaso", "Fatturato"],
+  "contatori": { "offerta": 0, "ordine": 0 },
+  "_schema": {
+    "offerta": {
+      "id": "string, progressivo OFF-AAAA-nnnn", "cliente_id": "string (cliente o lead)", "stato": "uno di stati_offerta",
+      "righe": [{ "codice": "string", "descrizione": "string", "qta": "number", "prezzo": "number", "sconto": "number %", "consegna_giorni": "number", "note": "string" }],
+      "sconto_totale": "number %", "note_tecniche": "string",
+      "creata": "string ISO 8601", "valida_fino": "string ISO 8601", "revisione_di": "string|null"
+    },
+    "ordine": {
+      "id": "string, progressivo ORD-AAAA-nnnn", "offerta_id": "string",
+      "condizioni_bloccate": "copia delle condizioni economiche al momento dell'accettazione",
+      "stato": "uno di stati_ordine", "creato": "string ISO 8601"
+    }
+  },
+  "offerte": [],
+  "ordini": []
+}

@@ -15,9 +15,10 @@
 <meta name="apple-mobile-web-app-title" content="ELSAP DSGN">
 <link rel="stylesheet" href="web/app.css">
 <link rel="stylesheet" href="web/accesso.css">
+<link rel="stylesheet" href="web/dashboard.css">
 </head>
 <body>
-<script>window.ELSAP_WEB = { versione: "1.1.1", dati: "2026.10.9", riservata: true };</script>
+<script>window.ELSAP_WEB = { versione: "1.1.1", dati: "2026.11.1", riservata: true };</script>
 <canvas id="scena"></canvas>
 <div id="grana"></div>
 
@@ -32,7 +33,7 @@
 
 <!-- BARRA -->
 <header id="barra">
-  <button class="marchio" id="vaiHome" title="Libreria">
+  <button class="marchio" id="vaiHome" title="Moduli">
     <span class="logo" data-svg="logo"></span><span class="sep"></span><span class="app">ELSAP DSGN</span>
   </button>
   <nav class="briciole" id="briciole"></nav>
@@ -43,6 +44,12 @@
     <span class="chip mono" id="orologio"></span>
   </div>
 </header>
+
+<!-- DASHBOARD: i 3 Box -->
+<section id="dashboard" class="vista"></section>
+
+<!-- MODULO IN PREPARAZIONE (Box 2 e 3) -->
+<section id="modulo" class="vista"></section>
 
 <!-- HOME / LIBRERIA -->
 <section id="home" class="vista">

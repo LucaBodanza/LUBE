@@ -1,0 +1,29 @@
+/* ELSAP DSGN — Dashboard a 3 Box e pagina dei moduli in preparazione (usa le variabili di app.css) */
+#dashboard, #modulo { overflow-y: auto; padding: clamp(84px, 13vh, 130px) 6vw 6vh; }
+.db-testa h2, .md-testa h2 { font-size: clamp(30px, 4.4vw, 60px); line-height: 1; margin: 16px 0 10px; font-weight: 600; letter-spacing: -.03em; }
+.db-testa p { margin: 0; max-width: 520px; }
+.db-box { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: clamp(24px, 5vh, 52px); max-width: 1320px; }
+.db-card { --bx: var(--accent); position: relative; text-align: left; display: flex; flex-direction: column; gap: 8px; min-height: 340px; padding: 26px 26px 22px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bx) 9%, var(--bg1)), var(--bg1) 60%); border: 1px solid var(--line); border-top: 3px solid var(--bx);
+  border-radius: var(--r); color: var(--ink); transition: transform .3s var(--ease), border-color .25s, box-shadow .3s; }
+.db-card:hover, .db-card:focus-visible { transform: translateY(-4px); border-color: var(--bx); box-shadow: 0 18px 50px -22px var(--bx); outline: none; }
+.db-n { font-size: 12px; letter-spacing: .12em; color: var(--bx); }
+.db-card h3 { margin: 4px 0 0; font-size: clamp(22px, 2.2vw, 30px); font-weight: 600; letter-spacing: -.02em; }
+.db-card p { margin: 6px 0 0; color: var(--ink2); line-height: 1.4; }
+.db-card ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--ink2); font-size: 14px; }
+.db-card li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 10px; border-radius: 50%; background: var(--bx); vertical-align: middle; }
+.db-stato { margin-top: auto; padding-top: 16px; font-family: "Plex Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.db-card.attivo .db-stato { color: var(--ok); }
+.db-vuoto { padding: 20vh 0; text-align: center; color: var(--ink2); line-height: 2; }
+
+.md-testa { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.md-testa .pill { margin-top: 18px; }
+.md-testa p { margin: 4px 0 0; max-width: 560px; }
+.md-sez { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 34px; max-width: 1100px; }
+.md-tessera { display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px dashed var(--line2); border-left: 3px solid var(--bx, var(--accent)); border-radius: 12px; background: var(--bg1); }
+.md-nome { font-size: 17px; font-weight: 600; }
+.md-nota { margin-top: 28px; }
+
+@media (max-width: 1000px) { .db-box { grid-template-columns: 1fr; } .db-card { min-height: 0; } }
+@media (max-width: 700px) { #dashboard, #modulo { padding: 78px 18px 6vh; } }
+@media (prefers-reduced-motion: reduce) { .db-card { transition: none; } .db-card:hover { transform: none; } }

@@ -1,0 +1,44 @@
+{
+  "versione": 1,
+  "nota": "I 3 Box della Dashboard (docs/specifiche/Master_Project_Guide.md). Colori provvisori, da rifinire in Fase 3.",
+  "moduli": [
+    {
+      "id": "libreria", "box": "sinistro", "numero": 1,
+      "nome": "Libreria Tecnica", "en": "Technical Library",
+      "descrizione": "Cataloghi, ricerca codici, Mappa, Interrogatore.",
+      "colore": "#2A9BE3", "stato": "attivo",
+      "sezioni": [
+        { "id": "comparti", "nome": "Comparti", "stato": "attivo" },
+        { "id": "mappa", "nome": "Mappa dei cataloghi", "stato": "attivo" },
+        { "id": "cerca-codice", "nome": "Cerca codice", "stato": "attivo" },
+        { "id": "interrogatore", "nome": "Interrogatore", "stato": "attivo" }
+      ]
+    },
+    {
+      "id": "commerciale", "box": "centrale", "numero": 2,
+      "nome": "Commerciale & Offerte", "en": "Sales & Quotes",
+      "descrizione": "Clienti e lead, offerte con margini, conferme d'ordine, statistiche.",
+      "colore": "#2BC4A0", "stato": "in-preparazione",
+      "sezioni": [
+        { "id": "anagrafica", "nome": "Anagrafica (Clienti e Lead)", "stato": "in-preparazione" },
+        { "id": "offerte", "nome": "Offerte", "stato": "in-preparazione" },
+        { "id": "conferme", "nome": "Conferme d'ordine", "stato": "in-preparazione" },
+        { "id": "statistica", "nome": "Statistica commerciale", "stato": "in-preparazione" }
+      ]
+    },
+    {
+      "id": "operations", "box": "destro", "numero": 3,
+      "nome": "Operations & Admin", "en": "Operations & Admin",
+      "descrizione": "Listini, acquisti, logistica, amministrazione, venduto, marketing.",
+      "colore": "#F2A33A", "stato": "in-preparazione",
+      "sezioni": [
+        { "id": "listino", "nome": "Listino e Da listino", "stato": "in-preparazione" },
+        { "id": "acquisti", "nome": "Acquisti", "stato": "in-preparazione" },
+        { "id": "logistica", "nome": "Logistica", "stato": "in-preparazione" },
+        { "id": "amministrazione", "nome": "Amministrazione", "stato": "in-preparazione" },
+        { "id": "venduto", "nome": "Venduto", "stato": "in-preparazione" },
+        { "id": "marketing", "nome": "Marketing (Info e New)", "stato": "in-preparazione" }
+      ]
+    }
+  ]
+}

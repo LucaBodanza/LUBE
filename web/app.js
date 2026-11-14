@@ -4,6 +4,7 @@ import { Libro } from './libro.js';
 import { avviaCerca, apriCerca, apriAI } from './cerca.js';
 import { avviaTrova, indicizza } from './trova.js';
 import { avviaNews } from './news.js';
+import { avviaDashboard } from './dashboard.js';
 import { COMPARTI, stileComparto, compartoDi, trovaComparto, nn2, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
 
 const $ = s => document.querySelector(s);
@@ -56,7 +57,7 @@ function vai(v, { push = true } = {}) {
   if (push && S.vista !== v && S.vista !== 'intro') S.storia.push(S.vista);
   const da = S.vista;
   document.querySelectorAll('.vista').forEach(el => el.classList.toggle('attiva', el.id === v));
-  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news') ? 'cerca' : v);
+  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news' || v === 'dashboard' || v === 'modulo') ? 'cerca' : v);
   if (da === 'libreria' && v === 'home' && S.comparto) animaChiudi(document.querySelector(`.cp[data-id="${S.comparto}"]`), $('#libreria'));
   document.body.classList.toggle('dentro', v !== 'intro');
   document.body.className = document.body.className.replace(/\bv-\S+/g, '').trim() + ` v-${v}`;
@@ -64,13 +65,15 @@ function vai(v, { push = true } = {}) {
   if (v !== 'sfoglia') S.libro?.chiudi();
 }
 function indietro() {
-  const v = S.storia.pop() || 'home';
+  const v = S.storia.pop() || (S.vista === 'home' ? 'dashboard' : 'home');
   if (v === 'sfoglia') return indietro();
   vai(v, { push: false });
 }
 function briciole() {
   const b = $('#briciole'), c = S.cur;
   const p = [];
+  if (S.vista === 'modulo' && S.modulo) p.push(`<b>${esc(S.modulo.nome)}</b>`);
+  else if (S.vista !== 'dashboard' && S.vista !== 'intro') p.push('<span>Libreria Tecnica</span>');   // Box 1: tutto il resto vive qui dentro
   const dentroCat = c && ['catalogo', 'sfoglia', 'sotto'].includes(S.vista);
   if (S.vista === 'libreria' && S.comparto) p.push(`<b>${esc(trovaComparto(S.comparto).nome)}</b>`);
   if (dentroCat) p.push(`<span>${esc(trovaComparto(compartoDi(c)).nome)}</span>`);
@@ -88,7 +91,7 @@ function briciole() {
 function intro() {
   const t = 'ELSAP DSGN';
   $('#introTit').innerHTML = [...t].map((ch, i) => `<span class="${i > 5 ? 'a' : ''}" style="animation-delay:${0.9 + i * 0.07}s">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
-  const entra = () => { if (S.vista === 'intro') vai('home', { push: false }); };
+  const entra = () => { if (S.vista === 'intro') vai('dashboard', { push: false }); };
   $('#salta').onclick = entra;
   $('#intro').addEventListener('click', entra);
   addEventListener('keydown', e => { if (S.vista === 'intro') entra(); }, { once: true });
@@ -354,7 +357,7 @@ function sfogliaEventi() {
     toast(`${q} · pagina ${prossima}${pagine.length > 1 ? ` (${pagine.indexOf(prossima) + 1} di ${pagine.length} · Invio per la successiva)` : ''}`);
   };
   addEventListener('keydown', e => {
-    if (e.key === 'Escape' && S.vista !== 'home' && S.vista !== 'intro') { e.target.blur?.(); return indietro(); }
+    if (e.key === 'Escape' && S.vista !== 'dashboard' && S.vista !== 'intro') { e.target.blur?.(); return indietro(); }
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
     if (S.vista === 'sfoglia') {
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); S.libro.gira(1); }
@@ -448,13 +451,14 @@ function vita() {   // la finestra-app tiene acceso il server; alla chiusura lo 
   intro();
   try { scena = await avviaScena($('#scena')); window.elsapScena = scena; scena.modo(S.vista); } catch (e) { console.warn('scena 3D non disponibile', e); }
   grafica();
-  $('#vaiHome').onclick = () => { S.storia = []; vai('home', { push: false }); };
+  $('#vaiHome').onclick = () => { S.storia = []; vai('dashboard', { push: false }); };
   document.querySelector('[data-svg="logo"]').innerHTML = await svg('logo');
   avviaCerca({ S, WEB, toast, vai, sfoglia });
   for (const id of ['#hCerca', '#nCerca']) $(id).onclick = () => apriCerca();
   for (const id of ['#hAI', '#nAI']) $(id).onclick = () => apriAI();
   sfogliaEventi(); stato(); orologio(); setInterval(orologio, 30000); vita();
   avviaTrova({ S, vai, vaiA, toast, apriCerca, apriAI });
+  avviaDashboard({ S, vai, toast });
   await libreria();
   indicizza();
   avviaNews({ S, WEB, vai, vaiA, toast });
