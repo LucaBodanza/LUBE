@@ -22,7 +22,7 @@
       "sezioni": [
         { "id": "anagrafica", "nome": "Anagrafica (Clienti e Lead)", "stato": "attivo" },
         { "id": "offerte", "nome": "Offerte", "stato": "attivo" },
-        { "id": "conferme", "nome": "Conferme d'ordine", "stato": "in-preparazione" },
+        { "id": "conferme", "nome": "Conferme d'ordine", "stato": "attivo" },
         { "id": "statistica", "nome": "Statistica commerciale", "stato": "in-preparazione" }
       ]
     },

@@ -36,10 +36,12 @@ export function totali(off) {
   return { lordo, scontoTotale: arr(lordo - imponibile), imponibile, margine, marginePerc, parziale: conAcq.length > 0 && conAcq.length < righe.length };
 }
 
-export function prossimoNumero(offerte, anno = new Date().getFullYear()) {
+// OFF-AAAA-nnnn per le offerte, ORD-AAAA-nnnn per gli ordini (prefisso): continua dal massimo dell'anno
+export function prossimoNumero(lista, anno = new Date().getFullYear(), prefisso = `OFF`) {
+  const re = new RegExp(`^${prefisso}-(\\d{4})-(\\d+)$`);
   let max = 0;
-  for (const o of offerte) { const m = /^OFF-(\d{4})-(\d+)$/.exec(o.id); if (m && Number(m[1]) === anno) max = Math.max(max, Number(m[2])); }
-  return `OFF-${anno}-${String(max + 1).padStart(4, `0`)}`;
+  for (const o of lista) { const m = re.exec(o.id); if (m && Number(m[1]) === anno) max = Math.max(max, Number(m[2])); }
+  return `${prefisso}-${anno}-${String(max + 1).padStart(4, `0`)}`;
 }
 
 export const giorno = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, `0`)}-${String(d.getDate()).padStart(2, `0`)}`;

@@ -12,9 +12,11 @@
       "creata": "string ISO 8601", "valida_fino": "string ISO 8601", "revisione_di": "string|null"
     },
     "ordine": {
-      "id": "string, progressivo ORD-AAAA-nnnn", "offerta_id": "string",
-      "condizioni_bloccate": "copia delle condizioni economiche al momento dell'accettazione",
-      "stato": "uno di stati_ordine", "creato": "string ISO 8601"
+      "id": "string, progressivo ORD-AAAA-nnnn", "offerta_id": "string, una sola conferma per offerta",
+      "condizioni_bloccate": "{ cliente:{id,nome,piva,sede_legale,sede_spedizione}, pagamento, resa, righe[], sconto_totale, note_tecniche, imponibile, bloccate_il } copiata dall'offerta Accettata e non più modificabile",
+      "stato": "uno di stati_ordine", "creato": "string ISO 8601",
+      "rif_cliente": "string, numero dell'ordine del cliente", "consegna_richiesta": "string AAAA-MM-GG", "note": "string, note interne",
+      "storico": [{ "stato": "string", "quando": "string ISO 8601" }]
     }
   },
   "offerte": [],

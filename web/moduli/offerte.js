@@ -13,16 +13,17 @@ const EUR = new Intl.NumberFormat(`it-IT`, { style: `currency`, currency: `EUR` 
 const dataIt = d => (d ? new Date(String(d).length === 10 ? `${d}T00:00:00` : d).toLocaleDateString(`it-IT`) : `—`);
 const perc = n => `${String(n).replace(`.`, `,`)} %`;
 
-export function avviaOfferte({ S, vai, toast, indiceCodici, indietro }) {
+export function avviaOfferte({ S, vai, toast, indiceCodici, indietro, creaOrdine, apriOrdine }) {
   const radiceL = $(`#offerte`), radiceE = $(`#offerta`);
-  let offerte = [], clienti = [], lead = [], listino = [], indice = new Map(), indicePronto = null;
+  let offerte = [], clienti = [], lead = [], listino = [], ordini = [], indice = new Map(), indicePronto = null;
+  const ordineDi = o => ordini.find(x => x.offerta_id === o.id);
   let corrente = null, filtroStato = `Tutte`, filtro = ``, timer = null;
   const ruolo = () => window.elsapRuolo;
   const vediA = () => vedeAcquisto(ruolo());
   const nomeCliente = id => (clienti.find(c => c.id === id) || lead.find(l => l.id === id))?.ragione_sociale || `—`;
 
   async function carica() {
-    [offerte, clienti, lead, listino] = await Promise.all([tutti(`offerte`), tutti(`clienti`), tutti(`lead`), tutti(`listini`)]);
+    [offerte, clienti, lead, listino, ordini] = await Promise.all([tutti(`offerte`), tutti(`clienti`), tutti(`lead`), tutti(`listini`), tutti(`ordini`)]);
     const oggi = new Date();
     for (const o of offerte) if (scaduta(o, oggi)) { o.stato = `Scaduta`; o.aggiornato = new Date().toISOString(); await scrivi(`offerte`, o); }
     offerte.sort((a, b) => b.id.localeCompare(a.id));
@@ -91,6 +92,7 @@ export function avviaOfferte({ S, vai, toast, indiceCodici, indietro }) {
         <div class="ls-az">
           <button class="btn ghost" data-stampa>Stampa / PDF</button><button class="btn ghost" data-duplica>Duplica</button>
           ${o.stato === `Bozza` ? `<button class="btn ghost" data-elimina>Elimina</button>` : ``}<span class="sp"></span>
+          ${o.stato === `Accettata` ? (ordineDi(o) ? `<button class="btn" data-ordine="${esc(ordineDi(o).id)}">Conferma ${esc(ordineDi(o).id)} →</button>` : `<button class="btn" data-crea-ordine>Crea conferma d'ordine</button>`) : ``}
           ${SUCCESSIVI[o.stato].map(s => `<button class="btn ${s === `Inviata` || s === `Accettata` ? `` : `ghost`}" data-stato="${esc(s)}">${s === `Inviata` ? `Segna come inviata` : s === `Accettata` ? `Segna come accettata` : `→ ${esc(s)}`}</button>`).join(``)}
         </div>
       </div>
@@ -177,7 +179,7 @@ export function avviaOfferte({ S, vai, toast, indiceCodici, indietro }) {
     if (nuovo === `Inviata`) { const p = problemiInvio(corrente); if (p.length) return toast(`Non si può segnare come inviata: ${p.join(`, `)}`); }
     if (nuovo === `In revisione` && (!corrente.valida_fino || corrente.valida_fino < giorno())) corrente.valida_fino = traGiorni(30);
     corrente.stato = nuovo; await salvaSubito(); editor();
-    toast(nuovo === `Accettata` ? `Offerta accettata. La conferma d'ordine arriva con il prossimo modulo.` : `${corrente.id}: ${nuovo}`);
+    toast(nuovo === `Accettata` ? `Offerta accettata: ora puoi creare la conferma d'ordine.` : `${corrente.id}: ${nuovo}`);
   }
   async function duplica() {
     await salvaSubito();
@@ -230,13 +232,18 @@ export function avviaOfferte({ S, vai, toast, indiceCodici, indietro }) {
       if (b.dataset.add) return aggiungi(b.dataset.add);
       if (b.dataset.del !== undefined) { corrente.righe.splice(Number(b.dataset.del), 1); ridisegnaRighe(); return salvaSubito(); }
       if (b.dataset.libera !== undefined) { corrente.righe.push({ codice: ``, descrizione: ``, qta: 1, prezzo: 0, sconto: 0, consegna_giorni: null, note: `` }); ridisegnaRighe(); return salvaSubito(); }
+      if (b.dataset.creaOrdine !== undefined) { await salvaSubito(); return creaOrdine(corrente); }
+      if (b.dataset.ordine) return apriOrdine(b.dataset.ordine);
       if (b.dataset.stato) return cambiaStato(b.dataset.stato);
       if (b.dataset.stampa !== undefined) { await salvaSubito(); return stampa(); }
       if (b.dataset.duplica !== undefined) return duplica();
       if (b.dataset.elimina !== undefined) return eliminaOfferta();
       if (b.dataset.indietro !== undefined) { await salvaSubito(); lista(); indietro(); }
     });
-    document.addEventListener(`vista`, e => { if (e.detail === `offerte`) lista(); });
+    document.addEventListener(`vista`, e => {
+      if (e.detail === `offerte`) lista();
+      if (e.detail === `offerta` && corrente) tutti(`ordini`).then(o => { ordini = o; editor(); });   // tornando dalla conferma, il pulsante diventa «Conferma ORD-… →»
+    });
   }
   colega();
 

@@ -8,6 +8,7 @@ import { avviaDashboard } from './dashboard.js';
 import { avviaListino } from './moduli/listino.js';
 import { avviaAnagrafica } from './moduli/anagrafica.js';
 import { avviaOfferte } from './moduli/offerte.js';
+import { avviaOrdini } from './moduli/ordini.js';
 import { COMPARTI, stileComparto, compartoDi, trovaComparto, nn2, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
 
 const $ = s => document.querySelector(s);
@@ -60,7 +61,7 @@ function vai(v, { push = true } = {}) {
   if (push && S.vista !== v && S.vista !== 'intro') S.storia.push(S.vista);
   const da = S.vista;
   document.querySelectorAll('.vista').forEach(el => el.classList.toggle('attiva', el.id === v));
-  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news' || v === 'dashboard' || v === 'modulo' || v === 'listino' || v === 'anagrafica' || v === 'offerte' || v === 'offerta') ? 'cerca' : v);
+  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news' || v === 'dashboard' || v === 'modulo' || v === 'listino' || v === 'anagrafica' || v === 'offerte' || v === 'offerta' || v === 'ordini' || v === 'ordine') ? 'cerca' : v);
   if (da === 'libreria' && v === 'home' && S.comparto) animaChiudi(document.querySelector(`.cp[data-id="${S.comparto}"]`), $('#libreria'));
   document.body.classList.toggle('dentro', v !== 'intro');
   document.body.className = document.body.className.replace(/\bv-\S+/g, '').trim() + ` v-${v}`;
@@ -77,6 +78,8 @@ function briciole() {
   const b = $('#briciole'), c = S.cur;
   const p = [];
   if (S.vista === 'modulo' && S.modulo) p.push(`<b>${esc(S.modulo.nome)}</b>`);
+  else if (S.vista === 'ordini') p.push('<span>Commerciale &amp; Offerte</span>', `<b>Conferme d'ordine</b>`);
+  else if (S.vista === 'ordine') p.push('<span>Commerciale &amp; Offerte</span>', `<span>Conferme d'ordine</span>`, `<b>${esc(S.ordineId || '')}</b>`);
   else if (S.vista === 'offerte') p.push('<span>Commerciale &amp; Offerte</span>', '<b>Offerte</b>');
   else if (S.vista === 'offerta') p.push('<span>Commerciale &amp; Offerte</span>', '<span>Offerte</span>', `<b>${esc(S.offertaId || '')}</b>`);
   else if (S.vista === 'anagrafica') p.push('<span>Commerciale &amp; Offerte</span>', '<b>Anagrafica</b>');
@@ -468,8 +471,9 @@ function vita() {   // la finestra-app tiene acceso il server; alla chiusura lo 
   avviaTrova({ S, vai, vaiA, toast, apriCerca, apriAI });
   const listino = avviaListino({ S, vai, vaiA, toast, indiceCodici, indietro });
   const anagrafica = avviaAnagrafica({ S, vai, toast, indietro });
-  const offerte = avviaOfferte({ S, vai, toast, indiceCodici, indietro });
-  avviaDashboard({ S, vai, toast, azioni: { listino: () => listino.apri(), anagrafica: () => anagrafica.apri(), offerte: () => offerte.apri() } });
+  const ordini = avviaOrdini({ S, vai, toast, indietro });
+  const offerte = avviaOfferte({ S, vai, toast, indiceCodici, indietro, creaOrdine: o => ordini.creaDaOfferta(o), apriOrdine: id => ordini.apriId(id) });
+  avviaDashboard({ S, vai, toast, azioni: { listino: () => listino.apri(), anagrafica: () => anagrafica.apri(), offerte: () => offerte.apri(), conferme: () => ordini.apri() } });
   await libreria();
   indicizza();
   avviaNews({ S, WEB, vai, vaiA, toast });

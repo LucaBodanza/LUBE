@@ -5,7 +5,8 @@ const esc = s => String(s ?? ``).replace(/[&<>"']/g, c => ({ '&': `&amp;`, '<': 
 const EUR = new Intl.NumberFormat(`it-IT`, { style: `currency`, currency: `EUR` });
 const dataIt = d => (d ? new Date(String(d).length === 10 ? `${d}T00:00:00` : d).toLocaleDateString(`it-IT`) : `—`);
 
-export function htmlOfferta(o, cliente) {
+// opz (per la conferma d'ordine): { titolo, riferimento, consegna }. Senza validità (valida_fino vuoto) le righe «valida fino al…» spariscono.
+export function htmlOfferta(o, cliente, opz = {}) {
   const T = totali(o), cond = o.condizioni || {};
   const righe = (o.righe || []).map((r, i) => `<tr><td class="n">${i + 1}</td><td class="c">${esc(r.codice)}</td>
     <td>${esc(r.descrizione)}${r.note ? `<div class="nota">${esc(r.note)}</div>` : ``}</td><td class="r">${esc(r.qta)}</td><td class="r">${EUR.format(Number(r.prezzo) || 0)}</td>
@@ -28,10 +29,10 @@ export function htmlOfferta(o, cliente) {
     .note { margin-top: 16px; white-space: pre-wrap; } .piede { margin-top: 18px; color: #555; font-size: 10px; }
     tr { page-break-inside: avoid; }
   </style></head><body>
-    <div class="testa"><div class="marchio">ELSAP <span>DSGN</span></div><div class="num"><b>Offerta ${esc(o.id)}</b>del ${dataIt(o.creata)}</div></div>
+    <div class="testa"><div class="marchio">ELSAP <span>DSGN</span></div><div class="num"><b>${esc(opz.titolo || `Offerta`)} ${esc(o.id)}</b>del ${dataIt(o.creata)}${opz.riferimento ? `<br>${esc(opz.riferimento)}` : ``}</div></div>
     <div class="blocchi">
       <div><h4>Cliente</h4><b>${esc(cliente?.ragione_sociale || `—`)}</b>${cliente?.piva ? `<br>P.IVA ${esc(cliente.piva)}` : ``}${cliente?.sede_legale ? `<br>${esc(cliente.sede_legale)}` : ``}</div>
-      <div><h4>Condizioni</h4>Pagamento: ${esc(cond.pagamento || `—`)}<br>Resa: ${esc(cond.resa || `—`)}<br>Valida fino al ${dataIt(o.valida_fino)}</div>
+      <div><h4>Condizioni</h4>Pagamento: ${esc(cond.pagamento || `—`)}<br>Resa: ${esc(cond.resa || `—`)}${o.valida_fino ? `<br>Valida fino al ${dataIt(o.valida_fino)}` : ``}${opz.consegna ? `<br>Consegna richiesta: ${dataIt(opz.consegna)}` : ``}</div>
     </div>
     <table><thead><tr><th>#</th><th>Codice</th><th>Descrizione</th><th class="r">Q.tà</th><th class="r">Prezzo</th><th class="r">Sconto</th><th class="r">Totale</th><th class="r">Consegna</th></tr></thead><tbody>${righe}</tbody></table>
     <div class="totali">
@@ -41,6 +42,6 @@ export function htmlOfferta(o, cliente) {
       <div style="color:#666;font-size:10px"><span>IVA esclusa</span><span></span></div>
     </div>
     ${o.note_tecniche ? `<div class="note"><b>Note tecniche</b><br>${esc(o.note_tecniche)}</div>` : ``}
-    <div class="piede">Offerta valida fino al ${dataIt(o.valida_fino)}. Prezzi in euro, IVA esclusa.</div>
+    <div class="piede">${o.valida_fino ? `Offerta valida fino al ${dataIt(o.valida_fino)}. ` : ``}Prezzi in euro, IVA esclusa.</div>
   </body></html>`;
 }

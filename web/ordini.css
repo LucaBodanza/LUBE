@@ -1,0 +1,9 @@
+/* ELSAP DSGN — Conferme d'ordine (Box 2): riusa .ls-* (listino.css) e .of-* (offerte.css) */
+#ordini, #ordine { overflow-y: auto; padding: clamp(84px, 12vh, 118px) 5vw 6vh; }
+.of-meta input[readonly] { color: var(--ink2); border-style: dashed; }
+.or-note, .or-storico { max-width: 1400px; margin: 22px auto 0; }
+.or-note p { margin: 6px 0 0; white-space: pre-wrap; color: var(--ink2); line-height: 1.5; }
+.or-storico ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.or-storico li { display: flex; gap: 14px; align-items: baseline; padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--bg1); border-radius: 0 8px 8px 0; }
+.or-storico li span { font-size: 13px; }
+@media (max-width: 760px) { #ordini, #ordine { padding: 78px 14px 6vh; } }
