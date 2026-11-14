@@ -1,5 +1,10 @@
 /* ELSAP DSGN — Dashboard a 3 Box e pagina dei moduli in preparazione (usa le variabili di app.css) */
 #dashboard, #modulo { overflow-y: auto; padding: clamp(84px, 13vh, 130px) 6vw 6vh; }
+/* Dashboard centrata: titolo + 3 Box formano un blocco al centro dello schermo (margini auto = centrato, ma scorre se non ci sta) */
+#dashboard { display: flex; flex-direction: column; align-items: center; padding: 84px 5vw; text-align: center; }
+.db-testa { margin-top: auto; display: flex; flex-direction: column; align-items: center; }
+.db-testa p { margin-left: auto; margin-right: auto; }
+.db-box { width: 100%; margin: clamp(24px, 5vh, 52px) auto auto; }
 .db-testa h2, .md-testa h2 { font-size: clamp(30px, 4.4vw, 60px); line-height: 1; margin: 16px 0 10px; font-weight: 600; letter-spacing: -.03em; }
 .db-testa p { margin: 0; max-width: 520px; }
 .db-box { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: clamp(24px, 5vh, 52px); max-width: 1320px; }
