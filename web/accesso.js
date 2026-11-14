@@ -150,6 +150,7 @@ function blocco(msg) {
   if (!s || !s.chiave) { await schermata(ACC); s = await sessione(); }
   try { await swPronto(); } catch (e) { return blocco('Accesso fatto, ma ' + e.message + '. Ricarica la pagina.'); }
   navigator.serviceWorker.controller.postMessage({ tipo: 'entra' });
+  window.elsapRuolo = s.ruolo;   // letto da core/permessi.js (chi vede i prezzi di acquisto)
   await import('./app.js');
   const attendi = setInterval(() => { if (document.querySelector('#barra .logo svg')) { clearInterval(attendi); profiloInBarra(s, ACC); } }, 200);
 })();

@@ -28,6 +28,16 @@ export const tutti = coll => tx(coll, 'readonly', s => s.getAll());
 export const leggi = (coll, id) => tx(coll, 'readonly', s => s.get(id));
 export const scrivi = (coll, doc) => tx(coll, 'readwrite', s => s.put(doc));
 export const elimina = (coll, id) => tx(coll, 'readwrite', s => s.delete(id));
+// molte righe in una sola transazione (import di migliaia di codici: una per riga sarebbe lentissimo)
+export async function scriviMolti(coll, docs) {
+  const db = await apri();
+  return new Promise((ok, no) => {
+    const t = db.transaction(coll, 'readwrite'), s = t.objectStore(coll);
+    for (const d of docs) s.put(d);
+    t.oncomplete = () => ok(docs.length);
+    t.onerror = t.onabort = () => no(t.error);
+  });
+}
 
 export async function esporta() {
   const dati = {};

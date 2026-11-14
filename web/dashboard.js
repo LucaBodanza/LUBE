@@ -1,10 +1,10 @@
 // ELSAP DSGN — Dashboard a 3 Box (Libreria · Commerciale · Operations) e pagina «In preparazione» dei moduli.
 // I moduli stanno in schemi/moduli.json. Il Box 1 apre la Home dei comparti (invariata).
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const STATO = { 'attivo': 'Attivo', 'in-preparazione': 'In preparazione' };
+const STATO = { 'attivo': 'Attivo', 'in-costruzione': 'In costruzione', 'in-preparazione': 'In preparazione' };
 const $ = s => document.querySelector(s);
 
-export async function avviaDashboard({ S, vai, toast }) {
+export async function avviaDashboard({ S, vai, toast, azioni = {} }) {   // azioni: { idSezione: () => apri } per le sezioni già attive
   const radice = $('#dashboard'), pagina = $('#modulo');
   radice.innerHTML = '<div class="db-vuoto">Carico i moduli…</div>';
   let moduli = [];
@@ -59,10 +59,12 @@ export async function avviaDashboard({ S, vai, toast }) {
         <span class="en">${esc(m.en)}</span>
         <p class="muted">${esc(m.descrizione)}</p>
       </div>
-      <div class="md-sez">${m.sezioni.map(s => `
-        <div class="md-tessera"><span class="md-nome">${esc(s.nome)}</span><span class="lab">${esc(STATO[s.stato] || s.stato)}</span></div>`).join('')}
+      <div class="md-sez">${m.sezioni.map(s => (s.stato === 'attivo' && azioni[s.id])
+        ? `<button class="md-tessera attiva" data-s="${esc(s.id)}"><span class="md-nome">${esc(s.nome)}</span><span class="lab">${esc(STATO[s.stato])} · apri →</span></button>`
+        : `<div class="md-tessera"><span class="md-nome">${esc(s.nome)}</span><span class="lab">${esc(STATO[s.stato] || s.stato)}</span></div>`).join('')}
       </div>
       <p class="md-nota muted">Questa area è in costruzione: arriva un pezzo alla volta.</p>`;
     pagina.querySelector('[data-moduli]').onclick = () => vai('dashboard');
+    pagina.querySelectorAll('[data-s]').forEach(b => { b.onclick = () => azioni[b.dataset.s](); });
   }
 }

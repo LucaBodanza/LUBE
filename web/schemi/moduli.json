@@ -30,9 +30,9 @@
       "id": "operations", "box": "destro", "numero": 3,
       "nome": "Operations & Admin", "en": "Operations & Admin",
       "descrizione": "Listini, acquisti, logistica, amministrazione, venduto, marketing.",
-      "colore": "#F2A33A", "stato": "in-preparazione",
+      "colore": "#F2A33A", "stato": "in-costruzione",
       "sezioni": [
-        { "id": "listino", "nome": "Listino e Da listino", "stato": "in-preparazione" },
+        { "id": "listino", "nome": "Listino e Da listino", "stato": "attivo" },
         { "id": "acquisti", "nome": "Acquisti", "stato": "in-preparazione" },
         { "id": "logistica", "nome": "Logistica", "stato": "in-preparazione" },
         { "id": "amministrazione", "nome": "Amministrazione", "stato": "in-preparazione" },

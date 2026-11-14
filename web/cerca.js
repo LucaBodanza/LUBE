@@ -471,6 +471,13 @@ export async function trovaProdotti(testo, max = 6) {
   L.sort((a, b) => b[0] - a[0]);
   return { tot: L.length, lista: L.slice(0, max).map(([, o]) => ({ o, codice: o.c, descr: descr(o), n: o.n, p: o.p, cat: D.cat[o.n] })) };
 }
+// Listino: per ogni codice (maiuscolo) descrizione e posizione nel catalogo (la prima, se un codice compare in più cataloghi)
+export async function indiceCodici() {
+  await carica();
+  const m = new Map();
+  for (const o of D.P) { const k = String(o.c).trim().toUpperCase(); if (!m.has(k)) m.set(k, { codice: o.c, descr: descr(o), n: o.n, p: o.p, cat: D.cat[o.n] }); }
+  return m;
+}
 export { apriNelCatalogo };
 function filtriDaVincoli() {                 // per passare a Cerca codice: solo le richieste a una sola caratteristica
   const f = {};

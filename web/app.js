@@ -1,10 +1,11 @@
 // ELSAP DSGN — logica dell'interfaccia: intro, libreria, scheda catalogo, sfoglia, sotto-cataloghi
 import { avviaScena } from './scena.js';
 import { Libro } from './libro.js';
-import { avviaCerca, apriCerca, apriAI } from './cerca.js';
+import { avviaCerca, apriCerca, apriAI, indiceCodici } from './cerca.js';
 import { avviaTrova, indicizza } from './trova.js';
 import { avviaNews } from './news.js';
 import { avviaDashboard } from './dashboard.js';
+import { avviaListino } from './moduli/listino.js';
 import { COMPARTI, stileComparto, compartoDi, trovaComparto, nn2, iconaComparto, animaApri, animaChiudi, inclinazione } from './comparti.js';
 
 const $ = s => document.querySelector(s);
@@ -57,7 +58,7 @@ function vai(v, { push = true } = {}) {
   if (push && S.vista !== v && S.vista !== 'intro') S.storia.push(S.vista);
   const da = S.vista;
   document.querySelectorAll('.vista').forEach(el => el.classList.toggle('attiva', el.id === v));
-  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news' || v === 'dashboard' || v === 'modulo') ? 'cerca' : v);
+  S.vista = v; scena?.modo(v === 'libreria' ? 'home' : (v === 'mappa' || v === 'news' || v === 'dashboard' || v === 'modulo' || v === 'listino') ? 'cerca' : v);
   if (da === 'libreria' && v === 'home' && S.comparto) animaChiudi(document.querySelector(`.cp[data-id="${S.comparto}"]`), $('#libreria'));
   document.body.classList.toggle('dentro', v !== 'intro');
   document.body.className = document.body.className.replace(/\bv-\S+/g, '').trim() + ` v-${v}`;
@@ -73,6 +74,7 @@ function briciole() {
   const b = $('#briciole'), c = S.cur;
   const p = [];
   if (S.vista === 'modulo' && S.modulo) p.push(`<b>${esc(S.modulo.nome)}</b>`);
+  else if (S.vista === 'listino') p.push('<span>Operations &amp; Admin</span>', '<b>Listino</b>');
   else if (S.vista !== 'dashboard' && S.vista !== 'intro') p.push('<span>Libreria Tecnica</span>');   // Box 1: tutto il resto vive qui dentro
   const dentroCat = c && ['catalogo', 'sfoglia', 'sotto'].includes(S.vista);
   if (S.vista === 'libreria' && S.comparto) p.push(`<b>${esc(trovaComparto(S.comparto).nome)}</b>`);
@@ -357,7 +359,7 @@ function sfogliaEventi() {
     toast(`${q} · pagina ${prossima}${pagine.length > 1 ? ` (${pagine.indexOf(prossima) + 1} di ${pagine.length} · Invio per la successiva)` : ''}`);
   };
   addEventListener('keydown', e => {
-    if (e.key === 'Escape' && S.vista !== 'dashboard' && S.vista !== 'intro') { e.target.blur?.(); return indietro(); }
+    if (e.key === 'Escape' && S.vista !== 'dashboard' && S.vista !== 'intro' && !document.querySelector('dialog[open]')) { e.target.blur?.(); return indietro(); }
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
     if (S.vista === 'sfoglia') {
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); S.libro.gira(1); }
@@ -458,7 +460,8 @@ function vita() {   // la finestra-app tiene acceso il server; alla chiusura lo 
   for (const id of ['#hAI', '#nAI']) $(id).onclick = () => apriAI();
   sfogliaEventi(); stato(); orologio(); setInterval(orologio, 30000); vita();
   avviaTrova({ S, vai, vaiA, toast, apriCerca, apriAI });
-  avviaDashboard({ S, vai, toast });
+  const listino = avviaListino({ S, vai, vaiA, toast, indiceCodici });
+  avviaDashboard({ S, vai, toast, azioni: { listino: () => listino.apri() } });
   await libreria();
   indicizza();
   avviaNews({ S, WEB, vai, vaiA, toast });
