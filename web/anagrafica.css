@@ -1,0 +1,11 @@
+/* ELSAP DSGN — Anagrafica (Box 2): riusa le classi .ls-* del Listino (listino.css) */
+#anagrafica { overflow-y: auto; padding: clamp(84px, 12vh, 118px) 5vw 6vh; }
+#anDlg { background: var(--bg1); color: var(--ink); border: 1px solid var(--line2); border-radius: var(--r); padding: 24px; width: min(640px, calc(100vw - 32px)); max-height: calc(100vh - 32px); }
+#anDlg::backdrop { background: rgba(4, 10, 16, .72); }
+.an-griglia { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.an-griglia .largo, .an-griglia .an-sconti { grid-column: 1 / -1; }
+.an-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 8px; }
+.ls-form select { background: var(--bg2); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; font-size: 14px; outline: none; color: var(--ink); }
+.ls-form select:focus { border-color: var(--accent); }
+.ls-form h3 .pill { margin-left: 8px; vertical-align: middle; }
+@media (max-width: 760px) { #anagrafica { padding: 78px 14px 6vh; } .an-griglia, .an-3 { grid-template-columns: 1fr; } }

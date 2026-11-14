@@ -18,9 +18,9 @@
       "id": "commerciale", "box": "centrale", "numero": 2,
       "nome": "Commerciale & Offerte", "en": "Sales & Quotes",
       "descrizione": "Clienti e lead, offerte con margini, conferme d'ordine, statistiche.",
-      "colore": "#2BC4A0", "stato": "in-preparazione",
+      "colore": "#2BC4A0", "stato": "in-costruzione",
       "sezioni": [
-        { "id": "anagrafica", "nome": "Anagrafica (Clienti e Lead)", "stato": "in-preparazione" },
+        { "id": "anagrafica", "nome": "Anagrafica (Clienti e Lead)", "stato": "attivo" },
         { "id": "offerte", "nome": "Offerte", "stato": "in-preparazione" },
         { "id": "conferme", "nome": "Conferme d'ordine", "stato": "in-preparazione" },
         { "id": "statistica", "nome": "Statistica commerciale", "stato": "in-preparazione" }
