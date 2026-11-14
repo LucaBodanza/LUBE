@@ -64,7 +64,7 @@ export async function avviaDashboard({ S, vai, toast, azioni = {} }) {   // azio
         : `<div class="md-tessera"><span class="md-nome">${esc(s.nome)}</span><span class="lab">${esc(STATO[s.stato] || s.stato)}</span></div>`).join('')}
       </div>
       <p class="md-nota muted">Questa area è in costruzione: arriva un pezzo alla volta.</p>`;
-    pagina.querySelector('[data-moduli]').onclick = () => vai('dashboard');
+    pagina.querySelector('[data-moduli]').onclick = () => { S.storia = []; vai('dashboard', { push: false }); };   // dalla Dashboard non si «torna» a una pagina vecchia
     pagina.querySelectorAll('[data-s]').forEach(b => { b.onclick = () => azioni[b.dataset.s](); });
   }
 }

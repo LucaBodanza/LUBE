@@ -11,7 +11,7 @@ const EUR = new Intl.NumberFormat(`it-IT`, { style: `currency`, currency: `EUR` 
 const PASSO = 100;
 const idDi = codice => String(codice).trim().toUpperCase();
 
-export function avviaListino({ S, vai, vaiA, toast, indiceCodici }) {
+export function avviaListino({ S, vai, vaiA, toast, indiceCodici, indietro }) {
   const radice = $(`#listino`);
   let righe = [], indice = new Map(), filtro = ``, limite = PASSO;
   const ruolo = () => window.elsapRuolo;
@@ -41,7 +41,7 @@ export function avviaListino({ S, vai, vaiA, toast, indiceCodici }) {
       <div class="ls-avviso">I prezzi restano solo in questo browser. Il file CSV esportato contiene prezzi veri: non metterlo su GitHub, Drive o NAS pubblici.</div>
       <div class="ls-tab" id="lsTab"></div>
       <dialog id="lsDlg"></dialog>`;
-    radice.querySelector(`[data-indietro]`).onclick = () => vai(`modulo`);
+    radice.querySelector(`[data-indietro]`).onclick = () => indietro();
     radice.querySelector(`#lsCerca`).oninput = e => { filtro = e.target.value; limite = PASSO; tabella(); };
     radice.querySelector(`[data-nuovo]`).onclick = () => modifica();
     radice.querySelector(`[data-importa]`).onclick = () => $(`#lsFile`).click();

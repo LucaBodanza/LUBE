@@ -10,7 +10,7 @@ const nuovoId = p => `${p}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
 const adesso = () => new Date().toISOString();
 const dataIt = iso => (iso ? new Date(iso).toLocaleDateString(`it-IT`) : `—`);
 
-export function avviaAnagrafica({ S, vai, toast }) {
+export function avviaAnagrafica({ S, vai, toast, indietro }) {
   const radice = $(`#anagrafica`);
   let tab = `clienti`, clienti = [], lead = [], filtro = ``, K = null;
 
@@ -39,7 +39,7 @@ export function avviaAnagrafica({ S, vai, toast }) {
       <div class="ls-avviso">Questi dati restano solo in questo browser. Non vanno su GitHub, Drive o NAS pubblici.</div>
       <div class="ls-tab" id="anLista"></div>
       <dialog id="anDlg"></dialog>`;
-    radice.querySelector(`[data-indietro]`).onclick = () => vai(`modulo`);
+    radice.querySelector(`[data-indietro]`).onclick = () => indietro();
     radice.querySelector(`#anCerca`).oninput = e => { filtro = e.target.value; lista(); };
     radice.querySelector(`[data-nuovo]`).onclick = () => (tab === `clienti` ? modificaCliente() : modificaLead());
     radice.querySelectorAll(`#anTab button`).forEach(b => { b.onclick = () => { tab = b.dataset.t; filtro = ``; $(`#anCerca`).value = ``; lista(); }; });

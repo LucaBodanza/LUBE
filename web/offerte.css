@@ -1,0 +1,40 @@
+/* ELSAP DSGN — Offerte (Box 2): riusa le classi .ls-* (listino.css) */
+#offerte, #offerta { overflow-y: auto; padding: clamp(84px, 12vh, 118px) 5vw 6vh; }
+.ls-az .sp { flex: 1; }
+.ls-riga { cursor: pointer; }
+.ls-testa h2 .pill { font-size: 12px; vertical-align: middle; margin-left: 8px; letter-spacing: .1em; }
+
+.of-meta { max-width: 1400px; margin: 18px auto 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.of-meta label { display: grid; gap: 5px; font-size: 12px; color: var(--ink2); }
+.of-meta .largo { grid-column: 1 / -1; } .of-meta .largo2 { grid-column: span 2; }
+.of-meta input, .of-meta select, .of-meta textarea { background: var(--bg2); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; font: inherit; font-size: 14px; color: var(--ink); outline: none; }
+.of-meta input:focus, .of-meta select:focus, .of-meta textarea:focus { border-color: var(--accent); }
+.of-meta :disabled, .of-t input:disabled { opacity: .65; }
+
+.of-righe { max-width: 1400px; margin: 18px auto 0; overflow-x: auto; }
+.of-t td { vertical-align: middle; }
+.of-t input { width: 100%; min-width: 80px; background: transparent; border: 1px solid transparent; border-radius: 7px; padding: 6px 8px; font: inherit; font-size: 14px; color: var(--ink); outline: none; }
+.of-t input:hover:not(:disabled) { border-color: var(--line2); } .of-t input:focus { border-color: var(--accent); background: var(--bg2); }
+.of-t input.cod { font-family: "Plex Mono", monospace; min-width: 120px; }
+.of-t input.n { text-align: right; width: 84px; min-width: 70px; font-variant-numeric: tabular-nums; }
+.of-t input.nota { display: block; margin-top: 3px; font-size: 12px; color: var(--ink2); padding: 3px 8px; }
+.of-t td:nth-child(3) { min-width: 240px; }
+
+.of-agg { max-width: 1400px; margin: 14px auto 0; display: flex; gap: 10px; align-items: flex-start; flex-wrap: wrap; }
+.of-cerca { position: relative; flex: 1 1 320px; max-width: 560px; }
+.of-cerca input { width: 100%; background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font: inherit; font-size: 14px; color: var(--ink); outline: none; }
+.of-cerca input:focus { border-color: var(--accent); }
+.of-ris { position: absolute; z-index: 5; left: 0; right: 0; top: calc(100% + 4px); background: var(--bg1); border: 1px solid var(--line2); border-radius: 10px; overflow: hidden; box-shadow: 0 18px 40px -16px #000; }
+.of-ris button { display: grid; grid-template-columns: 120px 1fr auto; gap: 12px; width: 100%; text-align: left; background: none; border: 0; padding: 9px 14px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--line); }
+.of-ris button:hover, .of-ris button:focus-visible { background: var(--bg2); outline: none; }
+.of-ris b { font-family: "Plex Mono", monospace; font-weight: 500; } .of-ris span { color: var(--ink2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .of-ris i { font-style: normal; color: var(--cool); }
+.vuoto-ris { padding: 12px 14px; color: var(--ink2); font-size: 13px; }
+
+.of-tot { max-width: 1400px; margin: 22px auto 0; display: flex; justify-content: flex-end; }
+.of-tot dl { display: grid; grid-template-columns: auto auto; gap: 6px 28px; margin: 0; min-width: 300px; font-variant-numeric: tabular-nums; }
+.of-tot dt { color: var(--ink2); } .of-tot dd { margin: 0; text-align: right; }
+.of-tot .gr { font-size: 20px; font-weight: 600; color: var(--ink); border-top: 1px solid var(--line2); padding-top: 8px; margin-top: 4px; }
+.of-tot .mg { color: var(--ok); }
+
+@media (max-width: 1000px) { .of-meta { grid-template-columns: 1fr 1fr; } .of-meta .largo2 { grid-column: 1 / -1; } }
+@media (max-width: 760px) { #offerte, #offerta { padding: 78px 14px 6vh; } .of-meta { grid-template-columns: 1fr; } .of-tot { justify-content: stretch; } .of-tot dl { width: 100%; } .of-ris button { grid-template-columns: 90px 1fr; } .of-ris i { display: none; } }
