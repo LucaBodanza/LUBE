@@ -16,13 +16,18 @@ const TIPI = {
   fonte: { nome: 'Fonte', gruppo: 'stato', colore: '#66788B' },
 };
 const FILTRI = [['tutto', 'Tutto'], ['comunicato', 'Comunicati'], ['nuovo', 'Nuovi'], ['tolto', 'Tolti'], ['cambiato', 'Rinominati'], ['famiglia', 'Famiglie']];   // un filtro per tipo di evento
-// loghi dei marchi: web/img/marchi/<slug>.svg (da Luca). Finché manca il file si mostra il nome come marchio testuale.
-// Per aggiungerne uno: copiare il file in web/img/marchi/<slug>.svg e scrivere qui lo slug (es. 'conec', 'amphenol-ltw', 'lumberg-automation').
-const LOGHI = new Set([]);
+// Elenco ufficiale dei brand per sezione + loghi: web/schemi/marchi.json (loghi in web/img/marchi/<slug>.png).
+// Per sostituire un logo con uno migliore: stesso nome file (anche .svg: cambiare l'estensione in `logo` del brand).
+let REG = null;
+const leggiMarchi = async () => { try { REG = await (await fetch('web/schemi/marchi.json')).json(); } catch (e) { REG = null; } };
+const PERIODI = [['30', '30 giorni'], ['90', '3 mesi'], ['180', '6 mesi'], ['365', '12 mesi']];     // quanto indietro si guarda (il bot conserva 12 mesi)
+const leggiPeriodo = () => { try { const v = localStorage.getItem('elsap.news.periodo'); return PERIODI.some(x => x[0] === v) ? +v : 90; } catch (e) { return 90; } };
 const iniziali = t => String(t).split(/\s+/).filter(Boolean).map(p => p[0]).join('').slice(0, 2).toUpperCase();
 
 let X = null;
-const N = { dati: null, filtro: 'tutto', aperto: new Set(), soloNuove: false, visto: null };
+const N = { dati: null, filtro: 'tutto', aperto: new Set(), soloNuove: false, visto: null, periodo: leggiPeriodo() };
+const eff = e => e.data || e.quando;                                    // data della notizia, o di quando l'abbiamo vista
+const nelPeriodo = e => (Date.now() - Date.parse(eff(e))) / 864e5 <= N.periodo;
 const leggiVisto = () => { try { return localStorage.getItem('elsap.news.visto') || ''; } catch (e) { return ''; } };
 const salvaVisto = v => { try { localStorage.setItem('elsap.news.visto', v); } catch (e) { /* non salvato */ } };
 const nuovo = e => !e.iniziale && e.tipo !== 'fonte' && e.quando > (N.visto || '');
@@ -98,14 +103,14 @@ function pallino() {
   document.querySelectorAll('.nw-n').forEach(b => { b.textContent = n > 99 ? '99+' : n; b.hidden = !n; });
 }
 
-function marchio(nome) {
-  const s = slug(nome);
-  return LOGHI.has(s) ? `<img class="nw-logo" src="web/img/marchi/${s}.svg" alt="${esc(nome)}">` : `<span class="nw-ini" aria-hidden="true">${esc(iniziali(nome))}</span><span class="nw-wm">${esc(nome)}</span>`;
+function marchio(m) {
+  return m.slug ? `<span class="nw-lg"><img class="nw-logo" src="web/img/marchi/${m.slug}.png" alt="${esc(m.nome)}"></span>`
+                : `<span class="nw-ini" aria-hidden="true">${esc(iniziali(m.nome))}</span><span class="nw-wm">${esc(m.nome)}</span>`;
 }
-function riga(e) {
+function riga(e, m) {
   const t = TIPI[e.tipo] || TIPI.fonte, c = e.cat && X.S.cataloghi.find(x => x.numero === e.cat);
   const cp = c ? trovaComparto(compartoDi(c)) : null;
-  const dove = [c ? `${nn2(c)} · ${c.nome}` : '', e.da ? `prima: «${e.da}»` : '', e.testo || ''].filter(Boolean).join(' · ');
+  const dove = [e.marchio !== m.nome ? e.marchio : '', c ? `${nn2(c)} · ${c.nome}` : '', e.da ? `prima: «${e.da}»` : '', e.testo || ''].filter(Boolean).join(' · ');
   return `<div class="nw-r ${nuovo(e) ? 'nuova' : ''}" style="--t:${t.colore}">
     <span class="nw-pt"></span>
     <div class="nw-tx"><span class="nw-tipo">${t.nome}${nuovo(e) ? '<b>nuova</b>' : ''}</span>
@@ -121,31 +126,42 @@ function disegna() {
       <p class="muted">Il controllo automatico dei siti dei produttori parte a breve: ogni 30 minuti la piattaforma guarda notizie, prodotti nuovi e famiglie cambiate.</p></div>`;
     $('#nwInfo').textContent = ''; return;
   }
-  const D = N.dati, delFiltro = (e, k) => k === 'tutto' ? e.tipo !== 'fonte' : e.tipo === k, ok = e => delFiltro(e, N.filtro) && (!N.soloNuove || nuovo(e));
-  const fonti = D.fonti || [], err = fonti.filter(f => f.errore).length;
+  const D = N.dati, delFiltro = (e, k) => k === 'tutto' ? e.tipo !== 'fonte' : e.tipo === k, ok = e => delFiltro(e, N.filtro) && nelPeriodo(e) && (!N.soloNuove || nuovo(e));
+  const fonti = D.fonti || [], err = fonti.filter(f => f.errore).length, perNome = new Map();
   $('#nwInfo').innerHTML = `Controllo automatico ogni 30 minuti · ${fonti.length} pagine sorvegliate${err ? ` · <span class="nw-err">${err} non raggiungibil${err === 1 ? 'e' : 'i'}</span>` : ''}${D.aggiornato ? ` · ultima novità ${quando(D.aggiornato)}` : ''}`;
   $('#nwFiltri').innerHTML = FILTRI.map(([k, t]) => {
     const n = D.eventi.filter(e => delFiltro(e, k) && nuovo(e)).length;
     return `<button data-f="${k}" class="${N.filtro === k ? 'on' : ''}">${t}${n ? ` <b>${n}</b>` : ''}</button>`;
-  }).join('') + `<label class="nw-solo"><input type="checkbox" ${N.soloNuove ? 'checked' : ''}> solo da leggere</label>`;
-  el.innerHTML = `<div class="nw-griglia">${D.marchi.map((m, i) => {
-    const L = D.eventi.filter(e => e.marchio === m.nome && ok(e)), nuove = D.eventi.filter(e => e.marchio === m.nome && nuovo(e)).length;
-    const aperto = N.aperto.has(m.nome), vis = aperto ? L : L.slice(0, 4);
-    const fM = fonti.filter(f => f.marchio === m.nome), cats = [...new Set(fM.map(f => f.cat).filter(Boolean))].sort((a, b) => a - b);
-    return `<section class="nw-card ${aperto ? 'aperta' : ''}" style="animation-delay:${i * .05}s">
-      <header><div class="nw-m">${marchio(m.nome)}</div>${nuove ? `<span class="nw-badge">${nuove} nuov${nuove === 1 ? 'a' : 'e'}</span>` : ''}
-        <a class="nw-sito" href="${esc(m.sito)}" target="_blank" rel="noopener noreferrer">${esc(m.sito.replace(/^https?:\/\/(www\.)?/, ''))} ↗</a></header>
-      <div class="nw-sub">${fM.length} pagin${fM.length === 1 ? 'a' : 'e'} sorvegliat${fM.length === 1 ? 'a' : 'e'}${cats.length ? ` · cataloghi ${cats.map(nn).join(', ')}` : ''}${m.in_errore ? ` · <span class="nw-err">${m.in_errore} non raggiungibil${m.in_errore === 1 ? 'e' : 'i'}</span>` : ''}</div>
-      <div class="nw-lista">${vis.length ? vis.map(riga).join('') : `<div class="nw-nulla">Nessuna novità${N.filtro !== 'tutto' || N.soloNuove ? ' con questo filtro' : ' finora'}.</div>`}</div>
+  }).join('') + `<label class="nw-solo" title="Quanto indietro mostrare: il sistema conserva 12 mesi">periodo <select data-periodo>${PERIODI.map(([v, t]) => `<option value="${v}" ${+v === N.periodo ? 'selected' : ''}>${t}</option>`).join('')}</select></label>`
+    + `<label class="nw-solo"><input type="checkbox" ${N.soloNuove ? 'checked' : ''}> solo da leggere</label>`;
+  // brand = elenco ufficiale (marchi.json) + eventuali marchi delle fonti che lì non compaiono ("Altri")
+  const reg = (REG?.marchi || []).map(m => ({ ...m, nomi: new Set([m.nome, ...(m.alias || [])].map(x => x.toLowerCase())) }));
+  const noto = n => reg.some(m => m.nomi.has(String(n).toLowerCase()));
+  const altri = (D.marchi || []).filter(m => !noto(m.nome)).map(m => ({ nome: m.nome, slug: '', comparto: 'altri', alias: [], nomi: new Set([m.nome.toLowerCase()]) }));
+  let k = 0;
+  const scheda = m => {
+    const mio = e => m.nomi.has(String(e.marchio).toLowerCase()), fM = fonti.filter(f => m.nomi.has(String(f.marchio).toLowerCase()));
+    const L = D.eventi.filter(e => mio(e) && ok(e)), nuove = D.eventi.filter(e => mio(e) && nuovo(e)).length;
+    const aperto = N.aperto.has(m.nome), vis = aperto ? L : L.slice(0, 4), sito = (D.marchi || []).find(x => m.nomi.has(x.nome.toLowerCase()))?.sito;
+    const cats = [...new Set(fM.map(f => f.cat).filter(Boolean))].sort((a, b) => a - b), inErr = fM.filter(f => f.errore).length;
+    return `<section class="nw-card ${aperto ? 'aperta' : ''} ${fM.length ? '' : 'senza'}" style="animation-delay:${(k++ % 12) * .04}s">
+      <header><div class="nw-m">${marchio(m)}</div>${nuove ? `<span class="nw-badge">${nuove} nuov${nuove === 1 ? 'a' : 'e'}</span>` : ''}
+        ${sito ? `<a class="nw-sito" href="${esc(sito)}" target="_blank" rel="noopener noreferrer">${esc(sito.replace(/^https?:\/\/(www\.)?/, ''))} ↗</a>` : ''}</header>
+      <div class="nw-sub">${fM.length ? `${fM.length} pagin${fM.length === 1 ? 'a' : 'e'} sorvegliat${fM.length === 1 ? 'a' : 'e'}${cats.length ? ` · cataloghi ${cats.map(nn).join(', ')}` : ''}${inErr ? ` · <span class="nw-err">${inErr} non raggiungibil${inErr === 1 ? 'e' : 'i'}</span>` : ''}` : 'Fonte non ancora collegata'}</div>
+      <div class="nw-lista">${fM.length ? (vis.length ? vis.map(e => riga(e, m)).join('') : `<div class="nw-nulla">Nessuna novità${N.filtro !== 'tutto' || N.soloNuove ? ' con questo filtro' : ''} negli ultimi ${PERIODI.find(x => +x[0] === N.periodo)?.[1] || N.periodo + ' giorni'}.</div>`)
+                                : '<div class="nw-nulla">Le novità di questo brand non vengono ancora controllate.</div>'}</div>
       ${L.length > 4 ? `<button class="nw-piu" data-m="${esc(m.nome)}">${aperto ? 'Mostra meno' : `Tutte (${L.length})`}</button>` : ''}
     </section>`;
-  }).join('')}</div>`;
+  };
+  const sezioni = [...(REG?.comparti || []).map(c => ({ ...c, brand: reg.filter(m => m.comparto === c.id) })), ...(altri.length ? [{ id: 'altri', nome: 'Altri marchi', colore: '#66788B', brand: altri }] : [])].filter(s => s.brand.length);
+  el.innerHTML = sezioni.map(s => `<div class="nw-sez" style="--c:${s.colore}"><h3><i></i>${esc(s.nome)}<span>${s.brand.length} brand · ${s.brand.filter(m => fonti.some(f => m.nomi.has(String(f.marchio).toLowerCase()))).length} con fonti collegate</span></h3>
+    <div class="nw-griglia">${s.brand.map(scheda).join('')}</div></div>`).join('');
 }
 export async function apriNews() {
   N.visto = leggiVisto();                 // le "nuove" restano evidenziate per tutta la visita
   X.vai('news');
   $('#nwCorpo').innerHTML = '<div class="nw-vuoto"><div class="spinner"></div></div>';
-  await carica();
+  await Promise.all([carica(), REG ? 0 : leggiMarchi()]);
   disegna();
   statoGiri();
   if (N.dati) salvaVisto(new Date().toISOString().replace(/\.\d+Z$/, '+00:00'));
@@ -159,7 +175,11 @@ export function avviaNews(ctx) {
   $('#nwInfo').insertAdjacentElement('afterend', st);
   st.addEventListener('click', e => { const b = e.target.closest('[data-cerca]'); if (b && !b.disabled) cercaOra(b.dataset.cerca); });
   $('#nwFiltri').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) { N.filtro = b.dataset.f; disegna(); } });
-  $('#nwFiltri').addEventListener('change', e => { N.soloNuove = e.target.checked; disegna(); });
+  $('#nwFiltri').addEventListener('change', e => {
+    if (e.target.matches('[data-periodo]')) { N.periodo = +e.target.value; try { localStorage.setItem('elsap.news.periodo', e.target.value); } catch (x) { /* non salvato */ } }
+    else N.soloNuove = e.target.checked;
+    disegna();
+  });
   $('#nwCorpo').addEventListener('click', e => {
     const p = e.target.closest('.nw-piu'); if (p) { const m = p.dataset.m; N.aperto.has(m) ? N.aperto.delete(m) : N.aperto.add(m); return disegna(); }
     const c = e.target.closest('[data-cat]'); if (c) X.vaiA({ n: +c.dataset.cat });

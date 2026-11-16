@@ -1,0 +1,205 @@
+{
+ "versione": 1,
+ "nota": "Elenco ufficiale dei brand ELSAP per sezione (da Michele, 16/11/2026; colori e loghi da «Elsap_Generica_Def nuova.pdf»). `alias` = nomi con cui il brand compare nelle fonti di fonti_news.json (campo marchio). Logo: web/img/marchi/<slug>.png (PDF; sostituibile con .svg migliori). Aggiungere una fonte per un brand = usare in fonti_news.json uno di questi nomi/alias.",
+ "comparti": [
+  {
+   "id": "connessione",
+   "nome": "Connessione",
+   "colore": "#3B4A9C"
+  },
+  {
+   "id": "elettronica-industriale",
+   "nome": "Elettronica Industriale",
+   "colore": "#C0003A"
+  },
+  {
+   "id": "sistemi-elettromeccanici",
+   "nome": "Sistemi Elettromeccanici",
+   "colore": "#E8B90E"
+  }
+ ],
+ "marchi": [
+  {
+   "nome": "Amphenol",
+   "slug": "amphenol",
+   "comparto": "connessione",
+   "alias": [
+    "Amphenol LTW",
+    "Amphenol Tuchel"
+   ]
+  },
+  {
+   "nome": "Amphenol Conec",
+   "slug": "amphenol-conec",
+   "comparto": "connessione",
+   "alias": [
+    "CONEC"
+   ]
+  },
+  {
+   "nome": "FELLER",
+   "slug": "feller",
+   "comparto": "connessione",
+   "alias": []
+  },
+  {
+   "nome": "Lumberg",
+   "slug": "lumberg",
+   "comparto": "connessione",
+   "alias": [
+    "Lumberg Automation"
+   ]
+  },
+  {
+   "nome": "BELDEN",
+   "slug": "belden",
+   "comparto": "connessione",
+   "alias": [
+    "Belden",
+    "Hirschmann"
+   ]
+  },
+  {
+   "nome": "Lutronic",
+   "slug": "lutronic",
+   "comparto": "connessione",
+   "alias": []
+  },
+  {
+   "nome": "MATCAVI",
+   "slug": "matcavi",
+   "comparto": "connessione",
+   "alias": []
+  },
+  {
+   "nome": "MPE GARRY",
+   "slug": "mpe-garry",
+   "comparto": "connessione",
+   "alias": []
+  },
+  {
+   "nome": "AN.EL",
+   "slug": "an-el",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "E-SWITCH",
+   "slug": "e-switch",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "COMELIT (by SEMCOM)",
+   "slug": "comelit-semcom",
+   "comparto": "elettronica-industriale",
+   "alias": [
+    "COMELIT",
+    "SEMCOM"
+   ]
+  },
+  {
+   "nome": "ELMA",
+   "slug": "elma",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "FRIWO",
+   "slug": "friwo",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "FSP",
+   "slug": "fsp",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "Micronel",
+   "slug": "micronel",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "NEOSID",
+   "slug": "neosid",
+   "comparto": "elettronica-industriale",
+   "alias": [
+    "NEOSIO"
+   ]
+  },
+  {
+   "nome": "ZF",
+   "slug": "zf",
+   "comparto": "elettronica-industriale",
+   "alias": []
+  },
+  {
+   "nome": "BJB",
+   "slug": "bjb",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "GRUNER",
+   "slug": "gruner",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "NELCO Industries",
+   "slug": "nelco-industries",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": [
+    "NELCO"
+   ]
+  },
+  {
+   "nome": "Everbest",
+   "slug": "everbest",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "HANNING",
+   "slug": "hanning",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "HURST + SCHRÖDER GMBH",
+   "slug": "hurst-schroeder",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": [
+    "HURST+SCHRÖDER",
+    "Hurst Schroder"
+   ]
+  },
+  {
+   "nome": "STIEBEL ELTRON",
+   "slug": "stiebel-eltron",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "irlbacher",
+   "slug": "irlbacher",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "UR",
+   "slug": "ur",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  },
+  {
+   "nome": "Termal",
+   "slug": "termal",
+   "comparto": "sistemi-elettromeccanici",
+   "alias": []
+  }
+ ]
+}

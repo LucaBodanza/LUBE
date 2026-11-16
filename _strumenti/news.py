@@ -25,7 +25,8 @@ PAUSA = 3                     # secondi tra due richieste allo stesso sito
 MAX_PAGINE_NOTTE = 30         # per fonte, solo nel giro di notte
 SOGLIA_TOLTO = 3              # controlli consecutivi senza l'elemento prima di dirlo "tolto"
 SOGLIA_ERRORE = 3             # giri consecutivi in errore prima di segnalare la famiglia
-MAX_EVENTI = 400
+MAX_GIORNI = 365              # quanto tempo si conserva un evento (12 mesi: è la risposta alla domanda di Michele)
+MAX_EVENTI = 5000             # tetto di sicurezza (~1,5 MB)
 TIPO_IT = {"nuovo": "nuovo prodotto", "tolto": "non più a catalogo", "cambiato": "famiglia rinominata", "famiglia": "pagina famiglia", "comunicato": "comunicato", "fonte": "fonte"}
 ADESSO = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
 
@@ -264,8 +265,17 @@ def cifra(rel, dati):
         parti.append(A.encrypt(nonce + i.to_bytes(4, "big"), dati[i * C:(i + 1) * C], None))
     return b"".join(parti)
 
+def conserva(eventi):
+    """toglie gli eventi più vecchi di MAX_GIORNI (conta la data della notizia, se c'è, altrimenti il momento in cui l'abbiamo visto) e tiene il tetto"""
+    limite = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=MAX_GIORNI)).isoformat()
+    def quando(e):
+        d = e.get("data") or e["quando"]
+        try: return datetime.datetime.fromisoformat(d).astimezone(datetime.timezone.utc).isoformat()
+        except Exception: return e["quando"]
+    return [e for e in eventi if quando(e) >= limite][:MAX_EVENTI]
+
 def scrivi_uscita():
-    ev = (EVENTI + STATO.get("eventi", []))[:MAX_EVENTI]
+    ev = conserva(EVENTI + STATO.get("eventi", []))
     STATO["eventi"] = ev
     marchi = {}
     for f in FONTI:
