@@ -118,6 +118,44 @@
    "schema": "^/(Netzteile|Ladegeraete|Zubehoer)/.+"
   },
   {
+   "id": "feller-gamma",
+   "marchio": "FELLER",
+   "tipo": "sitemap",
+   "url": "https://www.feller.ch/sitemap.xml",
+   "schema": "^/de/(sortiment|connected-buildings)/.+",
+   "segmenti": 2
+  },
+  {
+   "marchio": "Lutronic",
+   "tipo": "news",
+   "url": "https://www.lutronic.biz/en/news",
+   "schema": "^/en/news/[^/]+$"
+  },
+  {
+   "id": "matcavi-pagine",
+   "marchio": "MATCAVI",
+   "tipo": "sitemap",
+   "url": "https://www.matcavi.it/sitemap_index.xml",
+   "schema": "^/(?!en/).+"
+  },
+  {
+   "id": "mpe-news",
+   "marchio": "MPE GARRY",
+   "tipo": "sitemap",
+   "url": "https://www.mpe-connector.de/en/sitemap.xml",
+   "indice": "sitemap=news",
+   "schema": "^/en/.+"
+  },
+  {
+   "id": "mpe-prodotti",
+   "marchio": "MPE GARRY",
+   "tipo": "sitemap",
+   "url": "https://www.mpe-connector.de/en/sitemap.xml",
+   "indice": "sitemap=mpeproducts",
+   "schema": "^/en/.+",
+   "segmenti": 2
+  },
+  {
    "id": "bjb",
    "marchio": "BJB",
    "tipo": "famiglia",
