@@ -140,9 +140,36 @@ function blocco(msg) {
     <p class="ac-err">${esc(msg)}</p><p class="lab">Apri il sito con Chrome, Edge o Safari aggiornati, non in finestra anonima.</p></div></section>`);
 }
 
+// Aggiornamento automatico: il service worker nuovo si attiva da solo (skipWaiting + clients.claim, vedi sw.js); qui la pagina
+// lo nota (controllerchange) e si ricarica una volta, ma solo quando non c'è nulla da perdere (nessuna finestra aperta, nessun
+// campo in modifica, non nell'editor di un'offerta o di un ordine). Così le novità compaiono senza svuotare la cache.
+function aggiornamentoAutomatico() {
+  const sw = navigator.serviceWorker;
+  let aveva = !!sw.controller, vista = '';              // se all'avvio non c'era un controller è la prima installazione: niente da ricaricare
+  document.addEventListener('vista', e => { vista = e.detail; });
+  const sicuro = () => !document.querySelector('dialog[open]') && !/^(offerta|ordine)$/.test(vista)
+    && !document.activeElement?.matches?.('input, textarea, select, [contenteditable]');
+  sw.addEventListener('controllerchange', () => {
+    if (!aveva) { aveva = true; return; }
+    let ultimo = 0; try { ultimo = +sessionStorage.getItem('elsap-aggiorna') || 0; } catch (e) { /* niente */ }
+    if (Date.now() - ultimo < 60000) return;            // già ricaricato meno di un minuto fa: niente cicli
+    const t = setInterval(() => {
+      if (!sicuro()) return;
+      clearInterval(t);
+      try { sessionStorage.setItem('elsap-aggiorna', String(Date.now())); } catch (e) { /* niente */ }
+      location.reload();
+    }, 1500);
+  });
+  sw.register('sw.js').then(reg => {
+    const controlla = () => reg.update().catch(() => { /* senza rete: riprova al prossimo giro */ });
+    setInterval(controlla, 30 * 60 * 1000);            // anche con la pagina aperta tutto il giorno
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) controlla(); });
+  }).catch(e => console.warn('service worker', e));
+}
+
 (async function avvio() {
   if (!('serviceWorker' in navigator) || !window.crypto?.subtle || !window.indexedDB) return blocco('Questo browser non può aprire i cataloghi riservati.');
-  navigator.serviceWorker.register('sw.js').catch(e => console.warn('service worker', e));
+  aggiornamentoAutomatico();
   let ACC;
   try { ACC = await (await fetch('web/accesso.json', { cache: 'no-cache' })).json(); } catch (e) { return blocco('Non riesco a leggere gli account: controlla la connessione e ricarica.'); }
   let s = null;

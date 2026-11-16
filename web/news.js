@@ -15,9 +15,11 @@ const TIPI = {
   comunicato: { nome: 'Comunicato', gruppo: 'comunicati', colore: '#6CC0F5' },
   fonte: { nome: 'Fonte', gruppo: 'stato', colore: '#66788B' },
 };
-const FILTRI = [['tutto', 'Tutto'], ['nuovi', 'Nuovi prodotti'], ['cambi', 'Cambiati o tolti'], ['comunicati', 'Comunicati']];
+const FILTRI = [['tutto', 'Tutto'], ['comunicato', 'Comunicati'], ['nuovo', 'Nuovi'], ['tolto', 'Tolti'], ['cambiato', 'Rinominati'], ['famiglia', 'Famiglie']];   // un filtro per tipo di evento
 // loghi dei marchi: web/img/marchi/<slug>.svg (da Luca). Finché manca il file si mostra il nome come marchio testuale.
+// Per aggiungerne uno: copiare il file in web/img/marchi/<slug>.svg e scrivere qui lo slug (es. 'conec', 'amphenol-ltw', 'lumberg-automation').
 const LOGHI = new Set([]);
+const iniziali = t => String(t).split(/\s+/).filter(Boolean).map(p => p[0]).join('').slice(0, 2).toUpperCase();
 
 let X = null;
 const N = { dati: null, filtro: 'tutto', aperto: new Set(), soloNuove: false, visto: null };
@@ -47,7 +49,7 @@ function pallino() {
 
 function marchio(nome) {
   const s = slug(nome);
-  return LOGHI.has(s) ? `<img class="nw-logo" src="web/img/marchi/${s}.svg" alt="${esc(nome)}">` : `<span class="nw-wm">${esc(nome)}</span>`;
+  return LOGHI.has(s) ? `<img class="nw-logo" src="web/img/marchi/${s}.svg" alt="${esc(nome)}">` : `<span class="nw-ini" aria-hidden="true">${esc(iniziali(nome))}</span><span class="nw-wm">${esc(nome)}</span>`;
 }
 function riga(e) {
   const t = TIPI[e.tipo] || TIPI.fonte, c = e.cat && X.S.cataloghi.find(x => x.numero === e.cat);
@@ -68,11 +70,11 @@ function disegna() {
       <p class="muted">Il controllo automatico dei siti dei produttori parte a breve: ogni ora la piattaforma guarda notizie, prodotti nuovi e famiglie cambiate.</p></div>`;
     $('#nwInfo').textContent = ''; return;
   }
-  const D = N.dati, ok = e => (N.filtro === 'tutto' ? e.tipo !== 'fonte' : TIPI[e.tipo]?.gruppo === N.filtro) && (!N.soloNuove || nuovo(e));
+  const D = N.dati, delFiltro = (e, k) => k === 'tutto' ? e.tipo !== 'fonte' : e.tipo === k, ok = e => delFiltro(e, N.filtro) && (!N.soloNuove || nuovo(e));
   const fonti = D.fonti || [], err = fonti.filter(f => f.errore).length;
   $('#nwInfo').innerHTML = `Controllo automatico ogni ora · ${fonti.length} pagine sorvegliate${err ? ` · <span class="nw-err">${err} non raggiungibil${err === 1 ? 'e' : 'i'}</span>` : ''}${D.aggiornato ? ` · ultima novità ${quando(D.aggiornato)}` : ''}`;
   $('#nwFiltri').innerHTML = FILTRI.map(([k, t]) => {
-    const n = D.eventi.filter(e => (k === 'tutto' ? e.tipo !== 'fonte' : TIPI[e.tipo]?.gruppo === k) && nuovo(e)).length;
+    const n = D.eventi.filter(e => delFiltro(e, k) && nuovo(e)).length;
     return `<button data-f="${k}" class="${N.filtro === k ? 'on' : ''}">${t}${n ? ` <b>${n}</b>` : ''}</button>`;
   }).join('') + `<label class="nw-solo"><input type="checkbox" ${N.soloNuove ? 'checked' : ''}> solo da leggere</label>`;
   el.innerHTML = `<div class="nw-griglia">${D.marchi.map((m, i) => {

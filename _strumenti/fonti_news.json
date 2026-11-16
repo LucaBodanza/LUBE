@@ -1,5 +1,6 @@
 {
- "nota": "ELSAP DSGN · News — fonti sorvegliate (v4 · 21/10/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema).",
+ "nota": "ELSAP DSGN · News — fonti sorvegliate (v5 · 16/11/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema) | sitemap (elenco letto dalla sitemap XML/.gz: per i siti che caricano i prodotti con JavaScript; schema = regex sul percorso; id = chiave dello stato, obbligatorio se più fonti leggono la stessa sitemap). Opzioni: pausa (secondi tra richieste, crawl-delay del sito), segmenti (pezzi finali del percorso che formano il nome), sito (host canonico), indice (regex delle sotto-sitemap), attiva:false (sospesa).",
+ "sospese": "BJB (bjb.com/en/all-products/): il sito risponde con una verifica anti-bot (cookie JavaScript prima di mostrare le pagine). Non va aggirata: servono il consenso di BJB o un feed ufficiale. Quando c'è, togliere attiva:false.",
  "fonti": [
   {
    "marchio": "CONEC",
@@ -44,46 +45,84 @@
    "schema": "^/news/[^/]+$"
   },
   {
+   "id": "belden-cat2-data",
    "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 5,
-   "url": "https://www.belden.com/products/i-o-systems"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 6,
-   "url": "https://www.belden.com/products/i-o-systems/safety-i-o-modules"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 8,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 9,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors"
-  },
-  {
-   "marchio": "Hirschmann",
-   "tipo": "famiglia",
-   "cat": 7,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
-   "cat": 3,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/power-connectors"
-  },
-  {
-   "marchio": "Lumberg Automation",
-   "tipo": "famiglia",
+   "tipo": "sitemap",
    "cat": 2,
-   "url": "https://www.belden.com/products/connectors/industrial-connectors/data-connectors"
+   "url": "https://www.belden.com/sitemap-product-connectors.xml",
+   "schema": "^/products/connectors/industrial-connectors/data-connectors/.+"
+  },
+  {
+   "id": "belden-cat3-power",
+   "marchio": "Lumberg Automation",
+   "tipo": "sitemap",
+   "cat": 3,
+   "url": "https://www.belden.com/sitemap-product-connectors.xml",
+   "schema": "^/products/connectors/industrial-connectors/power-connectors/.+"
+  },
+  {
+   "id": "belden-cat5-io",
+   "marchio": "Lumberg Automation",
+   "tipo": "sitemap",
+   "cat": 5,
+   "url": "https://www.belden.com/sitemap-product-io-systems.xml",
+   "schema": "^/products/i-o-systems/(?!safety-i-o-modules).+"
+  },
+  {
+   "id": "belden-cat6-safety",
+   "marchio": "Lumberg Automation",
+   "tipo": "sitemap",
+   "cat": 6,
+   "url": "https://www.belden.com/sitemap-product-io-systems.xml",
+   "schema": "^/products/i-o-systems/safety-i-o-modules/.+"
+  },
+  {
+   "id": "belden-cat7-valvole",
+   "marchio": "Hirschmann",
+   "tipo": "sitemap",
+   "cat": 7,
+   "url": "https://www.belden.com/sitemap-product-connectors.xml",
+   "schema": "^/products/connectors/industrial-connectors/valve-connectors/.+"
+  },
+  {
+   "id": "belden-cat8-sensori",
+   "marchio": "Lumberg Automation",
+   "tipo": "sitemap",
+   "cat": 8,
+   "url": "https://www.belden.com/sitemap-product-connectors.xml",
+   "schema": "^/products/connectors/industrial-connectors/sensor-actuator-connectors/.+"
+  },
+  {
+   "id": "belden-cat9-spe",
+   "marchio": "Lumberg Automation",
+   "tipo": "sitemap",
+   "cat": 9,
+   "url": "https://www.belden.com/sitemap-product-connectors.xml",
+   "schema": "^/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors/.+"
+  },
+  {
+   "id": "friwo-prodotti",
+   "marchio": "FRIWO",
+   "tipo": "sitemap",
+   "url": "https://www.friwo-shop.de/sitemap.xml",
+   "pausa": 5,
+   "segmenti": 2,
+   "schema": "^/(?!Shop-Service|Informationen|Netzteile|Ladegeraete|Zubehoer|testlandingpage)[^/]+/[^/]+/?$"
+  },
+  {
+   "id": "friwo-categorie",
+   "marchio": "FRIWO",
+   "tipo": "sitemap",
+   "url": "https://www.friwo-shop.de/sitemap.xml",
+   "pausa": 5,
+   "schema": "^/(Netzteile|Ladegeraete|Zubehoer)/.+"
+  },
+  {
+   "id": "bjb",
+   "marchio": "BJB",
+   "tipo": "famiglia",
+   "url": "https://www.bjb.com/en/all-products/",
+   "attiva": false
   }
  ]
 }

@@ -8,11 +8,13 @@
 Fonti: _strumenti/fonti_news.json. Stato (elenchi già visti): _strumenti/news_stato.json.
 Uscita per l'app: dati/news.json CIFRATO come il resto dei dati (segreto ELSAP_CHIAVE; senza chiave → in chiaro solo in prova).
 Regole di cortesia: un solo giro per volta, pausa tra richieste allo stesso sito, si ferma su 429/503, nome del bot dichiarato.
+Tipi di fonte (fonti_news.json): rss · news (elenco notizie) · famiglia (pagina con sotto-pagine) · sitemap (elenco da sitemap XML/.gz,
+        per i siti che caricano i prodotti con JavaScript). Opzioni: cat, schema, pausa (crawl-delay), sito, segmenti, indice, attiva:false.
 Eventi: comunicato (notizia nuova) · nuovo (prodotto/variante comparso) · tolto (sparito per 3 controlli di fila)
         · cambiato (titolo della famiglia cambiato) · famiglia (pagina spostata o non più raggiungibile).
 Il primo giro di ogni fonte fa solo la "fotografia" iniziale: nessun evento, tranne le ultime notizie già pubblicate.
 """
-import sys, os, re, json, time, html, hashlib, hmac, base64, datetime, urllib.request, urllib.error
+import sys, os, re, json, time, html, hashlib, hmac, base64, datetime, zlib, urllib.request, urllib.error
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 QUI = os.path.dirname(os.path.abspath(__file__))
@@ -26,28 +28,36 @@ SOGLIA_ERRORE = 3             # giri consecutivi in errore prima di segnalare la
 MAX_EVENTI = 400
 ADESSO = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
 
-FONTI = json.load(open(os.path.join(QUI, "fonti_news.json"), encoding="utf-8"))["fonti"]
+_F = json.load(open(os.path.join(QUI, "fonti_news.json"), encoding="utf-8"))
+FONTI = [f for f in _F["fonti"] if f.get("attiva") is not False]        # "attiva": false = fonte sospesa (il motivo sta in "sospese")
 STATO_F = os.path.join(QUI, "news_stato.json")
 STATO = json.load(open(STATO_F, encoding="utf-8")) if os.path.exists(STATO_F) and MODO != "prova" else {"fonti": {}, "eventi": []}
 
 # ---------------------------------------------------------------- rete
-ULTIMO, FERMI = {}, set()
-def scarica(url):
+ULTIMO, FERMI, PAUSA_HOST, CACHE = {}, set(), {}, {}
+def scarica(url, cache=False):
+    """una richiesta cortese: pausa per sito (PAUSA o il crawl-delay dichiarato dal sito), stop su 429/503, legge anche i .gz.
+    cache=True: se lo stesso indirizzo è già stato letto in questo giro (es. la sitemap di Belden usata da 6 fonti) non lo richiede."""
+    if cache and url in CACHE: return CACHE[url]
     host = urlsplit(url).netloc
     if host in FERMI: return None, "sito in pausa (troppe richieste)"
-    att = ULTIMO.get(host, 0) + PAUSA - time.time()
+    att = ULTIMO.get(host, 0) + max(PAUSA, PAUSA_HOST.get(host, 0)) - time.time()
     if att > 0: time.sleep(att)
     ULTIMO[host] = time.time()
     try:
         req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "en,it;q=0.8,de;q=0.6",
-                                                   "Accept": "text/html,application/xhtml+xml,application/rss+xml,*/*;q=0.8"})
+                                                   "Accept": "text/html,application/xhtml+xml,application/rss+xml,application/xml,*/*;q=0.8"})
         with urllib.request.urlopen(req, timeout=25) as h:
-            return {"url": h.geturl(), "stato": h.status, "testo": h.read(5_000_000).decode("utf-8", "replace")}, None
+            raw = h.read(8_000_000)
+            if raw[:2] == b"\x1f\x8b": raw = zlib.decompressobj(31).decompress(raw, 30_000_000)      # .xml.gz (limite anti "bomba")
+            res = ({"url": h.geturl(), "stato": h.status, "testo": raw.decode("utf-8", "replace")}, None)
     except urllib.error.HTTPError as e:
         if e.code in (429, 503): FERMI.add(host)
-        return {"url": url, "stato": e.code, "testo": ""}, f"HTTP {e.code}"
+        res = ({"url": url, "stato": e.code, "testo": ""}, f"HTTP {e.code}")
     except Exception as e:
-        return None, f"{type(e).__name__}: {str(e)[:120]}"
+        res = (None, f"{type(e).__name__}: {str(e)[:120]}")
+    if cache: CACHE[url] = res
+    return res
 
 # ---------------------------------------------------------------- estrazione
 pulisci = lambda t: re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(style|script|svg|noscript)\b.*?</\1>", " ", t or "")))).strip()
@@ -110,6 +120,21 @@ def rss(s):
         except Exception: data = None
         if g("link"): it.append({"url": g("link"), "titolo": g("title")[:160], "data": data, "testo": g("description")[:240]})
     return it
+def sitemap(url, indice=None, livello=0):
+    """[url] di una sitemap XML (anche .gz o indice di sitemap: `indice` = regex delle sotto-sitemap da leggere) · (None, errore) se non si legge"""
+    r, err = scarica(url, cache=True)
+    if not r or r["stato"] >= 400: return None, err or f'HTTP {r["stato"]}'
+    locs = [html.unescape(x.strip()) for x in re.findall(r"(?is)<loc>\s*(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?\s*</loc>", r["testo"])]
+    if re.search(r"(?i)<sitemapindex", r["testo"]):
+        if livello >= 2: return [], None
+        out = []
+        for s in locs[:40]:
+            if indice and not re.search(indice, s): continue
+            sub, e = sitemap(s, indice, livello + 1)
+            if sub is None: return None, e
+            out += sub
+        return out, None
+    return locs, None
 
 # ---------------------------------------------------------------- eventi
 EVENTI = []
@@ -123,6 +148,13 @@ def confronta(f, st, chiave, nuovi, iniziale):
     vecchi = st.setdefault(chiave, {})
     if iniziale or not vecchi:
         st[chiave] = {u: {"t": t, "assente": 0} for u, t in nuovi.items()}; return
+    # Se sparisce più di metà dell'elenco in un colpo, quasi sempre è la pagina a essere rotta (non i prodotti tolti):
+    # non conto le assenze. Se dura 6 giri di fila lo accetto come nuovo elenco, senza eventi.
+    if len(vecchi) >= 10 and sum(u not in nuovi for u in vecchi) > len(vecchi) / 2:
+        st["g_" + chiave] = st.get("g_" + chiave, 0) + 1
+        if st["g_" + chiave] >= 6: st[chiave] = {u: {"t": t, "assente": 0} for u, t in nuovi.items()}; st.pop("g_" + chiave, None)
+        return
+    st.pop("g_" + chiave, None)
     for u, t in nuovi.items():
         if u not in vecchi: evento(f, "nuovo", t, u)
         vecchi[u] = {"t": t, "assente": 0}
@@ -135,19 +167,46 @@ def confronta(f, st, chiave, nuovi, iniziale):
 def salute(st, f, ok, msg=None):
     if ok:
         if st.get("errore_dal"):
-            if st.get("segnalato"): evento(f, "famiglia" if f["tipo"] == "famiglia" else "fonte", "Pagina di nuovo raggiungibile", f["url"])
+            if st.get("segnalato"): evento(f, "famiglia" if f["tipo"] in ("famiglia", "sitemap") else "fonte", "Pagina di nuovo raggiungibile", f["url"])
             st.pop("errore_dal", None); st.pop("errori", None); st.pop("segnalato", None)
         return
     st.setdefault("errore_dal", ADESSO); st["errori"] = st.get("errori", 0) + 1; st["msg"] = msg
     if st["errori"] >= SOGLIA_ERRORE and not st.get("segnalato"):
         st["segnalato"] = True
-        evento(f, "famiglia" if f["tipo"] == "famiglia" else "fonte",
-               f"Pagina non più raggiungibile ({msg})" if f["tipo"] == "famiglia" else f"Fonte non raggiungibile ({msg})", f["url"])
+        fam = f["tipo"] in ("famiglia", "sitemap")
+        evento(f, "famiglia" if fam else "fonte", f"Pagina non più raggiungibile ({msg})" if fam else f"Fonte non raggiungibile ({msg})", f["url"])
 
 PROVA = []
+chiave = lambda f: f.get("id") or f["url"]              # chiave dello stato: più fonti possono leggere la stessa sitemap (servono id diversi)
+def giro_sitemap(f, st, iniziale):
+    """famiglia letta da una sitemap: elementi = indirizzi che rispettano `schema` (regex sul percorso).
+    `segmenti`: quanti pezzi finali del percorso formano il nome (es. 2 → «serie · codice»). `sito`: host canonico degli indirizzi."""
+    rep = {"marchio": f["marchio"], "tipo": f["tipo"], "url": f["url"], "cat": f.get("cat")}
+    urls, err = sitemap(f["url"], f.get("indice"))
+    if urls is None:
+        salute(st, f, False, err); PROVA.append({**rep, "errore": err}); return
+    host = urlsplit(f.get("sito") or f["url"]).netloc
+    el = {}
+    for u in urls:
+        p = urlsplit(u)
+        if not re.search(f["schema"], p.path): continue
+        k = urlunsplit(("https", host, p.path.rstrip("/") or "/", "", ""))
+        seg = [x for x in p.path.split("/") if x][-f.get("segmenti", 1):]
+        el[k] = " · ".join(nome_da_url("/" + s) for s in seg)
+    el.pop(urlunsplit(("https", host, urlsplit(f.get("radice", "")).path.rstrip("/") or "/", "", "")), None)
+    if not el:                                               # sitemap letta ma vuota per questo schema: è un guasto, non "tutto tolto"
+        salute(st, f, False, "sitemap senza elementi per questo schema"); PROVA.append({**rep, "errore": "nessun elemento"}); return
+    salute(st, f, True)
+    rep["livello0"] = len(el); rep["esempi"] = list(el.items())[:8]
+    confronta(f, st, "lv0", el, iniziale)
+    st["visto"] = st.get("visto") or ADESSO
+    PROVA.append(rep)
+
 def giro(f, notte):
-    st = STATO["fonti"].setdefault(f["url"], {})
+    if f.get("pausa"): PAUSA_HOST[urlsplit(f["url"]).netloc] = f["pausa"]   # crawl-delay dichiarato dal sito
+    st = STATO["fonti"].setdefault(chiave(f), {})
     iniziale = not st.get("visto")
+    if f["tipo"] == "sitemap": return giro_sitemap(f, st, iniziale)
     r, err = scarica(f["url"])
     if not r or r["stato"] >= 400:
         salute(st, f, False, err or f'HTTP {r["stato"]}'); PROVA.append({"url": f["url"], "errore": err}); return
@@ -210,10 +269,10 @@ def scrivi_uscita():
     marchi = {}
     for f in FONTI:
         m = marchi.setdefault(f["marchio"], {"nome": f["marchio"], "sito": "https://" + urlsplit(f["url"]).netloc, "fonti": 0, "in_errore": 0})
-        m["fonti"] += 1; m["in_errore"] += bool(STATO["fonti"].get(f["url"], {}).get("segnalato"))
+        m["fonti"] += 1; m["in_errore"] += bool(STATO["fonti"].get(chiave(f), {}).get("segnalato"))
     out = {"versione": 1, "aggiornato": ev[0]["quando"] if ev else None, "marchi": list(marchi.values()),
            "fonti": [{"marchio": f["marchio"], "tipo": f["tipo"], "cat": f.get("cat"), "url": f["url"],
-                      "errore": STATO["fonti"].get(f["url"], {}).get("msg") if STATO["fonti"].get(f["url"], {}).get("errore_dal") else None} for f in FONTI],
+                      "errore": STATO["fonti"].get(chiave(f), {}).get("msg") if STATO["fonti"].get(chiave(f), {}).get("errore_dal") else None} for f in FONTI],
            "eventi": ev}
     dati = json.dumps(out, ensure_ascii=False, separators=(",", ":")).encode()
     p = os.path.join(SITO, "dati", "news.json")

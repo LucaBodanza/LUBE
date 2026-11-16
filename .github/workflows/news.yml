@@ -1,0 +1,70 @@
+# ELSAP DSGN · News — controlla i siti dei produttori e aggiorna dati/news.json (cifrato con ELSAP_CHIAVE, come il resto dei dati).
+#   ogni ora, minuto 17      → modo "orario": notizie, feed RSS, pagine/sitemap di ogni famiglia (~20 richieste)
+#   ogni notte, 02:43 UTC    → modo "notte":  entra anche nelle famiglie (taglie, sotto-famiglie, pagine successive)
+#   a mano (Actions → News → Run workflow) o quando cambiano le fonti / il motore / questo file → giro subito (il primo = "fotografia", nessun evento)
+# Cortesia verso i siti: una sola esecuzione per volta, 3 s tra due richieste allo stesso sito (più se il sito dichiara un crawl-delay),
+# nome del bot dichiarato, stop immediato su 429/503. Commit e push SOLO se qualcosa è cambiato.
+name: News
+on:
+  schedule:
+    - cron: "17 * * * *"
+    - cron: "43 2 * * *"
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "orario = veloce · notte = entra nelle famiglie"
+        type: choice
+        options: [orario, notte]
+        default: orario
+  push:
+    branches: [main]
+    paths: [".github/workflows/news.yml", "_strumenti/news.py", "_strumenti/fonti_news.json"]
+permissions:
+  contents: write
+  pages: write
+concurrency: { group: carica, cancel-in-progress: false }      # stesso gruppo di "Carica catalogo": mai due scritture insieme sul repo
+jobs:
+  giro:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ELSAP_CHIAVE: ${{ secrets.ELSAP_CHIAVE }}
+      SITO: ${{ github.workspace }}
+    steps:
+      - name: Scarico il sito
+        uses: actions/checkout@v4
+        with: { lfs: false }
+      - name: Preparo gli strumenti
+        run: pip install -q cryptography
+      - name: Che giro è
+        id: modo
+        env:
+          EVENTO: ${{ github.event_name }}
+          PIANO: ${{ github.event.schedule }}
+          SCELTO: ${{ inputs.modo }}
+        run: |
+          if [ "$PIANO" = "43 2 * * *" ]; then M=notte
+          elif [ "$EVENTO" = "workflow_dispatch" ] && [ "$SCELTO" = "notte" ]; then M=notte
+          else M=orario; fi
+          echo "modo=$M" >> "$GITHUB_OUTPUT"
+      - name: Giro
+        run: python3 _strumenti/news.py "${{ steps.modo.outputs.modo }}"
+      - name: Salvo solo se qualcosa è cambiato
+        id: salva
+        run: |
+          git config user.name "ELSAP DSGN"
+          git config user.email "elsap-dsgn@users.noreply.github.com"
+          git add dati/news.json _strumenti/news_stato.json
+          if git diff --cached --quiet; then echo "cambiato=no" >> "$GITHUB_OUTPUT"; echo "Nessun cambiamento: niente commit."; exit 0; fi
+          git commit -q -m "News: giro ${{ steps.modo.outputs.modo }}"
+          ok=0
+          for i in 1 2 3; do
+            if git pull -q --rebase && git push -q; then ok=1; break; fi
+            sleep 5
+          done
+          [ "$ok" = 1 ] || { echo "Push non riuscito dopo 3 tentativi"; exit 1; }
+          echo "cambiato=si" >> "$GITHUB_OUTPUT"
+      - name: Aggiorno il sito online
+        if: steps.salva.outputs.cambiato == 'si'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null || echo "build di Pages partita da sola"

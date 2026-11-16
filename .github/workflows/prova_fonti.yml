@@ -1,9 +1,8 @@
-# ELSAP DSGN · News — giro di PROVA: parte quando cambiano fonti o motore (o a mano). Estrae tutto ma non salva lo stato e non tocca sito e dati.
+# ELSAP DSGN · News — giro di PROVA, solo a mano (Actions → Prova fonti News → Run workflow).
+# Estrae tutto (ora + notte) ma non salva lo stato e non tocca sito e dati: scrive solo _strumenti/news_prova.json per controllare cosa estrae.
+# (Da quando c'è news.yml non parte più da solo a ogni modifica delle fonti: ci pensa il primo giro di news.yml.)
 name: Prova fonti News
 on:
-  push:
-    branches: [main]
-    paths: ["_strumenti/fonti_news.json", "_strumenti/news.py", ".github/workflows/prova_fonti.yml"]
   workflow_dispatch:
 permissions:
   contents: write
