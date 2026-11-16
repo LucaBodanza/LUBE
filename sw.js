@@ -4,7 +4,8 @@
 // - pdf.js legge i PDF a pezzi: qui i pezzi vengono ritagliati
 // - VERSIONE RISERVATA (true): tutto ciò che sta in cat/ e dati/ è cifrato (AES-256-GCM a blocchi da 256 KB).
 //   Qui si decifra al volo con la chiave messa nel dispositivo dall'accesso (IndexedDB). Nelle cache resta tutto cifrato.
-const VERSIONE = '1.1.1-2026.11.7-41cb922b21';
+const VERSIONE = '1.1.1-2026.11.8-98a04c643b';
+const RAW_NEWS = 'https://raw.githubusercontent.com/LucaBodanza/LUBE/news-dati/dati/news.json';   // scritto da .github/workflows/news.yml (cifrato come il resto)
 const CIFRATA = true;
 const GUSCIO = 'elsap-guscio-' + VERSIONE, CAT = 'elsap-cat-v1';
 const FILE = ["index.html", "manifest.webmanifest", "dati/cataloghi.json", "dati/prodotti.json", "web/accesso.css", "web/accesso.js", "web/accesso.json", "web/anagrafica.css", "web/app.css", "web/app.js", "web/carica.css", "web/carica.js", "web/cerca.js", "web/comparti.js", "web/core/csv.js", "web/core/offerta.js", "web/core/ordine.js", "web/core/permessi.js", "web/core/ponte.js", "web/core/router.js", "web/core/store.js", "web/dashboard.css", "web/dashboard.js", "web/font/Doto-Bold.ttf", "web/font/IBMPlexMono-Medium.woff2", "web/font/IBMPlexMono-Regular.woff2", "web/font/Inter-Regular.ttf", "web/font/Inter-SemiBold.ttf", "web/img/icona_192.png", "web/img/icona_512.png", "web/img/logo.svg", "web/img/pittogramma.svg", "web/index.html", "web/libro.js", "web/listino.css", "web/moduli/anagrafica.js", "web/moduli/listino.js", "web/moduli/mod-01-libreria.js", "web/moduli/mod-02-commerciale.js", "web/moduli/mod-03-operations.js", "web/moduli/offerta-stampa.js", "web/moduli/offerte.js", "web/moduli/ordini.js", "web/news.js", "web/offerte.css", "web/ordini.css", "web/scena.js", "web/schemi/clienti_lead.json", "web/schemi/listini.json", "web/schemi/moduli.json", "web/schemi/offerte_ordini.json", "web/schemi/ruoli.json", "web/trova.js", "web/vendor/RoomEnvironment.js", "web/vendor/SVGLoader.js", "web/vendor/pdf-lib.esm.min.js", "web/vendor/pdf.min.mjs", "web/vendor/pdf.worker.min.mjs", "web/vendor/three.module.min.js"];
@@ -80,7 +81,8 @@ async function servi(req, url, rel) {
   if (!salvato && rel.startsWith('dati/')) salvato = await (await caches.open(GUSCIO)).match(rel);
   try {
     if (tipo !== 'application/pdf') {                         // file piccoli: tutto in una volta
-      const r = salvato || await fetch(url);
+      // dati/ sempre freschi (Pages tiene 10 min in cache HTTP). Le News le scrive il bot nel ramo news-dati, non su main: si leggono da lì.
+      const r = salvato || (rel === 'dati/news.json' ? await fetch(RAW_NEWS, { cache: 'no-cache' }) : await fetch(url, rel.startsWith('dati/') ? { cache: 'no-cache' } : undefined));
       if (!r.ok) return r;
       const buf = await r.arrayBuffer(), I = leggiTesta(buf.slice(0, TESTA));
       const out = I.n ? await apriBlocchi(k, I, 0, I.n - 1, buf.slice(TESTA)) : new Uint8Array(0);

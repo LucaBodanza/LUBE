@@ -178,6 +178,14 @@ function aggiornamentoAutomatico() {
   try { await swPronto(); } catch (e) { return blocco('Accesso fatto, ma ' + e.message + '. Ricarica la pagina.'); }
   navigator.serviceWorker.controller.postMessage({ tipo: 'entra' });
   window.elsapRuolo = s.ruolo;   // letto da core/permessi.js (chi vede i prezzi di acquisto)
+  // token GitHub salvato su questo browser (lo stesso di «Carica catalogo»): serve a news.js per il pulsante «Cerca ora»
+  window.elsapToken = async () => {
+    try {
+      const t = JSON.parse(localStorage.getItem('elsap.gh') || 'null'); if (!t) return null;
+      const ub = x => Uint8Array.from(atob(x), c => c.charCodeAt(0));
+      return new TextDecoder().decode(await crypto.subtle.decrypt({ name: 'AES-GCM', iv: ub(t.v) }, s.chiave, ub(t.w)));
+    } catch (e) { return null; }
+  };
   await import('./app.js');
   const attendi = setInterval(() => { if (document.querySelector('#barra .logo svg')) { clearInterval(attendi); profiloInBarra(s, ACC); } }, 200);
 })();

@@ -26,11 +26,12 @@ MAX_PAGINE_NOTTE = 30         # per fonte, solo nel giro di notte
 SOGLIA_TOLTO = 3              # controlli consecutivi senza l'elemento prima di dirlo "tolto"
 SOGLIA_ERRORE = 3             # giri consecutivi in errore prima di segnalare la famiglia
 MAX_EVENTI = 400
+TIPO_IT = {"nuovo": "nuovo prodotto", "tolto": "non più a catalogo", "cambiato": "famiglia rinominata", "famiglia": "pagina famiglia", "comunicato": "comunicato", "fonte": "fonte"}
 ADESSO = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
 
 _F = json.load(open(os.path.join(QUI, "fonti_news.json"), encoding="utf-8"))
 FONTI = [f for f in _F["fonti"] if f.get("attiva") is not False]        # "attiva": false = fonte sospesa (il motivo sta in "sospese")
-STATO_F = os.path.join(QUI, "news_stato.json")
+STATO_F = os.environ.get("STATO_NEWS") or os.path.join(QUI, "news_stato.json")     # nel workflow sta nel ramo news-dati, non su main
 STATO = json.load(open(STATO_F, encoding="utf-8")) if os.path.exists(STATO_F) and MODO != "prova" else {"fonti": {}, "eventi": []}
 
 # ---------------------------------------------------------------- rete
@@ -292,5 +293,8 @@ if __name__ == "__main__":
         json.dump({"quando": ADESSO, "fonti": PROVA, "eventi": EVENTI}, open(os.path.join(QUI, "news_prova.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     else:
         scrivi_uscita()
+    if os.environ.get("NOVITA_FILE") and nuovi and MODO != "prova":       # testo dell'avviso email (lo spedisce avvisa.py)
+        righe = [f'• {e["marchio"]} — {TIPO_IT.get(e["tipo"], e["tipo"])}: {e["titolo"]}' + (f'\n  {e["url"]}' if e.get("url") else "") for e in nuovi[:40]]
+        open(os.environ["NOVITA_FILE"], "w", encoding="utf-8").write(f"{len(nuovi)} novità dai produttori:\n\n" + "\n".join(righe) + ("\n\n…e altre: vedi la sezione News dell'app." if len(nuovi) > 40 else "\n\nDettagli nella sezione News dell'app ELSAP DSGN."))
     with open(os.environ.get("GITHUB_STEP_SUMMARY", os.devnull), "a") as S:
         S.write(f"### News · {MODO}\n{len(FONTI)} fonti · {len(nuovi)} novità\n\n" + "".join(f'- **{e["tipo"]}** {e["marchio"]}: {e["titolo"]}\n' for e in nuovi[:50]))

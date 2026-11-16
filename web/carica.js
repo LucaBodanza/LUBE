@@ -171,7 +171,7 @@ async function orb(o) {
 function tokenForm() {
   const el = $('#carica'); let f = $('.cg-tok', el);
   if (f) { f.hidden = !f.hidden; return; }
-  $('.cg-orbs', el).insertAdjacentHTML('afterend', `<form class="cg-tok"><input type="password" autocomplete="off" placeholder="Incolla qui il token GitHub (fine-grained · solo LUBE · Contents: Read and write · Actions: Read)"><button class="btn">Salva</button></form>`);
+  $('.cg-orbs', el).insertAdjacentHTML('afterend', `<form class="cg-tok"><input type="password" autocomplete="off" placeholder="Incolla qui il token GitHub (fine-grained · solo LUBE · Contents: Read and write · Actions: Read and write)"><button class="btn">Salva</button></form>`);
   f = $('.cg-tok', el);
   f.onsubmit = async e => {
     e.preventDefault(); const t = f.firstElementChild.value.trim(); if (!t) return;

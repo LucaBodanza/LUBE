@@ -1,13 +1,17 @@
 # ELSAP DSGN · News — controlla i siti dei produttori e aggiorna dati/news.json (cifrato con ELSAP_CHIAVE, come il resto dei dati).
-#   ogni ora, minuto 17      → modo "orario": notizie, feed RSS, pagine/sitemap di ogni famiglia (~20 richieste)
-#   ogni notte, 02:43 UTC    → modo "notte":  entra anche nelle famiglie (taglie, sotto-famiglie, pagine successive)
-#   a mano (Actions → News → Run workflow) o quando cambiano le fonti / il motore / questo file → giro subito (il primo = "fotografia", nessun evento)
+#   ogni 30 min (minuti 17 e 47) → modo "orario": notizie, feed RSS, pagine/sitemap di ogni famiglia (~20 richieste)
+#   ogni notte, 02:43 UTC        → modo "notte":  entra anche nelle famiglie (taglie, sotto-famiglie, pagine successive)
+#   a mano (Actions → News → Run workflow, o il pulsante «Cerca ora» nell'app) o quando cambiano fonti/motore/questo file → giro subito
+#   (il primo giro di una fonte = "fotografia": nessun evento, nessun avviso)
+# DOVE SCRIVE: i dati (dati/news.json cifrato + news_stato.json) stanno nel ramo `news-dati`, NON su `main`: così il bot non
+# sposta mai `main` e GitHub Desktop non va in «indietro». L'app legge il file da lì (vedi sw.js, RAW_NEWS).
 # Cortesia verso i siti: una sola esecuzione per volta, 3 s tra due richieste allo stesso sito (più se il sito dichiara un crawl-delay),
 # nome del bot dichiarato, stop immediato su 429/503. Commit e push SOLO se qualcosa è cambiato.
+# Avvisi email (facoltativi): se esistono i segreti SMTP_USER e SMTP_PASS arriva una mail a ogni giro con novità vere e se il giro fallisce.
 name: News
 on:
   schedule:
-    - cron: "17 * * * *"
+    - cron: "17,47 * * * *"
     - cron: "43 2 * * *"
   workflow_dispatch:
     inputs:
@@ -18,24 +22,32 @@ on:
         default: orario
   push:
     branches: [main]
-    paths: [".github/workflows/news.yml", "_strumenti/news.py", "_strumenti/fonti_news.json"]
+    paths: [".github/workflows/news.yml", "_strumenti/news.py", "_strumenti/fonti_news.json", "_strumenti/avvisa.py"]
 permissions:
   contents: write
-  pages: write
-concurrency: { group: carica, cancel-in-progress: false }      # stesso gruppo di "Carica catalogo": mai due scritture insieme sul repo
+concurrency: { group: news, cancel-in-progress: false }        # un giro per volta (non blocca «Carica catalogo»: scrivono su rami diversi)
 jobs:
   giro:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
       ELSAP_CHIAVE: ${{ secrets.ELSAP_CHIAVE }}
-      SITO: ${{ github.workspace }}
     steps:
-      - name: Scarico il sito
+      - name: Scarico gli strumenti
         uses: actions/checkout@v4
         with: { lfs: false }
       - name: Preparo gli strumenti
         run: pip install -q cryptography
+      - name: Preparo il ramo dei dati (la prima volta lo creo vuoto)
+        run: |
+          if ! git ls-remote --exit-code --heads origin news-dati >/dev/null 2>&1; then
+            T=$(git mktree </dev/null)
+            C=$(git -c user.name="ELSAP DSGN" -c user.email="elsap-dsgn@users.noreply.github.com" commit-tree "$T" -m "Ramo dei dati News (scritto dal bot)")
+            git push -q origin "${C}:refs/heads/news-dati"
+          fi
+      - name: Scarico i dati
+        uses: actions/checkout@v4
+        with: { ref: news-dati, path: dn, lfs: false }
       - name: Che giro è
         id: modo
         env:
@@ -48,13 +60,18 @@ jobs:
           else M=orario; fi
           echo "modo=$M" >> "$GITHUB_OUTPUT"
       - name: Giro
+        env:
+          SITO: ${{ github.workspace }}/dn
+          STATO_NEWS: ${{ github.workspace }}/dn/news_stato.json
+          NOVITA_FILE: ${{ github.workspace }}/novita.txt
         run: python3 _strumenti/news.py "${{ steps.modo.outputs.modo }}"
       - name: Salvo solo se qualcosa è cambiato
         id: salva
+        working-directory: dn
         run: |
           git config user.name "ELSAP DSGN"
           git config user.email "elsap-dsgn@users.noreply.github.com"
-          git add dati/news.json _strumenti/news_stato.json
+          git add -A
           if git diff --cached --quiet; then echo "cambiato=no" >> "$GITHUB_OUTPUT"; echo "Nessun cambiamento: niente commit."; exit 0; fi
           git commit -q -m "News: giro ${{ steps.modo.outputs.modo }}"
           ok=0
@@ -64,7 +81,21 @@ jobs:
           done
           [ "$ok" = 1 ] || { echo "Push non riuscito dopo 3 tentativi"; exit 1; }
           echo "cambiato=si" >> "$GITHUB_OUTPUT"
-      - name: Aggiorno il sito online
-        if: steps.salva.outputs.cambiato == 'si'
-        env: { GH_TOKEN: "${{ github.token }}" }
-        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null || echo "build di Pages partita da sola"
+      - name: Avviso email (novità)
+        if: steps.salva.outputs.cambiato == 'si' && hashFiles('novita.txt') != ''
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        run: python3 _strumenti/avvisa.py novita novita.txt
+      - name: Avviso email (giro fallito)
+        if: failure()
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        run: python3 _strumenti/avvisa.py errore

@@ -34,6 +34,57 @@ const quando = (iso, breve) => {
   return d.toLocaleDateString('it-IT', breve ? { day: '2-digit', month: 'short' } : { day: '2-digit', month: 'short', year: 'numeric' });
 };
 
+// ---- stato del controllo automatico (letto da GitHub, repo pubblico) e pulsante «Cerca ora» (solo dove c'è il token GitHub salvato)
+const API = 'https://api.github.com/repos/LucaBodanza/LUBE/actions/workflows/news.yml';
+const attesa = ms => new Promise(r => setTimeout(r, ms));
+async function gh(url, o = {}, conToken = false) {
+  const t = conToken ? await window.elsapToken?.() : null;
+  const r = await fetch(url, { ...o, headers: { Accept: 'application/vnd.github+json', ...(t ? { Authorization: `Bearer ${t}` } : {}), ...(o.body ? { 'Content-Type': 'application/json' } : {}) } });
+  if (r.status === 204) return {};
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) { const e = new Error(j.message || r.status); e.stato = r.status; throw e; }
+  return j;
+}
+const fa = iso => { const m = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 6e4)); return m < 2 ? 'adesso' : m < 90 ? `${m} min fa` : `${Math.round(m / 60)} ore fa`; };
+async function statoGiri(msg = '') {
+  const box = $('#nwStato'); if (!box) return;
+  let L = [];
+  try { L = (await gh(`${API}/runs?per_page=10`)).workflow_runs || []; } catch (e) { box.innerHTML = ''; return; }   // GitHub non raggiungibile o limite richieste: nessun avviso
+  const fin = L.find(x => x.status === 'completed'), corso = L.find(x => x.status !== 'completed');
+  const ore = fin ? (Date.now() - Date.parse(fin.updated_at)) / 36e5 : Infinity;
+  const bene = fin && fin.conclusion === 'success' && ore < 2;       // il giro è ogni 30 min: oltre 2 ore qualcosa non va
+  const tok = !!(await window.elsapToken?.());
+  box.innerHTML = (bene ? `<span class="nw-ok">Ultimo controllo ${fa(fin.updated_at)}</span>`
+      : `<span class="nw-err">${fin ? `Il controllo automatico non risulta in funzione (ultimo: ${fa(fin.updated_at)}${fin.conclusion !== 'success' ? ', con errore' : ''})` : 'Nessun controllo eseguito finora'}</span>`)
+    + (corso ? '<span>· un giro è in corso</span>' : '')
+    + `<span class="nw-msg">${esc(msg)}</span>`
+    + (tok ? '<button class="btn ghost" data-cerca="orario">Cerca ora</button><button class="btn ghost" data-cerca="notte" title="Entra in tutte le famiglie: dura circa un quarto d\'ora">Ricerca profonda</button>'
+           : '<span class="muted">· prossimo controllo automatico entro 30 minuti</span>');
+}
+async function cercaOra(modo) {
+  const box = $('#nwStato'), msg = t => { const m = $('.nw-msg', box); if (m) m.textContent = t; };
+  box.querySelectorAll('button').forEach(b => b.disabled = true);
+  const t0 = Date.now(), prima = N.dati?.aggiornato || '', n0 = N.dati?.eventi.length || 0;
+  try { await gh(`${API}/dispatches`, { method: 'POST', body: JSON.stringify({ ref: 'main', inputs: { modo } }) }, true); }
+  catch (e) { return statoGiri([401, 403, 404].includes(e.stato) ? 'Il token non può avviare i controlli: serve il permesso «Actions: Read and write».' : 'Non riesco ad avviare il controllo: ' + e.message); }
+  msg('Controllo avviato…');
+  let run = null;
+  for (let i = 0; i < 120 && !(run && run.status === 'completed'); i++) {            // fino a ~15 minuti (la ricerca profonda è lunga)
+    await attesa(i < 3 ? 4000 : 8000);
+    try { run = ((await gh(`${API}/runs?event=workflow_dispatch&per_page=5`, {}, true)).workflow_runs || []).find(x => Date.parse(x.created_at) >= t0 - 15000) || run; } catch (e) { /* riprovo */ }
+    if (run) msg(run.status === 'completed' ? 'Giro concluso…' : run.status === 'queued' ? 'In coda (un altro giro è in corso)…' : 'Sto leggendo i siti dei produttori…');
+  }
+  if (!run || run.status !== 'completed') return statoGiri('Il controllo sta durando più del previsto: riprova tra poco.');
+  if (run.conclusion !== 'success') return statoGiri('Il giro è finito con un errore (vedi Actions su GitHub).');
+  msg('Aspetto la pubblicazione sul sito…');
+  for (let i = 0; i < 24; i++) {                                                      // il sito si aggiorna 1-2 minuti dopo il giro
+    await carica();
+    if (N.dati && (N.dati.aggiornato !== prima || N.dati.eventi.length !== n0)) { disegna(); return statoGiri(`Aggiornato: ${Math.max(0, N.dati.eventi.length - n0)} novità.`); }
+    await attesa(10000);
+  }
+  statoGiri('Controllo fatto: nessuna novità.');
+}
+
 async function carica() {
   try {
     const r = await fetch('dati/news.json', { cache: 'no-cache' });
@@ -67,12 +118,12 @@ function disegna() {
   const el = $('#nwCorpo');
   if (!N.dati) {
     el.innerHTML = `<div class="nw-vuoto"><span class="pill cool">In arrivo</span><h3>Le News si stanno preparando</h3>
-      <p class="muted">Il controllo automatico dei siti dei produttori parte a breve: ogni ora la piattaforma guarda notizie, prodotti nuovi e famiglie cambiate.</p></div>`;
+      <p class="muted">Il controllo automatico dei siti dei produttori parte a breve: ogni 30 minuti la piattaforma guarda notizie, prodotti nuovi e famiglie cambiate.</p></div>`;
     $('#nwInfo').textContent = ''; return;
   }
   const D = N.dati, delFiltro = (e, k) => k === 'tutto' ? e.tipo !== 'fonte' : e.tipo === k, ok = e => delFiltro(e, N.filtro) && (!N.soloNuove || nuovo(e));
   const fonti = D.fonti || [], err = fonti.filter(f => f.errore).length;
-  $('#nwInfo').innerHTML = `Controllo automatico ogni ora · ${fonti.length} pagine sorvegliate${err ? ` · <span class="nw-err">${err} non raggiungibil${err === 1 ? 'e' : 'i'}</span>` : ''}${D.aggiornato ? ` · ultima novità ${quando(D.aggiornato)}` : ''}`;
+  $('#nwInfo').innerHTML = `Controllo automatico ogni 30 minuti · ${fonti.length} pagine sorvegliate${err ? ` · <span class="nw-err">${err} non raggiungibil${err === 1 ? 'e' : 'i'}</span>` : ''}${D.aggiornato ? ` · ultima novità ${quando(D.aggiornato)}` : ''}`;
   $('#nwFiltri').innerHTML = FILTRI.map(([k, t]) => {
     const n = D.eventi.filter(e => delFiltro(e, k) && nuovo(e)).length;
     return `<button data-f="${k}" class="${N.filtro === k ? 'on' : ''}">${t}${n ? ` <b>${n}</b>` : ''}</button>`;
@@ -96,6 +147,7 @@ export async function apriNews() {
   $('#nwCorpo').innerHTML = '<div class="nw-vuoto"><div class="spinner"></div></div>';
   await carica();
   disegna();
+  statoGiri();
   if (N.dati) salvaVisto(new Date().toISOString().replace(/\.\d+Z$/, '+00:00'));
   setTimeout(() => { N.visto = leggiVisto(); pallino(); }, 400);
 }
@@ -103,6 +155,9 @@ export function avviaNews(ctx) {
   X = ctx;
   if (!X.WEB) return;                     // solo versione web riservata (4 account)
   document.querySelectorAll('[data-news]').forEach(b => b.onclick = apriNews);
+  const st = document.createElement('div'); st.id = 'nwStato'; st.className = 'nw-stato';
+  $('#nwInfo').insertAdjacentElement('afterend', st);
+  st.addEventListener('click', e => { const b = e.target.closest('[data-cerca]'); if (b && !b.disabled) cercaOra(b.dataset.cerca); });
   $('#nwFiltri').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if (b) { N.filtro = b.dataset.f; disegna(); } });
   $('#nwFiltri').addEventListener('change', e => { N.soloNuove = e.target.checked; disegna(); });
   $('#nwCorpo').addEventListener('click', e => {

@@ -605,6 +605,11 @@ body:not(.con-news) [data-news] { display: none !important; }
 .nw-m { min-height: 34px; display: flex; align-items: center; }
 .nw-logo { height: 30px; max-width: 170px; object-fit: contain; }
 .nw-wm { font-weight: 700; font-size: 19px; letter-spacing: -.01em; }
+.nw-stato { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 8px; font-size: 13px; }
+.nw-stato:empty { display: none; }
+.nw-stato .nw-ok::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: #57C38A; }
+.nw-stato .nw-msg:not(:empty) { color: #6CC0F5; }
+.nw-stato .btn { padding: 5px 12px; font-size: 13px; }
 .nw-ini { flex: none; width: 34px; height: 34px; margin-right: 10px; border-radius: 9px; display: grid; place-items: center; font: 700 13px/1 var(--mono, ui-monospace, monospace); letter-spacing: .02em; color: var(--ink, #e8eef5); background: rgba(108, 192, 245, .14); border: 1px solid rgba(108, 192, 245, .35); }
 .nw-badge { font-size: 11px; font-weight: 700; color: #fff; background: #F0605D; border-radius: 99px; padding: 3px 9px; }
 .nw-sito { margin-left: auto; font-family: "Plex Mono", monospace; font-size: 11px; color: var(--ink2); text-decoration: none; white-space: nowrap; }
