@@ -21097,8 +21097,6 @@
 "t": "PCB Connectors"
 }
 },
-"errore_dal": "2026-11-17T18:01:17+00:00",
-"errori": 1,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
@@ -21231,8 +21229,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://conec.com/en/c/news-en/feed/": {
-"errore_dal": "2026-11-17T18:01:17+00:00",
-"errori": 1,
 "msg": "TimeoutError: The read operation timed out",
 "visti": [
 "https://conec.com/en/news-en/as-real-time-data-demands-grow-your-connection-solution-should-keep-pace-its-time-to-upgrade/",
