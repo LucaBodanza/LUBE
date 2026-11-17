@@ -2,6 +2,72 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "7cb034fadb70",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "November 6, 2026 Product News New Smplcty™ Device Connection Connectors – Direct PCB Contacting with IP54 Protection Schalksmühle, November 2026. Lumberg is exp",
+"url": "https://www.lumberg.com/en/news/new-smplcty-device-connection-connectors-direct-pcb-contacting-with-ip54-protection"
+},
+{
+"cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "88cddca54b95",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "November 3, 2026 Product News Reliable High-Current Connections: Lumberg Expands Series 45 with Matching Tab Contacts Schalksmühle, November 2026. Reliably tran",
+"url": "https://www.lumberg.com/en/news/reliable-high-current-connections-lumberg-expands-series-45-with-matching-tab-contacts"
+},
+{
+"cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "751280f6c60d",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "November 3, 2026 Product News Fully Automated Harness Production Made Accessible: Lumberg Introduces VARICON 7000-Modula Schalksmühle, November 2026. Flexible w",
+"url": "https://www.lumberg.com/en/news/fully-automated-harness-production-made-accessible-lumberg-introduces-varicon-7000-modula"
+},
+{
+"cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "8857f0241aa9",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "October 27, 2026 Product News A Stronger Hold: Lumberg Introduces New RAST 2.5 Connector 3510-6 Schalksmühle, Oktober 2026. A stronger hold, greater security, a",
+"url": "https://www.lumberg.com/en/news/a-stronger-hold-lumberg-introduces-new-rast-2-5-connector-3510-6"
+},
+{
+"cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "868d28fda88b",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "October 15, 2026 Product News A First in Shanghai: Lumberg RAST 1.5 Wins Its First International Award Shanghai/Schalksmühle, September 2026. A special honor fo",
+"url": "https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award"
+},
+{
+"cat": null,
+"fonte": "https://www.lumberg.com/en/news",
+"id": "af04bd58489f",
+"iniziale": true,
+"marchio": "Lumberg",
+"quando": "2026-11-17T08:52:01+00:00",
+"tipo": "comunicato",
+"titolo": "September 1, 2026 Product News Quickly Connected: New M16B Circular Connectors with Bayonet Locking Schalksmühle, September 2026. Lumberg is expanding its circu",
+"url": "https://www.lumberg.com/en/news/quickly-connected-new-m16b-circular-connectors-with-bayonet-locking"
+},
+{
+"cat": null,
 "data": "2026-08-12T06:49:33+00:00",
 "fonte": "https://www.an-el.com.tr/feed/",
 "id": "3e0f43cbb482",
@@ -20435,6 +20501,536 @@
 }
 },
 "visto": "2026-11-16T16:22:45+00:00"
+},
+"lumberg-datacom": {
+"finale": "https://www.lumberg.com/en/products/range/datacom",
+"lv0": {
+"https://www.lumberg.com/en/products/product/1501+02": {
+"assente": 0,
+"t": "1501 02 Jack chassis socket acc. to JIS C 6560 JC25J3B, 2.5 mm, 3 poles/stereo, angular version, with 2 break contacts, for printed circuit boards, surface moun"
+},
+"https://www.lumberg.com/en/products/product/1501+04": {
+"assente": 0,
+"t": "1501 04 Jack chassis socket acc. to JIS C 6560 JC25J3A, 2.5 mm, 3 poles/stereo, angular version, with metal collar, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1501+05": {
+"assente": 0,
+"t": "1501 05 Jack chassis socket acc. to JIS C 6560 JC25J3A, 2.5 mm, 3 poles/stereo, angular version, for printed circuit boards, with plastic collar"
+},
+"https://www.lumberg.com/en/products/product/1501+09": {
+"assente": 0,
+"t": "1501 09 Jack chassis socket acc. to JIS C 6560 JC25P2B, 2.5 mm, 2 poles/mono, angular version, with break contact and solder eyes, for printed circuit boards, f"
+},
+"https://www.lumberg.com/en/products/product/1501+13": {
+"assente": 0,
+"t": "1501 13 Jack chassis socket acc. to JIS C 6560 JC25J3A, 2.5 mm, 3 poles/stereo, angular version, with metal collar, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1501+14": {
+"assente": 0,
+"t": "1501 14 Jack chassis socket acc. to JIS C 6560 JC25J3A, 2.5 mm, 3 poles/stereo, angular version, for printed circuit boards, with plastic collar"
+},
+"https://www.lumberg.com/en/products/product/1502+01": {
+"assente": 0,
+"t": "Obsolete 1502 01 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1502+02": {
+"assente": 0,
+"t": "1502 02 Jack chassis socket according to JEITA RC-5325A JC35C4A, 3.5 mm, 4 poles/stereo, upright version, with solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/1502+03": {
+"assente": 0,
+"t": "1502 03 Jack chassis socket acc. to JIS C 6560 JC35J2B, 3.5 mm, 2 poles/mono, straight/upright version, with break contact and solder eyes, for printed circuit "
+},
+"https://www.lumberg.com/en/products/product/1502+04": {
+"assente": 0,
+"t": "1502 04 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, with threaded joint, with solder eyes, for front mounting"
+},
+"https://www.lumberg.com/en/products/product/1502+06": {
+"assente": 0,
+"t": "Obsolete 1502 06 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1502+07": {
+"assente": 0,
+"t": "New 1502 07 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1502+08": {
+"assente": 0,
+"t": "New 1502 08 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, with solder eyes, for printed circuit boards, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/1503+02": {
+"assente": 0,
+"t": "1503 02 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards, surface mounting technology (SMT), "
+},
+"https://www.lumberg.com/en/products/product/1503+03": {
+"assente": 0,
+"t": "1503 03 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/1503+08": {
+"assente": 0,
+"t": "Obsolete 1503 08 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+09": {
+"assente": 0,
+"t": "1503 09 Jack chassis socket acc. to JIS C 6560 JC35J3B, 3.5 mm, 3 poles/stereo, angular version, with 2 break contacts and solder eyes, for printed circuit boar"
+},
+"https://www.lumberg.com/en/products/product/1503+13": {
+"assente": 0,
+"t": "Obsolete 1503 13 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, angular version, for printed circuit boards, surface mount tec"
+},
+"https://www.lumberg.com/en/products/product/1503+15": {
+"assente": 0,
+"t": "1503 15 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, angular version, for printed circuit boards, surface mount technology ("
+},
+"https://www.lumberg.com/en/products/product/1503+16": {
+"assente": 0,
+"t": "1503 16 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, potted IPx7, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+17": {
+"assente": 0,
+"t": "1503 17 Jack chassis socket acc. to JIS C 6560 JC35J3B, 3.5 mm, 3 poles/stereo, angular version, with 2 break contacts and solder eyes, for printed circuit boar"
+},
+"https://www.lumberg.com/en/products/product/1503+18": {
+"assente": 0,
+"t": "1503 18 Jack chassis socket acc. to JIS C 6560 JC35J3Z, 3.5 mm, 3 poles/stereo, upright version, with break contact, for printed circuit boards, with retaining "
+},
+"https://www.lumberg.com/en/products/product/1503+19": {
+"assente": 0,
+"t": "Obsolete 1503 19 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+22": {
+"assente": 0,
+"t": "1503 22 Jack chassis socket acc. to JIS C 6560 JC35J2B, 3.5 mm, 2 poles/mono, angular version, with break contact and solder eyes, for printed circuit boards, f"
+},
+"https://www.lumberg.com/en/products/product/1503+26": {
+"assente": 0,
+"t": "New 1503 26 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, potted and with sealing towards mounting plate, IPx7, angular versi"
+},
+"https://www.lumberg.com/en/products/product/1503+27": {
+"assente": 0,
+"t": "Obsolete 1503 27 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+28": {
+"assente": 0,
+"t": "1503 28 Jack chassis socket according to JEITA RC-5325A, 3.5 mm, 4 poles/stereo, with two break contacts, angular version, for printed circuit boards, surface m"
+},
+"https://www.lumberg.com/en/products/product/1503+29": {
+"assente": 0,
+"t": "New 1503 29 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+30": {
+"assente": 0,
+"t": "New 1503 30 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1503+31": {
+"assente": 0,
+"t": "New 1503 31 Jack chassis socket according to JEITA RC-5325A JC35J4A, 3.5 mm, 4 poles/stereo, angular version, for printed circuit boards, surface mount technolo"
+},
+"https://www.lumberg.com/en/products/product/1503+35": {
+"assente": 0,
+"t": "New 1503 35 Jack chassis socket, 3.5 mm, 4 poles/stereo, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1505+01": {
+"assente": 0,
+"t": "1505 01 Jack chassis socket acc. to JIS C 6560 JC63J3E, 6.35 mm, 3 poles/stereo, with 2 change-over switches and solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/1520+01": {
+"assente": 0,
+"t": "1520 01 Jack socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1520+02": {
+"assente": 0,
+"t": "1520 02 Jack socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1522+02": {
+"assente": 0,
+"t": "1522 02 Jack socket acc. to JIS C 6560 JC35J2A, 3.5 mm, 2 poles/mono, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1522+03": {
+"assente": 0,
+"t": "Obsolete 1522 03 Jack socket acc. to JIS C 6560 JC35J2A, 3.5 mm, 2 poles/mono, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1532+02": {
+"assente": 0,
+"t": "1532 02 Jack plug according to JEITA RC-5325A JC35P4, 3.5 mm, 4 poles/stereo, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1532+05": {
+"assente": 0,
+"t": "Obsolete 1532 05 Jack plug acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, with threaded joint, straight version, with metal housing, bend protection and sol"
+},
+"https://www.lumberg.com/en/products/product/1532+06": {
+"assente": 0,
+"t": "1532 06 Jack plug acc. to JIS C 6560 JC35P2, 3.5 mm, 2 poles/mono, straight version, cone headed, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1532+07": {
+"assente": 0,
+"t": "Obsolete 1532 07 Jack plug insert acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, straight version, with solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1532+10": {
+"assente": 0,
+"t": "New 1532 10 Jack plug acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, straight version, with bend protection and solder terminal"
+},
+"https://www.lumberg.com/en/products/product/1532+11": {
+"assente": 0,
+"t": "New 1532 11 Jack plug, 3.5 mm, 3 poles/stereo, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1570+01": {
+"assente": 0,
+"t": "1570 01 RCA plug, straight version, with solder terminals"
+},
+"https://www.lumberg.com/en/products/product/1571+01": {
+"assente": 0,
+"t": "1571 01 RCA chassis socket acc. to JEITA RC-5231, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/1573+01+V": {
+"assente": 0,
+"t": "1573 01 V RCA plug, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/2402+06+SH0+01": {
+"assente": 0,
+"t": "New 2402 06 SH0 01 USB 2.0 chassis socket type C, 6 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2402+16+RH0+01": {
+"assente": 0,
+"t": "New 2402 16 RH0 01 USB 2.0 chassis socket type C, 16 poles, angular version, for printed circuit boards, through hole reflow technology (THR)"
+},
+"https://www.lumberg.com/en/products/product/2402+16+RV0+01": {
+"assente": 0,
+"t": "New 2402 16 RV0 01 USB 2.0 chassis socket type C, 16 poles, upright version, for printed circuit boards, through hole reflow technology (THR)"
+},
+"https://www.lumberg.com/en/products/product/2402+16+SH0+01": {
+"assente": 0,
+"t": "New 2402 16 SH0 01 USB 2.0 chassis socket type C, 16 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2402+24+SH0+01": {
+"assente": 0,
+"t": "New 2402 24 SH0 01 USB 3.1 chassis socket type C, 24 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2410+05": {
+"assente": 0,
+"t": "2410 05 Double USB 2.0 chassis socket type A, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2410+07": {
+"assente": 0,
+"t": "Obsolete 2410 07 USB 2.0 chassis plug type A, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2410+08": {
+"assente": 0,
+"t": "Obsolete 2410 08 USB 2.0 chassis plug type A, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2410+11": {
+"assente": 0,
+"t": "2410 11 USB 2.0 chassis socket type A, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2410+12": {
+"assente": 0,
+"t": "2410 12 USB 2.0 chassis socket type A, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2410+13": {
+"assente": 0,
+"t": "2410 13 Double USB 2.0 chassis socket type A, angular version, for printed circuit boards, with shielding contacts at the front"
+},
+"https://www.lumberg.com/en/products/product/2410+14": {
+"assente": 0,
+"t": "2410 14 USB 2.0 chassis socket type A, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2411+05": {
+"assente": 0,
+"t": "2411 05 USB 2.0 chassis socket type B, upright version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2411+06": {
+"assente": 0,
+"t": "2411 06 USB 2.0 chassis socket type B, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2411+07": {
+"assente": 0,
+"t": "2411 07 USB 2.0 chassis socket type B, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2417+03": {
+"assente": 0,
+"t": "2417 03 IEEE 1394 socket, 6 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2420+01": {
+"assente": 0,
+"t": "2420 01 USB 3.0 chassis socket type A, angular version, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/2434+01": {
+"assente": 0,
+"t": "2434 01 USB 3.1 chassis socket type C, 24 poles, with sealing towards mounting plate, angular version, for printed circuit boards, surface mounting technology ("
+},
+"https://www.lumberg.com/en/products/product/2434+02": {
+"assente": 0,
+"t": "2434 02 USB 2.0 chassis socket type C, 16 poles, with sealing towards mounting plate, IPx7, upright version, for printed circuit boards, through-hole-reflow tec"
+},
+"https://www.lumberg.com/en/products/product/2436+01": {
+"assente": 0,
+"t": "2436 01 USB 3.1 chassis socket type C, 24 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2436+02": {
+"assente": 0,
+"t": "2436 02 USB 3.1 chassis socket type C, 24 poles, angular version, for printed circuit boards, surface mounting technology (SMT/THR)"
+},
+"https://www.lumberg.com/en/products/product/2436+03": {
+"assente": 0,
+"t": "2436 03 USB 3.1 chassis socket type C, 24 poles, angular version, for printed circuit boards, surface mounting technology (SMT/THR), for mid-mount placement"
+},
+"https://www.lumberg.com/en/products/product/2436+04": {
+"assente": 0,
+"t": "2436 04 USB 3.1 chassis socket type C, 24 poles, angular version, for printed circuit boards, surface mounting technology (SMT), for mid-mount placement"
+},
+"https://www.lumberg.com/en/products/product/2483+01": {
+"assente": 0,
+"t": "2483 01 USB 3.0 adapter, type A 3.0 socket to type C 3.1 plug"
+},
+"https://www.lumberg.com/en/products/product/2486+02": {
+"assente": 0,
+"t": "2486 02 Mini USB 2.0 chassis socket type AB, 10 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2486+04": {
+"assente": 0,
+"t": "2486 04 Mini USB 2.0 chassis socket type B, 5 poles, angular version, for printed circuit boards, surface mounting technology (SMT)"
+},
+"https://www.lumberg.com/en/products/product/2531+02": {
+"assente": 0,
+"t": "New 2531 02 Modular chassis socket, 8p8c (RJ45), angular, with full shielding, positioning pegs/retaining hooks and outward shielding contacts, lower side lock,"
+},
+"https://www.lumberg.com/en/products/product/2533+01": {
+"assente": 0,
+"t": "2533 01 Protective cap for modular sockets (RJ45)"
+},
+"https://www.lumberg.com/en/products/product/2535+08+THLDN+01": {
+"assente": 0,
+"t": "New 2535 08 THLDN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with LEDs, full shielding and positioning pegs/retaining hooks, lower side lock, for"
+},
+"https://www.lumberg.com/en/products/product/2535+08+THLUN+01": {
+"assente": 0,
+"t": "New 2535 08 THLUN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with LEDs, full shielding and positioning pegs/retaining hooks, topside lock, for pr"
+},
+"https://www.lumberg.com/en/products/product/2535+08+THLUT+01": {
+"assente": 0,
+"t": "New 2535 08 THLUT 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with LEDs, full shielding, positioning pegs/retaining hooks and outside shielding co"
+},
+"https://www.lumberg.com/en/products/product/2535+08+THNDN+01": {
+"assente": 0,
+"t": "New 2535 08 THNDN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with full shielding and positioning pegs/retaining hooks, lower side lock, for print"
+},
+"https://www.lumberg.com/en/products/product/2535+08+THNUN+01": {
+"assente": 0,
+"t": "New 2535 08 THNUN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with full shielding and positioning pegs/retaining hooks, topside lock, for printed "
+},
+"https://www.lumberg.com/en/products/product/2535+08+THNUT+01": {
+"assente": 0,
+"t": "New 2535 08 THNUT 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), angular, with full shielding, positioning pegs/retaining hooks and outside shielding contacts"
+},
+"https://www.lumberg.com/en/products/product/2535+08+TVNXN+01": {
+"assente": 0,
+"t": "New 2535 08 TVNXN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), upright, with full shielding and positioning pegs/retaining hooks, lower side lock, for print"
+},
+"https://www.lumberg.com/en/products/product/2541+01": {
+"assente": 0,
+"t": "New 2541 01 Double modular chassis socket, Cat. 5e, 8p8c (RJ45), with full shielding, straight, with flange, for snap-in mounting (keystone)"
+},
+"https://www.lumberg.com/en/products/product/2542+01": {
+"assente": 0,
+"t": "New 2542 01 Modular plug, Cat. 6a, 8p8c (RJ45), straight version, with protected locking latch and shielding, toolless connection in insulation displacement tec"
+},
+"https://www.lumberg.com/en/products/product/2542+02": {
+"assente": 0,
+"t": "New 2542 02 Modular plug, Cat. 6a, 8p8c (RJ45), straight version, with protected locking latch, shielding and bend protection, toolless connection in insulation"
+},
+"https://www.lumberg.com/en/products/product/2542+03": {
+"assente": 0,
+"t": "New 2542 03 Modular plug, Cat. 6a, 8p8c (RJ45), angular version (twistable), with protected locking latch and shielding, toolless connection in insulation displ"
+},
+"https://www.lumberg.com/en/products/product/2542+04": {
+"assente": 0,
+"t": "New 2542 04 Double modular socket, Cat. 6a, 8p8c (RJ45), straight version, with shielding"
+},
+"https://www.lumberg.com/en/products/product/2542+05": {
+"assente": 0,
+"t": "New 2542 05 Modular keystone chassis socket, Cat. 6a, 8p8c (RJ45), straight version, with shielding, toolless connection in insulation displacement technology ("
+},
+"https://www.lumberg.com/en/products/product/2543+02": {
+"assente": 0,
+"t": "New 2543 02 Double modular chassis socket, Cat. 6a, 8p8c (RJ45), with threaded joint, shielding contacts and sealing towards mounting plate, IPx7, for back side"
+},
+"https://www.lumberg.com/en/products/product/2543+04": {
+"assente": 0,
+"t": "New 2543 04 Modular chassis socket, 8p8c (RJ45), with threaded joint, shielding contacts and sealing towards mounting plate, IPx7, with solder terminals on prin"
+},
+"https://www.lumberg.com/en/products/product/2543+08": {
+"assente": 0,
+"t": "New 2543 08 Double modular chassis socket, Cat. 5e, 8p8c (RJ45), with threaded joint, shielding contacts and sealing towards mounting plate, IPx7, for back side"
+},
+"https://www.lumberg.com/en/products/product/2544+01": {
+"assente": 0,
+"t": "New 2544 01 Modular chassis socket, 8p8c (RJ45), angular version, with threaded joint, shielding contacts and sealing towards mounting plate, IPx7, for printed "
+},
+"https://www.lumberg.com/en/products/product/2545+01": {
+"assente": 0,
+"t": "New 2545 01 Protecting cap, IPx7, for chassis sockets with threaded joint, with holding strap"
+},
+"https://www.lumberg.com/en/products/product/2545+02": {
+"assente": 0,
+"t": "New 2545 02 Cable gland, IPx7, for modular plugs and chassis sockets with threaded joint"
+},
+"https://www.lumberg.com/en/products/product/BTO+1": {
+"assente": 0,
+"t": "Obsolete BTO 1 RCA chassis socket acc. to JEITA RC-5231, with solder eyes, for front side mounting"
+},
+"https://www.lumberg.com/en/products/product/BTO+1+V": {
+"assente": 0,
+"t": "BTO 1 V RCA chassis socket acc. to JEITA RC-5231, with solder eyes, for front side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLB+1": {
+"assente": 0,
+"t": "KLB 1 Jack chassis socket acc. to JIS C 6560 JC25P2B, 2.5 mm, 2 poles/mono, with break contact and solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLB+13": {
+"assente": 0,
+"t": "KLB 13 Jack chassis socket acc. to JIS C 6560 JC25J3A, 2.5 mm, 3 poles/stereo, with solder eyes, upright version, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLB+3": {
+"assente": 0,
+"t": "KLB 3 Jack chassis socket acc. to JIS C 6560 JC63J3A, 6.35 mm, 3 poles/stereo, with solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLB+4": {
+"assente": 0,
+"t": "Obsolete KLB 4 Jack chassis socket acc. to JIS C 6560 JC35J3A, 3.5 mm, 3 poles/stereo, with solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLBM+3": {
+"assente": 0,
+"t": "KLBM 3 Jack chassis socket acc. to JIS C 6560 JC63J2A, 6.35 mm, 2 poles/mono, with solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLBP+3": {
+"assente": 0,
+"t": "KLBP 3 Jack chassis socket acc. to JIS C 6560 JC63J3A, 6.35 mm, 3 poles/stereo, with solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLBPS+3": {
+"assente": 0,
+"t": "KLBPS 3 Jack chassis socket acc. to JIS C 6560 JC63J3Z, 6.35 mm, 3 poles/stereo, with break contact and solder eyes, for back side mounting"
+},
+"https://www.lumberg.com/en/products/product/KLBR+4": {
+"assente": 0,
+"t": "KLBR 4 Jack chassis socket, 3.5 mm acc. to JIS C 6560 JC35J3Z, 3 poles/stereo, angular version, with break contact, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/KLK+3": {
+"assente": 0,
+"t": "KLK 3 Jack socket acc. to JIS C 6560 JC63J3A, 6.35 mm, 3 poles/ stereo, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLKM+3": {
+"assente": 0,
+"t": "Obsolete KLKM 3 Jack socket acc. to JIS C 6560 JC63J2A, 6.35 mm, 2 poles/mono, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+1": {
+"assente": 0,
+"t": "KLS 1 Jack plug acc. to JIS C 6560 JC25P2, 2.5 mm, 2 poles/mono, straight version, ball headed, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+10": {
+"assente": 0,
+"t": "KLS 10 Jack plug acc. to JIS C 6560 JC25P2, 2.5 mm, 2 poles/mono, straight version, cone headed, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+13": {
+"assente": 0,
+"t": "KLS 13 Jack plug acc. to JIS C 6560 JC25P3, 2.5 mm, 3 poles/stereo, straight version, with bend protection and solder terminal"
+},
+"https://www.lumberg.com/en/products/product/KLS+2": {
+"assente": 0,
+"t": "KLS 2 Jack plug acc. to JIS C 6560 JC35P2, 3.5 mm, 2 poles/mono, straight version, ball headed, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+22": {
+"assente": 0,
+"t": "KLS 22 Jack plug acc. to JIS C 6560 JC35P2, 3.5 mm, 2 poles/mono, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+3": {
+"assente": 0,
+"t": "KLS 3 Jack plug acc. to JIS C 6560 JC63P3, 6.35 mm, 3 poles/stereo, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLS+40": {
+"assente": 0,
+"t": "Obsolete KLS 40 Jack plug acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, straight version, with bend protection and solder terminal"
+},
+"https://www.lumberg.com/en/products/product/KLS+44": {
+"assente": 0,
+"t": "Obsolete KLS 44 Jack plug acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/KLSM+3": {
+"assente": 0,
+"t": "Obsolete KLSM 3 Jack plug acc. to JIS C 6560 JC63P2, 6.35 mm, 2 poles/mono, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/P+126": {
+"assente": 0,
+"t": "P 126 Modular plug, 4p4c (RJ10), with locking latch, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+127": {
+"assente": 0,
+"t": "P 127 Modular plug, 6p4c (RJ14), with locking latch, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+128": {
+"assente": 0,
+"t": "P 128 Modular plug, 6p6c (RJ12), with locking latch, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+129": {
+"assente": 0,
+"t": "P 129 Modular plug, 8p8c (RJ45), with locking latch, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+129+S": {
+"assente": 0,
+"t": "P 129 S Modular plug, 8p8c (RJ45), with locking latch and shielding, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+136": {
+"assente": 0,
+"t": "P 136 Modular chassis socket, 8p8c (RJ45), upright, with full shielding, positioning pegs/retaining hooks and flange, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/P+137+S": {
+"assente": 0,
+"t": "P 137 S Modular chassis socket, 8p8c (RJ45), angular, with shielding, positioning pegs/retaining hooks and flange, lower side lock, for printed circuit boards"
+},
+"https://www.lumberg.com/en/products/product/P+303": {
+"assente": 0,
+"t": "P 303 Modular plug, 10p10c (RJ50), with locking latch, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/P+303+S": {
+"assente": 0,
+"t": "P 303 S Modular plug, 10p10c (RJ50), with locking latch and shielding, piercing technology"
+},
+"https://www.lumberg.com/en/products/product/STO+1": {
+"assente": 0,
+"t": "STO 1 RCA plug acc. to JEITA RC-5231, straight version, with solder terminals"
+},
+"https://www.lumberg.com/en/products/product/STO+2": {
+"assente": 0,
+"t": "Obsolete STO 2 RCA plug acc. to JEITA RC-5231, straight version, with metal housing, bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/WKLS+2": {
+"assente": 0,
+"t": "Obsolete WKLS 2 Jack plug acc. to JIS C 6560 JC35P2, 3.5 mm, 2 poles/mono, angular version, with solder terminals"
+},
+"https://www.lumberg.com/en/products/product/WKLS+40": {
+"assente": 0,
+"t": "WKLS 40 Jack plug acc. to JIS C 6560 JC35P3, 3.5 mm, 3 poles/stereo, angular version, with solder terminals"
+},
+"https://www.lumberg.com/en/products/product/XKTO+1": {
+"assente": 0,
+"t": "XKTO 1 RCA socket acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
+},
+"https://www.lumberg.com/en/products/product/XSTO+1": {
+"assente": 0,
+"t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
+}
+},
+"titolo": "Datacom Connectors",
+"visto": "2026-11-17T08:52:01+00:00"
+},
+"lumberg-news": {
+"visti": [
+"https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award",
+"https://www.lumberg.com/en/news/a-stronger-hold-lumberg-introduces-new-rast-2-5-connector-3510-6",
+"https://www.lumberg.com/en/news/fully-automated-harness-production-made-accessible-lumberg-introduces-varicon-7000-modula",
+"https://www.lumberg.com/en/news/new-smplcty-device-connection-connectors-direct-pcb-contacting-with-ip54-protection",
+"https://www.lumberg.com/en/news/quickly-connected-new-m16b-circular-connectors-with-bayonet-locking",
+"https://www.lumberg.com/en/news/reliable-high-current-connections-lumberg-expands-series-45-with-matching-tab-contacts"
+],
+"visto": "2026-11-17T08:52:01+00:00"
 },
 "matcavi-pagine": {
 "lv0": {
