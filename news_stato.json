@@ -28871,6 +28871,8 @@
 "t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
 }
 },
+"errore_dal": "2026-11-17T15:31:08+00:00",
+"errori": 1,
 "finale": "https://www.lumberg.com/en/products/range/datacom",
 "lv0": {
 "https://www.lumberg.com/en/products/product/1501+02": {
@@ -29386,10 +29388,14 @@
 "t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
 }
 },
+"msg": "TimeoutError: The read operation timed out",
 "titolo": "Datacom Connectors",
 "visto": "2026-11-17T08:52:01+00:00"
 },
 "lumberg-news": {
+"errore_dal": "2026-11-17T15:31:08+00:00",
+"errori": 1,
+"msg": "HTTP 500",
 "visti": [
 "https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award",
 "https://www.lumberg.com/en/news/a-stronger-hold-lumberg-introduces-new-rast-2-5-connector-3510-6",
