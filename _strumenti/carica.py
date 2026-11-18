@@ -125,6 +125,10 @@ def fase_sposta():
             q.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(p, q)
     shutil.rmtree(src)
+    # ricerca.json (cifrato) usa il nome del PDF come chiave («Catalogo_<slug>.pdf»): senza questo la ricerca nel PDF si rompe
+    R = leggi(f"cat/{nuovo}/ricerca.json")
+    if R is not None:
+        scrivi(f"cat/{nuovo}/ricerca.json", json.dumps(R, ensure_ascii=False).replace(vecchio, nuovo).encode())
     # 2) elenco cataloghi: ogni riferimento al vecchio nome diventa il nuovo
     y = json.loads(json.dumps(x, ensure_ascii=False).replace(vecchio, nuovo))
     y["comparto"], y["num"], y["numero"] = dest, n, numero

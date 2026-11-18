@@ -4,6 +4,10 @@
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const norm = t => String(t).toUpperCase().replace(/[\s.\-_/–,+]/g, '');
+// numero del catalogo come si vede: Connessione «01», Elettronica Industriale «EI 01», Sistemi Elettromeccanici «SE 01»
+const SIGLA_CAT = { 'elettronica-industriale': 'EI', 'sistemi-elettromeccanici': 'SE' };
+const nCat = n => { const c = D.cat[n], s = c && SIGLA_CAT[c.comparto], v = c?.num ?? (n >= 100 ? n % 100 : n);
+  return (s ? s + ' ' : '') + String(v).padStart(2, '0'); };
 const senzaAccenti = t => String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 // ---------------------------------------------------------------- caratteristiche
@@ -46,7 +50,7 @@ async function carica() {
     for (const c of D.ctx.S.cataloghi) if (c.manifest) D.cat[c.numero] = c;
     D.P = j.prodotti.filter(o => D.cat[o.n]);
     for (const o of D.P) {
-      o.f.cat = `${String(o.n).padStart(2, '0')} · ${D.cat[o.n].nome}`;
+      o.f.cat = `${nCat(o.n)} · ${D.cat[o.n].nome}`;
       o._x = norm(o.c) + ' ' + o.a.map(norm).join(' ');
       o._w = senzaAccenti([o.c, o.a.join(' '), o.t, o.b, o.d, o.s.join(' '), Object.values(o.f).join(' ')].join(' '));
     }
@@ -203,7 +207,7 @@ function aggiornaCerca() {
   const q = calcola();
   const nf = Object.values(C.filtri).reduce((s, x) => s + x.size, 0);
   $('#ccConta').innerHTML = `<b>${C.lista.length.toLocaleString('it-IT')}</b> ${C.lista.length === 1 ? 'codice' : 'codici'}` +
-    (C.pagina ? ` · <button class="lnk" data-azz="pagina">pagina ${C.pagina.p} del catalogo ${String(C.pagina.n).padStart(2, '0')} ✕</button>` : '') +
+    (C.pagina ? ` · <button class="lnk" data-azz="pagina">pagina ${C.pagina.p} del catalogo ${nCat(C.pagina.n)} ✕</button>` : '') +
     (nf ? ` · <button class="lnk" data-azz="tutti">azzera ${nf} ${nf === 1 ? 'filtro' : 'filtri'}</button>` : '');
   disegnaFiltri(q); disegnaLista(); barraScelti();
 }
@@ -326,7 +330,7 @@ const CONCETTI = [
 // parole che non dicono niente sul prodotto
 const VUOTE = new Set('un uno una il lo la i gli le di del dello della dei degli delle a ad al allo alla ai agli alle da dal dalla in nel nella con su per tra fra e ed o che mi ci si serve servono cerco cercando vorrei voglio devo bisogno ho abbiamo avrei necessito trovare comprare acquistare ordinare tipo specifico specifica giusto giusti giusta adatto adatta adatti buono qualcosa prodotto prodotti articolo codice connettore connettori connessione connessioni applicazione applicazioni industriale industriali impianto impianti elettrico elettrici elettrica macchina macchine macchinario macchinari uso utilizzo sistema sistemi the for and with of to mio nostra nostro molto piu come quale quali essere deve devono sia sono anche ma se non'.split(' '));
 
-function catPerNumero(n) { return D.cat[n] ? [`${String(n).padStart(2, '0')} · ${D.cat[n].nome}`] : []; }
+function catPerNumero(n) { return D.cat[n] ? [`${nCat(n)} · ${D.cat[n].nome}`] : []; }
 const VAL = {};
 function valori(k) { if (!VAL[k]) { const s = new Set(); for (const o of D.P) if (o.f[k]) s.add(o.f[k]); VAL[k] = [...s]; } return VAL[k]; }
 function valoriCon(k, pezzo) { return valori(k).filter(v => v.includes(pezzo)); }
