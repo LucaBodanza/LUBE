@@ -3,6 +3,36 @@
 {
 "cat": null,
 "fonte": "https://www.matcavi.it/sitemap_index.xml",
+"id": "308bfcd208c5",
+"marchio": "MATCAVI",
+"quando": "2026-11-18T16:03:53+00:00",
+"tipo": "tolto",
+"titolo": "condizioni di vendita",
+"url": "https://www.matcavi.it/condizioni-di-vendita"
+},
+{
+"cat": null,
+"fonte": "https://www.matcavi.it/sitemap_index.xml",
+"id": "da58a9a49ccd",
+"marchio": "MATCAVI",
+"quando": "2026-11-18T16:03:53+00:00",
+"tipo": "tolto",
+"titolo": "costi e spedizioni",
+"url": "https://www.matcavi.it/costi-e-spedizioni"
+},
+{
+"cat": null,
+"fonte": "https://www.matcavi.it/sitemap_index.xml",
+"id": "13a5724d674a",
+"marchio": "MATCAVI",
+"quando": "2026-11-18T16:03:53+00:00",
+"tipo": "tolto",
+"titolo": "diritto di recesso e reclami",
+"url": "https://www.matcavi.it/diritto-di-recesso-e-reclami"
+},
+{
+"cat": null,
+"fonte": "https://www.matcavi.it/sitemap_index.xml",
 "id": "2dc5d42f3062",
 "marchio": "MATCAVI",
 "quando": "2026-11-18T15:31:15+00:00",
@@ -29491,21 +29521,9 @@
 "assente": 0,
 "t": "chi siamo"
 },
-"https://www.matcavi.it/condizioni-di-vendita": {
-"assente": 2,
-"t": "condizioni di vendita"
-},
 "https://www.matcavi.it/contatti": {
 "assente": 0,
 "t": "contatti"
-},
-"https://www.matcavi.it/costi-e-spedizioni": {
-"assente": 2,
-"t": "costi e spedizioni"
-},
-"https://www.matcavi.it/diritto-di-recesso-e-reclami": {
-"assente": 2,
-"t": "diritto di recesso e reclami"
 },
 "https://www.matcavi.it/lavora-con-noi": {
 "assente": 0,
