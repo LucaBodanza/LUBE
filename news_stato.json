@@ -19754,8 +19754,6 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
-"errore_dal": "2026-11-18T15:31:15+00:00",
-"errori": 1,
 "msg": "HTTP 403",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
@@ -19786,8 +19784,6 @@
 "t": "Overmolded"
 }
 },
-"errore_dal": "2026-11-18T15:31:15+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -20082,8 +20078,6 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
-"errore_dal": "2026-11-18T15:31:15+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
@@ -29498,7 +29492,7 @@
 "t": "chi siamo"
 },
 "https://www.matcavi.it/condizioni-di-vendita": {
-"assente": 1,
+"assente": 2,
 "t": "condizioni di vendita"
 },
 "https://www.matcavi.it/contatti": {
@@ -29506,11 +29500,11 @@
 "t": "contatti"
 },
 "https://www.matcavi.it/costi-e-spedizioni": {
-"assente": 1,
+"assente": 2,
 "t": "costi e spedizioni"
 },
 "https://www.matcavi.it/diritto-di-recesso-e-reclami": {
-"assente": 1,
+"assente": 2,
 "t": "diritto di recesso e reclami"
 },
 "https://www.matcavi.it/lavora-con-noi": {
