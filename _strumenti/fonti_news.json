@@ -1,11 +1,12 @@
 {
- "nota": "ELSAP DSGN · News — fonti sorvegliate (v7 · 17/11/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema) | sitemap (elenco letto dalla sitemap XML/.gz: per i siti che caricano i prodotti con JavaScript; schema = regex sul percorso; id = chiave dello stato, obbligatorio se più fonti leggono la stessa sitemap). Opzioni: pausa (secondi tra richieste, crawl-delay del sito), segmenti (pezzi finali del percorso che formano il nome), sito (host canonico), indice (regex delle sotto-sitemap), attiva:false (sospesa).",
- "sospese": "BJB (bjb.com/en/all-products/): il sito risponde con una verifica anti-bot (cookie JavaScript prima di mostrare le pagine). Non va aggirata: servono il consenso di BJB o un feed ufficiale. Quando c'è, togliere attiva:false. · Everbest (ever-best.cn): il nome del sito non si risolve (DNS) da qui e dal bot: sospesa finché Federico non conferma l'indirizzo. · NELCO Industries e STIEBEL ELTRON: «on hold» (Federico), nessuna fonte. · E-SWITCH: nessun indirizzo ricevuto.",
+ "nota": "ELSAP DSGN · News — fonti sorvegliate (v8 · 18/11/2026). tipo: rss | news (schema = regex dei link articolo) | famiglia (cat = catalogo ELSAP; elementi = link sotto la pagina o che rispettano schema) | sitemap (elenco letto dalla sitemap XML/.gz: per i siti che caricano i prodotti con JavaScript; schema = regex sul percorso; id = chiave dello stato, obbligatorio se più fonti leggono la stessa sitemap). Opzioni: pausa (secondi tra richieste, crawl-delay del sito), segmenti (pezzi finali del percorso che formano il nome), sito (host canonico), indice (regex delle sotto-sitemap), attiva:false (sospesa).",
+ "sospese": "BJB (bjb.com/en/all-products/): il sito risponde con una verifica anti-bot (cookie JavaScript prima di mostrare le pagine). Non va aggirata: servono il consenso di BJB o un feed ufficiale. Quando c'è, togliere attiva:false. · Everbest (ever-best.cn): il nome del sito non si risolve (DNS) da qui e dal bot: sospesa finché Federico non conferma l'indirizzo. · NELCO Industries e STIEBEL ELTRON: «on hold» (Federico), nessuna fonte. · E-SWITCH: nessun indirizzo ricevuto. · CONEC feed RSS (/en/c/news-en/feed/): il robots.txt di conec.com vieta /*/feed/ (18/11/2026); dal 18/11 il sito blocca anche con Cloudflare. Resta la pagina catalogo (permessa). · Amphenol LTW: pausa 10 = Crawl-delay del robots.txt (403 dai server GitHub dal 18/11 15:31 UTC).",
  "fonti": [
   {
    "marchio": "CONEC",
    "tipo": "rss",
-   "url": "https://conec.com/en/c/news-en/feed/"
+   "url": "https://conec.com/en/c/news-en/feed/",
+   "attiva": false
   },
   {
    "marchio": "CONEC",
@@ -16,6 +17,7 @@
   {
    "marchio": "Amphenol LTW",
    "tipo": "news",
+   "pausa": 10,
    "url": "https://amphenolltw.com/news-events/",
    "schema": "^/news-events/[^/]+\\.html$"
   },
@@ -23,12 +25,14 @@
    "marchio": "Amphenol LTW",
    "tipo": "famiglia",
    "cat": 15,
+   "pausa": 10,
    "url": "https://amphenolltw.com/product-info/X-Lok/"
   },
   {
    "marchio": "Amphenol LTW",
    "tipo": "famiglia",
    "cat": 14,
+   "pausa": 10,
    "url": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
    "schema": "^/product-info/MPronto[^/]*/.+"
   },
