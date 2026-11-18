@@ -116,6 +116,40 @@ def num(v, unita):
     return f"{m.group(1).replace(' ', '')} {unita}" if m else None
 
 
+def corrente(v):
+    """'1400 mA' → '1.4 A'; '2,5 A' → '2.5 A'."""
+    m = re.match(r"^\s*(\d+(?:[.,]\d+)?)\s*(mA|A)\b", v.replace(" ", " "))
+    if not m:
+        return None
+    x = float(m.group(1).replace(",", "."))
+    if m.group(2) == "mA":
+        x /= 1000
+    return f"{x:g} A"
+
+
+def ei_pagina(t):
+    """Caratteristiche di Elettronica Industriale scritte nella pagina (alimentatori, caricabatterie, RAST)."""
+    f = {}
+    t1 = t.replace("‑", "-").replace("–", "-")
+    m = re.search(r"ingresso\s+(\d{2,3}\s?-\s?\d{2,3})\s?V\s?AC", t1, I)
+    if m:
+        f["vin"] = m.group(1).replace(" ", "") + " V AC"
+    for rx, v in ((r"spina (di rete )?intercambiabil", "Spina intercambiabile"), (r"spina (di rete )?fissa|plug-?in fisso", "Spina fissa"),
+                  (r"da tavolo|desktop", "Da tavolo"), (r"da incasso|open frame|built-?in", "Da incasso"),
+                  (r"(guida|barra) DIN|DIN[- ]rail", "Barra DIN")):
+        if re.search(rx, t1, I):
+            f["montaggio"] = v
+            break
+    if re.search(r"medical|medicale|60601", t1, I):
+        f["uso"] = "Medicale"
+    elif re.search(r"\bITE\b|62368|60950", t1):
+        f["uso"] = "ITE"
+    m = re.search(r"\bRAST\s?(1[.,]5|2[.,]5|5|7[.,]5)\b", t1, I)
+    if m:
+        f["formato"] = "RAST " + m.group(1).replace(",", ".")
+    return f
+
+
 ETICHETTE = [("poli", r"Number of Pins|N° poli|No\. of poles|Number of poles|Poles"),
              ("codifica", r"Coding|Codifica"), ("schermo", r"Shielding(?: Type)?|Schermatura"),
              ("v", r"Rated Voltage|Tensione nominale|Voltage Rating|Operating Voltage|Tensione esercizio|Tensione operativa"),
@@ -187,6 +221,21 @@ def colonna(et):
         return "sez"
     if e == "IP":
         return "ip"
+    # Elettronica Industriale (alimentatori, caricabatterie, accessori FRIWO) — 18/11/2026
+    if e.startswith("TIPOFRIWO"):
+        return "d"                      # sigla del produttore → diventa alias del codice
+    if e in ("TENSIONE", "TENS.USCITA", "TENSIONEUSCITA"):
+        return "vout"
+    if e in ("TENS.CARICA", "TENSIONECARICA"):
+        return "vcar"
+    if e in ("CORRENTE", "CORR.USCITA", "CORRENTEUSCITA"):
+        return "iout"
+    if e == "POTENZA":
+        return "w"
+    if e in ("CHIMICA", "CELLE", "FORMA"):
+        return e.lower()
+    if e == "VERSIONEPAESE":
+        return "paese"
     if e.startswith("COLOR"):
         return "colore"
     return "x"
@@ -319,7 +368,7 @@ def leggi_pagina(testo):
 
 TRATTINO = re.compile(r"^\s*([A-Z0-9][\w\-./+ ·]{3,60}?)\s+[—–]\s+(\S.{12,})$")
 NOME_DESC = re.compile(r"^\s*([A-Z0-9][\w\-./+ ,]{4,44}?) - (\S.{14,})$")
-RUMORE = re.compile(r"^(RAL\d+|(\d{4})\2|E\d{5,6}|(IP\d{2}K?){2,}|\d{2}\.\d{2}\.\d{2,4}|\d{2}K\d[A-Z]\d+|M\d+-M\d+|\d+BASE-.*|AWG.*|.*AWG|DIN.*|VDE.*|UL\d.*|IEC.*|EN\d.*|ISO.*|\d+X\d.*|J-STD.*|.*MM²?|\d+(\.\d+)?(MM|NM|NCM|KV|MA|MHZ|GHZ|OHM|V|A|M|G|KG)|CAT\.?\d[A-Z]?|\d+SERIES|\d+V+(AC|DC)|\d+-\d+|\d+/\d+|PA\d+.*|PG\d+|M\d+X[\d.,]+|\d{4}/\d{2})$", I)
+RUMORE = re.compile(r"^(RAL\d+|(\d{4})\2|E\d{5,6}|(IP\d{2}K?){2,}|\d{2}\.\d{2}\.\d{2,4}|\d{2}K\d[A-Z]\d+|M\d+-M\d+|\d+BASE-.*|AWG.*|.*AWG|\d+XAWG.*|DIN.*|VDE.*|UL\d.*|IEC.*|EN\d.*|ISO.*|\d+X\d.*|J-STD.*|.*MM²?|\d+(\.\d+)?(MM|NM|NCM|KV|MA|MHZ|GHZ|OHM|V|A|M|G|KG)|CAT\.?\d[A-Z]?|\d+SERIES|\d+V+(AC|DC)|\d+-\d+|\d+/\d+|PA\d+.*|PG\d+|M\d+X[\d.,]+|\d{4}/\d{2})$", I)
 SOLO_ELSAP = re.compile(r"^\s*(\d{2}-\d{4,6}(?:\s*/\s*\d{2}-\d{4,6})*)\s*$")
 
 
@@ -377,14 +426,19 @@ def prodotti_catalogo(d, m):
         return out[:4], largo[:5]
 
     marchio_cat = m["marchi"][0] if len(m.get("marchi", [])) == 1 else None
-    out, visti, info_pag, stato = [], {}, {}, {"marchio": None}
+    out, visti, info_pag, stato = [], {}, {}, {"marchio": None, "ei_alim": False}
+    ei = m.get("comparto") == "elettronica-industriale"
 
     def nuovo(c, n, testa, sez, f, alias=(), d="", blocco=""):
         if marchio_cat:
             f.setdefault("marchio", marchio_cat)
         if stato["marchio"]:
             f.setdefault("marchio", stato["marchio"])
-        out.append({"c": c, "a": [a for a in alias if a], "n": m["numero"], "p": n, "t": testa, "b": blocco, "d": d, "s": sez, "f": f})
+        if stato["ei_alim"]:
+            f.pop("tipo", None)
+        tr = lambda s: s.replace("‑", "-").replace("‐", "-") if isinstance(s, str) else s   # trattini FRIWO → tastiera
+        out.append({"c": c, "a": [tr(a) for a in alias if a], "n": m["numero"], "p": n, "t": tr(testa), "b": tr(blocco), "d": tr(d),
+                    "s": [tr(x) for x in sez], "f": {k: tr(v) for k, v in f.items()}})
         visti.setdefault(c.upper(), n)
 
     for n, tp in enumerate(pagine, 1):
@@ -403,6 +457,18 @@ def prodotti_catalogo(d, m):
         f_sez = caratteristiche(" | ".join(sez), {"tipo"})
         if f_sez:
             f_pag.update(f_sez)             # il tipo lo dice il capitolo del catalogo, prima del titolo
+        stato["ei_alim"] = False
+        if ei:                              # Elettronica Industriale: prima titoli e capitoli, poi il resto della pagina
+            f_ei = ei_pagina(" | ".join(sez_largo) + " | " + testa)
+            for k, v in ei_pagina(pulito).items():
+                if k != "formato":
+                    f_ei.setdefault(k, v)
+            stato["ei_alim"] = bool(re.search(r"aliment|caricabatter|battery|charger|power supply|adattator|spin[ae] di (rete|uscita)", pulito, I))
+            if stato["ei_alim"]:
+                f_pag.pop("tipo", None)     # i tipi dei connettori ("da pannello", "con cavo"…) non valgono per gli alimentatori
+                f_sez = {}
+            for k, v in f_ei.items():
+                f_pag[k] = v
         righe = pulito.split("\n")
         # --- prodotti descritti a parole: "CODICE — descrizione", "NOME - descrizione"
         nome_desc = {}
@@ -456,6 +522,16 @@ def prodotti_catalogo(d, m):
             if "v" in f:
                 f["v"] = num(f["v"], "V") or f.pop("v") and None
             f = {k: v for k, v in f.items() if v}
+            # colonne di Elettronica Industriale: uscita (o carica) → v/a, potenza → w, e le altre come sono scritte
+            for col, k, conv in (("vout", "v", lambda x: num(x, "V")), ("vcar", "v", lambda x: num(x, "V")),
+                                 ("iout", "a", corrente), ("w", "w", lambda x: num(x, "W"))):
+                if r.get(col) and k not in f:
+                    x = conv(r[col])
+                    if x:
+                        f[k] = x
+            for k in ("chimica", "celle", "forma", "paese"):
+                if r.get(k) and r[k] not in ("-", "—"):
+                    f[k] = r[k]
             if "lung" in f and re.fullmatch(r"[\d.,]+", f["lung"]):
                 f["lung"] += " m"
             if "ip" in f and not f["ip"].upper().startswith("IP"):
@@ -558,7 +634,7 @@ for c in json.load(open(OUT / "cataloghi.json", encoding="utf-8")):
         P = json.load(open(d / "prodotti.json", encoding="utf-8"))
     else:
         completo = json.load(open(d / "catalogo.json", encoding="utf-8"))          # qui ci sono tutti i segnalibri
-        P = prodotti_catalogo(d, {**completo, "numero": c["numero"], "marchi": c.get("marchi", [])})
+        P = prodotti_catalogo(d, {**completo, "numero": c["numero"], "marchi": c.get("marchi", []), "comparto": c.get("comparto") or "connessione"})
         json.dump(P, open(d / "prodotti.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
         cnt = collections.Counter(k for o in P for k in o["f"])
         print(f"{c['numero']:02d} {c['nome'][:24]:24} {len(P):5} codici | " + " ".join(f"{k}:{v * 100 // max(1, len(P))}%" for k, v in cnt.most_common(12)), flush=True)

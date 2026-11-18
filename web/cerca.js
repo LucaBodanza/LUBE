@@ -137,7 +137,7 @@ const PASSO = 60;
 function descr(o) { return o.d || o.b || o.t || o.s[o.s.length - 1] || ''; }
 function etichette(o, max = 7) {
   const out = [];
-  for (const k of ['tipo', 'formato', 'codifica', 'poli', 'genere', 'uscita', 'schermo', 'ip', 'v', 'a', 'lung', 'conn']) {
+  for (const k of ['tipo', 'montaggio', 'formato', 'codifica', 'poli', 'genere', 'uscita', 'schermo', 'ip', 'v', 'a', 'w', 'chimica', 'lung', 'conn']) {
     const v = o.f[k]; if (!v) continue;
     out.push(`<span class="et">${k === 'poli' ? esc(v) + ' poli' : (k === 'codifica' ? 'cod. ' + esc(v) : esc(v))}</span>`);
     if (out.length >= max) break;
