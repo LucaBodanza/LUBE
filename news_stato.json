@@ -27842,6 +27842,9 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://www.lutronic.biz/en/news": {
+"errore_dal": "2026-11-18T03:01:15+00:00",
+"errori": 1,
+"msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lutronic.biz/en/news/100-percent-quality-assurance-lutronic-offers-high-performance-measuring-cells",
 "https://www.lutronic.biz/en/news/lutronic-expands-portfolio-new-field-attachable-m8-and-m12-connectors-with-idc-termination",
@@ -28884,6 +28887,8 @@
 "t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
 }
 },
+"errore_dal": "2026-11-18T03:01:15+00:00",
+"errori": 1,
 "finale": "https://www.lumberg.com/en/products/range/datacom",
 "lv0": {
 "https://www.lumberg.com/en/products/product/1501+02": {
@@ -29399,12 +29404,14 @@
 "t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
 }
 },
-"msg": "TimeoutError: The read operation timed out",
+"msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "titolo": "Datacom Connectors",
 "visto": "2026-11-17T08:52:01+00:00"
 },
 "lumberg-news": {
-"msg": "HTTP 500",
+"errore_dal": "2026-11-18T03:01:15+00:00",
+"errori": 1,
+"msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award",
 "https://www.lumberg.com/en/news/a-stronger-hold-lumberg-introduces-new-rast-2-5-connector-3510-6",
@@ -31004,7 +31011,7 @@
 "t": "HGN-365 · HGN-365-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369": {
-"assente": 1,
+"assente": 2,
 "t": "line filters · HGN-369"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369-x-2x": {
@@ -31016,7 +31023,7 @@
 "t": "HGN-369-X-2X · HGN-369-X-2X-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369/hgn-369-1": {
-"assente": 1,
+"assente": 2,
 "t": "HGN-369 · HGN-369-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-375": {
@@ -43296,6 +43303,8 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "termal-sito": {
+"errore_dal": "2026-11-18T03:01:15+00:00",
+"errori": 1,
 "lv0": {
 "https://www.termal.com.tr/about-tr.html": {
 "assente": 0,
@@ -43346,6 +43355,7 @@
 "t": "references"
 }
 },
+"msg": "sitemap senza elementi per questo schema",
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "ur-sito": {
