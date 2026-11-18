@@ -2,6 +2,16 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.mpe-connector.de/en/sitemap.xml",
+"id": "85f7896ef25f",
+"marchio": "MPE GARRY",
+"quando": "2026-11-18T02:31:08+00:00",
+"tipo": "nuovo",
+"titolo": "en · products",
+"url": "https://www.mpe-connector.de/en/products"
+},
+{
+"cat": null,
 "fonte": "https://www.lumberg.com/en/news",
 "id": "7cb034fadb70",
 "iniziale": true,
@@ -29517,6 +29527,10 @@
 },
 "mpe-prodotti": {
 "lv0": {
+"https://www.mpe-connector.de/en/products": {
+"assente": 0,
+"t": "en · products"
+},
 "https://www.mpe-connector.de/en/products/battery-contacts": {
 "assente": 0,
 "t": "products · battery contacts"
@@ -30990,7 +31004,7 @@
 "t": "HGN-365 · HGN-365-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369": {
-"assente": 0,
+"assente": 1,
 "t": "line filters · HGN-369"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369-x-2x": {
@@ -31002,7 +31016,7 @@
 "t": "HGN-369-X-2X · HGN-369-X-2X-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-369/hgn-369-1": {
-"assente": 0,
+"assente": 1,
 "t": "HGN-369 · HGN-369-1"
 },
 "https://www.mpe-connector.de/en/products/line-filters/hgn-375": {
