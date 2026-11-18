@@ -2,6 +2,16 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.matcavi.it/sitemap_index.xml",
+"id": "2dc5d42f3062",
+"marchio": "MATCAVI",
+"quando": "2026-11-18T15:31:15+00:00",
+"tipo": "nuovo",
+"titolo": "accessibility statement",
+"url": "https://www.matcavi.it/accessibility-statement"
+},
+{
+"cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "8af1739a32f8",
 "marchio": "CONEC",
@@ -19744,6 +19754,9 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
+"errore_dal": "2026-11-18T15:31:15+00:00",
+"errori": 1,
+"msg": "HTTP 403",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
 "https://amphenolltw.com/news-events/USB-TypeB-2.0-Female-Connector.html",
@@ -19773,6 +19786,8 @@
 "t": "Overmolded"
 }
 },
+"errore_dal": "2026-11-18T15:31:15+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -19780,6 +19795,7 @@
 "t": "M12 Push Pull"
 }
 },
+"msg": "HTTP 403",
 "titolo": "MPronto-12 M12 Push-Pull Connectors | Fast Mating",
 "visto": "2026-11-16T15:37:43+00:00"
 },
@@ -20066,6 +20082,8 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
+"errore_dal": "2026-11-18T15:31:15+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
@@ -20109,6 +20127,7 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
+"msg": "HTTP 403",
 "titolo": "X-Lok Connector for Fast and Reliable Connections",
 "visto": "2026-11-16T15:37:43+00:00"
 },
@@ -29458,6 +29477,10 @@
 },
 "matcavi-pagine": {
 "lv0": {
+"https://www.matcavi.it/accessibility-statement": {
+"assente": 0,
+"t": "accessibility statement"
+},
 "https://www.matcavi.it/cavi-di-alimentazione": {
 "assente": 0,
 "t": "cavi di alimentazione"
@@ -29475,7 +29498,7 @@
 "t": "chi siamo"
 },
 "https://www.matcavi.it/condizioni-di-vendita": {
-"assente": 0,
+"assente": 1,
 "t": "condizioni di vendita"
 },
 "https://www.matcavi.it/contatti": {
@@ -29483,11 +29506,11 @@
 "t": "contatti"
 },
 "https://www.matcavi.it/costi-e-spedizioni": {
-"assente": 0,
+"assente": 1,
 "t": "costi e spedizioni"
 },
 "https://www.matcavi.it/diritto-di-recesso-e-reclami": {
-"assente": 0,
+"assente": 1,
 "t": "diritto di recesso e reclami"
 },
 "https://www.matcavi.it/lavora-con-noi": {
