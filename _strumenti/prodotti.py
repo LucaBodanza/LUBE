@@ -17,7 +17,7 @@ OUT = Path(sys.argv[1])
 SOLO = {int(a) for a in sys.argv[2:]}
 
 COD = re.compile(r"^[A-Z0-9][A-Z0-9\-_./+]{4,39}$")
-NON_COD = re.compile(r"^(IP\d{2}K?|M\d{1,2}(X\d.*)?|\d+V|\d+A|\d+MM|\d+X\d+|ISO[\d-]+|EN[\d-]+|IEC[\d-]+|UL[\d-]+|\d+AWG|AWG\d+|CAT\.?\d\w*|RJ45|\d+/\d+|2\+PE|3\+PE|\d+POLI|100BASE-T\w*|1000BASE-T\w*|10BASE-T\w*|RS-?\d+|USB\d.*|\d{4}-\d{2}-\d{2}|V-\d|PA\d+|UL94.*|DIN\d*|\d+-\d+)$")
+NON_COD = re.compile(r"^(IP\d{2}K?|M\d{1,2}(X\d.*)?|\d+V|\d+A|\d+MM|\d+X\d+|ISO[\d-]+|EN[\d-]+|IEC[\d-]+|UL[\d-]+|\d+AWG|AWG\d+|CAT\.?\d[A-Z]?|RJ45|\d+/\d+|2\+PE|3\+PE|\d+POLI|100BASE-T\w*|1000BASE-T\w*|10BASE-T\w*|RS-?\d+|USB\d.*|\d{4}-\d{2}-\d{2}|V-\d|PA\d+|UL94.*|DIN\d*|\d+-\d+)$")
 
 
 def e_codice(w):
@@ -169,7 +169,9 @@ def colonna(et):
     e = et.upper().replace(" ", "")
     if e.startswith("CODICE") and "CONTATTO" not in e:
         return "c"
-    if e.startswith("DESCRI"):
+    if e in ("ORDERNUMBER", "PARTNUMBER", "ARTICLENUMBER", "ORDERNO.", "PARTNO."):      # tabelle d'ordine in inglese (Belden)
+        return "c"
+    if e.startswith("DESCRI") or e in ("ORDERDESIGNATION", "DESIGNATION"):
         return "d"
     if "POLI" in e:
         return "poli"
@@ -224,6 +226,8 @@ def leggi_pagina(testo):
         i += 1
         s = r.strip().lstrip("\ufeff■ ").strip()
         mc = re.search(r"\bCODICE(/DESCRIZIONE)?\b", r)
+        if not mc:                                  # intestazione inglese "Order Number   Order Designation   …" (non "Part Number: 123")
+            mc = re.search(r"\b(Order Number|Part Number|Article Number)(?=\s{2,}(?:Order Designation|Designation|Description)\b)", r)
         if mc and "CODICI DISPONIBILI" not in r and "IL CODICE" not in r:
             col = [(colonna(m.group(0)), m.start(), m.end()) for m in CELLA.finditer(r) if m.start() >= mc.start()]
             # intestazione su due righe: "[A]  [V]  CAVO" sotto
@@ -271,7 +275,15 @@ def leggi_pagina(testo):
             cur, trovati = None, []
             for j, (txt, a, b) in enumerate(celle):
                 nuovo = False
-                if sembra_codice(txt):
+                # codice ELSAP corto (3-4 cifre, es. "9078  RKT 4-637/10 M"): solo se è il primo valore della riga,
+                # allineato sotto l'intestazione CODICE e seguito da una descrizione con lettere (18/11/2026)
+                if (cur is None and j == 0 and re.fullmatch(r"\d{3,4}", txt) and len(celle) >= 3
+                        and abs(a - gruppo_di(a)[0][1]) <= 3 and re.search(r"[A-Za-z]", celle[1][0])):
+                    g = gruppo_di(a)
+                    nuovo = not dopo or (x_cod is not None and abs(a - x_cod) <= 3)
+                    if nuovo and x_cod is None:
+                        x_cod = a
+                elif sembra_codice(txt):
                     g = gruppo_di(a)
                     if cur is None:
                         nuovo = (j == 0 or abs(g[0][1] - a) < 40) and (not dopo or (x_cod is not None and abs(a - x_cod) <= 3))
@@ -307,7 +319,7 @@ def leggi_pagina(testo):
 
 TRATTINO = re.compile(r"^\s*([A-Z0-9][\w\-./+ ·]{3,60}?)\s+[—–]\s+(\S.{12,})$")
 NOME_DESC = re.compile(r"^\s*([A-Z0-9][\w\-./+ ,]{4,44}?) - (\S.{14,})$")
-RUMORE = re.compile(r"^(RAL\d+|(\d{4})\2|E\d{5,6}|(IP\d{2}K?){2,}|\d{2}\.\d{2}\.\d{2,4}|\d{2}K\d[A-Z]\d+|M\d+-M\d+|\d+BASE-.*|AWG.*|.*AWG|DIN.*|VDE.*|UL\d.*|IEC.*|EN\d.*|ISO.*|\d+X\d.*|J-STD.*|.*MM²?|\d+(\.\d+)?(MM|NM|NCM|KV|MA|MHZ|GHZ|OHM|V|A|M|G|KG)|CAT\.?\d\w*|\d+-\d+|\d+/\d+|PA\d+.*|PG\d+|M\d+X[\d.,]+|\d{4}/\d{2})$", I)
+RUMORE = re.compile(r"^(RAL\d+|(\d{4})\2|E\d{5,6}|(IP\d{2}K?){2,}|\d{2}\.\d{2}\.\d{2,4}|\d{2}K\d[A-Z]\d+|M\d+-M\d+|\d+BASE-.*|AWG.*|.*AWG|DIN.*|VDE.*|UL\d.*|IEC.*|EN\d.*|ISO.*|\d+X\d.*|J-STD.*|.*MM²?|\d+(\.\d+)?(MM|NM|NCM|KV|MA|MHZ|GHZ|OHM|V|A|M|G|KG)|CAT\.?\d[A-Z]?|\d+SERIES|\d+V+(AC|DC)|\d+-\d+|\d+/\d+|PA\d+.*|PG\d+|M\d+X[\d.,]+|\d{4}/\d{2})$", I)
 SOLO_ELSAP = re.compile(r"^\s*(\d{2}-\d{4,6}(?:\s*/\s*\d{2}-\d{4,6})*)\s*$")
 
 
@@ -319,6 +331,22 @@ def libero_ok(w):
     if lettere == 0:
         return cifre >= 8 or bool(re.fullmatch(r"\d{2}-\d{4,6}", w))
     return len(w) >= 7 and cifre >= 2
+
+
+def marchio_pagina(t):
+    """Marchio scritto nella pagina (registro web/schemi/marchi.json). Solo se non è ambiguo; altrimenti None."""
+    conec, friwo = bool(re.search(r"\bCONEC\b", t, I)), bool(re.search(r"\bFRIWO\b", t, I))
+    amph = bool(re.search(r"\bAmphenol\b(?!\s+Conec)", t, I))
+    belden, lumberg = bool(re.search(r"\bBELDEN\b", t, I)), bool(re.search(r"\bLumberg\b", t, I))
+    gruppi = [g for g, si in (("conec", conec), ("friwo", friwo), ("amph", amph), ("belden", belden or lumberg)) if si]
+    if len(gruppi) != 1:
+        return None
+    g = gruppi[0]
+    if g == "belden":                       # Lumberg Automation è un marchio Belden; Lumberg da solo è Lumberg Connect
+        if re.search(r"\bLumberg\s?Automation\b", t, I) or (belden and lumberg):
+            return "Lumberg Automation"
+        return "Lumberg" if lumberg else "Belden"
+    return {"conec": "CONEC", "friwo": "FRIWO", "amph": "Amphenol"}[g]
 
 
 def prodotti_catalogo(d, m):
@@ -349,11 +377,13 @@ def prodotti_catalogo(d, m):
         return out[:4], largo[:5]
 
     marchio_cat = m["marchi"][0] if len(m.get("marchi", [])) == 1 else None
-    out, visti, info_pag = [], {}, {}
+    out, visti, info_pag, stato = [], {}, {}, {"marchio": None}
 
     def nuovo(c, n, testa, sez, f, alias=(), d="", blocco=""):
         if marchio_cat:
             f.setdefault("marchio", marchio_cat)
+        if stato["marchio"]:
+            f.setdefault("marchio", stato["marchio"])
         out.append({"c": c, "a": [a for a in alias if a], "n": m["numero"], "p": n, "t": testa, "b": blocco, "d": d, "s": sez, "f": f})
         visti.setdefault(c.upper(), n)
 
@@ -362,6 +392,7 @@ def prodotti_catalogo(d, m):
         if not pulito:
             continue
         sez, sez_largo = sezione(n)
+        stato["marchio"] = marchio_pagina(pulito)
         et = da_etichette(pulito)
         if not titoli or not any(re.search(r"[A-Za-z]{4}", t) for t in titoli):
             titoli = sez[-2:]
@@ -463,6 +494,18 @@ def prodotti_catalogo(d, m):
                     f.setdefault(k, v)
             nuovo(nome, n, testa, sez, f, [], desc_pag)
             usati.add(nome.upper())
+        # --- 3b. codici Lumberg "serie variante" (es. "2430 02"): solo se la pagina dichiara la serie ("2430 SERIES")
+        serie = set(re.findall(r"\b(\d{4}) ?SERIES\b", pulito, I))
+        if serie:
+            f_lum = {}
+            for fonte in (f_desc, et, f_pag):
+                for k, v in fonte.items():
+                    f_lum.setdefault(k, v)
+            for mm in re.finditer(r"(?<![\d.,/-])(\d{4}) (\d{2})(?![\d.,/-]|\s?(?:mm|V|A|°|%))", pulito):
+                c = f"{mm.group(1)} {mm.group(2)}"
+                if mm.group(1) in serie and c.upper() not in usati and c.replace(" ", "") not in usati:
+                    nuovo(c, n, testa, sez, dict(f_lum), [c.replace(" ", "")], desc_pag)
+                    usati.update({c.upper(), c.replace(" ", "")})
         # --- 4. altri codici scritti nella pagina (tabelle d'ordine senza intestazione riconosciuta)
         if 'Viale Famagosta' in pulito or 'P.IVA' in pulito:
             info_pag[n] = (titoli, len(usati))
@@ -490,6 +533,11 @@ def prodotti_catalogo(d, m):
         k = o["c"].upper()
         if k not in migliori or (len(o["f"]) + bool(o["d"])) > (len(migliori[k]["f"]) + bool(migliori[k]["d"])) + 1:
             migliori[k] = o
+    for o in out:                           # marchio e famiglia valgono per il codice ovunque sia citato: non si perdono
+        b = migliori[o["c"].upper()]
+        for x in ("marchio", "famiglia"):
+            if o["f"].get(x):
+                b["f"].setdefault(x, o["f"][x])
     out = sorted(migliori.values(), key=lambda o: (o["p"], o["c"]))
     # la scheda continua sulla pagina dopo? (pagina senza codici propri, stesso titolo)
     for o in out:
