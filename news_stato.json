@@ -2,6 +2,16 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "caee36994df5",
+"marchio": "CONEC",
+"quando": "2026-11-19T21:50:45+00:00",
+"tipo": "famiglia",
+"titolo": "Pagina non più raggiungibile (HTTP 522)",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html"
+},
+{
+"cat": null,
 "fonte": "https://www.e-switch.com/sitemap.xml",
 "id": "ecb6688404d9",
 "marchio": "E-SWITCH",
@@ -22246,7 +22256,7 @@
 }
 },
 "errore_dal": "2026-11-19T21:01:27+00:00",
-"errori": 2,
+"errori": 3,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
@@ -22375,6 +22385,7 @@
 }
 },
 "msg": "HTTP 522",
+"segnalato": true,
 "titolo": "Circular Connectors Sensor Actor Line",
 "visto": "2026-11-16T15:37:43+00:00"
 },
