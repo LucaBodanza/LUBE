@@ -3,6 +3,16 @@
 {
 "cat": null,
 "fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "ecb6688404d9",
+"marchio": "E-SWITCH",
+"quando": "2026-11-19T17:31:06+00:00",
+"tipo": "tolto",
+"titolo": "RA4-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP",
+"url": "https://www.e-switch.com/product/ra4-series-illuminated-power-rocker-switch-with-pvc-cap"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
 "id": "5fc9aa2298ed",
 "marchio": "E-SWITCH",
 "quando": "2026-11-19T16:31:11+00:00",
@@ -14872,10 +14882,6 @@
 "assente": 0,
 "t": "RA1-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
 },
-"https://www.e-switch.com/product/ra4-series-illuminated-power-rocker-switch-with-pvc-cap": {
-"assente": 2,
-"t": "RA4-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
-},
 "https://www.e-switch.com/product/ra8-series-illuminated-power-rocker-switch-with-pvc-cap": {
 "assente": 0,
 "t": "RA8-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
@@ -28923,6 +28929,9 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://www.an-el.com.tr/feed/": {
+"errore_dal": "2026-11-19T17:31:06+00:00",
+"errori": 1,
+"msg": "TimeoutError: The read operation timed out",
 "visti": [
 "https://www.an-el.com.tr/an-el-firmasina-nasil-ulasilir-urun-cesitliligi-ve-iletisim/",
 "https://www.an-el.com.tr/an-el-urunleri/",
