@@ -20392,6 +20392,8 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "gruner-sito": {
+"errore_dal": "2026-11-19T18:01:15+00:00",
+"errori": 1,
 "lv0": {
 "https://www.gruner.de/datenschutzerklaerung": {
 "assente": 0,
@@ -28929,8 +28931,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://www.an-el.com.tr/feed/": {
-"errore_dal": "2026-11-19T17:31:06+00:00",
-"errori": 1,
 "msg": "TimeoutError: The read operation timed out",
 "visti": [
 "https://www.an-el.com.tr/an-el-firmasina-nasil-ulasilir-urun-cesitliligi-ve-iletisim/",
