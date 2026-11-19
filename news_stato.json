@@ -2,6 +2,17 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.belden.com/news",
+"id": "d7c92e0ae67f",
+"iniziale": false,
+"marchio": "Belden",
+"quando": "2026-11-19T13:24:46+00:00",
+"tipo": "comunicato",
+"titolo": "Belden launches new systems for resilience at every layer of the OT network New cables, firmware, switching, monitoring and access control, built to keep your o",
+"url": "https://www.belden.com/news/Belden-launches-new-systems-for-resilience-at-every-layer-of-the-ot-network"
+},
+{
+"cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "2a0ee6154c03",
 "marchio": "CONEC",
@@ -28922,6 +28933,7 @@
 "https://www.belden.com/news/Belden-and-Tulip-help-manufacturers-act-on-data-from-legacy-equipment-for-measurable-OEE-gains",
 "https://www.belden.com/news/Belden-announces-inaugural-Joseph-C-Belden-Innovation-Award",
 "https://www.belden.com/news/Belden-earns-24-spot-on-fortunes-2026-best-workplaces-in-manufacturing-and-production",
+"https://www.belden.com/news/Belden-launches-new-systems-for-resilience-at-every-layer-of-the-ot-network",
 "https://www.belden.com/news/belden-accepts-six-innovation-awards-from-cabling-installation-and-maintenance-magazine",
 "https://www.belden.com/news/belden-and-radiflow-partner-to-close-the-gap-between-ot-threat-detection-and-network-response",
 "https://www.belden.com/news/belden-announces-new-integration-with-aws-iot-sitewise-edge",
