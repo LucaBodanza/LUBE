@@ -2,6 +2,36 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "2a0ee6154c03",
+"marchio": "CONEC",
+"quando": "2026-11-19T10:44:38+00:00",
+"tipo": "nuovo",
+"titolo": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "802de67db2d8",
+"marchio": "CONEC",
+"quando": "2026-11-19T10:44:38+00:00",
+"tipo": "nuovo",
+"titolo": "Male connector angled • single ended • M12x1 • 4- pos. • 5 m • 0,75 mm²",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-5-k1-075-a1090.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "e62773d2e706",
+"marchio": "CONEC",
+"quando": "2026-11-19T10:44:38+00:00",
+"tipo": "nuovo",
+"titolo": "English (US)",
+"url": "https://conec.com/catalog/en/i-o-systeme-verteilerboxen.html"
+},
+{
+"cat": null,
 "fonte": "https://www.matcavi.it/sitemap_index.xml",
 "id": "308bfcd208c5",
 "marchio": "MATCAVI",
@@ -21320,12 +21350,16 @@
 "t": "Male connector axial • single ended • M12x1 • 5- pos. • 2 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-10-k1-075-a1090.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • single ended • M12x1 • 4- pos. • 10 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-2-k1-075-a1090-03.html": {
 "assente": 0,
 "t": "Male connector angled • single ended • M12x1 • 4- pos. • 2 m • 0,75 mm²"
+},
+"https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-5-k1-075-a1090.html": {
+"assente": 0,
+"t": "Male connector angled • single ended • M12x1 • 4- pos. • 5 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk5-1-10-k1-075-a1090.html": {
 "assente": 0,
@@ -21396,7 +21430,7 @@
 "t": "Male connector axial • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-10-k1.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-2-k1.html": {
@@ -21406,6 +21440,10 @@
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-3-k1.html": {
 "assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
+},
+"https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
+"assente": 0,
+"t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
 "assente": 0,
@@ -22038,6 +22076,10 @@
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-6s-a-k1-0-75-1m-k1-0-75-1m.html": {
 "assente": 0,
 "t": "Socket • 6-pos. • DT • without protection circuit • 1 m"
+},
+"https://conec.com/catalog/en/i-o-systeme-verteilerboxen.html": {
+"assente": 0,
+"t": "English (US)"
 },
 "https://conec.com/catalog/en/io-systems-junction-boxes.html": {
 "assente": 0,
