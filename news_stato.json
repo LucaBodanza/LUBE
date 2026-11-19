@@ -2,6 +2,16 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "5fc9aa2298ed",
+"marchio": "E-SWITCH",
+"quando": "2026-11-19T16:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "NEW-PRODUCT-PVB7-SERIES-ANTI-VANDAL-SWITCH",
+"url": "https://www.e-switch.com/news-events/blog/new-product/new-product-pvb7-series-anti-vandal-switch"
+},
+{
+"cat": null,
 "fonte": "https://www.belden.com/news",
 "id": "d7c92e0ae67f",
 "iniziale": false,
@@ -14281,6 +14291,10 @@
 "assente": 0,
 "t": "NEW-PRODUCT-PV16-SERIES-ANTI-VANDAL-SWITCH"
 },
+"https://www.e-switch.com/news-events/blog/new-product/new-product-pvb7-series-anti-vandal-switch": {
+"assente": 0,
+"t": "NEW-PRODUCT-PVB7-SERIES-ANTI-VANDAL-SWITCH"
+},
 "https://www.e-switch.com/news-events/blog/new-product/new-product-td1270-series-detector-switch": {
 "assente": 0,
 "t": "NEW-PRODUCT-TD1270-SERIES-DETECTOR-SWITCH"
@@ -14859,7 +14873,7 @@
 "t": "RA1-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
 },
 "https://www.e-switch.com/product/ra4-series-illuminated-power-rocker-switch-with-pvc-cap": {
-"assente": 0,
+"assente": 1,
 "t": "RA4-SERIES-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
 },
 "https://www.e-switch.com/product/ra8-series-illuminated-power-rocker-switch-with-pvc-cap": {
