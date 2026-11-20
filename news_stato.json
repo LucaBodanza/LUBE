@@ -1,6 +1,66 @@
 {
 "eventi": [
 {
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "452c7ee8ea7b",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "Accessory",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "1c889e895e3a",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "Field Installable",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "fd827537da2b",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "Overmolded",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "99cda84c618d",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "Receptacle",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "8fb8d9bfbc4a",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "Receptacle With Wires",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires"
+},
+{
+"cat": 14,
+"fonte": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
+"id": "fbe621ccb11e",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:01:19+00:00",
+"tipo": "tolto",
+"titolo": "M12 Push Pull",
+"url": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull"
+},
+{
 "cat": 14,
 "fonte": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
 "id": "b11f8640dea8",
@@ -21210,10 +21270,6 @@
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#when-to-use-m12-circular-connectors": {
 "assente": 0,
 "t": "When to Use M12 Circular Connectors"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
-"assente": 2,
-"t": "M12 Push Pull"
 }
 },
 "msg": "HTTP 403",
@@ -21506,26 +21562,6 @@
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "g_deep": 1,
 "lv0": {
-"https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
-"assente": 2,
-"t": "Accessory"
-},
-"https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable": {
-"assente": 2,
-"t": "Field Installable"
-},
-"https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded": {
-"assente": 2,
-"t": "Overmolded"
-},
-"https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
-"assente": 2,
-"t": "Receptacle"
-},
-"https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires": {
-"assente": 2,
-"t": "Receptacle With Wires"
-},
 "https://amphenolltw.com/product-info/X-Lok/X-Lok.LargeSize": {
 "assente": 0,
 "t": "View Our X-Lok Large Size Connector"
@@ -22598,8 +22634,6 @@
 "t": "PCB Connectors"
 }
 },
-"errore_dal": "2026-11-20T10:42:21+00:00",
-"errori": 1,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "g_deep": 1,
 "lv0": {
