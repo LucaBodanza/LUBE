@@ -3,6 +3,16 @@
 {
 "cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "8c5772ba3088",
+"marchio": "CONEC",
+"quando": "2026-11-20T09:31:04+00:00",
+"tipo": "famiglia",
+"titolo": "Pagina di nuovo raggiungibile",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "de8678d5911f",
 "marchio": "CONEC",
 "quando": "2026-11-20T05:01:12+00:00",
@@ -22405,8 +22415,6 @@
 "t": "PCB Connectors"
 }
 },
-"errore_dal": "2026-11-20T04:01:12+00:00",
-"errori": 11,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
@@ -22535,7 +22543,6 @@
 }
 },
 "msg": "HTTP 522",
-"segnalato": true,
 "titolo": "Circular Connectors Sensor Actor Line",
 "visto": "2026-11-16T15:37:43+00:00"
 },
