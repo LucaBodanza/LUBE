@@ -21008,6 +21008,7 @@
 }
 },
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
+"g_lv0": 1,
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#are-circular-connectors-better-than-rectangular-connectors": {
 "assente": 0,
@@ -21356,23 +21357,23 @@
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
-"assente": 1,
+"assente": 0,
 "t": "Accessory"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable": {
-"assente": 1,
+"assente": 0,
 "t": "Field Installable"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded": {
-"assente": 1,
+"assente": 0,
 "t": "Overmolded"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
-"assente": 1,
+"assente": 0,
 "t": "Receptacle"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires": {
-"assente": 1,
+"assente": 0,
 "t": "Receptacle With Wires"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok.LargeSize": {
