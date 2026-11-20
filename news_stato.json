@@ -21212,7 +21212,7 @@
 "t": "When to Use M12 Circular Connectors"
 },
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
-"assente": 1,
+"assente": 2,
 "t": "M12 Push Pull"
 }
 },
@@ -21507,23 +21507,23 @@
 "g_deep": 1,
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
-"assente": 1,
+"assente": 2,
 "t": "Accessory"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable": {
-"assente": 1,
+"assente": 2,
 "t": "Field Installable"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded": {
-"assente": 1,
+"assente": 2,
 "t": "Overmolded"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
-"assente": 1,
+"assente": 2,
 "t": "Receptacle"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires": {
-"assente": 1,
+"assente": 2,
 "t": "Receptacle With Wires"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok.LargeSize": {
@@ -22598,6 +22598,8 @@
 "t": "PCB Connectors"
 }
 },
+"errore_dal": "2026-11-20T10:42:21+00:00",
+"errori": 1,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "g_deep": 1,
 "lv0": {
