@@ -21008,62 +21008,9 @@
 }
 },
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
-"g_lv0": 5,
 "lv0": {
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#are-circular-connectors-better-than-rectangular-connectors": {
-"assente": 0,
-"t": "Are circular connectors better than rectangular connectors?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#can-circular-connectors-carry-power-signal-and-data": {
-"assente": 0,
-"t": "Can circular connectors carry power, signal, and data?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#frequently-asked-questions-faqs": {
-"assente": 0,
-"t": "Frequently Asked Questions (FAQs)"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#how-do-i-choose-the-right-circular-connector": {
-"assente": 0,
-"t": "How do I choose the right circular connector?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#looking-for-reliable-circular-connector-manufacturers": {
-"assente": 0,
-"t": "Looking For Reliable Circular Connector Manufacturers?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#mpronto-12-m12-push-pull": {
-"assente": 0,
-"t": "MPronto-12 (M12 Push Pull)"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#panel-cut-out": {
-"assente": 0,
-"t": "panel cut-out +"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#product-categories": {
-"assente": 0,
-"t": "Product Categories"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#types-of-mpronto-12-connectors-available-on-amphenol-ltw": {
-"assente": 0,
-"t": "Types of MPronto-12 Connectors Available on Amphenol LTW"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#website-settings": {
-"assente": 0,
-"t": "WEBSITE SETTINGS"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#what-are-circular-connectors-used-for": {
-"assente": 0,
-"t": "What are circular connectors used for?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#when-do-i-need-shielded-circular-connectors": {
-"assente": 0,
-"t": "When do I need shielded circular connectors?"
-},
-"https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#when-to-use-m12-circular-connectors": {
-"assente": 0,
-"t": "When to Use M12 Circular Connectors"
-},
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
-"assente": 1,
+"assente": 0,
 "t": "M12 Push Pull"
 }
 },
@@ -22448,8 +22395,6 @@
 "t": "PCB Connectors"
 }
 },
-"errore_dal": "2026-11-20T03:21:46+00:00",
-"errori": 1,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
