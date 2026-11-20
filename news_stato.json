@@ -3,6 +3,56 @@
 {
 "cat": 15,
 "fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "240acf328f2b",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "Accessory",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "352e7decd63e",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "Field Installable",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "d5377b544b60",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "Overmolded",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "bed33b80d830",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "Receptacle",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "182186cb774b",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-20T11:31:11+00:00",
+"tipo": "nuovo",
+"titolo": "Receptacle With Wires",
+"url": "https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires"
+},
+{
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
 "id": "452c7ee8ea7b",
 "marchio": "Amphenol LTW",
 "quando": "2026-11-20T11:01:19+00:00",
@@ -21218,6 +21268,7 @@
 }
 },
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
+"g_lv0": 1,
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector#are-circular-connectors-better-than-rectangular-connectors": {
 "assente": 0,
@@ -21562,6 +21613,26 @@
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "g_deep": 1,
 "lv0": {
+"https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
+"assente": 0,
+"t": "Accessory"
+},
+"https://amphenolltw.com/product-info/X-Lok/X-Lok-FieldInstallable": {
+"assente": 0,
+"t": "Field Installable"
+},
+"https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded": {
+"assente": 0,
+"t": "Overmolded"
+},
+"https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
+"assente": 0,
+"t": "Receptacle"
+},
+"https://amphenolltw.com/product-info/X-Lok/X-Lok-ReceptacleWithWires": {
+"assente": 0,
+"t": "Receptacle With Wires"
+},
 "https://amphenolltw.com/product-info/X-Lok/X-Lok.LargeSize": {
 "assente": 0,
 "t": "View Our X-Lok Large Size Connector"
