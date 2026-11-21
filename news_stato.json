@@ -3,6 +3,16 @@
 {
 "cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "76887c714ef1",
+"marchio": "CONEC",
+"quando": "2026-11-21T10:10:28+00:00",
+"tipo": "nuovo",
+"titolo": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m",
+"url": "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "fcb947b1b293",
 "marchio": "CONEC",
 "quando": "2026-11-21T05:01:16+00:00",
@@ -21582,7 +21592,6 @@
 }
 },
 "finale": "https://amphenolltw.com/product-info/X-Lok",
-"g_deep": 1,
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
 "assente": 0,
@@ -21812,7 +21821,7 @@
 "t": "Male connector axial • single ended • M12x1 • 5- pos. • 2 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-10-k1-075-a1090.html": {
-"assente": 1,
+"assente": 0,
 "t": "Male connector angled • single ended • M12x1 • 4- pos. • 10 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-2-k1-075-a1090-03.html": {
@@ -21820,7 +21829,7 @@
 "t": "Male connector angled • single ended • M12x1 • 4- pos. • 2 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk4-5-k1-075-a1090.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • single ended • M12x1 • 4- pos. • 5 m • 0,75 mm²"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12-rswk5-1-10-k1-075-a1090.html": {
@@ -21892,7 +21901,7 @@
 "t": "Male connector axial • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-10-k1.html": {
-"assente": 1,
+"assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-2-k1.html": {
@@ -21904,7 +21913,7 @@
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
@@ -22532,6 +22541,10 @@
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html": {
+"assente": 1,
+"t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
+},
+"https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
 "assente": 0,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
@@ -22677,7 +22690,6 @@
 }
 },
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
-"g_deep": 1,
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
 "assente": 0,
@@ -30262,7 +30274,7 @@
 },
 "https://www.lumberg.com/en/products/product/2535+08+TVNXN+01": {
 "assente": 0,
-"t": "New 2535 08 TVNXN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), upright, with full shielding and positioning pegs/retaining hooks, lower side lock, for print"
+"t": "New 2535 08 TVNXN 01 Modular chassis socket, Cat. 5e, 8p8c (RJ45), upright, with full shielding and positioning pegs/retaining hooks, for printed circuit boards"
 },
 "https://www.lumberg.com/en/products/product/2541+01": {
 "assente": 0,
