@@ -776,19 +776,6 @@
 },
 {
 "cat": null,
-"data": "2025-11-21T12:59:28+00:00",
-"fonte": "https://www.micronel.com/feed/",
-"id": "923601737d78",
-"iniziale": true,
-"marchio": "Micronel",
-"quando": "2026-11-16T16:22:45+00:00",
-"testo": "",
-"tipo": "comunicato",
-"titolo": "COMPAMED 2025",
-"url": "https://www.micronel.com/compamed-2025/"
-},
-{
-"cat": null,
 "data": "2026-02-18T10:43:48+00:00",
 "fonte": "https://switches-sensors.zf.com/feed/",
 "id": "ecb05de0ea24",
