@@ -1109,8 +1109,6 @@
 ],
 "fonti": {
 "belden-cat2-data": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/connectors/industrial-connectors/data-connectors/0906-utp-303": {
 "assente": 0,
@@ -1957,8 +1955,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat3-power": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/connectors/industrial-connectors/power-connectors/0905-203-301": {
 "assente": 0,
@@ -5989,8 +5985,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat5-io": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/i-o-systems/digital-i-o-modules-for-fieldbus-systems": {
 "assente": 0,
@@ -6837,8 +6831,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat6-safety": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/i-o-systems/safety-i-o-modules/0980-ssl-3030-121-007d-101": {
 "assente": 0,
@@ -6861,8 +6853,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat7-valvole": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/connectors/industrial-connectors/valve-connectors/accessories": {
 "assente": 0,
@@ -9793,8 +9783,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat8-sensori": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/connectors/industrial-connectors/sensor-actuator-connectors/0909-uac-101": {
 "assente": 0,
@@ -14381,8 +14369,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "belden-cat9-spe": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "lv0": {
 "https://www.belden.com/products/connectors/industrial-connectors/single-pair-ethernet-spe-connectors/gk2f6x-z-b": {
 "assente": 0,
@@ -21629,6 +21615,8 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
+"errore_dal": "2026-11-23T22:31:07+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
@@ -29415,8 +29403,6 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://www.belden.com/news": {
-"errore_dal": "2026-11-23T22:01:17+00:00",
-"errori": 1,
 "msg": "TimeoutError: The read operation timed out",
 "visti": [
 "https://www.belden.com/news/Belden-Brand-Receives-TOP-100-Innovation-Award",
