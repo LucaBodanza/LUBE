@@ -21291,6 +21291,8 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
+"errore_dal": "2026-11-23T23:01:23+00:00",
+"errori": 1,
 "msg": "HTTP 502",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
@@ -21615,8 +21617,6 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
-"errore_dal": "2026-11-23T22:31:07+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
