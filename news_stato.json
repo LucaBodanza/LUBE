@@ -31021,6 +31021,8 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
+"errore_dal": "2026-11-23T08:01:20+00:00",
+"errori": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31087,9 +31089,12 @@
 "t": "versatile connector types for customized cable assemblies at binder mpe"
 }
 },
+"msg": "sitemap senza elementi per questo schema",
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
+"errore_dal": "2026-11-23T08:01:20+00:00",
+"errori": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
@@ -35444,6 +35449,7 @@
 "t": "MICRO-MATCH-CONNECTOR-127-MM · 372-1"
 }
 },
+"msg": "sitemap senza elementi per questo schema",
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "neosid-prodotti": {
