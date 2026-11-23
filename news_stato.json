@@ -21284,7 +21284,9 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
-"msg": "TimeoutError: The read operation timed out",
+"errore_dal": "2026-11-23T16:31:08+00:00",
+"errori": 1,
+"msg": "HTTP 502",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
 "https://amphenolltw.com/news-events/USB-TypeB-2.0-Female-Connector.html",
@@ -21314,6 +21316,8 @@
 "t": "Overmolded"
 }
 },
+"errore_dal": "2026-11-23T16:31:08+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21321,7 +21325,7 @@
 "t": "M12 Push Pull"
 }
 },
-"msg": "HTTP 403",
+"msg": "HTTP 502",
 "titolo": "MPronto-12 M12 Push-Pull Connectors | Fast Mating",
 "visto": "2026-11-16T15:37:43+00:00"
 },
@@ -21608,8 +21612,6 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
-"errore_dal": "2026-11-23T15:31:08+00:00",
-"errori": 2,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
