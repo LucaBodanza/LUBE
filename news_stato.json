@@ -21284,6 +21284,8 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
+"errore_dal": "2026-11-23T19:01:23+00:00",
+"errori": 1,
 "msg": "HTTP 502",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
@@ -29431,8 +29433,6 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://www.lutronic.biz/en/news": {
-"errore_dal": "2026-11-23T18:31:24+00:00",
-"errori": 1,
 "msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lutronic.biz/en/news/100-percent-quality-assurance-lutronic-offers-high-performance-measuring-cells",
@@ -31041,7 +31041,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31112,7 +31111,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
