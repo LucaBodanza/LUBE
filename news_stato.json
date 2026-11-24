@@ -21311,6 +21311,8 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
+"errore_dal": "2026-11-24T06:01:18+00:00",
+"errori": 1,
 "msg": "HTTP 502",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
@@ -21341,8 +21343,6 @@
 "t": "Overmolded"
 }
 },
-"errore_dal": "2026-11-24T05:31:06+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -31140,6 +31140,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
+"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
@@ -47421,6 +47422,8 @@
 "visto": "2026-11-18T16:19:14+00:00"
 },
 "termal-sito": {
+"errore_dal": "2026-11-24T06:01:18+00:00",
+"errori": 1,
 "lv0": {
 "https://www.termal.com.tr/about-tr.html": {
 "assente": 0,
@@ -47471,7 +47474,7 @@
 "t": "references"
 }
 },
-"msg": "sitemap senza elementi per questo schema",
+"msg": "URLError: <urlopen error [Errno 104] Connection reset by peer>",
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "ur-sito": {
