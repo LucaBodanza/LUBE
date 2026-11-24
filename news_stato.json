@@ -31034,6 +31034,8 @@
 "visto": "2026-11-17T08:52:01+00:00"
 },
 "matcavi-pagine": {
+"errore_dal": "2026-11-24T03:31:07+00:00",
+"errori": 1,
 "lv0": {
 "https://www.matcavi.it/accessibility-statement": {
 "assente": 0,
@@ -31064,6 +31066,7 @@
 "t": "lavora con noi"
 }
 },
+"msg": "URLError: <urlopen error [Errno -5] No address associated with hostname>",
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
