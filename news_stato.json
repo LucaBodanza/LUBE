@@ -1,6 +1,16 @@
 {
 "eventi": [
 {
+"cat": 15,
+"fonte": "https://amphenolltw.com/product-info/X-Lok/",
+"id": "534eee284289",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-24T21:31:10+00:00",
+"tipo": "famiglia",
+"titolo": "Pagina non più raggiungibile (HTTP 502)",
+"url": "https://amphenolltw.com/product-info/X-Lok/"
+},
+{
 "cat": 14,
 "fonte": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
 "id": "01eeaac68887",
@@ -21696,7 +21706,7 @@
 }
 },
 "errore_dal": "2026-11-24T20:31:12+00:00",
-"errori": 2,
+"errori": 3,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
@@ -21741,6 +21751,7 @@
 }
 },
 "msg": "HTTP 502",
+"segnalato": true,
 "titolo": "X-Lok Connector for Fast and Reliable Connections",
 "visto": "2026-11-16T15:37:43+00:00"
 },
