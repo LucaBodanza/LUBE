@@ -21381,6 +21381,8 @@
 "t": "Overmolded"
 }
 },
+"errore_dal": "2026-11-24T12:55:30+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21503,51 +21505,51 @@
 "t": "Overmolded"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD001.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD001 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD002.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD002 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD003.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD003 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD004.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD004 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD005.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD005 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD010.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QD010 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QDA05.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02FL-ADFL-QDA05 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD001.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02ML-ADFL-QD001 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD002.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02ML-ADFL-QD002 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD003.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02ML-ADFL-QD003 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD004.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02ML-ADFL-QD004 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD005.html": {
-"assente": 0,
+"assente": 1,
 "t": "AB-AD02ML-ADFL-QD005 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
@@ -30503,11 +30505,11 @@
 },
 "https://www.lumberg.com/en/products/product/P+136": {
 "assente": 0,
-"t": "P 136 Modular chassis socket, 8p8c (RJ45), upright, with full shielding, positioning pegs/retaining hooks and flange, for printed circuit boards"
+"t": "P 136 Modular chassis socket, 8p8c (RJ45), upright, with full shielding, positioning pegs/retaining hooks and flange, for printed circuit boards, through hole t"
 },
 "https://www.lumberg.com/en/products/product/P+137+S": {
 "assente": 0,
-"t": "P 137 S Modular chassis socket, 8p8c (RJ45), angular, with shielding, positioning pegs/retaining hooks and flange, lower side lock, for printed circuit boards"
+"t": "P 137 S Modular chassis socket, 8p8c (RJ45), angular, with shielding, positioning pegs/retaining hooks and flange, lower side lock, for printed circuit boards, "
 },
 "https://www.lumberg.com/en/products/product/P+303": {
 "assente": 0,
