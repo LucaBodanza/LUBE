@@ -3,6 +3,16 @@
 {
 "cat": 14,
 "fonte": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
+"id": "01eeaac68887",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-24T16:01:38+00:00",
+"tipo": "famiglia",
+"titolo": "Pagina di nuovo raggiungibile",
+"url": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/"
+},
+{
+"cat": 14,
+"fonte": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/",
 "id": "ea25deea0ab9",
 "marchio": "Amphenol LTW",
 "quando": "2026-11-24T15:31:12+00:00",
@@ -21391,8 +21401,6 @@
 "t": "Overmolded"
 }
 },
-"errore_dal": "2026-11-24T14:31:11+00:00",
-"errori": 3,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21401,7 +21409,6 @@
 }
 },
 "msg": "HTTP 502",
-"segnalato": true,
 "titolo": "MPronto-12 M12 Push-Pull Connectors | Fast Mating",
 "visto": "2026-11-16T15:37:43+00:00"
 },
