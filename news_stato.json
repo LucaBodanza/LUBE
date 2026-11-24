@@ -21381,8 +21381,6 @@
 "t": "Overmolded"
 }
 },
-"errore_dal": "2026-11-24T09:31:11+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21677,6 +21675,8 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
+"errore_dal": "2026-11-24T10:01:21+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
@@ -31020,11 +31020,11 @@
 },
 "https://www.lumberg.com/en/products/product/P+136": {
 "assente": 0,
-"t": "P 136 Modular chassis socket, 8p8c (RJ45), upright, with full shielding, positioning pegs/retaining hooks and flange, for printed circuit boards"
+"t": "P 136 Modular chassis socket, 8p8c (RJ45), upright, with full shielding, positioning pegs/retaining hooks and flange, for printed circuit boards, through hole t"
 },
 "https://www.lumberg.com/en/products/product/P+137+S": {
 "assente": 0,
-"t": "P 137 S Modular chassis socket, 8p8c (RJ45), angular, with shielding, positioning pegs/retaining hooks and flange, lower side lock, for printed circuit boards"
+"t": "P 137 S Modular chassis socket, 8p8c (RJ45), angular, with shielding, positioning pegs/retaining hooks and flange, lower side lock, for printed circuit boards, "
 },
 "https://www.lumberg.com/en/products/product/P+303": {
 "assente": 0,
