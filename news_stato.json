@@ -21411,6 +21411,8 @@
 "t": "Overmolded"
 }
 },
+"errore_dal": "2026-11-24T22:01:23+00:00",
+"errori": 1,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21706,7 +21708,7 @@
 }
 },
 "errore_dal": "2026-11-24T20:31:12+00:00",
-"errori": 3,
+"errori": 4,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
