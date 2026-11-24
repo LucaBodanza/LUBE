@@ -3,6 +3,26 @@
 {
 "cat": null,
 "fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "e1b569c84050",
+"marchio": "E-SWITCH",
+"quando": "2026-11-24T07:31:17+00:00",
+"tipo": "tolto",
+"titolo": "RBW2-SERIES-SEALED-ILLUMINATED-POWER-ROCKER-SWITCH",
+"url": "https://www.e-switch.com/product/rbw2-series-sealed-illuminated-power-rocker-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "a242bd9426d5",
+"marchio": "E-SWITCH",
+"quando": "2026-11-24T07:31:17+00:00",
+"tipo": "tolto",
+"titolo": "RD1-SERIES-COMPACT-POWER-ROCKER-SWITCH",
+"url": "https://www.e-switch.com/product/rd1-series-compact-power-rocker-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
 "id": "2243ed26e9f6",
 "marchio": "E-SWITCH",
 "quando": "2026-11-24T06:31:06+00:00",
@@ -15406,14 +15426,6 @@
 "assente": 0,
 "t": "RB5-SERIES-SEALED-ILLUMINATED-POWER-ROCKER-SWITCH"
 },
-"https://www.e-switch.com/product/rbw2-series-sealed-illuminated-power-rocker-switch": {
-"assente": 2,
-"t": "RBW2-SERIES-SEALED-ILLUMINATED-POWER-ROCKER-SWITCH"
-},
-"https://www.e-switch.com/product/rd1-series-compact-power-rocker-switch": {
-"assente": 2,
-"t": "RD1-SERIES-COMPACT-POWER-ROCKER-SWITCH"
-},
 "https://www.e-switch.com/product/rdm-series-sealed-ultra-slim-rotary-dip-switch": {
 "assente": 0,
 "t": "rdm series sealed ultra slim rotary dip switch"
@@ -21369,8 +21381,6 @@
 "t": "Overmolded"
 }
 },
-"errore_dal": "2026-11-24T06:31:06+00:00",
-"errori": 2,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
