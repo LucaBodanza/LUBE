@@ -15407,11 +15407,11 @@
 "t": "RB5-SERIES-SEALED-ILLUMINATED-POWER-ROCKER-SWITCH"
 },
 "https://www.e-switch.com/product/rbw2-series-sealed-illuminated-power-rocker-switch": {
-"assente": 1,
+"assente": 2,
 "t": "RBW2-SERIES-SEALED-ILLUMINATED-POWER-ROCKER-SWITCH"
 },
 "https://www.e-switch.com/product/rd1-series-compact-power-rocker-switch": {
-"assente": 1,
+"assente": 2,
 "t": "RD1-SERIES-COMPACT-POWER-ROCKER-SWITCH"
 },
 "https://www.e-switch.com/product/rdm-series-sealed-ultra-slim-rotary-dip-switch": {
@@ -21339,8 +21339,6 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
-"errore_dal": "2026-11-24T06:01:18+00:00",
-"errori": 2,
 "msg": "HTTP 502",
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
@@ -21372,7 +21370,7 @@
 }
 },
 "errore_dal": "2026-11-24T06:31:06+00:00",
-"errori": 1,
+"errori": 2,
 "finale": "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector",
 "lv0": {
 "https://amphenolltw.com/product-info/MPronto12-M12-Push-Pull-Connector/M12-Push-Pull": {
@@ -21667,8 +21665,6 @@
 "t": "View Our X-Lok Mini Size Connector"
 }
 },
-"errore_dal": "2026-11-24T06:31:06+00:00",
-"errori": 1,
 "finale": "https://amphenolltw.com/product-info/X-Lok",
 "lv0": {
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Accessory": {
