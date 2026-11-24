@@ -3,6 +3,16 @@
 {
 "cat": null,
 "fonte": "https://amphenolltw.com/news-events/",
+"id": "9af9d376c6e6",
+"marchio": "Amphenol LTW",
+"quando": "2026-11-24T01:01:22+00:00",
+"tipo": "fonte",
+"titolo": "Pagina di nuovo raggiungibile",
+"url": "https://amphenolltw.com/news-events/"
+},
+{
+"cat": null,
+"fonte": "https://amphenolltw.com/news-events/",
 "id": "6bb7514447b9",
 "marchio": "Amphenol LTW",
 "quando": "2026-11-24T00:01:25+00:00",
@@ -21301,10 +21311,7 @@
 "visto": "2026-11-16T16:22:45+00:00"
 },
 "https://amphenolltw.com/news-events/": {
-"errore_dal": "2026-11-23T23:01:23+00:00",
-"errori": 4,
 "msg": "HTTP 502",
-"segnalato": true,
 "visti": [
 "https://amphenolltw.com/news-events/Amphenol-LTW-IPCS-for-large-scale-projects.html",
 "https://amphenolltw.com/news-events/USB-TypeB-2.0-Female-Connector.html",
