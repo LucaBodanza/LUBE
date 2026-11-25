@@ -434,5 +434,20 @@
    "a": "25_RAST_1.5_RAST_2.5_RAST_2.5_POWER"
   },
   "prodotti": 497
+ },
+ {
+  "quando": "2026-11-25T15:53:14+00:00",
+  "scheda": {
+   "azione": "sposta",
+   "slug": "ei09_RAST_5_RAST_7.5_POWER",
+   "comparto": "connessione",
+   "num": 26,
+   "quando": "2026-11-25T15:52:40.689Z"
+  },
+  "spostato": {
+   "da": "ei09_RAST_5_RAST_7.5_POWER",
+   "a": "26_RAST_5_RAST_7.5_POWER"
+  },
+  "prodotti": 696
  }
 ]
