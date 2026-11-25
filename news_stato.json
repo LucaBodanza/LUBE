@@ -15307,7 +15307,7 @@
 "t": "kas series dip switch"
 },
 "https://www.e-switch.com/product/kje32-series-heavy-duty-industrial-power-pushbutton-switch": {
-"assente": 1,
+"assente": 2,
 "t": "KJE32-SERIES-HEAVY-DUTY-INDUSTRIAL-POWER-PUSHBUTTON-SWITCH"
 },
 "https://www.e-switch.com/product/ko-series-keylock-switch": {
@@ -15563,15 +15563,15 @@
 "t": "RR8-SERIES-ROUND-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
 },
 "https://www.e-switch.com/product/rra-series-round-illuminated-power-rocker-switch-with-pvc-cap": {
-"assente": 1,
+"assente": 2,
 "t": "rra series round illuminated power rocker switch with pvc cap"
 },
 "https://www.e-switch.com/product/rsc-series-illuminated-power-rocker-switch-with-bi-color-actuator": {
-"assente": 1,
+"assente": 2,
 "t": "rsc series illuminated power rocker switch with bi color actuator"
 },
 "https://www.e-switch.com/product/rvw-series-sealed-power-rocker-switch": {
-"assente": 1,
+"assente": 2,
 "t": "rvw series sealed power rocker switch"
 },
 "https://www.e-switch.com/product/sav4-series-illuminated-high-current-anti-vandal-switch": {
@@ -31204,7 +31204,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31275,7 +31274,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
