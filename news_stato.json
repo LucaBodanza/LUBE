@@ -17608,7 +17608,7 @@
 "t": "DT12 · 1961523"
 },
 "https://www.friwo-shop.de/DT50-M/1825898": {
-"assente": 1,
+"assente": 2,
 "t": "DT50-M · 1825898"
 },
 "https://www.friwo-shop.de/DT50-M/1890649": {
@@ -17864,7 +17864,7 @@
 "t": "FOX18-XM · 1898136"
 },
 "https://www.friwo-shop.de/FOX18-XM/1898137": {
-"assente": 1,
+"assente": 2,
 "t": "FOX18-XM · 1898137"
 },
 "https://www.friwo-shop.de/FOX18-XM/1898139": {
@@ -17920,11 +17920,11 @@
 "t": "FOX30-F · 1898804"
 },
 "https://www.friwo-shop.de/FOX30-F/1898807": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-F · 1898807"
 },
 "https://www.friwo-shop.de/FOX30-FM/1898816": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-FM · 1898816"
 },
 "https://www.friwo-shop.de/FOX30-FM/1898817": {
@@ -17932,7 +17932,7 @@
 "t": "FOX30-FM · 1898817"
 },
 "https://www.friwo-shop.de/FOX30-FM/1898819": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-FM · 1898819"
 },
 "https://www.friwo-shop.de/FOX30-FM/1898822": {
@@ -17956,11 +17956,11 @@
 "t": "FOX30-X · 1898153"
 },
 "https://www.friwo-shop.de/FOX30-X/1898154": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-X · 1898154"
 },
 "https://www.friwo-shop.de/FOX30-X/1898155": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-X · 1898155"
 },
 "https://www.friwo-shop.de/FOX30-X/1898157": {
@@ -17992,7 +17992,7 @@
 "t": "FOX30-XM · 1898165"
 },
 "https://www.friwo-shop.de/FOX30-XM/1898167": {
-"assente": 1,
+"assente": 2,
 "t": "FOX30-XM · 1898167"
 },
 "https://www.friwo-shop.de/FOX30M-D/1898179": {
@@ -18064,7 +18064,7 @@
 "t": "FOX6-FM-USB · 1961490"
 },
 "https://www.friwo-shop.de/FOX6-FM-USB/1961491": {
-"assente": 1,
+"assente": 2,
 "t": "FOX6-FM-USB · 1961491"
 },
 "https://www.friwo-shop.de/FOX6-FM/1961474": {
@@ -18144,7 +18144,7 @@
 "t": "FOX6-XM-NEW-GEN · 1961919"
 },
 "https://www.friwo-shop.de/FOX6-XM-New-Gen/1961920": {
-"assente": 1,
+"assente": 2,
 "t": "FOX6-XM-NEW-GEN · 1961920"
 },
 "https://www.friwo-shop.de/FOX6-XM-New-Gen/1961921": {
@@ -18160,7 +18160,7 @@
 "t": "FOX6-XM · 1960499"
 },
 "https://www.friwo-shop.de/FOX6-XM/1960501": {
-"assente": 1,
+"assente": 2,
 "t": "FOX6-XM · 1960501"
 },
 "https://www.friwo-shop.de/FOX60-D/1898544": {
@@ -18192,7 +18192,7 @@
 "t": "GPP36-LI-ION-LADEGERAET · 1834052"
 },
 "https://www.friwo-shop.de/GPP36-Li-Ion-Ladegeraet/1834053": {
-"assente": 1,
+"assente": 2,
 "t": "GPP36-LI-ION-LADEGERAET · 1834053"
 },
 "https://www.friwo-shop.de/GPP36-Li-Ion-Ladegeraet/1834054": {
@@ -18204,7 +18204,7 @@
 "t": "GPP36-LIFEP04-LADEGERAET · 1834058"
 },
 "https://www.friwo-shop.de/HERC175/1899059": {
-"assente": 1,
+"assente": 2,
 "t": "HERC175 · 1899059"
 },
 "https://www.friwo-shop.de/HERC175/1899208": {
@@ -18500,7 +18500,7 @@
 "t": "Primaeradapter MPP System UK · 1717618"
 },
 "https://www.friwo-shop.de/Primaeradapter-MPP-System-US-JPN/1717715": {
-"assente": 1,
+"assente": 2,
 "t": "Primaeradapter MPP System US JPN · 1717715"
 },
 "https://www.friwo-shop.de/Service-Software/1856885": {
@@ -18552,7 +18552,7 @@
 "t": "UP USB AC · 1899702"
 },
 "https://www.friwo-shop.de/UP12/1891767": {
-"assente": 1,
+"assente": 2,
 "t": "UP12 · 1891767"
 },
 "https://www.friwo-shop.de/UP12/1891768": {
@@ -18572,7 +18572,7 @@
 "t": "UP6 · 1891508"
 },
 "https://www.friwo-shop.de/USB-Kabel-A-C/1855094": {
-"assente": 1,
+"assente": 2,
 "t": "USB Kabel A C · 1855094"
 }
 },
@@ -31718,7 +31718,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
-"g_lv0": 1,
+"g_lv0": 2,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
