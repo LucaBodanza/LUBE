@@ -419,5 +419,20 @@
    "a": "24_ALIMENTAZIONE"
   },
   "prodotti": 67
+ },
+ {
+  "quando": "2026-11-25T15:07:47+00:00",
+  "scheda": {
+   "azione": "sposta",
+   "slug": "ei08_RAST_1.5_RAST_2.5_RAST_2.5_POWER",
+   "comparto": "connessione",
+   "num": 25,
+   "quando": "2026-11-25T15:07:08.068Z"
+  },
+  "spostato": {
+   "da": "ei08_RAST_1.5_RAST_2.5_RAST_2.5_POWER",
+   "a": "25_RAST_1.5_RAST_2.5_RAST_2.5_POWER"
+  },
+  "prodotti": 497
  }
 ]
