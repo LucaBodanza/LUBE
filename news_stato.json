@@ -2,6 +2,26 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "2a0ee6154c03",
+"marchio": "CONEC",
+"quando": "2026-11-25T11:41:09+00:00",
+"tipo": "nuovo",
+"titolo": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "8d435ca5e6cf",
+"marchio": "CONEC",
+"quando": "2026-11-25T11:41:09+00:00",
+"tipo": "nuovo",
+"titolo": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m",
+"url": "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html"
+},
+{
+"cat": null,
 "fonte": "https://www.e-switch.com/sitemap.xml",
 "id": "53f2bc43e806",
 "marchio": "E-SWITCH",
@@ -21623,51 +21643,51 @@
 "t": "Overmolded"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD001.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD001 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD002.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD002 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD003.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD003 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD004.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD004 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD005.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD005 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QD010.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QD010 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02FL-ADFL-QDA05.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02FL-ADFL-QDA05 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Female/Female, (End 2) Female/Female, Push L"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD001.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02ML-ADFL-QD001 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD002.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02ML-ADFL-QD002 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD003.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02ML-ADFL-QD003 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD004.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02ML-ADFL-QD004 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Overmolded/AB-AD02ML-ADFL-QD005.html": {
-"assente": 1,
+"assente": 0,
 "t": "AB-AD02ML-ADFL-QD005 X-Lok, Mini Size, Plastic, 5A, 02 pins, Double Ended Overmolded, Straight-to-Straight, (End 1) Male/Male, (End 2) Female/Female, Push Lock,"
 },
 "https://amphenolltw.com/product-info/X-Lok/X-Lok-Receptacle": {
@@ -22101,7 +22121,7 @@
 "t": "Male connector axial • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-10-k1.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-2-k1.html": {
@@ -22111,6 +22131,10 @@
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-3-k1.html": {
 "assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
+},
+"https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
+"assente": 0,
+"t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
 "assente": 0,
@@ -22736,8 +22760,12 @@
 "assente": 0,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
-"https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
+"https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html": {
 "assente": 0,
+"t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
+},
+"https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
+"assente": 1,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-6s-a-k1-0-75-1m-k1-0-75-1m.html": {
