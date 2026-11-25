@@ -1,6 +1,46 @@
 {
 "eventi": [
 {
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "decf73343301",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T06:01:34+00:00",
+"tipo": "nuovo",
+"titolo": "200U-SERIES-SEALED-ULTRAMINIATURE-TOGGLE-SWITCH",
+"url": "https://www.e-switch.com/product/200u-series-sealed-ultraminiature-toggle-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "534691173d65",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T06:01:34+00:00",
+"tipo": "nuovo",
+"titolo": "200A-SERIES-SEALED-SUBMINIATURE-TOGGLE-SWITCH",
+"url": "https://www.e-switch.com/product/200a-series-sealed-subminiature-toggle-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "85bd2a668361",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T06:01:34+00:00",
+"tipo": "nuovo",
+"titolo": "200-SERIES-SUBMINIATURE-TOGGLE-SWITCH",
+"url": "https://www.e-switch.com/product/200-series-subminiature-toggle-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "3f7776e2751a",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T06:01:34+00:00",
+"tipo": "nuovo",
+"titolo": "100-SERIES-MINIATURE-TOGGLE-SWITCH",
+"url": "https://www.e-switch.com/product/100-series-miniature-toggle-switch"
+},
+{
 "cat": 15,
 "fonte": "https://amphenolltw.com/product-info/X-Lok/",
 "id": "1ac5c9652a29",
@@ -15114,9 +15154,25 @@
 },
 "e-switch-prodotti": {
 "lv0": {
+"https://www.e-switch.com/product/100-series-miniature-toggle-switch": {
+"assente": 0,
+"t": "100-SERIES-MINIATURE-TOGGLE-SWITCH"
+},
 "https://www.e-switch.com/product/100a-series-sealed-miniature-toggle-switch": {
 "assente": 0,
 "t": "100A-SERIES-SEALED-MINIATURE-TOGGLE-SWITCH"
+},
+"https://www.e-switch.com/product/200-series-subminiature-toggle-switch": {
+"assente": 0,
+"t": "200-SERIES-SUBMINIATURE-TOGGLE-SWITCH"
+},
+"https://www.e-switch.com/product/200a-series-sealed-subminiature-toggle-switch": {
+"assente": 0,
+"t": "200A-SERIES-SEALED-SUBMINIATURE-TOGGLE-SWITCH"
+},
+"https://www.e-switch.com/product/200u-series-sealed-ultraminiature-toggle-switch": {
+"assente": 0,
+"t": "200U-SERIES-SEALED-ULTRAMINIATURE-TOGGLE-SWITCH"
 },
 "https://www.e-switch.com/product/320094": {
 "assente": 0,
@@ -15251,7 +15307,7 @@
 "t": "kas series dip switch"
 },
 "https://www.e-switch.com/product/kje32-series-heavy-duty-industrial-power-pushbutton-switch": {
-"assente": 0,
+"assente": 1,
 "t": "KJE32-SERIES-HEAVY-DUTY-INDUSTRIAL-POWER-PUSHBUTTON-SWITCH"
 },
 "https://www.e-switch.com/product/ko-series-keylock-switch": {
@@ -15507,15 +15563,15 @@
 "t": "RR8-SERIES-ROUND-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
 },
 "https://www.e-switch.com/product/rra-series-round-illuminated-power-rocker-switch-with-pvc-cap": {
-"assente": 0,
+"assente": 1,
 "t": "rra series round illuminated power rocker switch with pvc cap"
 },
 "https://www.e-switch.com/product/rsc-series-illuminated-power-rocker-switch-with-bi-color-actuator": {
-"assente": 0,
+"assente": 1,
 "t": "rsc series illuminated power rocker switch with bi color actuator"
 },
 "https://www.e-switch.com/product/rvw-series-sealed-power-rocker-switch": {
-"assente": 0,
+"assente": 1,
 "t": "rvw series sealed power rocker switch"
 },
 "https://www.e-switch.com/product/sav4-series-illuminated-high-current-anti-vandal-switch": {
@@ -31148,6 +31204,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
+"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31218,6 +31275,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
+"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
