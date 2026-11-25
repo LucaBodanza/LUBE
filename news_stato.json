@@ -3,6 +3,46 @@
 {
 "cat": null,
 "fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "53f2bc43e806",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T07:01:25+00:00",
+"tipo": "tolto",
+"titolo": "KJE32-SERIES-HEAVY-DUTY-INDUSTRIAL-POWER-PUSHBUTTON-SWITCH",
+"url": "https://www.e-switch.com/product/kje32-series-heavy-duty-industrial-power-pushbutton-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "a8c7942149cb",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T07:01:25+00:00",
+"tipo": "tolto",
+"titolo": "rra series round illuminated power rocker switch with pvc cap",
+"url": "https://www.e-switch.com/product/rra-series-round-illuminated-power-rocker-switch-with-pvc-cap"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "47b35908ca56",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T07:01:25+00:00",
+"tipo": "tolto",
+"titolo": "rsc series illuminated power rocker switch with bi color actuator",
+"url": "https://www.e-switch.com/product/rsc-series-illuminated-power-rocker-switch-with-bi-color-actuator"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
+"id": "007d7549ac2a",
+"marchio": "E-SWITCH",
+"quando": "2026-11-25T07:01:25+00:00",
+"tipo": "tolto",
+"titolo": "rvw series sealed power rocker switch",
+"url": "https://www.e-switch.com/product/rvw-series-sealed-power-rocker-switch"
+},
+{
+"cat": null,
+"fonte": "https://www.e-switch.com/sitemap.xml",
 "id": "decf73343301",
 "marchio": "E-SWITCH",
 "quando": "2026-11-25T06:01:34+00:00",
@@ -15306,10 +15346,6 @@
 "assente": 0,
 "t": "kas series dip switch"
 },
-"https://www.e-switch.com/product/kje32-series-heavy-duty-industrial-power-pushbutton-switch": {
-"assente": 2,
-"t": "KJE32-SERIES-HEAVY-DUTY-INDUSTRIAL-POWER-PUSHBUTTON-SWITCH"
-},
 "https://www.e-switch.com/product/ko-series-keylock-switch": {
 "assente": 0,
 "t": "ko series keylock switch"
@@ -15561,18 +15597,6 @@
 "https://www.e-switch.com/product/rr8-series-round-illuminated-power-rocker-switch-with-pvc-cap": {
 "assente": 0,
 "t": "RR8-SERIES-ROUND-ILLUMINATED-POWER-ROCKER-SWITCH-WITH-PVC-CAP"
-},
-"https://www.e-switch.com/product/rra-series-round-illuminated-power-rocker-switch-with-pvc-cap": {
-"assente": 2,
-"t": "rra series round illuminated power rocker switch with pvc cap"
-},
-"https://www.e-switch.com/product/rsc-series-illuminated-power-rocker-switch-with-bi-color-actuator": {
-"assente": 2,
-"t": "rsc series illuminated power rocker switch with bi color actuator"
-},
-"https://www.e-switch.com/product/rvw-series-sealed-power-rocker-switch": {
-"assente": 2,
-"t": "rvw series sealed power rocker switch"
 },
 "https://www.e-switch.com/product/sav4-series-illuminated-high-current-anti-vandal-switch": {
 "assente": 0,
