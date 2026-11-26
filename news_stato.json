@@ -30136,7 +30136,7 @@
 },
 "https://www.lutronic.biz/en/news": {
 "errore_dal": "2026-11-26T18:31:19+00:00",
-"errori": 1,
+"errori": 2,
 "msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lutronic.biz/en/news/100-percent-quality-assurance-lutronic-offers-high-performance-measuring-cells",
@@ -31181,7 +31181,7 @@
 }
 },
 "errore_dal": "2026-11-26T18:31:19+00:00",
-"errori": 1,
+"errori": 2,
 "finale": "https://www.lumberg.com/en/products/range/datacom",
 "lv0": {
 "https://www.lumberg.com/en/products/product/1501+02": {
@@ -31703,7 +31703,7 @@
 },
 "lumberg-news": {
 "errore_dal": "2026-11-26T18:31:19+00:00",
-"errori": 1,
+"errori": 2,
 "msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award",
