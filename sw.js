@@ -4,7 +4,7 @@
 // - pdf.js legge i PDF a pezzi: qui i pezzi vengono ritagliati
 // - VERSIONE RISERVATA (true): tutto ciò che sta in cat/ e dati/ è cifrato (AES-256-GCM a blocchi da 256 KB).
 //   Qui si decifra al volo con la chiave messa nel dispositivo dall'accesso (IndexedDB). Nelle cache resta tutto cifrato.
-const VERSIONE = '1.1.1-2026.11.9-7360a80b68-c6240fcc3';
+const VERSIONE = '1.1.1-2026.11.9-7360a80b68-c697d0ae2';
 const RAW_NEWS = 'https://raw.githubusercontent.com/LucaBodanza/LUBE/news-dati/dati/news.json';   // scritto da .github/workflows/news.yml (cifrato come il resto)
 const CIFRATA = true;
 const GUSCIO = 'elsap-guscio-' + VERSIONE, CAT = 'elsap-cat-v1';
