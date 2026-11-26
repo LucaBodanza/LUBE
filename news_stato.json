@@ -30135,6 +30135,8 @@
 "visto": "2026-11-16T15:37:43+00:00"
 },
 "https://www.lutronic.biz/en/news": {
+"errore_dal": "2026-11-26T18:31:19+00:00",
+"errori": 1,
 "msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lutronic.biz/en/news/100-percent-quality-assurance-lutronic-offers-high-performance-measuring-cells",
@@ -31178,6 +31180,8 @@
 "t": "XSTO 1 RCA plug acc. to JEITA RC-5231, straight version, with bend protection and solder terminals"
 }
 },
+"errore_dal": "2026-11-26T18:31:19+00:00",
+"errori": 1,
 "finale": "https://www.lumberg.com/en/products/range/datacom",
 "lv0": {
 "https://www.lumberg.com/en/products/product/1501+02": {
@@ -31698,6 +31702,8 @@
 "visto": "2026-11-17T08:52:01+00:00"
 },
 "lumberg-news": {
+"errore_dal": "2026-11-26T18:31:19+00:00",
+"errori": 1,
 "msg": "URLError: <urlopen error _ssl.c:1063: The handshake operation timed out>",
 "visti": [
 "https://www.lumberg.com/en/news/a-first-in-shanghai-lumberg-rast-1-5-wins-its-first-international-award",
