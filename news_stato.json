@@ -22609,7 +22609,7 @@
 "t": "Male connector axial • L-coded • single ended • M12x1 • 4-pos+FE • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-10-k1.html": {
-"assente": 1,
+"assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-2-k1.html": {
@@ -22621,7 +22621,7 @@
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
-"assente": 0,
+"assente": 1,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
@@ -23249,11 +23249,11 @@
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html": {
-"assente": 0,
+"assente": 1,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
-"assente": 1,
+"assente": 0,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-6s-a-k1-0-75-1m-k1-0-75-1m.html": {
