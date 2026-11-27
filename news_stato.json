@@ -2,6 +2,36 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.friwo-shop.de/sitemap.xml",
+"id": "8b9fd0780dd7",
+"marchio": "FRIWO",
+"quando": "2026-11-27T15:32:01+00:00",
+"tipo": "nuovo",
+"titolo": "FOX18-X · 1898145",
+"url": "https://www.friwo-shop.de/FOX18-X/1898145"
+},
+{
+"cat": null,
+"fonte": "https://www.friwo-shop.de/sitemap.xml",
+"id": "bedfa3742b3a",
+"marchio": "FRIWO",
+"quando": "2026-11-27T15:32:01+00:00",
+"tipo": "nuovo",
+"titolo": "PP8-LEAD-ACID-CHARGER · 1824396",
+"url": "https://www.friwo-shop.de/PP8-Lead-Acid-Charger/1824396"
+},
+{
+"cat": null,
+"fonte": "https://www.friwo-shop.de/sitemap.xml",
+"id": "4f02e0d7d4f0",
+"marchio": "FRIWO",
+"quando": "2026-11-27T15:32:01+00:00",
+"tipo": "nuovo",
+"titolo": "Primaeradapter MPP System EU · 1717707",
+"url": "https://www.friwo-shop.de/Primaeradapter-MPP-System-EU/1717707"
+},
+{
+"cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "8af1739a32f8",
 "marchio": "CONEC",
@@ -17944,7 +17974,7 @@
 "t": "FOX12-FM · 1898792"
 },
 "https://www.friwo-shop.de/FOX12-X-USB/1897730": {
-"assente": 0,
+"assente": 1,
 "t": "FOX12-X-USB · 1897730"
 },
 "https://www.friwo-shop.de/FOX12-X/1897510": {
@@ -18042,6 +18072,10 @@
 "https://www.friwo-shop.de/FOX18-X/1898144": {
 "assente": 0,
 "t": "FOX18-X · 1898144"
+},
+"https://www.friwo-shop.de/FOX18-X/1898145": {
+"assente": 0,
+"t": "FOX18-X · 1898145"
 },
 "https://www.friwo-shop.de/FOX18-X/1898147": {
 "assente": 0,
@@ -18204,7 +18238,7 @@
 "t": "FOX5-F-USB · 1898333"
 },
 "https://www.friwo-shop.de/FOX5-F-USB/1899018": {
-"assente": 0,
+"assente": 1,
 "t": "FOX5-F-USB · 1899018"
 },
 "https://www.friwo-shop.de/FOX6-F-USB/1961492": {
@@ -18527,6 +18561,10 @@
 "assente": 0,
 "t": "PD65-F · 20008289"
 },
+"https://www.friwo-shop.de/PP8-Lead-Acid-Charger/1824396": {
+"assente": 0,
+"t": "PP8-LEAD-ACID-CHARGER · 1824396"
+},
 "https://www.friwo-shop.de/Primaeradapter-FOX-System-AUS/1847534": {
 "assente": 0,
 "t": "Primaeradapter FOX System AUS · 1847534"
@@ -18638,6 +18676,10 @@
 "https://www.friwo-shop.de/Primaeradapter-MPP-System-AUS-MPP6-30/1804237": {
 "assente": 0,
 "t": "PRIMAERADAPTER-MPP-SYSTEM-AUS-MPP6-30 · 1804237"
+},
+"https://www.friwo-shop.de/Primaeradapter-MPP-System-EU/1717707": {
+"assente": 0,
+"t": "Primaeradapter MPP System EU · 1717707"
 },
 "https://www.friwo-shop.de/Primaeradapter-MPP-System-IEC-BUCHSE-C8/1809281": {
 "assente": 0,
