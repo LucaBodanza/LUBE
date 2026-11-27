@@ -3,6 +3,26 @@
 {
 "cat": null,
 "fonte": "https://www.friwo-shop.de/sitemap.xml",
+"id": "3643d85e4018",
+"marchio": "FRIWO",
+"quando": "2026-11-27T16:31:16+00:00",
+"tipo": "tolto",
+"titolo": "FOX12-X-USB · 1897730",
+"url": "https://www.friwo-shop.de/FOX12-X-USB/1897730"
+},
+{
+"cat": null,
+"fonte": "https://www.friwo-shop.de/sitemap.xml",
+"id": "f7af09b773e5",
+"marchio": "FRIWO",
+"quando": "2026-11-27T16:31:16+00:00",
+"tipo": "tolto",
+"titolo": "FOX5-F-USB · 1899018",
+"url": "https://www.friwo-shop.de/FOX5-F-USB/1899018"
+},
+{
+"cat": null,
+"fonte": "https://www.friwo-shop.de/sitemap.xml",
 "id": "8b9fd0780dd7",
 "marchio": "FRIWO",
 "quando": "2026-11-27T15:32:01+00:00",
@@ -17973,10 +17993,6 @@
 "assente": 0,
 "t": "FOX12-FM · 1898792"
 },
-"https://www.friwo-shop.de/FOX12-X-USB/1897730": {
-"assente": 2,
-"t": "FOX12-X-USB · 1897730"
-},
 "https://www.friwo-shop.de/FOX12-X/1897510": {
 "assente": 0,
 "t": "FOX12-X · 1897510"
@@ -18236,10 +18252,6 @@
 "https://www.friwo-shop.de/FOX5-F-USB/1898333": {
 "assente": 0,
 "t": "FOX5-F-USB · 1898333"
-},
-"https://www.friwo-shop.de/FOX5-F-USB/1899018": {
-"assente": 2,
-"t": "FOX5-F-USB · 1899018"
 },
 "https://www.friwo-shop.de/FOX6-F-USB/1961492": {
 "assente": 0,
@@ -31826,7 +31838,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31897,7 +31908,6 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
-"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
