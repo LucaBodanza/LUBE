@@ -22641,7 +22641,7 @@
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
-"assente": 1,
+"assente": 2,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
@@ -23269,7 +23269,7 @@
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html": {
-"assente": 1,
+"assente": 2,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
@@ -23417,8 +23417,6 @@
 "t": "PCB Connectors"
 }
 },
-"errore_dal": "2026-11-27T10:55:55+00:00",
-"errori": 2,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
