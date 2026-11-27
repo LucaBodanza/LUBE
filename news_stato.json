@@ -17974,7 +17974,7 @@
 "t": "FOX12-FM · 1898792"
 },
 "https://www.friwo-shop.de/FOX12-X-USB/1897730": {
-"assente": 1,
+"assente": 2,
 "t": "FOX12-X-USB · 1897730"
 },
 "https://www.friwo-shop.de/FOX12-X/1897510": {
@@ -18238,7 +18238,7 @@
 "t": "FOX5-F-USB · 1898333"
 },
 "https://www.friwo-shop.de/FOX5-F-USB/1899018": {
-"assente": 1,
+"assente": 2,
 "t": "FOX5-F-USB · 1899018"
 },
 "https://www.friwo-shop.de/FOX6-F-USB/1961492": {
@@ -31826,6 +31826,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-news": {
+"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/company/news/news-entry/battery-contacts": {
 "assente": 0,
@@ -31896,6 +31897,7 @@
 "visto": "2026-11-16T16:12:14+00:00"
 },
 "mpe-prodotti": {
+"g_lv0": 1,
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
 "assente": 0,
