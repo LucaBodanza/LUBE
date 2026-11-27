@@ -3,6 +3,16 @@
 {
 "cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "2f05f5a9b0a5",
+"marchio": "CONEC",
+"quando": "2026-11-27T12:31:16+00:00",
+"tipo": "nuovo",
+"titolo": "Sockets • Front panel mounting • M8x1 • 4- pos. • 9 mm • P-coded • Printanschluss • Shielded  M10x1 • Female connector axial • Socket two-piece • Shielded",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fk4-x9.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "8c5772ba3088",
 "marchio": "CONEC",
 "quando": "2026-11-27T07:31:16+00:00",
@@ -23464,8 +23474,12 @@
 "t": "Power Connectors"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fk4-x13.html": {
-"assente": 0,
+"assente": 1,
 "t": "Sockets • Front panel mounting • M8x1 • 4- pos. • 13 mm • P-coded • Printanschluss • Shielded  M10x1 • Female connector axial • Socket two-piece • Shielded"
+},
+"https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fk4-x9.html": {
+"assente": 0,
+"t": "Sockets • Front panel mounting • M8x1 • 4- pos. • 9 mm • P-coded • Printanschluss • Shielded  M10x1 • Female connector axial • Socket two-piece • Shielded"
 },
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-8p-fkh4-x10.html": {
 "assente": 0,
