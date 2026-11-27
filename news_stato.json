@@ -23417,6 +23417,8 @@
 "t": "PCB Connectors"
 }
 },
+"errore_dal": "2026-11-27T10:55:55+00:00",
+"errori": 1,
 "finale": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "lv0": {
 "https://conec.com/catalog/en/17-series-ip67-rj45-usb-fo-power-bayonet.html": {
@@ -23544,7 +23546,7 @@
 "t": "PCB Connectors"
 }
 },
-"msg": "HTTP 522",
+"msg": "HTTP 503",
 "titolo": "Circular Connectors Sensor Actor Line",
 "visto": "2026-11-16T15:37:43+00:00"
 },
