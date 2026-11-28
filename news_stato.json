@@ -31910,7 +31910,7 @@
 "mpe-prodotti": {
 "lv0": {
 "https://www.mpe-connector.de/en/products": {
-"assente": 0,
+"assente": 1,
 "t": "en · products"
 },
 "https://www.mpe-connector.de/en/products/battery-contacts": {
