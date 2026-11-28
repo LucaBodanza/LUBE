@@ -2,6 +2,16 @@
 "eventi": [
 {
 "cat": null,
+"fonte": "https://www.mpe-connector.de/en/sitemap.xml",
+"id": "c3292e4e16b3",
+"marchio": "MPE GARRY",
+"quando": "2026-11-28T03:02:26+00:00",
+"tipo": "tolto",
+"titolo": "en · products",
+"url": "https://www.mpe-connector.de/en/products"
+},
+{
+"cat": null,
 "fonte": "https://www.friwo-shop.de/sitemap.xml",
 "id": "3643d85e4018",
 "marchio": "FRIWO",
@@ -31909,10 +31919,6 @@
 },
 "mpe-prodotti": {
 "lv0": {
-"https://www.mpe-connector.de/en/products": {
-"assente": 2,
-"t": "en · products"
-},
 "https://www.mpe-connector.de/en/products/battery-contacts": {
 "assente": 0,
 "t": "products · battery contacts"
