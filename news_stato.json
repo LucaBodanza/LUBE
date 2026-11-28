@@ -3,6 +3,26 @@
 {
 "cat": null,
 "fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "e91ba4eb7364",
+"marchio": "CONEC",
+"quando": "2026-11-28T10:51:02+00:00",
+"tipo": "tolto",
+"titolo": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors",
+"url": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
+"id": "1659ab740d0c",
+"marchio": "CONEC",
+"quando": "2026-11-28T10:51:02+00:00",
+"tipo": "tolto",
+"titolo": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m",
+"url": "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html"
+},
+{
+"cat": null,
+"fonte": "https://conec.com/catalog/en/circular-connectors-sensor-actor-line.html",
 "id": "fcb947b1b293",
 "marchio": "CONEC",
 "quando": "2026-11-28T05:01:31+00:00",
@@ -22744,10 +22764,6 @@
 "assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 3 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
 },
-"https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4-5-k1.html": {
-"assente": 2,
-"t": "Male connector angled • L-coded • single ended • M12x1 • 4- pos. • 5 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
-},
 "https://conec.com/catalog/en/circular-connectors-sensor-actor-line/sal-12l-rsw4fe-10-k2.html": {
 "assente": 0,
 "t": "Male connector angled • L-coded • single ended • M12x1 • 4-pos+FE • 10 m • 2,5 mm² • PUR/PVC • Unshielded • Power connectors"
@@ -23370,10 +23386,6 @@
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw1-a-k1-0-75-1m-k1-0-75-1m.html": {
 "assente": 0,
-"t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
-},
-"https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw2-a-k1-0-75-1m-k1-0-75-1m.html": {
-"assente": 2,
 "t": "Socket, 90° angled • 4- pos. • DT • without protection circuit • 1 m"
 },
 "https://conec.com/catalog/en/heavy-equipment-connectors/ydt06-4sw3-a-k1-0-75-1m-k1-0-75-1m.html": {
